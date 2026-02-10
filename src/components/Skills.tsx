@@ -1,4 +1,3 @@
-import React from 'react';
 import { Section } from './Section';
 import { skills } from '../data';
 import { motion } from 'framer-motion';
