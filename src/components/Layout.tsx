@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import turtleLogo from '/turtle.svg';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -93,7 +94,7 @@ export function Layout({ children }: LayoutProps) {
             >
               {/* Custom Turtle Logo - SVG */}
               <div className="w-10 h-10 rounded-full bg-[#9FAA7C] flex items-center justify-center border border-[#9FAA7C] group-hover:bg-[#DBF06D] group-hover:border-[#DBF06D] transition-all duration-300 overflow-hidden shadow-lg shadow-[#9FAA7C]/20 text-white">
-                 <img src="/turtle.svg" alt="Turtle Logo" className="w-full h-full object-contain p-[3px]" />
+                 <img src={turtleLogo} alt="Turtle Logo" className="w-full h-full object-contain p-[3px]" />
               </div>
               <span className="font-sans font-bold text-2xl text-white group-hover:text-[#9FAA7C] transition-colors tracking-tight lowercase leading-none pb-1 pt-0">
                 goring
