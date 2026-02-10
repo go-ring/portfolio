@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply bg-[#10141b] text-white; /* Force Dark Background Default */
+  }
+  
+  body {
+    @apply antialiased transition-colors duration-300;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-[#10141b];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-[#10141b]/80 backdrop-blur-md border-b border-white/5;
+  }
+  
+  .card-gradient {
+    background: linear-gradient(145deg, #1c212c 0%, #171b24 100%);
+  }
+}
