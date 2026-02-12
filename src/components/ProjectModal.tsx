@@ -9,7 +9,7 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-const EMPHASIS_TECH = new Set(['Java', 'Spring Boot', 'MySQL']);
+const EMPHASIS_TECH = new Set(['Java', 'Spring Boot', 'MySQL', 'NOS3', 'Linux', 'NCloud']);
 
 const TOC_ITEMS = [
   { id: 'overview', label: '프로젝트 개요' },
@@ -22,6 +22,8 @@ const TOC_ITEMS = [
 ];
 
 // Unified Section Header
+
+
 function SectionHeader({ title, icon: Icon }: { title: string; icon?: React.ElementType }) {
     return (
         <h4 className="text-xl font-bold text-white mb-6 border-l-4 border-primary pl-3 flex items-center gap-2">
@@ -223,7 +225,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         {/* 1. Overview */}
                         <section id="overview" className="space-y-6 scroll-mt-24">
                              
-                             {/* Preview GIF - Full View (No Crop) */}
+                             {/* Preview GIF (Priority 1) */}
                              {project.images?.preview && (
                                 <div className="mb-8">
                                     <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center">
@@ -234,6 +236,37 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                         />
                                     </div>
                                     <p className="text-center text-sm text-gray-500 mt-2">최종 결과물 시연 화면</p>
+                                </div>
+                             )}
+
+                             {/* Main Image (Priority 2 - if exists) */}
+                             {project.images?.main && !project.images.preview && (
+                                <div className="mb-8 flex justify-center">
+                                    <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center max-w-4xl w-full">
+                                        <img 
+                                            src={project.images.main} 
+                                            alt="Main" 
+                                            className="w-full h-auto max-h-[420px] object-contain" 
+                                        />
+                                    </div>
+                                </div>
+                             )}
+                             
+                             {/* ... (Skipping preview+main case for brevity in reasoning, but must handle if I replace block) ... 
+                                Actually, I should probably target the specific Main Image blocks or use multi-replace.
+                                Let's stick to the specific block logic. 
+                             */}
+
+                             {/* Main Image (Priority 2 - if exists AND preview exists) */}
+                             {project.images?.main && project.images.preview && (
+                                <div className="mb-8 flex justify-center">
+                                    <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center max-w-4xl w-full">
+                                        <img 
+                                            src={project.images.main} 
+                                            alt="Main" 
+                                            className="w-full h-auto max-h-[420px] object-contain" 
+                                        />
+                                    </div>
                                 </div>
                              )}
 
@@ -278,18 +311,39 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                            )}
                         </section>
 
+
+
                         {/* 3. Tech & Architecture */}
                         <section id="tech" className="space-y-6 scroll-mt-24">
                              <SectionHeader title="사용 기술 및 아키텍처" />
                              
-                             {/* Architecture Image */}
+                             {/* Architecture Image - Array Support for Side-by-Side */}
                              {project.images?.architecture && (
-                                <div className="rounded-xl overflow-hidden border border-white/10 bg-white/5 p-6 mb-8 flex justify-center">
-                                    <img 
-                                        src={project.images.architecture} 
-                                        alt="Architecture" 
-                                        className="w-full h-auto object-contain max-h-[500px]" 
-                                    />
+                                <div className="mb-8">
+                                    {Array.isArray(project.images.architecture) ? (
+                                        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+                                            {project.images.architecture.map((img, idx) => (
+                                                <div 
+                                                    key={idx} 
+                                                    className="p-0 flex justify-center items-center w-fit"
+                                                >
+                                                    <img 
+                                                        src={img} 
+                                                        alt={`Architecture ${idx + 1}`} 
+                                                        className="w-full h-auto md:w-auto md:h-[350px] object-contain rounded-xl" 
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="p-0 flex justify-center w-fit mx-auto">
+                                            <img 
+                                                src={project.images.architecture} 
+                                                alt="Architecture" 
+                                                className="w-full h-auto object-contain max-h-[400px]" 
+                                            />
+                                        </div>
+                                    )}
                                 </div>
                              )}
                              
@@ -322,6 +376,17 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                     title="핵심 구현 Logic"
                                     items={project.details.implementation}
                                 />
+                            )}
+                            {project.details?.implementationImage && (
+                                <div className="mt-8 flex justify-start">
+                                    <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black/20 max-w-lg">
+                                        <img
+                                            src={project.details.implementationImage}
+                                            alt="Implemented Logic"
+                                            className="w-full h-auto object-contain max-h-[300px]"
+                                        />
+                                    </div>
+                                </div>
                             )}
                         </section>
 

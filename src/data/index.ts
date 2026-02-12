@@ -2,6 +2,7 @@ export interface ProjectDetails {
   roleAndContribution?: string[];
   techAndReason?: string[];
   implementation?: string[];
+  implementationImage?: string;
   troubleshooting?: {
     title: string;
     items: string[];
@@ -11,9 +12,15 @@ export interface ProjectDetails {
   retrospective?: string[];
 }
 
-import colorFinderMain from '../resourse/colorfinder/main.png';
+
+import colorFinderSubject from '../resourse/colorfinder/subject.png';
+
 import colorFinderArch from '../resourse/colorfinder/architecture.png';
 import colorFinderPreview from '../resourse/colorfinder/preview.gif';
+
+import nos3Main from '../resourse/artificialSatellite/main.bmp';
+import nos3Arch1 from '../resourse/artificialSatellite/architecture1.bmp';
+import nos3Arch2 from '../resourse/artificialSatellite/architecture2.bmp';
 
 export interface Project {
   title: string;
@@ -31,7 +38,7 @@ export interface Project {
   };
   images?: {
     main?: string;
-    architecture?: string;
+    architecture?: string | string[];
     preview?: string;
   };
   period: string;
@@ -117,7 +124,7 @@ export const projects: Project[] = [
     period: "2024.01.13 - 2024.06.03",
     role: "백엔드 개발",
     impact:
-      "한남대학교 캡스톤 경진대회 우수상 (2024)\n2024 스마트미디어 추계학술대회 학술 논문 발표 (우수 프로젝트 선정)\n42명의 베타 테스터 대상 사용자 만족도 조사 결과, 5점 만점에 평균 4.7점 달성 (추천 정확도 92% 긍정)",
+      "한남대학교 캡스톤 경진대회 우수상 (2024)\n2024 스마트미디어 추계학술대회 학술 논문 발표 \n42명의 베타 테스터 대상 사용자 만족도 조사 결과, 5점 만점에 평균 4.7점 달성 (추천 정확도 92% 긍정)",
     links: {
       repo: "https://github.com/chaeha617/capstone_colorfinder",
       demo: "http://color-finder.site",
@@ -127,7 +134,6 @@ export const projects: Project[] = [
       proof: "https://drive.google.com/drive/folders/1oh4o9QwShnQzbdlVRr-fSeyHb0qUrMeH?usp=sharing"
     },
     images: {
-      main: colorFinderMain,
       architecture: colorFinderArch,
       preview: colorFinderPreview
     },
@@ -149,6 +155,7 @@ export const projects: Project[] = [
         "색상 추출 파이프라인: Google Vision AI로 의류 이미지의 Dominant Color(RGB)를 추출하고, 미리 정의된 12가지 퍼스널 컬러 타입의 대표 색상값과 유클리디안 거리를 계산하여 가장 가까운 타입으로 자동 태깅했습니다.",
         "기상청 데이터 캐싱: 기상청 API의 응답 속도 불안정 문제를 해결하기 위해, 1시간 단위로 날씨 정보를 조회하여 Redis(또는 인메모리)에 캐싱하고, 사용자 요청 시 캐시된 데이터를 기반으로 추천 카테고리를 필터링했습니다."
       ],
+      implementationImage: colorFinderSubject,
       troubleshooting: [
         {
           title: "AI 색상 추출 정확도 및 DB 매핑 문제",
@@ -186,12 +193,16 @@ export const projects: Project[] = [
   },
   {
     title: "가상화 기반 우주 통신망 연동 및 사이버 위협 연구",
-    period: "2023.04 ~ 2023.10",
+    period: "2023.04.01 ~ 2023.10.31",
     type: "산학 과제 (3인)",
     role: "위성 시뮬레이터 환경 구축 및 문제 해결",
     description: "국가보안기술연구소 의뢰로 NASA의 위성 시뮬레이터(NOS3)를 NCloud 환경에 구축하여, 가상 위성 통신망 연동 및 사이버 위협 대응 훈련이 가능한 테스트베드를 제공했습니다.",
-    tech: ["C", "Ruby", "Shell", "Git", "NCloud", "NOS3", "Linux"],
+    tech: ["NOS3", "Linux", "NCloud", "Shell", "C", "Ruby", "Git"],
     impact: "클라우드 환경에서의 이중 가상화 충돌 문제를 해결하고, 자동 프로비저닝(Cloud-Init) 도입으로 배포 시간을 단축하여 안정적인 훈련 기반을 마련했습니다.",
+    images: {
+      main: nos3Main,
+      architecture: [nos3Arch1, nos3Arch2]
+    },
     links: {
       proof: "https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing"
     },
@@ -223,6 +234,11 @@ export const projects: Project[] = [
             "해결: `gem install nokogiri -v 1.12.5` 명령어를 추가하여 버전을 고정하고, `nos3-build.sh` 등의 스크립트 내 절대 경로를 올바르게 수정하여 빌드 환경을 안정화했습니다."
           ]
         }
+      ],
+      retrospective: [
+        "오픈소스 프로젝트(NOS3)를 새로운 환경(Cloud)에 이식하는 과정에서, 의존성 분석과 레거시 코드 리팩토링의 중요성을 배웠습니다.",
+        "단순한 가상머신 구동을 넘어, IaC(Infrastructure as Code) 도구를 활용한 자동화 배포가 운영 효율성에 미치는 긍정적 영향을 체감했습니다.",
+        "리눅스 커널 레벨의 가상화 이슈(중첩 가상화 불가)를 SW 구성을 변경하여 우회하는 경험을 통해, 시스템 엔지니어링 역량을 길렀습니다."
       ]
     }
   }

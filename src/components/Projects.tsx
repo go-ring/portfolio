@@ -9,7 +9,7 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
   // 강조할 기술 스택 (카드 미리보기에 표시)
-  const emphasisTech = ['Java', 'Spring Boot', 'MySQL'];
+  const emphasisTech = ['Java', 'Spring Boot', 'MySQL', 'NOS3', 'Linux', 'NCloud'];
 
   // 카드 미리보기용 기술 스택 추출 함수
   const getPreviewTech = (tech: string[]) => {
