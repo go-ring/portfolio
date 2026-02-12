@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Github, ExternalLink, Trophy } from 'lucide-react';
+import { X, Github, BookOpen, Presentation, BadgeCheck, Trophy, List, ChevronRight, ExternalLink } from 'lucide-react';
 import { Project } from '../data';
 
 interface ProjectModalProps {
@@ -11,18 +11,36 @@ interface ProjectModalProps {
 
 const EMPHASIS_TECH = new Set(['Java', 'Spring Boot', 'MySQL']);
 
+const TOC_ITEMS = [
+  { id: 'overview', label: '프로젝트 개요' },
+  { id: 'role', label: '담당 역할 및 기여' },
+  { id: 'tech', label: '사용 기술 및 아키텍처' },
+  { id: 'implementation', label: '핵심 구현 Logic' },
+  { id: 'troubleshooting', label: '트러블슈팅' },
+  { id: 'outcomes', label: '성과 및 결과' },
+  { id: 'retrospective', label: '회고 및 배운 점' },
+];
+
+// Unified Section Header
+function SectionHeader({ title, icon: Icon }: { title: string; icon?: React.ElementType }) {
+    return (
+        <h4 className="text-xl font-bold text-white mb-6 border-l-4 border-primary pl-3 flex items-center gap-2">
+            {Icon && <Icon size={20} className="text-primary" />}
+            {title}
+        </h4>
+    );
+}
+
 function DetailBlock({ title, items }: { title: string; items: string[] }) {
   if (!items.length) return null;
 
   return (
     <div>
-      <h4 className="text-base font-semibold text-white mb-2">
-        {title}
-      </h4>
-      <ul className="space-y-1.5 text-sm text-gray-300 leading-relaxed">
+      <SectionHeader title={title} />
+      <ul className="space-y-2 text-[15px] text-gray-300 leading-relaxed">
         {items.map((item, idx) => (
-          <li key={idx} className="flex gap-2">
-            <span className="mt-[6px] h-[3px] w-[3px] rounded-full bg-gray-500 shrink-0" />
+          <li key={idx} className="flex gap-3">
+            <span className="mt-[9px] h-[4px] w-[4px] rounded-full bg-gray-500 shrink-0" />
             <span>{item}</span>
           </li>
         ))}
@@ -32,6 +50,9 @@ function DetailBlock({ title, items }: { title: string; items: string[] }) {
 }
 
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+  const [activeSection, setActiveSection] = useState<string>('');
+  const contentRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -42,6 +63,40 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
+
+  // Scroll Spy Logic
+  useEffect(() => {
+    if (!isOpen || !contentRef.current) return;
+
+    const handleScroll = () => {
+      if (!contentRef.current) return;
+      
+      const sections = TOC_ITEMS.map(item => document.getElementById(item.id));
+      const scrollPosition = contentRef.current.scrollTop + 100; // Offset
+
+      for (const section of sections) {
+        if (section && section.offsetTop <= scrollPosition && (section.offsetTop + section.offsetHeight) > scrollPosition) {
+           setActiveSection(section.id);
+           break;
+        }
+      }
+    };
+
+    const container = contentRef.current;
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [isOpen]);
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section && contentRef.current) {
+        contentRef.current.scrollTo({
+            top: section.offsetTop - 40, // Adjust for padding
+            behavior: 'smooth'
+        });
+        setActiveSection(id);
+    }
+  };
 
   if (!project) return null;
 
@@ -63,155 +118,279 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none"
           >
-            <div className="bg-surface w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col border border-white/10 text-white">
+            <div className="bg-surface w-full max-w-7xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col border border-white/10 text-white">
               
-              {/* Header */}
-              <div className="relative p-8 border-b border-white/10 shrink-0 flex justify-between items-start bg-[#10141b]/50">
-                <div>
-                   <h3 className="text-3xl font-bold text-white mb-2">{project.title}</h3>
-                   <div className="flex gap-4 text-gray-400 text-sm">
-                      <span>{project.period}</span>
-                      <span>|</span>
-                      <span>{project.role}</span>
-                   </div>
+              {/* Header - Compact Single Line */}
+              <div className="flex items-center justify-between px-6 py-3 border-b border-white/6 bg-[#10141b] z-20 h-16 shrink-0">
+                <div className="flex items-center gap-4 overflow-hidden">
+                   <h3 className="text-xl font-bold text-white whitespace-nowrap">{project.title}</h3>
+                   <span className="text-sm text-gray-500 font-medium hidden sm:block border-l border-white/10 pl-4 h-4 flex items-center">
+                      {project.period}
+                   </span>
+                   {/* Role hidden or tooltip - minimalist approach */}
                 </div>
-                <button 
-                  onClick={onClose}
-                  className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-all"
-                >
-                  <X size={24} className="text-white" />
-                </button>
-              </div>
 
-              {/* Content - Scrollable */}
-              <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
-                <div className="grid md:grid-cols-[2fr,1fr] gap-10">
-                  <div className="space-y-8">
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-3 border-l-4 border-primary pl-3">
-                        프로젝트 개요
-                      </h4>
-                      <p className="text-gray-300 leading-relaxed text-base whitespace-pre-wrap">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    {project.details?.roleAndContribution && project.details.roleAndContribution.length > 0 && (
-                      <DetailBlock
-                        title="역할 / 기여"
-                        items={project.details.roleAndContribution}
-                      />
-                    )}
-
-                    {project.details?.techAndReason && project.details.techAndReason.length > 0 && (
-                      <DetailBlock
-                        title="사용 기술과 선택 이유"
-                        items={project.details.techAndReason}
-                      />
-                    )}
-
-                    {project.details?.troubleshooting?.map((section, index) => (
-                      <DetailBlock
-                        key={section.title + index}
-                        title={`트러블슈팅 · 문제 해결 - ${section.title}`}
-                        items={section.items}
-                      />
-                    ))}
-
-                    {project.details?.testing && project.details.testing.length > 0 && (
-                      <DetailBlock
-                        title="테스트 및 검증"
-                        items={project.details.testing}
-                      />
-                    )}
-
-                    {project.details?.refactoringPlan && project.details.refactoringPlan.length > 0 && (
-                      <DetailBlock
-                        title="리팩토링 계획 & 다시 한다면"
-                        items={project.details.refactoringPlan}
-                      />
-                    )}
-
-                    {project.details?.retrospective && project.details.retrospective.length > 0 && (
-                      <DetailBlock
-                        title="회고 · 배운 점"
-                        items={project.details.retrospective}
-                      />
-                    )}
-
-                    {project.impact && (
-                      <div className="bg-primary/10 p-6 rounded-2xl border border-primary/20">
-                        <h4 className="text-lg font-bold text-primary mb-3 flex items-center gap-2">
-                          <Trophy size={20} />
-                          핵심 성과
-                        </h4>
-                        <p className="text-blue-100 leading-relaxed text-sm">
-                          {project.impact}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="space-y-8">
-                    <div>
-                      <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Tech Stack</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tech.map(tech => {
-                          const isEmphasis = EMPHASIS_TECH.has(tech);
-                          return (
-                            <span
-                              key={tech}
-                              className={
-                                "px-3 py-1.5 rounded-lg text-sm font-medium border " +
-                                (isEmphasis
-                                  ? "bg-primary/20 text-primary border-primary/60"
-                                  : "bg-[#10141b] text-gray-300 border-white/10")
-                              }
-                            >
-                              {tech}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Links</h4>
-                      <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3 md:gap-5">
+                   {/* Links - Icon Only */}
+                   <div className="flex items-center gap-3 md:gap-4 border-r border-white/10 pr-4 md:pr-6 mr-1">
                         {project.links.repo && (
-                          <a
-                            href={project.links.repo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-gray-300 hover:text-primary font-medium transition-colors"
-                          >
-                            <Github size={18} /> Source Code
-                          </a>
-                        )}
-                        {project.links.demo && (
-                          <a
-                            href={project.links.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-gray-300 hover:text-primary font-medium transition-colors"
-                          >
-                            <ExternalLink size={18} /> Live Demo
-                          </a>
+                            <a 
+                                href={project.links.repo} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-gray-400 hover:text-white transition-colors"
+                                title="GitHub Repository"
+                            >
+                                <Github size={18} />
+                            </a>
                         )}
                         {project.links.blog && (
-                          <a
-                            href={project.links.blog}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-gray-300 hover:text-primary font-medium transition-colors"
-                          >
-                            <ExternalLink size={18} /> Dev Blog
-                          </a>
+                            <a 
+                                href={project.links.blog} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-gray-400 hover:text-[#20C997] transition-colors"
+                                title="Technical Blog"
+                            >
+                                <BookOpen size={18} />
+                            </a>
                         )}
-                      </div>
-                    </div>
-                  </div>
+                        {project.links.presentation && (
+                            <a 
+                                href={project.links.presentation} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-gray-400 hover:text-green-400 transition-colors"
+                                title="Presentation (PPT)"
+                            >
+                                <Presentation size={18} />
+                            </a>
+                        )}
+                        {project.links.proof && (
+                            <a 
+                                href={project.links.proof} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-gray-400 hover:text-yellow-400 transition-colors"
+                                title="Verification/Proof"
+                            >
+                                <BadgeCheck size={18} />
+                            </a>
+                        )}
+                   </div>
+                   
+                   <button 
+                     onClick={onClose}
+                     className="p-1.5 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
+                   >
+                     <X size={22} />
+                   </button>
                 </div>
+              </div>
+
+              <div className="flex flex-1 overflow-hidden">
+                  {/* Left Sidebar: TOC - Sticky */}
+                  <aside className="w-64 hidden md:flex flex-col border-r border-white/10 bg-[#141820] p-6 overflow-y-auto shrink-0">
+                      <div className="flex items-center gap-2 mb-6 text-primary font-bold">
+                          <List size={20} />
+                          <span>목차</span>
+                      </div>
+                      <nav className="space-y-1">
+                          {TOC_ITEMS.map((item) => (
+                              <button
+                                  key={item.id}
+                                  onClick={() => scrollToSection(item.id)}
+                                  className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all flex items-center justify-between group ${
+                                      activeSection === item.id 
+                                      ? 'bg-primary/10 text-primary font-medium' 
+                                      : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
+                                  }`}
+                              >
+                                  {item.label}
+                                  {activeSection === item.id && <ChevronRight size={14} />}
+                              </button>
+                          ))}
+                      </nav>
+                  </aside>
+
+                  {/* Main Content - Scrollable */}
+                  <main 
+                    ref={contentRef} 
+                    className="flex-1 overflow-y-auto p-8 md:p-10 scroll-smooth custom-scrollbar bg-[#0f1219]"
+                  >
+                    <div className="max-w-4xl mx-auto space-y-16 pb-20">
+                    
+                        {/* 1. Overview */}
+                        <section id="overview" className="space-y-6 scroll-mt-24">
+                             
+                             {/* Preview GIF - Full View (No Crop) */}
+                             {project.images?.preview && (
+                                <div className="mb-8">
+                                    <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center">
+                                        <img 
+                                            src={project.images.preview} 
+                                            alt="Preview" 
+                                            className="w-full h-auto max-h-[500px] object-contain" 
+                                        />
+                                    </div>
+                                    <p className="text-center text-sm text-gray-500 mt-2">최종 결과물 시연 화면</p>
+                                </div>
+                             )}
+
+                             <div>
+                                <SectionHeader title="프로젝트 개요" />
+                                <p className="text-gray-300 leading-relaxed text-[16px] whitespace-pre-wrap">
+                                    {project.description}
+                                </p>
+                             </div>
+
+                             {/* Tech Stack - No Title, Larger Font */}
+                             <div className="mt-8">
+                                <div className="flex flex-wrap gap-x-6 gap-y-3"> 
+                                    {project.tech.map(tech => {
+                                        const isEmphasis = EMPHASIS_TECH.has(tech);
+                                        return (
+                                            <span
+                                            key={tech}
+                                            className={
+                                                "transition-all duration-300 flex items-center gap-2 " +
+                                                (isEmphasis
+                                                ? "text-primary text-lg font-bold" 
+                                                : "text-gray-400 hover:text-gray-200 text-[16px] font-medium")
+                                            }
+                                            >
+                                                {isEmphasis && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
+                                                {tech}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                             </div>
+                        </section>
+
+                        {/* 2. Role */}
+                        <section id="role" className="scroll-mt-24">
+                           {project.details?.roleAndContribution && (
+                                <DetailBlock
+                                    title="담당 역할 및 기여"
+                                    items={project.details.roleAndContribution}
+                                />
+                           )}
+                        </section>
+
+                        {/* 3. Tech & Architecture */}
+                        <section id="tech" className="space-y-6 scroll-mt-24">
+                             <SectionHeader title="사용 기술 및 아키텍처" />
+                             
+                             {/* Architecture Image */}
+                             {project.images?.architecture && (
+                                <div className="rounded-xl overflow-hidden border border-white/10 bg-white/5 p-6 mb-8 flex justify-center">
+                                    <img 
+                                        src={project.images.architecture} 
+                                        alt="Architecture" 
+                                        className="w-full h-auto object-contain max-h-[500px]" 
+                                    />
+                                </div>
+                             )}
+                             
+                             {/* Tech Reasons */}
+                             {project.details?.techAndReason && (
+                                <div className="grid gap-4">
+                                    {project.details.techAndReason.map((item, idx) => {
+                                        const splitIndex = item.indexOf(':');
+                                        const techName = splitIndex !== -1 ? item.slice(0, splitIndex) : item;
+                                        const reason = splitIndex !== -1 ? item.slice(splitIndex + 1) : '';
+                                        
+                                        return (
+                                            <div key={idx} className="flex gap-4 p-4 rounded-lg hover:bg-white/5 transition-colors">
+                                                <div className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
+                                                <div>
+                                                    <span className="font-bold text-white text-lg block mb-1">{techName}</span>
+                                                    <p className="text-gray-300 leading-relaxed text-[15px]">{reason}</p>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                             )}
+                        </section>
+
+                        {/* 4. Core Implementation */}
+                        <section id="implementation" className="scroll-mt-24">
+                            {project.details?.implementation && (
+                                <DetailBlock
+                                    title="핵심 구현 Logic"
+                                    items={project.details.implementation}
+                                />
+                            )}
+                        </section>
+
+                        {/* 5. Troubleshooting */}
+                        <section id="troubleshooting" className="space-y-8 scroll-mt-24">
+                             <SectionHeader title="트러블슈팅" />
+                             <div className="grid gap-6">
+                                {project.details?.troubleshooting?.map((section, index) => (
+                                    <div key={index} className="bg-[#1a1f2c] p-6 rounded-xl border border-white/5">
+                                        <h5 className="text-lg font-bold text-white mb-3 text-pink-400">{section.title}</h5>
+                                         <ul className="space-y-2 text-[15px] text-gray-300 leading-relaxed">
+                                            {section.items.map((item, idx) => (
+                                            <li key={idx} className="flex gap-3">
+                                                <span className="mt-[9px] h-[4px] w-[4px] rounded-full bg-gray-500 shrink-0" />
+                                                <span>{item}</span>
+                                            </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                             </div>
+                        </section>
+
+                        {/* 6. Outcomes & Awards */}
+                        <section id="outcomes" className="space-y-6 scroll-mt-24">
+                            <SectionHeader title="성과 및 결과" /> {/* No Icon */}
+                            
+                            <div className="space-y-4">
+                                {project.impact && project.impact.split('\n').map((line, idx) => {
+                                    // Check if this line is the one about the Smart Media Conference
+                                    const isPaperLine = line.includes("스마트미디어 추계학술대회");
+
+                                    return (
+                                        <div key={idx} className="bg-[#1a1f2c] p-5 rounded-xl border border-white/10 flex items-start gap-4">
+                                            <Trophy className="text-yellow-500 mt-1 shrink-0" size={20} />
+                                            <div className="flex-1 flex items-start justify-between gap-4">
+                                                <span className="text-[15px] text-gray-200 font-medium leading-relaxed">
+                                                    {line}
+                                                </span>
+                                                {isPaperLine && project.links.paper && (
+                                                    <a 
+                                                        href={project.links.paper}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="shrink-0 flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium whitespace-nowrap"
+                                                    >
+                                                        <ExternalLink size={14} />
+                                                        Paper
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </section>
+
+                        {/* 7. Retrospective */}
+                        <section id="retrospective" className="scroll-mt-24">
+                             {project.details?.retrospective && (
+                                <DetailBlock
+                                    title="회고 및 배운 점"
+                                    items={project.details.retrospective}
+                                />
+                             )}
+                        </section>
+
+                    </div>
+                  </main>
               </div>
             </div>
           </motion.div>
