@@ -224,6 +224,11 @@ export const projects: Project[] = [
         "NCloud: 국내 클라우드 서비스로 기술 지원이 신속하며, Init Script 기능을 통해 서버 프로비저닝을 자동화하기 용이해 선택했습니다.",
         "Shell Script & Cloud-Init: 복잡한 패키지 설치와 환경 설정을 코드화(IaC)하여, 인적 오류를 줄이고 반복 가능한 배포 환경을 만들었습니다."
       ],
+      implementation: [
+        "클라우드 네이티브 마이그레이션: NOS3의 Vagrantfile(루비)을 분석하여 VirtualBox 의존성을 제거하고, NCloud Ubuntu 18.04 환경에 맞는 의존성 설치 스크립트(Bash)로 재작성하여 네이티브 구동 환경을 구축했습니다.",
+        "프로비저닝 자동화: Cloud-Init을 활용하여 서버 생성 시 필수 패키지 설치, 환경 변수 설정, NOS3 빌드 과정을 자동으로 수행하도록 하여 배포 시간을 단축했습니다.",
+        "원격 시뮬레이션 환경 구성: Headless 클라우드 서버에 경량 데스크탑 환경(MATE/XFCE)과 xrdp를 설치하여, 로컬에서 위성 시뮬레이터(COSMOS, 42)의 GUI를 제어할 수 있는 시각화 환경을 구현했습니다."
+      ],
       troubleshooting: [
         {
           title: "이중 가상화 충돌 및 VirtualBox 의존성 해결",

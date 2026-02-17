@@ -94,7 +94,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               variant="outline"
-              className="hover:text-[#20c997] hover:border-[#20c997]/30"
+              className="group hover:!text-[#20c997] hover:!border-[#20c997] hover:!bg-[#20c997]/10 transition-colors duration-300"
               icon={
                 <svg 
                     viewBox="0 0 24 24" 

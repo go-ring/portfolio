@@ -16,7 +16,7 @@ const TOC_ITEMS = [
   { id: 'overview', label: '프로젝트 개요' },
   { id: 'role', label: '담당 역할 및 기여' },
   { id: 'tech', label: '사용 기술 및 아키텍처' },
-  { id: 'implementation', label: '핵심 구현 Logic' },
+  { id: 'implementation', label: '핵심 구현 로직' },
   { id: 'troubleshooting', label: '트러블슈팅' },
   { id: 'outcomes', label: '성과 및 결과' },
   { id: 'retrospective', label: '회고 및 배운 점' },
@@ -75,8 +75,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   }, [isOpen]);
 
   const handleScrollTo = (id: string) => {
-    const headerHeight = headerRef.current?.offsetHeight || 80;
-    scrollToId(id, headerHeight);
+    scrollToId(id);
   };
 
   if (!project) return null;
@@ -369,7 +368,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         <section id="implementation" className="scroll-mt-24">
                             {project.details?.implementation && (
                                 <DetailBlock
-                                    title="핵심 구현 Logic"
+                                    title="핵심 구현 로직"
                                     items={project.details.implementation}
                                 />
                             )}

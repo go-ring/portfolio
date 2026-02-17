@@ -19,7 +19,7 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
       transition={{ delay: index * 0.05 }}
     >
         <Card 
-            className="group flex flex-col justify-between p-5 h-[256px]"
+            className="group flex flex-col justify-between p-5 h-[256px] rounded-[22px]"
             onClick={onClick}
             hoverEffect={true}
         >
@@ -51,18 +51,18 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
             </p>
         </div>
 
-        {/* Footer */}
-        <div className="mt-auto">
-            {/* Tech Stack (Max 4) */}
-            <div className="flex flex-wrap gap-2 mb-3 h-[24px] overflow-hidden">
+        {/* Footer - Modified Layout */}
+        <div className="mt-auto flex flex-col gap-2">
+            {/* Tech Stack - Flexible, Wrap */}
+            <div className="flex flex-wrap gap-1.5 min-h-[24px]">
                 {project.tech.slice(0, 4).map(t => <Badge key={t}>{t}</Badge>)}
                 {project.tech.length > 4 && (
                     <span className="text-[10px] text-gray-600 font-medium self-center">+{project.tech.length - 4}</span>
                 )}
             </div>
 
-            {/* CTA */}
-            <div className="flex items-center text-sm font-semibold text-gray-500 group-hover:text-primary transition-colors">
+            {/* CTA - Compact & Bottom Fixed */}
+            <div className="flex items-center text-[13px] font-semibold text-gray-500 group-hover:text-primary transition-colors pt-1">
                 Case Study <ArrowRight size={14} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
             </div>
         </div>

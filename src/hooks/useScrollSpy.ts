@@ -14,10 +14,7 @@ export function useScrollSpy(
   const [activeId, setActiveId] = useState<string>('');
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isClickScrolling = useRef(false);
-  const { rootMargin = '-100px 0px -70% 0px', threshold = 0, offset = 24 } = options;
-
-  // Header height management
-  const [headerHeight, setHeaderHeight] = useState(80);
+  const { rootMargin = '-100px 0px -70% 0px', threshold = 0 } = options;
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -54,19 +51,16 @@ export function useScrollSpy(
     return cleanupObserver;
   }, [contentRef, itemIds, rootMargin, threshold]);
 
-  const scrollToId = (id: string, dynamicHeaderHeight?: number) => {
+  const scrollToId = (id: string) => {
     const section = document.getElementById(id);
-    const currentHeaderHeight = dynamicHeaderHeight || headerHeight;
     
-    if (section && contentRef.current) {
+    if (section) {
         isClickScrolling.current = true;
         setActiveId(id);
 
-        const targetTop = section.offsetTop - currentHeaderHeight - offset;
-        
-        contentRef.current.scrollTo({
-            top: targetTop, 
-            behavior: 'smooth'
+        section.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
         });
 
         setTimeout(() => {
@@ -75,5 +69,5 @@ export function useScrollSpy(
     }
   };
 
-  return { activeId, scrollToId, setHeaderHeight };
+  return { activeId, scrollToId };
 }
