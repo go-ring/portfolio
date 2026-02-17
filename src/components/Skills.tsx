@@ -1,6 +1,7 @@
 import { Section } from './Section';
 import { skills } from '../data';
 import { motion } from 'framer-motion';
+import { Card } from './common/Card';
 
 export function Skills() {
   return (
@@ -13,27 +14,29 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="bg-surface p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-colors shadow-lg flex flex-col h-full"
+            className="flex flex-col h-full"
           >
-            <div className="mb-5 border-b border-primary/20 pb-3 min-h-[3.5rem] flex items-end">
-                <h3 className="text-lg font-semibold text-gray-100">
-                {skillGroup.category}
-                </h3>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 flex-1">
-              {skillGroup.items.map((item) => (
-                <div 
-                  key={item} 
-                  className="flex items-center gap-2 cursor-default"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 transition-colors" />
-                  <span className="text-sm font-medium text-gray-200 transition-colors">
-                    {item}
-                  </span>
+            <Card className="p-6 rounded-2xl h-full shadow-lg hover:border-primary/30">
+                <div className="mb-5 border-b border-primary/20 pb-3 min-h-[3.5rem] flex items-end">
+                    <h3 className="text-lg font-semibold text-gray-100">
+                    {skillGroup.category}
+                    </h3>
                 </div>
-              ))}
-            </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 flex-1">
+                {skillGroup.items.map((item) => (
+                    <div 
+                    key={item} 
+                    className="flex items-center gap-2 cursor-default"
+                    >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 transition-colors" />
+                    <span className="text-sm font-medium text-gray-200 transition-colors">
+                        {item}
+                    </span>
+                    </div>
+                ))}
+                </div>
+            </Card>
           </motion.div>
         ))}
       </div>

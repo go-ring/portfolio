@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github, BookOpen, Presentation, BadgeCheck, Trophy, List, ChevronRight, ExternalLink } from 'lucide-react';
@@ -22,24 +22,18 @@ const TOC_ITEMS = [
   { id: 'retrospective', label: '회고 및 배운 점' },
 ];
 
+import { SectionHeader } from './common/SectionHeader';
+import { Tooltip } from './common/Tooltip';
+
 // Unified Section Header
-
-
-function SectionHeader({ title, icon: Icon }: { title: string; icon?: React.ElementType }) {
-    return (
-        <h4 className="text-xl font-bold text-white mb-6 border-l-4 border-primary pl-3 flex items-center gap-2">
-            {Icon && <Icon size={20} className="text-primary" />}
-            {title}
-        </h4>
-    );
-}
+// Removed local SectionHeader definition in favor of common component
 
 function DetailBlock({ title, items }: { title: string; items: string[] }) {
   if (!items.length) return null;
 
   return (
     <div>
-      <SectionHeader title={title} />
+      <SectionHeader title={title} variant="sidebar" />
       <ul className="space-y-2 text-[15px] text-gray-300 leading-relaxed">
         {items.map((item, idx) => (
           <li key={idx} className="flex gap-3">
@@ -52,12 +46,22 @@ function DetailBlock({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+import { useScrollSpy } from '../hooks/useScrollSpy';
+
+// ...
+
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
-  const [activeSection, setActiveSection] = useState<string>('');
   const contentRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
-  const isClickScrolling = useRef(false); // Flag to prevent observer updates during click scroll
+
+  const { activeId, scrollToId } = useScrollSpy(
+    contentRef, 
+    TOC_ITEMS.map(item => item.id),
+    {
+        offset: 24,
+        rootMargin: '-100px 0px -70% 0px'
+    }
+  );
 
   useEffect(() => {
     if (isOpen) {
@@ -70,71 +74,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     };
   }, [isOpen]);
 
-  // Scroll Spy Logic with IntersectionObserver
-  useEffect(() => {
-    if (!isOpen || !contentRef.current) return;
-
-    const cleanupObserver = () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-
-    cleanupObserver();
-
-    const options = {
-      root: contentRef.current,
-      // Adjust rootMargin to trigger when section crosses the "header line"
-      // Top margin should be roughly -1 * (headerHeight + small buffer)
-      // Bottom margin large negative to focus on top area
-      rootMargin: '-100px 0px -70% 0px', 
-      threshold: 0
-    };
-
-    observerRef.current = new IntersectionObserver((entries) => {
-      if (isClickScrolling.current) return;
-
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-             setActiveSection(entry.target.id);
-        }
-      });
-    }, options);
-
-    TOC_ITEMS.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) {
-        observerRef.current?.observe(element);
-      }
-    });
-
-    return cleanupObserver;
-  }, [isOpen]);
-
-  const scrollToSection = (id: string) => {
-    const section = document.getElementById(id);
-    const headerHeight = headerRef.current?.offsetHeight || 80; // Fallback to 80 if null
-    
-    if (section && contentRef.current) {
-        isClickScrolling.current = true;
-        setActiveSection(id); // Immediate UI feedback
-
-        // Calculate exact target top
-        // section.offsetTop is relative to the scroll parent if positioned, 
-        // but here it's likely relative to the main container. 
-        // We want the section title to be (headerHeight + 24px) from the viewport top.
-        const targetTop = section.offsetTop - headerHeight - 24;
-        
-        contentRef.current.scrollTo({
-            top: targetTop, 
-            behavior: 'smooth'
-        });
-
-        // Re-enable observer after scroll animation (approx 800ms)
-        setTimeout(() => {
-            isClickScrolling.current = false;
-        }, 800);
-    }
+  const handleScrollTo = (id: string) => {
+    const headerHeight = headerRef.current?.offsetHeight || 80;
+    scrollToId(id, headerHeight);
   };
 
   if (!project) return null;
@@ -186,48 +128,52 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                    {/* Links - Icon Only */}
                    <div className="flex items-center gap-3 md:gap-4 border-r border-white/10 pr-4 md:pr-6 mr-1">
                         {project.links.repo && (
-                            <a 
-                                href={project.links.repo} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="text-gray-400 hover:text-white transition-colors"
-                                title="GitHub Repository"
-                            >
-                                <Github size={18} />
-                            </a>
+                            <Tooltip content="GitHub Repository">
+                                <a 
+                                    href={project.links.repo} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-gray-400 hover:text-white transition-colors"
+                                >
+                                    <Github size={18} />
+                                </a>
+                            </Tooltip>
                         )}
                         {project.links.blog && (
-                            <a 
-                                href={project.links.blog} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="text-gray-400 hover:text-[#20C997] transition-colors"
-                                title="Technical Blog"
-                            >
-                                <BookOpen size={18} />
-                            </a>
+                            <Tooltip content="Technical Blog">
+                                <a 
+                                    href={project.links.blog} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-gray-400 hover:text-[#20C997] transition-colors"
+                                >
+                                    <BookOpen size={18} />
+                                </a>
+                            </Tooltip>
                         )}
                         {project.links.presentation && (
-                            <a 
-                                href={project.links.presentation} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="text-gray-400 hover:text-green-400 transition-colors"
-                                title="Presentation (PPT)"
-                            >
-                                <Presentation size={18} />
-                            </a>
+                            <Tooltip content="Presentation (PPT)">
+                                <a 
+                                    href={project.links.presentation} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-gray-400 hover:text-orange-400 transition-colors"
+                                >
+                                    <Presentation size={18} />
+                                </a>
+                            </Tooltip>
                         )}
                         {project.links.proof && (
-                            <a 
-                                href={project.links.proof} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="text-gray-400 hover:text-yellow-400 transition-colors"
-                                title="Verification/Proof"
-                            >
-                                <BadgeCheck size={18} />
-                            </a>
+                            <Tooltip content="Verification/Proof">
+                                <a 
+                                    href={project.links.proof} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-gray-400 hover:text-yellow-400 transition-colors"
+                                >
+                                    <BadgeCheck size={18} />
+                                </a>
+                            </Tooltip>
                         )}
                    </div>
                    
@@ -251,15 +197,15 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                           {TOC_ITEMS.map((item) => (
                               <button
                                   key={item.id}
-                                  onClick={() => scrollToSection(item.id)}
+                                  onClick={() => handleScrollTo(item.id)}
                                   className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all flex items-center justify-between group ${
-                                      activeSection === item.id 
+                                      activeId === item.id 
                                       ? 'bg-primary/10 text-primary font-medium' 
                                       : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
                                   }`}
                               >
                                   {item.label}
-                                  {activeSection === item.id && <ChevronRight size={14} />}
+                                  {activeId === item.id && <ChevronRight size={14} />}
                               </button>
                           ))}
                       </nav>
@@ -321,7 +267,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                              )}
 
                              <div>
-                                <SectionHeader title="프로젝트 개요" />
+                                <SectionHeader title="프로젝트 개요" variant="sidebar" />
                                 <p className="text-gray-300 leading-relaxed text-[16px] whitespace-pre-wrap">
                                     {project.description}
                                 </p>
@@ -365,7 +311,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                         {/* 3. Tech & Architecture */}
                         <section id="tech" className="space-y-6 scroll-mt-24">
-                             <SectionHeader title="사용 기술 및 아키텍처" />
+                             <SectionHeader title="사용 기술 및 아키텍처" variant="sidebar" />
                              
                              {/* Architecture Image - Array Support for Side-by-Side */}
                              {project.images?.architecture && (
@@ -442,7 +388,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                         {/* 5. Troubleshooting */}
                         <section id="troubleshooting" className="space-y-8 scroll-mt-24 min-h-[100px]">
-                             <SectionHeader title="트러블슈팅" />
+                             <SectionHeader title="트러블슈팅" variant="sidebar" />
                              <div className="grid gap-6">
                                 {project.details?.troubleshooting?.map((section, index) => (
                                     <div key={index} className="bg-[#1a1f2c] p-6 rounded-xl border border-white/5">
@@ -462,7 +408,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                         {/* 6. Outcomes & Awards */}
                         <section id="outcomes" className="space-y-6 scroll-mt-24 min-h-[200px]">
-                            <SectionHeader title="성과 및 결과" /> {/* No Icon */}
+                            <SectionHeader title="성과 및 결과" variant="sidebar" /> {/* No Icon */}
                             
                             <div className="space-y-4">
                                 {project.impact && project.impact.split('\n').map((line, idx) => {

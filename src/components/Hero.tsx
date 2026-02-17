@@ -1,21 +1,14 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { profileData } from '../data/profile';
 import { ArrowDown, Github, Copy, Mail } from 'lucide-react';
 import { ProfileCarouselCard } from './ProfileCarouselCard';
+import { Button } from './common/Button';
+import { useClipboard } from '../hooks/useClipboard';
 
 export function Hero() {
-  const [copied, setCopied] = useState(false);
+  const { copied, copyToClipboard } = useClipboard();
 
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(profileData.email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1000);
-    } catch (error) {
-      console.error('Failed to copy email', error);
-    }
-  };
+  const handleCopyEmail = () => copyToClipboard(profileData.email);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-visible">
@@ -67,52 +60,58 @@ export function Hero() {
             </p>
           </div>
 
+
           {/* Contact & Social Buttons - Unified Row */}
           <div className="flex flex-wrap gap-3">
             {/* Email Copy Button */}
-            <button
+            <Button
               onClick={handleCopyEmail}
-              className="h-10 px-4 bg-white/5 border border-white/10 rounded-full font-medium text-sm text-gray-300 hover:text-[#9FAA7C] hover:bg-white/10 hover:border-[#9FAA7C]/30 transition-all flex items-center gap-2 group"
-              aria-label="이메일 주소 복사"
+              className="group"
+              variant="outline"
+              icon={
+                  <div className={`p-1 rounded-full bg-white/10 group-hover:bg-[#9FAA7C]/20 transition-colors ${copied ? 'text-[#9FAA7C]' : 'text-gray-400 group-hover:text-[#9FAA7C]'}`}>
+                     {copied ? <Copy size={12} /> : <Mail size={12} />}
+                  </div>
+              }
             >
-              <div className={`p-1 rounded-full bg-white/10 group-hover:bg-[#9FAA7C]/20 transition-colors ${copied ? 'text-[#9FAA7C]' : 'text-gray-400 group-hover:text-[#9FAA7C]'}`}>
-                 {copied ? <Copy size={12} /> : <Mail size={12} />}
-              </div>
-              <span>{profileData.email}</span>
-            </button>
+              <span className="text-gray-300 group-hover:text-[#9FAA7C] transition-colors">{profileData.email}</span>
+            </Button>
 
             {/* GitHub */}
-            <a 
+            <Button
               href={profileData.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-10 px-4 bg-transparent text-gray-400 border border-white/10 rounded-full font-medium text-sm hover:text-white hover:bg-white/5 hover:border-white/30 transition-all flex items-center gap-2"
+              variant="outline"
+              icon={<Github size={16} />}
             >
-              <Github size={16} />
               GitHub
-            </a>
+            </Button>
 
-            {/* Velog */}
-            <a 
+            {/* Velog - Custom Icon */}
+            <Button
               href={profileData.social.velog}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-10 px-4 bg-transparent text-gray-400 border border-white/10 rounded-full font-medium text-sm hover:text-[#20c997] hover:bg-white/5 hover:border-[#20c997]/30 transition-all flex items-center gap-2"
+              variant="outline"
+              className="hover:text-[#20c997] hover:border-[#20c997]/30"
+              icon={
+                <svg 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2"
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    className="w-[18px] h-[18px]"
+                >
+                    <rect x="3" y="3" width="18" height="18" rx="3" ry="3" />
+                    <path transform="translate(3, 0)" d="M6.883 6.25c.63 0 1.005.3 1.125.9l1.463 8.303c.465-.615.846-1.133 1.146-1.553.465-.66.893-1.418 1.283-2.273.405-.855.608-1.62.608-2.295 0-.405-.113-.727-.338-.967-.21-.255-.608-.577-1.193-.967.6-.765 1.35-1.148 2.25-1.148.48 0 .878.143 1.193.428.33.285.494.704.494 1.26 0 .93-.39 2.093-1.17 3.488-.765 1.38-2.241 3.457-4.431 6.232l-2.227.156-1.711-9.628h-2.25V7.24c.6-.195 1.305-.406 2.115-.63.81-.24 1.358-.36 1.643-.36Z" fill="currentColor" stroke="none" />
+                </svg>
+              }
             >
-              <svg 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2"
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className="w-[18px] h-[18px]"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="3" ry="3" />
-                <path transform="translate(3, 0)" d="M6.883 6.25c.63 0 1.005.3 1.125.9l1.463 8.303c.465-.615.846-1.133 1.146-1.553.465-.66.893-1.418 1.283-2.273.405-.855.608-1.62.608-2.295 0-.405-.113-.727-.338-.967-.21-.255-.608-.577-1.193-.967.6-.765 1.35-1.148 2.25-1.148.48 0 .878.143 1.193.428.33.285.494.704.494 1.26 0 .93-.39 2.093-1.17 3.488-.765 1.38-2.241 3.457-4.431 6.232l-2.227.156-1.711-9.628h-2.25V7.24c.6-.195 1.305-.406 2.115-.63.81-.24 1.358-.36 1.643-.36Z" fill="currentColor" stroke="none" />
-              </svg>
               Velog
-            </a>
+            </Button>
           </div>
         </motion.div>
 
