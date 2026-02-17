@@ -10,13 +10,13 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('main'); // Default to main
+  const [activeSection, setActiveSection] = useState('home'); // Default to home
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       
-      const sections = ['main', 'projects', 'tech', 'education'];
+      const sections = ['home', 'projects', 'skills', 'about'];
       let currentSection = '';
 
       for (const section of sections) {
@@ -33,7 +33,7 @@ export function Layout({ children }: LayoutProps) {
       if (currentSection) {
         setActiveSection(currentSection);
       } else if (window.scrollY < 100) {
-        setActiveSection('main'); // Ensure main is active at top
+        setActiveSection('home'); // Ensure main is active at top
       }
     };
 
@@ -43,7 +43,7 @@ export function Layout({ children }: LayoutProps) {
     // Check for hash in URL
       if (window.location.hash) {
         const hashSection = window.location.hash.substring(1);
-        if (['main', 'projects', 'tech', 'education'].includes(hashSection)) {
+        if (['home', 'projects', 'skills', 'about'].includes(hashSection)) {
           setActiveSection(hashSection);
         }
       }
@@ -57,10 +57,10 @@ export function Layout({ children }: LayoutProps) {
   }, []);
 
   const navLinks = [
-    { name: 'Main', href: '#main' },
+    { name: 'Home', href: '#home' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Tech Stack', href: '#tech' },
-    { name: 'Education', href: '#education' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'About', href: '#about' },
   ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -97,8 +97,8 @@ export function Layout({ children }: LayoutProps) {
         <div className="w-full h-full px-6 flex justify-center">
           <div className="max-w-[1120px] w-full flex items-center justify-between">
             <a 
-              href="#main" 
-              onClick={(e) => scrollToSection(e, '#main')}
+              href="#home" 
+              onClick={(e) => scrollToSection(e, '#home')}
               className="flex items-center gap-2.5 group -ml-4 md:-ml-8"
             >
               {/* Custom Turtle Logo - SVG */}

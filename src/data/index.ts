@@ -255,7 +255,7 @@ export const education: EducationItem[] = [
     school: "Samsung SW·AI Academy For Youth (SSAFY)",
     period: "2025.08 ~ 현재",
     degree: "14기 교육생",
-    description: "알고리즘 및 웹 개발 심화 과정 (현재 수강 중)"
+    description: "알고리즘 및 웹 개발 심화 과정"
   },
   {
     school: "CIA Academy",

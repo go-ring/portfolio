@@ -18,7 +18,7 @@ export function Hero() {
   };
 
   return (
-    <section id="main" className="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-visible">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-visible">
       
       {/* Background Decor - Moved to Layout.tsx for seamless transition */}
 

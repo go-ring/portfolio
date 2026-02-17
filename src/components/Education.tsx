@@ -5,7 +5,7 @@ import { User, Award, GraduationCap, FileText } from 'lucide-react';
 
 export function Education() {
   return (
-    <Section id="education" title="교육 및 자격증">
+    <Section id="about" title="About Me">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

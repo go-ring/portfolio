@@ -92,7 +92,7 @@ export function ProfileCarouselCard() {
         {/* Card Content */}
         <div className="px-2 pb-2 text-center relative z-10">
           <h3 className="text-2xl font-bold text-white mb-1 tracking-tight">Lee GaEun</h3>
-          <p className="text-[#9FAA7C] font-medium mb-2 text-sm uppercase tracking-wider">Backend Engineer</p>
+          <p className="text-[#9FAA7C] font-medium mb-2 text-sm tracking-widest opacity-90">Backend Engineer</p>
           
           {/* Dot Indicators */}
           <div className="flex justify-center gap-1.5 mt-3">

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export function Skills() {
   return (
-    <Section id="tech" title="기술 스택">
+    <Section id="skills" title="Skills">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
         {skills.map((skillGroup, index) => (
           <motion.div

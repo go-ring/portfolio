@@ -55,6 +55,9 @@ function DetailBlock({ title, items }: { title: string; items: string[] }) {
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const [activeSection, setActiveSection] = useState<string>('');
   const contentRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const isClickScrolling = useRef(false); // Flag to prevent observer updates during click scroll
 
   useEffect(() => {
     if (isOpen) {
@@ -67,37 +70,70 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     };
   }, [isOpen]);
 
-  // Scroll Spy Logic
+  // Scroll Spy Logic with IntersectionObserver
   useEffect(() => {
     if (!isOpen || !contentRef.current) return;
 
-    const handleScroll = () => {
-      if (!contentRef.current) return;
-      
-      const sections = TOC_ITEMS.map(item => document.getElementById(item.id));
-      const scrollPosition = contentRef.current.scrollTop + 100; // Offset
-
-      for (const section of sections) {
-        if (section && section.offsetTop <= scrollPosition && (section.offsetTop + section.offsetHeight) > scrollPosition) {
-           setActiveSection(section.id);
-           break;
-        }
+    const cleanupObserver = () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
       }
     };
 
-    const container = contentRef.current;
-    container.addEventListener('scroll', handleScroll);
-    return () => container.removeEventListener('scroll', handleScroll);
+    cleanupObserver();
+
+    const options = {
+      root: contentRef.current,
+      // Adjust rootMargin to trigger when section crosses the "header line"
+      // Top margin should be roughly -1 * (headerHeight + small buffer)
+      // Bottom margin large negative to focus on top area
+      rootMargin: '-100px 0px -70% 0px', 
+      threshold: 0
+    };
+
+    observerRef.current = new IntersectionObserver((entries) => {
+      if (isClickScrolling.current) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+             setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    TOC_ITEMS.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (element) {
+        observerRef.current?.observe(element);
+      }
+    });
+
+    return cleanupObserver;
   }, [isOpen]);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
+    const headerHeight = headerRef.current?.offsetHeight || 80; // Fallback to 80 if null
+    
     if (section && contentRef.current) {
+        isClickScrolling.current = true;
+        setActiveSection(id); // Immediate UI feedback
+
+        // Calculate exact target top
+        // section.offsetTop is relative to the scroll parent if positioned, 
+        // but here it's likely relative to the main container. 
+        // We want the section title to be (headerHeight + 24px) from the viewport top.
+        const targetTop = section.offsetTop - headerHeight - 24;
+        
         contentRef.current.scrollTo({
-            top: section.offsetTop - 40, // Adjust for padding
+            top: targetTop, 
             behavior: 'smooth'
         });
-        setActiveSection(id);
+
+        // Re-enable observer after scroll animation (approx 800ms)
+        setTimeout(() => {
+            isClickScrolling.current = false;
+        }, 800);
     }
   };
 
@@ -126,7 +162,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             <div className="bg-surface w-full max-w-7xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col border border-white/10 text-white">
               
               {/* Header - Compact Single Line */}
-              <div className="flex items-center justify-between px-6 py-3 border-b border-white/6 bg-[#10141b] z-20 h-16 shrink-0">
+              <div 
+                ref={headerRef}
+                className="flex items-center justify-between px-6 py-3 border-b border-white/6 bg-[#10141b] z-20 shrink-0 sticky top-0"
+              >
                 <div className="flex items-center gap-3 overflow-hidden">
                    <h3 className="text-xl font-bold text-white whitespace-nowrap">{project.title}</h3>
                    
@@ -231,7 +270,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     ref={contentRef} 
                     className="flex-1 overflow-y-auto p-8 md:p-10 scroll-smooth custom-scrollbar bg-[#0f1219]"
                   >
-                    <div className="max-w-4xl mx-auto space-y-16 pb-20">
+                    <div className="max-w-4xl mx-auto space-y-24 pb-32">
                     
                         {/* 1. Overview */}
                         <section id="overview" className="space-y-6 scroll-mt-24">
@@ -402,7 +441,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         </section>
 
                         {/* 5. Troubleshooting */}
-                        <section id="troubleshooting" className="space-y-8 scroll-mt-24">
+                        <section id="troubleshooting" className="space-y-8 scroll-mt-24 min-h-[100px]">
                              <SectionHeader title="트러블슈팅" />
                              <div className="grid gap-6">
                                 {project.details?.troubleshooting?.map((section, index) => (
@@ -422,7 +461,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         </section>
 
                         {/* 6. Outcomes & Awards */}
-                        <section id="outcomes" className="space-y-6 scroll-mt-24">
+                        <section id="outcomes" className="space-y-6 scroll-mt-24 min-h-[200px]">
                             <SectionHeader title="성과 및 결과" /> {/* No Icon */}
                             
                             <div className="space-y-4">

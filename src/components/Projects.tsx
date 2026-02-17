@@ -74,7 +74,7 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <Section id="projects" title="프로젝트">
+    <Section id="projects" title="Projects">
 
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
