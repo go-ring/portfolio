@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github, BookOpen, Presentation, BadgeCheck, Trophy, List, ChevronRight, ExternalLink } from 'lucide-react';
 import { Project } from '../data';
@@ -102,7 +103,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
   if (!project) return null;
 
-  return (
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -111,25 +114,33 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
           />
           <motion.div
             initial={{ opacity: 0, y: 100, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none"
+            className="fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-6 pointer-events-none"
           >
             <div className="bg-surface w-full max-w-7xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col border border-white/10 text-white">
               
               {/* Header - Compact Single Line */}
               <div className="flex items-center justify-between px-6 py-3 border-b border-white/6 bg-[#10141b] z-20 h-16 shrink-0">
-                <div className="flex items-center gap-4 overflow-hidden">
+                <div className="flex items-center gap-3 overflow-hidden">
                    <h3 className="text-xl font-bold text-white whitespace-nowrap">{project.title}</h3>
-                   <span className="text-sm text-gray-500 font-medium hidden sm:block border-l border-white/10 pl-4 h-4 flex items-center">
-                      {project.period}
+                   
+                   {/* Type */}
+                   <span className="hidden sm:block text-sm text-gray-300 font-medium whitespace-nowrap border-l border-white/10 pl-3">
+                       {project.type}
                    </span>
-                   {/* Role hidden or tooltip - minimalist approach */}
+
+                   {/* Role & Period */}
+                   <span className="hidden md:flex items-center gap-3 text-sm text-gray-500 font-medium border-l border-white/10 pl-3">
+                      <span className="text-gray-300">{Array.isArray(project.role) ? project.role[0] : project.role}</span>
+                      <span className="w-1 h-1 bg-gray-700 rounded-full" />
+                      <span>{project.period}</span>
+                   </span>
                 </div>
 
                 <div className="flex items-center gap-3 md:gap-5">
@@ -239,7 +250,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                 </div>
                              )}
 
-                             {/* Main Image (Priority 2 - if exists) */}
+                             {/* Main Image (Priority 2 - if lives with preview) */}
                              {project.images?.main && !project.images.preview && (
                                 <div className="mb-8 flex justify-center">
                                     <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center max-w-4xl w-full">
@@ -461,6 +472,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

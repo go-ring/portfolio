@@ -20,11 +20,7 @@ export function Hero() {
   return (
     <section id="main" className="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-visible">
       
-      {/* Background Decor - More subtle and dispersed */}
-      <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px]" />
-      </div>
+      {/* Background Decor - Moved to Layout.tsx for seamless transition */}
 
       <div className="max-w-[1120px] w-full mx-auto grid md:grid-cols-2 gap-10 lg:gap-14 items-center relative z-10">
         

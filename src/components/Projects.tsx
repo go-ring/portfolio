@@ -5,89 +5,87 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { ProjectModal } from './ProjectModal';
 
+// --- Components ---
+
+const TechBadge = ({ tech }: { tech: string }) => (
+  <span className="px-2 py-1 bg-white/5 text-gray-400 text-xs rounded-md border border-white/5 font-medium whitespace-nowrap">
+    {tech}
+  </span>
+);
+
+const StandardProjectCard = ({ project, onClick, index }: { project: Project; onClick: () => void; index: number }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      onClick={onClick}
+      className="group flex flex-col justify-between bg-surface p-5 rounded-xl border border-white/5 cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:border-white/20 hover:shadow-lg h-[256px]"
+    >
+      <div>
+        {/* Header: Title & Arrow */}
+        <div className="flex justify-between items-start mb-2">
+            <h3 className="text-lg font-bold text-gray-100 group-hover:text-primary transition-colors truncate pr-4">
+                {project.title}
+            </h3>
+            <ArrowRight size={18} className="text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+        </div>
+
+        {/* Type (Added Line) */}
+        <div className="mb-3 flex items-center">
+            <span className="h-3 w-[2px] bg-primary rounded-full mr-2"></span>
+            <p className="text-xs text-gray-300 font-medium truncate">
+                {project.type}
+            </p>
+        </div>
+
+        {/* Meta: Role · Period */}
+        <p className="text-xs text-gray-500 mb-2 font-medium truncate">
+            <span className="text-gray-300">{Array.isArray(project.role) ? project.role[0] : project.role}</span> · {project.period}
+        </p>
+
+        {/* Summary (Strict 2 lines) */}
+        <p className="text-sm text-gray-400 leading-relaxed line-clamp-2 h-[42px] mb-2 opacity-80">
+            {project.description}
+        </p>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-auto">
+        {/* Tech Stack (Max 4) */}
+        <div className="flex flex-wrap gap-2 mb-3 h-[24px] overflow-hidden">
+            {project.tech.slice(0, 4).map(t => <TechBadge key={t} tech={t} />)}
+            {project.tech.length > 4 && (
+                <span className="text-[10px] text-gray-600 font-medium self-center">+{project.tech.length - 4}</span>
+            )}
+        </div>
+
+        {/* CTA */}
+        <div className="flex items-center text-sm font-semibold text-gray-500 group-hover:text-primary transition-colors">
+            Case Study <ArrowRight size={14} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  
-  // 강조할 기술 스택 (카드 미리보기에 표시)
-  const emphasisTech = ['Java', 'Spring Boot', 'MySQL', 'NOS3', 'Linux', 'NCloud'];
-
-  // 카드 미리보기용 기술 스택 추출 함수
-  const getPreviewTech = (tech: string[]) => {
-    const emphasized = tech.filter(t => emphasisTech.includes(t));
-    const rest = tech.filter(t => !emphasisTech.includes(t));
-    
-    // 강조 기술이 있으면 그것만 표시, 없으면 처음 3개
-    if (emphasized.length > 0) {
-      return {
-        display: emphasized.slice(0, 3),
-        restCount: rest.length + (emphasized.length > 3 ? emphasized.length - 3 : 0)
-      };
-    }
-    return {
-      display: tech.slice(0, 3),
-      restCount: tech.length > 3 ? tech.length - 3 : 0
-    };
-  };
 
   return (
     <Section id="projects" title="프로젝트">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => {
-          const previewTech = getPreviewTech(project.tech);
-          
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              onClick={() => setSelectedProject(project)}
-              className="group bg-surface rounded-2xl border border-white/5 overflow-hidden hover:border-primary/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full"
-            >
-              <div className="p-8 flex-1 flex flex-col">
-                <div className="mb-4">
-                  <h3 className="text-2xl font-bold text-primary group-hover:text-primary/80 transition-colors mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 font-medium">
-                    {Array.isArray(project.role) ? project.role.join(', ') : project.role}
-                  </p>
-                </div>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-[#10141b] rounded-full text-xs font-medium text-gray-400 border border-white/10">
-                    {project.period}
-                  </span>
-                  <span className="px-3 py-1 bg-[#10141b] rounded-full text-xs font-medium text-gray-400 border border-white/10">
-                    {project.type}
-                  </span>
-                </div>
 
-                <p className="text-gray-400 leading-relaxed mb-6 line-clamp-3 flex-1">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {previewTech.display.map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                  {previewTech.restCount > 0 && (
-                     <span className="px-3 py-1 bg-white/5 text-gray-400 text-xs rounded-md font-medium">
-                      +{previewTech.restCount}
-                    </span>
-                  )}
-                </div>
-              </div>
-            
-              <div className="px-8 py-4 bg-[#10141b]/50 border-t border-white/5 flex items-center justify-end text-sm font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                자세히 보기 <ArrowRight size={16} className="ml-2" />
-              </div>
-            </motion.div>
-          );
-        })}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {projects.map((project, index) => (
+            <StandardProjectCard 
+                key={index} 
+                project={project} 
+                index={index} 
+                onClick={() => setSelectedProject(project)} 
+            />
+        ))}
       </div>
 
       <ProjectModal 

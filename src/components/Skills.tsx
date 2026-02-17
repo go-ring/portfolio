@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 export function Skills() {
   return (
-    <Section id="tech" title="기술 스택" className="bg-[#10141b]">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <Section id="tech" title="기술 스택">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
         {skills.map((skillGroup, index) => (
           <motion.div
             key={index}
@@ -13,18 +13,24 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="bg-surface p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-colors shadow-lg"
+            className="bg-surface p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-colors shadow-lg flex flex-col h-full"
           >
-            <h3 className="text-xl font-bold text-primary mb-6 text-center">
-              {skillGroup.category}
-            </h3>
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="mb-5 border-b border-primary/20 pb-3 min-h-[3.5rem] flex items-end">
+                <h3 className="text-lg font-semibold text-gray-100">
+                {skillGroup.category}
+                </h3>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 flex-1">
               {skillGroup.items.map((item) => (
                 <div 
                   key={item} 
-                  className="px-4 py-2 bg-[#10141b] text-gray-300 rounded-full text-sm font-medium border border-white/10 hover:border-primary hover:text-white hover:bg-primary/20 transition-all cursor-default"
+                  className="flex items-center gap-2 cursor-default"
                 >
-                  {item}
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 transition-colors" />
+                  <span className="text-sm font-medium text-gray-200 transition-colors">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>

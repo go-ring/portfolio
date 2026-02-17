@@ -72,13 +72,21 @@ export interface CertificationItem {
   issuer?: string;
 }
 
+export interface ResearchItem {
+  title: string;
+  conference: string;
+  date: string;
+}
+
 export const profile = {
   name: "이가은",
   enName: "Lee GaEun",
+  birthdate: "2002.04.01",
   title: "Backend Developer",
   shortBio: "데이터와 논리적인 사고를 바탕으로 성장하는 백엔드 개발자입니다.",
+  education: "한남대학교 컴퓨터공학과 (졸업)",
   missionStatement: "깊이 있는 탐구와 끊임없는 도전을 통해 더 나은 소프트웨어를 만듭니다.",
-  keywords: ["성실함", "책임감", "논리적사고", "협업", "성장"], // Generic positive keywords as bio is sparse
+  keywords: ["성실함", "책임감", "논리적사고", "협업", "성장"],
   about: [
     "한남대학교 컴퓨터공학과를 졸업하고, 현재 삼성 청년 SW 아카데미(SSAFY)에서 강도 높은 소프트웨어 엔지니어링 과정을 이수하고 있습니다.",
     "시스템 소프트웨어 공학 연구실에서의 연구 경험을 통해 데이터 분석 역량과 논리적 문제 해결 능력을 길렀습니다.",
@@ -89,27 +97,25 @@ export const profile = {
     email: "mailto:dlrkdms001@gmail.com",
     blog: "https://velog.io/@goring/posts",
     linkedin: "" 
-  },
-  strengths: [
-    "System Architecture",
-    "Data Analysis",
-    "Logical Problem Solving",
-    "Academic Research"
-  ]
+  }
 };
 
 export const skills: SkillGroup[] = [
   {
     category: "Language",
-    items: ["Java", "Python", "JavaScript"]
+    items: ["Java", "Python", "C"]
   },
   {
     category: "Backend",
-    items: ["Spring Boot", "JPA", "SQL"]
+    items: ["Spring", "Spring Boot", "Spring Data JPA", "QueryDSL", "FastAPI"]
   },
   {
-    category: "Data & Tools",
-    items: ["Git", "Notion", "Slack"]
+    category: "Data",
+    items: ["MySQL", "Redis","ElasticSearch"]
+  },
+  {
+    category: "DevOps",
+    items: ["Git", "Docker", "AWS"]
   }
 ];
 
@@ -121,7 +127,7 @@ export const projects: Project[] = [
     description:
       "사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼입니다.\n\n단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발되었습니다. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류합니다.\n\n또한 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하며, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선적으로 노출하는 개인화 알고리즘을 구현했습니다.",
     tech: ["Java", "Spring Boot", "MySQL", "JPA", "Google Vision AI", "Python", "OpenCV", "Selenium"],
-    period: "2024.01.13 - 2024.06.03",
+    period: "2024.01.13 ~ 2024.06.03",
     role: "백엔드 개발",
     impact:
       "한남대학교 캡스톤 경진대회 우수상 (2024)\n2024 스마트미디어 추계학술대회 학술 논문 발표 \n42명의 베타 테스터 대상 사용자 만족도 조사 결과, 5점 만점에 평균 4.7점 달성 (추천 정확도 92% 긍정)",
@@ -246,47 +252,54 @@ export const projects: Project[] = [
 
 export const education: EducationItem[] = [
   {
-    school: "한남대학교",
-    period: "2025.02 졸업", // Implied from birthdate/profile context
-    degree: "컴퓨터공학과 학사",
-    description: "전공 심화 과정 이수 및 학부 연구생 활동"
-  },
-  {
-    school: "Samsung Software Academy For Youth (SSAFY)",
-    period: "2025.08 - 현재",
+    school: "Samsung SW·AI Academy For Youth (SSAFY)",
+    period: "2025.08 ~ 현재",
     degree: "14기 교육생",
-    description: "알고리즘 및 웹 개발 심화 과정"
-  }
-];
-
-export const experience: ExperienceItem[] = [
-  {
-    company: "시스템 소프트웨어 공학 연구실",
-    role: "학부 연구생",
-    duration: "2022.10 - 2024.01",
-    description: "학부생 신분으로 연구실에 소속되어 논문 작성 및 학술 대회 참여, 최신 기술 동향 연구 수행."
+    description: "알고리즘 및 웹 개발 심화 과정 (현재 수강 중)"
   },
   {
-    company: "CIA Academy",
-    role: "어학연수",
-    duration: "2024.07 - 2024.09",
-    description: "글로벌 커뮤니케이션 능력 향상 및 문화 교류."
+    school: "CIA Academy",
+    period: "2024.07 ~ 2024.09",
+    degree: "어학연수",
+    description: "글로벌 커뮤니케이션 능력 향상 및 문화 교류"
+  },
+  {
+    school: "시스템 소프트웨어 공학 연구실",
+    period: "2022.10 ~ 2024.01",
+    degree: "학부 연구생",
+    description: "논문 작성 및 최신 기술 동향 연구"
   }
 ];
 
 export const certifications: CertificationItem[] = [
   {
-    name: "정보처리기사",
-    date: "2025.09",
-    issuer: "한국산업인력공단"
+    name: "OPIC IM2",
+    date: "2025.09"
   },
   {
-    name: "Opic IM2",
+    name: "정보처리기사",
     date: "2025.09"
   },
   {
     name: "SQLD",
-    date: "2025.04",
-    issuer: "한국데이터산업진흥원"
+    date: "2025.04"
+  }
+];
+
+export const research: ResearchItem[] = [
+  {
+    title: "안면 색상 데이터 기반 퍼스널 컬러 진단 서비스",
+    conference: "2024 한국스마트미디어학회&한국전자거래학회 추계학술대회",
+    date: "2024"
+  },
+  {
+    title: "ChatGPT를 활용한 대화형 플랫폼: 동향과 전망",
+    conference: "2023 한국스마트미디어학회 종합학술대회",
+    date: "2023"
+  },
+  {
+    title: "빅데이터 분석 방법 비교",
+    conference: "2023 한국스마트미디어학회 심포지움",
+    date: "2023"
   }
 ];

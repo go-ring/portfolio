@@ -76,7 +76,16 @@ export function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="min-h-screen font-sans text-gray-100 selection:bg-primary/30 selection:text-white">
+    <div className="min-h-screen font-sans text-gray-100 selection:bg-primary/30 selection:text-white relative bg-[#10141b]">
+      
+      {/* Global Background Decor - Fixed to prevent banding */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px]" />
+          {/* Subtle Noise Layer */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
+      </div>
+
       {/* Header */}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
@@ -161,14 +170,11 @@ export function Layout({ children }: LayoutProps) {
         )}
       </AnimatePresence>
 
-      <main>
+      <main className="relative z-10">
         {children}
       </main>
 
-      <footer className="bg-[#10141b] text-gray-500 py-12 border-t border-white/5 text-center text-sm">
-        <p>© {new Date().getFullYear()} Lee GaEun. All rights reserved.</p>
-        <p className="mt-2">Designed with passion & logic.</p>
-      </footer>
+
     </div>
   );
 }

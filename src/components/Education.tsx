@@ -1,58 +1,119 @@
 import { Section } from './Section';
-import { education, certifications } from '../data';
+import { profile, education, certifications, research } from '../data';
 import { motion } from 'framer-motion';
+import { User, Award, GraduationCap, FileText } from 'lucide-react';
 
 export function Education() {
   return (
     <Section id="education" title="교육 및 자격증">
-      <div className="grid md:grid-cols-2 gap-8">
-        
-        {/* Education Column */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="bg-surface p-8 rounded-2xl border border-white/5 shadow-lg flex flex-col h-full"
-        >
-          <h3 className="text-2xl font-bold text-primary mb-8 border-b border-white/10 pb-4">교육</h3>
-          <div className="space-y-8">
-            {education.map((edu, index) => (
-              <div key={index} className="relative pl-4 border-l-2 border-primary/30">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
-                  <h4 className="text-xl font-bold text-white">{edu.school}</h4>
-                </div>
-                <div className="text-gray-500 text-sm mb-2">{edu.period}</div>
-                <div className="text-gray-300 font-medium">{edu.degree}</div>
-                {edu.gpa && <div className="text-gray-400 text-sm mt-1">학점: {edu.gpa}</div>}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="max-w-4xl mx-auto bg-surface/50 backdrop-blur-sm p-8 md:p-10 rounded-3xl border border-white/5 shadow-2xl"
+      >
+        {/* Top Row: Profile & License */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mb-12">
+          {/* Profile */}
+          <div className="flex flex-col gap-6">
+            <h3 className="text-[0.78rem] leading-[1.1] font-bold tracking-[0.12em] text-primary uppercase flex items-center gap-2 opacity-85 [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+              <User size={14} /> Profile
+            </h3>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                <span className="text-[0.92rem] leading-[1.55] font-medium text-gray-400 opacity-80">생년월일</span>
+                <span className="text-[1.05rem] leading-[1.35] font-bold text-white opacity-[0.98]">{profile.birthdate}</span>
               </div>
-            ))}
+              <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                <span className="text-[0.92rem] leading-[1.55] font-medium text-gray-400 opacity-80">학력</span>
+                <span className="text-[1.05rem] leading-[1.35] font-bold text-white opacity-[0.98] text-right">{profile.education}</span>
+              </div>
+            </div>
           </div>
-        </motion.div>
 
-        {/* Certifications Column */}
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="bg-surface p-8 rounded-2xl border border-white/5 shadow-lg flex flex-col h-full"
-        >
-          <h3 className="text-2xl font-bold text-primary mb-8 border-b border-white/10 pb-4">자격증</h3>
+          {/* License */}
+          <div className="flex flex-col gap-6">
+            <h3 className="text-[0.78rem] leading-[1.1] font-bold tracking-[0.12em] text-primary uppercase flex items-center gap-2 opacity-85 [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+              <Award size={14} /> License
+            </h3>
+            <div className="space-y-4">
+              {certifications.map((cert, idx) => (
+                <div key={idx} className="flex justify-between items-center border-b border-white/5 pb-2">
+                  <span className="text-[1.05rem] leading-[1.35] font-bold text-white opacity-[0.98]">{cert.name}</span>
+                  <span className="text-[0.82rem] leading-[1.35] font-medium text-gray-400 opacity-65 tabular-nums">{cert.date}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Middle Row: Education */}
+        <div className="mb-12">
+          <h3 className="text-[0.78rem] leading-[1.1] font-bold tracking-[0.12em] text-primary uppercase flex items-center gap-2 mb-6 opacity-85 [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+            <GraduationCap size={14} /> Education
+          </h3>
           <div className="space-y-6">
-            {certifications.map((cert, index) => (
-              <div key={index} className="group">
-                <div className="flex justify-between items-start mb-1">
-                  <h4 className="text-lg font-bold text-white group-hover:text-primary transition-colors">{cert.name}</h4>
-                  <span className="text-gray-500 text-sm whitespace-nowrap ml-4">{cert.date}</span>
+            {education.map((edu, idx) => {
+              const isCurrent = edu.period.includes("현재");
+              return (
+                <div key={idx} className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 group">
+                  <div className="w-32 text-[0.82rem] leading-[1.35] font-medium text-gray-400 opacity-65 tabular-nums shrink-0 flex items-center gap-2">
+                    {edu.period}
+                    {isCurrent && (
+                      <span className="md:hidden inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 mb-1">
+                      <h4 
+                        className="text-[1.05rem] leading-[1.35] font-bold text-white opacity-[0.98] group-hover:text-primary transition-colors truncate"
+                        title={edu.school}
+                      >
+                        {edu.school}
+                      </h4>
+                      {isCurrent && (
+                        <span className="hidden md:inline-flex px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[0.70rem] leading-none font-bold tracking-[0.06em] border border-primary/20 shrink-0">
+                          CURRENT
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:gap-2 text-[0.92rem] leading-[1.55] font-medium opacity-80">
+                      <span className="text-gray-300">{edu.degree}</span>
+                      <span className="hidden sm:inline text-gray-600">|</span>
+                      <span className="text-gray-400 font-normal opacity-75 text-[0.90rem] leading-[1.65]">{edu.description}</span>
+                    </div>
+                  </div>
                 </div>
-                {cert.issuer && <div className="text-gray-400 text-sm">{cert.issuer}</div>}
-                <div className="w-full h-px bg-white/5 mt-4 group-last:hidden"></div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom Row: Research */}
+        <div>
+          <h3 className="text-[0.78rem] leading-[1.1] font-bold tracking-[0.12em] text-primary uppercase flex items-center gap-2 mb-6 opacity-85 [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+            <FileText size={14} /> Research & Papers
+          </h3>
+          <div className="space-y-6">
+            {research.map((item, idx) => (
+              <div key={idx} className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 group">
+                <div className="w-32 text-[0.82rem] leading-[1.35] font-medium text-gray-400 opacity-65 tabular-nums shrink-0">
+                  {item.date}
+                </div>
+                <div className="flex-1">
+                   <h4 className="text-[1.05rem] leading-[1.35] font-bold text-white opacity-[0.98] group-hover:text-primary transition-colors mb-1">
+                    {item.title}
+                  </h4>
+                  <p className="text-[0.92rem] leading-[1.55] font-medium text-gray-400 opacity-80 group-hover:text-gray-300 transition-colors line-clamp-1">
+                    {item.conference}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-      </div>
+      </motion.div>
     </Section>
   );
 }
