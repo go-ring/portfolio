@@ -23,8 +23,8 @@ export function About() {
         </div>
         
         <div className="grid gap-4">
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Core Strengths</h3>
-          {profile.strengths.map((strength, index) => (
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Key Competencies</h3>
+          {profile.keywords.slice(0, 3).map((keyword: string, index: number) => (
             <div 
               key={index} 
               className="flex items-center gap-4 p-5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow"
@@ -32,7 +32,7 @@ export function About() {
               <div className="p-3 bg-white dark:bg-slate-900 rounded-full shadow-sm">
                 {getIcon(index)}
               </div>
-              <span className="text-slate-800 dark:text-slate-200 font-bold text-lg">{strength}</span>
+              <span className="text-slate-800 dark:text-slate-200 font-bold text-lg">{keyword}</span>
             </div>
           ))}
         </div>

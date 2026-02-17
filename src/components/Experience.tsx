@@ -6,7 +6,7 @@ export function Experience() {
   return (
     <Section id="experience" title="Experience" className="bg-slate-50 dark:bg-slate-900/50">
       <div className="relative border-l-2 border-slate-200 dark:border-slate-700 ml-3 md:ml-6 space-y-16 py-4">
-        {experience.map((item, index) => (
+        {experience.map((item: any, index: number) => (
           <div key={index} className="relative pl-8 md:pl-16 group">
             {/* Timeline Dot */}
             <span className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-white dark:bg-slate-800 border-4 border-toss-blue transition-all group-hover:scale-125 hover:border-blue-400 shadow-sm"></span>

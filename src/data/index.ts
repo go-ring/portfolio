@@ -58,6 +58,8 @@ export interface SkillGroup {
   items: string[];
 }
 
+export const experience: ExperienceItem[] = [];
+
 export interface EducationItem {
   school: string;
   period: string;
