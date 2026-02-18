@@ -15,7 +15,7 @@ export function Hero() {
       
       {/* Background Decor - Moved to Layout.tsx for seamless transition */}
 
-      <div className="max-w-[1120px] w-full mx-auto grid md:grid-cols-2 gap-10 lg:gap-14 items-center relative z-10">
+      <div className="max-w-[1120px] w-full mx-auto grid md:grid-cols-2 gap-10 lg:gap-14 items-center relative z-10 md:scale-[0.9] md:origin-center">
         
         {/* Left: Text Content - Product Landing Style */}
         <motion.div
