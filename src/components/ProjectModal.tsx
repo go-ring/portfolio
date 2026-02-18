@@ -58,7 +58,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     contentRef, 
     TOC_ITEMS.map(item => item.id),
     {
-        offset: 24,
+        offset: 12,
         rootMargin: '-100px 0px -70% 0px'
     }
   );

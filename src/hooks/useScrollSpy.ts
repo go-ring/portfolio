@@ -14,7 +14,7 @@ export function useScrollSpy(
   const [activeId, setActiveId] = useState<string>('');
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isClickScrolling = useRef(false);
-  const { rootMargin = '-100px 0px -70% 0px', threshold = 0 } = options;
+  const { rootMargin = '-100px 0px -70% 0px', threshold = 0, offset = 0 } = options;
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -52,15 +52,20 @@ export function useScrollSpy(
   }, [contentRef, itemIds, rootMargin, threshold]);
 
   const scrollToId = (id: string) => {
+    const container = contentRef.current;
     const section = document.getElementById(id);
     
-    if (section) {
+    if (section && container) {
         isClickScrolling.current = true;
         setActiveId(id);
 
-        section.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
+        const containerRect = container.getBoundingClientRect();
+        const sectionRect = section.getBoundingClientRect();
+        const targetTop = container.scrollTop + (sectionRect.top - containerRect.top) - offset;
+
+        container.scrollTo({
+            top: Math.max(targetTop, 0),
+            behavior: 'smooth'
         });
 
         setTimeout(() => {
