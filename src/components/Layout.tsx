@@ -65,10 +65,31 @@ export function Layout({ children }: LayoutProps) {
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.getElementById(href.substring(1));
-    if (element) {
+    const targetId = href.substring(1);
+
+    if (targetId === 'home') {
       window.scrollTo({
-        top: element.offsetTop - 80, // Offset for header
+        top: 0,
+        behavior: 'smooth'
+      });
+      setMobileMenuOpen(false);
+      return;
+    }
+
+    const element = document.getElementById(targetId);
+    if (element) {
+      // Non-home sections always end with the compact header height (h-16 = 64px).
+      // Using a fixed value prevents first-click vs second-click offset drift.
+      const headerHeight = 64;
+      const sectionAnchor = element.querySelector('[data-section-anchor]');
+      const targetElement = sectionAnchor instanceof HTMLElement ? sectionAnchor : element;
+      const targetTop = Math.max(
+        targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 12,
+        0
+      );
+
+      window.scrollTo({
+        top: targetTop,
         behavior: 'smooth'
       });
       setMobileMenuOpen(false);

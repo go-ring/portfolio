@@ -11,11 +11,11 @@ export function Hero() {
   const handleCopyEmail = () => copyToClipboard(profileData.email);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-visible">
+    <section id="home" className="min-h-screen flex items-start justify-center pt-24 px-6 relative overflow-visible">
       
       {/* Background Decor - Moved to Layout.tsx for seamless transition */}
 
-      <div className="max-w-[1120px] w-full mx-auto grid md:grid-cols-2 gap-10 lg:gap-14 items-center relative z-10 md:scale-[0.9] md:origin-center">
+      <div className="max-w-[1120px] w-full mx-auto grid md:grid-cols-2 gap-10 lg:gap-14 items-center relative z-10 md:scale-[0.9] md:origin-top">
         
         {/* Left: Text Content - Product Landing Style */}
         <motion.div
