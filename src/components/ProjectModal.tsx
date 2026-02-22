@@ -10,7 +10,12 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-const EMPHASIS_TECH = new Set(['Java', 'Spring Boot', 'MySQL', 'NOS3', 'Linux', 'NCloud']);
+const EMPHASIS_TECH = new Set([
+  // ColorFinder / NOS3
+  'Java', 'Spring Boot', 'MySQL', 'NOS3', 'Linux', 'NCloud',
+  // Baekgu
+  'Java 17', 'Spring Boot 3.2', 'FastAPI', 'WebSocket/STOMP', 'GitLab CI/CD', 'Grafana', 'Loki',
+]);
 
 const TOC_ITEMS = [
   { id: 'overview', label: '프로젝트 개요' },
