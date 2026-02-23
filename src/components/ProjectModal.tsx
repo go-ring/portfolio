@@ -58,6 +58,7 @@ import { useScrollSpy } from '../hooks/useScrollSpy';
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const isAnimatedPreview = !!project?.images?.preview?.toLowerCase().endsWith('.gif');
 
   const { activeId, scrollToId } = useScrollSpy(
     contentRef, 
@@ -232,7 +233,12 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                         <img 
                                             src={project.images.preview} 
                                             alt="Preview" 
-                                            className="w-full h-auto max-h-[500px] object-contain" 
+                                            loading="eager"
+                                            decoding={isAnimatedPreview ? 'sync' : 'async'}
+                                            className={`w-full h-auto max-h-[500px] object-contain block ${
+                                              isAnimatedPreview ? '[transform:translateZ(0)] will-change-transform' : ''
+                                            }`}
+                                            style={isAnimatedPreview ? { contain: 'paint' } : undefined}
                                         />
                                     </div>
                                     <p className="text-center text-sm text-gray-500 mt-2">최종 결과물 시연 화면</p>
@@ -303,15 +309,28 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                         {/* 2. Role */}
                         <section id="role" className="scroll-mt-24">
-                           {project.details?.roleAndContribution && (
-                                <DetailBlock
-                                    title="담당 역할 및 기여"
-                                    items={project.details.roleAndContribution}
-                                />
-                           )}
+                          {project.details?.roleAndContribution && (
+                            <div>
+                              <SectionHeader title="담당 역할 및 기여" variant="sidebar" />
+                              <div className="grid gap-3">
+                                {project.details.roleAndContribution.map((item, idx) => {
+                                  const colonIdx = item.indexOf(':');
+                                  const title = colonIdx !== -1 ? item.slice(0, colonIdx).trim() : item;
+                                  const body  = colonIdx !== -1 ? item.slice(colonIdx + 1).trim() : '';
+                                  return (
+                                    <div key={idx} className="flex gap-4 p-4 rounded-xl bg-[#1a1f2c] border border-white/5 hover:border-primary/30 transition-colors">
+                                      <div className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
+                                      <div>
+                                        <span className="font-bold text-primary text-[15px] block mb-1">{title}</span>
+                                        {body && <p className="text-gray-300 leading-relaxed text-[14px]">{body}</p>}
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
                         </section>
-
-
 
                         {/* 3. Tech & Architecture */}
                         <section id="tech" className="space-y-6 scroll-mt-24">
