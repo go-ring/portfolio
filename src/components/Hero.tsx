@@ -61,23 +61,39 @@ export function Hero() {
           </div>
 
 
-          {/* Contact & Social Buttons - Unified Row */}
-          <div className="flex flex-wrap gap-3">
-            {/* Email Copy Button */}
-            <Button
-              onClick={handleCopyEmail}
-              className="group"
-              variant="outline"
-              icon={
-                  <div className={`p-1 rounded-full bg-white/10 group-hover:bg-[#9FAA7C]/20 transition-colors ${copied ? 'text-[#9FAA7C]' : 'text-gray-400 group-hover:text-[#9FAA7C]'}`}>
-                     {copied ? <Copy size={12} /> : <Mail size={12} />}
-                  </div>
-              }
+          {/* ── Contact Strip ── */}
+          <div className="flex flex-row flex-wrap gap-2 mb-5">
+            {/* Phone */}
+            <a
+              href={`tel:${profileData.phone}`}
+              className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-white/8 hover:border-[#9FAA7C]/50 hover:bg-[#9FAA7C]/6 transition-all duration-200"
             >
-              <span className="text-gray-300 group-hover:text-[#9FAA7C] transition-colors">{profileData.email}</span>
-            </Button>
+              <div className="shrink-0 text-[#9FAA7C]/70 group-hover:text-[#9FAA7C] transition-colors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[14px] h-[14px]">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.12 6.12l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <span className="text-gray-200 font-semibold text-[14px] group-hover:text-white transition-colors tracking-wide">
+                {profileData.phone}
+              </span>
+            </a>
 
-            {/* GitHub */}
+            {/* Email */}
+            <button
+              onClick={handleCopyEmail}
+              className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-white/8 hover:border-[#9FAA7C]/50 hover:bg-[#9FAA7C]/6 transition-all duration-200 text-left"
+            >
+              <div className="shrink-0 text-[#9FAA7C]/70 group-hover:text-[#9FAA7C] transition-colors">
+                {copied ? <Copy size={14} /> : <Mail size={14} />}
+              </div>
+              <span className="text-gray-200 font-semibold text-[14px] group-hover:text-white transition-colors tracking-wide">
+                {profileData.email}
+              </span>
+            </button>
+          </div>
+
+          {/* Social Buttons */}
+          <div className="flex flex-wrap gap-3">
             <Button
               href={profileData.social.github}
               target="_blank"
@@ -88,7 +104,6 @@ export function Hero() {
               GitHub
             </Button>
 
-            {/* Velog - Custom Icon */}
             <Button
               href={profileData.social.velog}
               target="_blank"
@@ -96,13 +111,13 @@ export function Hero() {
               variant="outline"
               className="group hover:!text-[#20c997] hover:!border-[#20c997] hover:!bg-[#20c997]/10 transition-colors duration-300"
               icon={
-                <svg 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
                     strokeWidth="2"
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="w-[18px] h-[18px]"
                 >
                     <rect x="3" y="3" width="18" height="18" rx="3" ry="3" />

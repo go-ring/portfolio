@@ -132,7 +132,7 @@ export const projects: Project[] = [
     period: "2026.01.05 ~ 2026.02.09",
     role: ["백엔드 리드 & 인프라"],
     description:
-      "GitHub 코드 분석 기반의 올인원 개발자 취업 솔루션. '개발자는 코드로 말하고 싶은데, 기업은 자소서를 원한다'는 채용의 병목 문제를 해결하기 위해 탄생했습니다.\n\nGitHub 레포지토리(실제 커밋/코드)와 기업의 최신 데이터(DART 공시, Perplexity AI)를 교차 분석하여, 기술 역량 기반 공고 매칭과 근거 있는 자기소개서 작성을 자동화합니다. 범용 LLM의 할루시네이션(Hallucination) 문제를 극복하고, SSAFY 취업 컨설턴트 자문을 반영한 증거 중심 커리어 솔루션을 지향합니다.",
+      "GitHub 코드 분석 기반의 올인원 개발자 취업 솔루션. '개발자는 코드로 말하고 싶은데, 기업은 자소서를 원한다'는 채용의 병목 문제를 해결하기 위해 탄생.\n\nGitHub 레포지토리(실제 커밋/코드)와 기업의 최신 데이터(DART 공시, Perplexity AI)를 교차 분석하여, 기술 역량 기반 공고 매칭과 근거 있는 자기소개서 작성을 자동화. 범용 LLM의 할루시네이션(Hallucination) 문제를 극복하고, SSAFY 취업 컨설턴트 자문을 반영한 증거 중심 커리어 솔루션.",
     tech: [
       "Java 17",
       "Spring Boot 3.2",
@@ -167,15 +167,15 @@ export const projects: Project[] = [
         "WebSocket/STOMP 채팅 서버 구현: SimpMessagingTemplate 기반 Pub/Sub 메시징 구조 적용. 채팅방 목록 조회의 N+1 문제를 QueryDSL Projections.constructor + 서브쿼리로 해결 → 1.5s → 50ms (ChatRoomQueryRepositoryImpl.java)",
       ],
       techAndReason: [
-        "Spring Boot + FastAPI 분리: 비즈니스 로직(Spring)과 AI 연산(FastAPI)의 부하를 격리하여, AI 작업의 CPU 집약적 연산이 사용자 API 응답 속도에 영향을 주지 않도록 설계했습니다.",
-        "Redis (보안 & 캐싱): 블랙리스트 판별을 모든 API 요청마다 수행해야 했기 때문에, Disk I/O가 발생하는 MySQL 대신 Microsecond 단위 응답이 가능한 In-Memory 저장소 Redis를 선택했습니다. TTL 기능으로 자동 차단 해제도 구현했습니다.",
-        "WebSocket + STOMP: 채팅 구현 시 HTTP Polling은 메시지 유무에 관계없이 매초 ~800byte 헤더를 주고받아 트래픽의 90% 이상을 낭비합니다. WebSocket은 최초 핸드셰이크 후 연결을 유지하여 헤더 오버헤드 없이 Payload만 교환합니다.",
-        "Git Clone (vs GitHub API): GitHub Contents API는 파일당 1건의 요청을 소비해 Rate Limit(5,000건/시간)이 빠르게 소진됩니다. git clone은 단 1번의 명령으로 전체 코드를 가져오며, Rate Limit을 소비하지 않습니다.",
+        "Spring Boot + FastAPI 분리: 비즈니스 로직(Spring)과 AI 연산(FastAPI)의 부하를 격리하여, AI 작업의 CPU 집약적 연산이 사용자 API 응답 속도에 영향을 주지 않도록 부하 격리 설계.",
+        "Redis (보안 & 캐싱): 블랙리스트 판별을 모든 API 요청마다 수행해야 했기 때문에, Disk I/O가 발생하는 MySQL 대신 Microsecond 단위 응답이 가능한 In-Memory 저장소 Redis 선택. TTL 기능으로 자동 차단 해제 구현.",
+        "WebSocket + STOMP: 채팅 구현 시 HTTP Polling은 메시지 유무에 관계없이 매초 ~800byte 헤더를 주고받아 트래픽의 90% 이상을 낭비. WebSocket은 최초 핸드셰이크 후 연결을 유지하여 헤더 오버헤드 없이 Payload만 교환.",
+        "Git Clone (vs GitHub API): GitHub Contents API는 파일당 1건의 요청을 소비해 Rate Limit(5,000건/시간)이 빠르게 소진. git clone은 단 1번의 명령으로 전체 코드를 가져오며, Rate Limit 미소비.",
       ],
       implementation: [
-        "IP 바인딩 JWT: 토큰 발급 시 클라이언트 IP를 암호화하여 Payload에 포함하고, JwtAuthenticationTokenFilter에서 매 요청마다 실제 IP와 대조합니다. 토큰 탈취 후 다른 IP에서 사용하는 세션 하이재킹을 원천 차단합니다.",
-        "Redis Atomic Counter 블랙리스트: 비정상 접근(4xx 에러 반복) 감지 시 RedisTemplate.opsForValue().increment()로 카운트를 증가시키고, 임계치 초과 시 Spring Security 필터 진입 전에 즉시 403 차단합니다.",
-        "채팅 N+1 최적화: '방 목록(1) + 안 읽은 메시지 수(N) + 상대 프로필(N) + 마지막 메시지(N)' 패턴을 Projections.constructor와 서브쿼리를 활용한 단일 QueryDSL 쿼리로 해결했습니다. 1만 건 이상 데이터에서도 50ms 미만을 유지합니다.",
+        "IP 바인딩 JWT: 토큰 발급 시 클라이언트 IP를 암호화하여 Payload에 포함하고, JwtAuthenticationTokenFilter에서 매 요청마다 실제 IP와 대조. 세션 하이재킹 원천 차단.",
+        "Redis Atomic Counter 블랙리스트: 비정상 접근(4xx 에러 반복) 감지 시 RedisTemplate.opsForValue().increment()로 카운트 증가, 임계치 초과 시 Spring Security 필터 진입 전 즉시 403 차단.",
+        "채팅 N+1 최적화: '방 목록(1) + 안 읽은 메시지 수(N) + 상대 프로필(N) + 마지막 메시지(N)' 패턴을 Projections.constructor와 서브쿼리를 활용한 단일 QueryDSL 쿼리로 해결. 1만 건 이상 데이터에서도 50ms 미만 유지.",
         "결함 허용(Fault-Tolerant) AI 파이프라인 — 이중 방어선: [1차] docker-compose.prod.yml에서 backend·fastapi 간 depends_on 없이 독립 컨테이너로 분리, Spring 배포가 FastAPI 수명 주기에 물리적으로 영향 없음. [2차] orchestrator.py의 notify_spring()에서 Spring 콜백을 try-except-pass로 감싸, Progress 40%(Step 2) → 60%(Step 3) → 80%(Step 5) → 95%(Step 6) → 100%(Step 7) 각 단계 보고가 실패해도 파이프라인은 계속 진행. 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장하여 Spring 재시작 후에도 사용자가 정상 조회 가능 (Eventual Consistency 보장).",
         "데이터 수집 파이프라인: DART OpenAPI로 기업 공시 데이터 추출, Perplexity sonar-pro로 최신 뉴스 수집, GitHub API로 커밋 이력 수집, git clone으로 전체 소스 분석, Playwright로 자소설닷컴 공고(네트워크 인터셉트 방식) 크롤링.",
       ],
@@ -183,26 +183,26 @@ export const projects: Project[] = [
         {
           title: "🐳 배포가 진행 중인 AI 분석을 중단시킨다",
           items: [
-            "문제: AI 분석은 총 7단계(git clone → 단일 레포 분석 → OCR → DB 로드 → 통합 분석 → Fit Score 계산 → DB 저장)를 순차 실행하며 수 분이 소요됩니다. 하루에도 수 차례 배포가 이루어지는 CI/CD 환경에서, 배포 시 진행 중인 분석이 강제 종료되어 사용자가 처음부터 다시 기다려야 하는 문제가 발생했습니다.",
-            "1차 방어 — 컨테이너 수명주기 분리: docker-compose.prod.yml에서 backend와 fastapi 간 depends_on을 의도적으로 제거. docker compose up -d backend를 실행해도 fastapi 컨테이너는 재시작되지 않아, Spring 배포가 AI 워커 동작에 물리적으로 영향을 줄 수 없게 됩니다.",
-            "2차 방어 — Fault-Tolerant 콜백: AI 워커(orchestrator.py)의 notify_spring() 함수가 각 단계(40%→60%→80%→95%→100%) 완료 후 Spring에 진행률을 보고합니다. 이 콜백 호출을 try-except-pass로 감싸, Spring이 배포 중 일시 다운되어 보고가 실패해도 파이프라인은 다음 단계로 계속 진행됩니다.",
-            "데이터 유실 방지: 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장합니다. Spring 다운 중에도 데이터는 DB에 이미 보존되어, Spring 재시작 후 사용자가 결과를 정상 조회할 수 있습니다. (Eventual Consistency)",
+            "문제: AI 분석은 총 7단계(git clone → 단일 레포 분석 → OCR → DB 로드 → 통합 분석 → Fit Score 계산 → DB 저장)를 순차 실행하며 수 분 소요. 배포 시 진행 중인 분석이 강제 종료되어 사용자가 처음부터 다시 기다려야 하는 문제 발생.",
+            "1차 방어 — 컨테이너 수명주기 분리: docker-compose.prod.yml에서 backend와 fastapi 간 depends_on을 의도적으로 제거. docker compose up -d backend를 실행해도 fastapi 컨테이너는 재시작되지 않아, Spring 배포가 AI 워커 동작에 물리적으로 영향 불가.",
+            "2차 방어 — Fault-Tolerant 콜백: AI 워커(orchestrator.py)의 notify_spring() 함수가 각 단계(40%→60%→80%→95%→100%) 완료 후 Spring에 진행률 보고. 콜백을 try-except-pass로 감싸, 보고 실패 시에도 파이프라인은 다음 단계로 계속 진행.",
+            "데이터 유실 방지: 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장. Spring 다운 중에도 데이터는 DB에 보존되어 재시작 후 정상 조회 가능. (Eventual Consistency)",
             "결과: docker restart baekgu-backend 실행 후 AI 워커 로그에서 'Connection refused' 경고만 찍히고 OCR → 통합 분석 → Fit Score 단계까지 파이프라인이 끝까지 완료됨. AI 분석 성공률 99.9% 달성.",
           ],
         },
         {
           title: "🛡️ 보안 검사를 매 요청마다 해야 하는데, DB 조회면 API가 느려진다",
           items: [
-            "문제: 공격자 차단을 위해 블랙리스트 여부를 모든 API 요청마다 확인해야 했습니다. MySQL로 조회하면 Disk I/O 비용이 발생해 응답이 느려지고, 대용량 트래픽 상황에서 커넥션 풀 고갈 위험도 있었습니다.",
+            "문제: 블랙리스트 여부를 모든 API 요청마다 확인해야 함. MySQL 조회 시 Disk I/O로 응답 지연, 대용량 트래픽 시 커넥션 풀 고갈 위험 존재.",
             "해결: Redis(In-Memory) 도입. JwtAuthenticationTokenFilter에서 Spring Security 진입 전 violation:user:{id} 키를 조회 — 존재하면 즉시 403 차단, 없으면 통과. 위반 감지 시 RedisTemplate.opsForValue().increment()로 카운터 원자적 증가, TTL로 자동 해제.",
-            "결과: JMeter 초당 1,000회 부하 테스트에서 MySQL 대비 응답속도 120ms → 5ms, CPU 사용률 80% 감소. 보안 로직을 전면 적용했음에도 성능 저하 없음을 확인.",
+            "결과: JMeter 초당 1,000회 부하 테스트에서 응답속도 120ms → 5ms, CPU 사용률 80% 감소. 보안 로직 전면 적용에도 성능 저하 없음 확인.",
           ],
         },
         {
           title: "💬 채팅방 목록이 데이터가 쌓일수록 점점 느려졌다",
           items: [
             "문제: 테스트 데이터가 누적되면서 채팅방 목록 로딩 속도가 200ms → 1.5s로 급격히 저하.",
-            "원인: JPA Lazy Loading으로 인한 N+1. 방 목록 1건마다 '안 읽은 메시지 수(N) + 상대방 프로필(N) + 마지막 메시지(N)'를 각각 별도 쿼리로 조회하는 구조였습니다.",
+            "원인: JPA Lazy Loading으로 인한 N+1. 방 목록 1건마다 '안 읽은 메시지 수(N) + 상대방 프로필(N) + 마지막 메시지(N)'를 각각 별도 쿼리로 조회하는 구조.",
             "시도와 한계: QueryDSL Fetch Join을 적용하려 했지만, 안 읽은 메시지 수 집계(COUNT)와 최신 메시지 조회(MAX), 페이징이 동시에 필요한 구조에서 Fetch Join 단독으로는 해결 불가.",
             "해결: Projections.constructor로 DTO를 직접 조회하고, 집계 값들을 SELECT 절 인라인 서브쿼리로 처리해 여러 번 나가던 쿼리를 단 1회로 통합. (ChatRoomQueryRepositoryImpl.java)",
             "결과: 데이터 1만 건 이상에서도 채팅방 목록 로딩 50ms 미만으로 안정적 유지. 1.5s → 50ms, 30배 개선.",
@@ -215,9 +215,9 @@ export const projects: Project[] = [
         "채팅 N+1 검증: 브라우저 개발자 도구 Network → WS 탭에서 단일 WebSocket 연결 유지 확인, MySQL 쿼리 로그로 단일 쿼리 실행 검증",
       ],
       retrospective: [
-        "\"기능 구현은 시작일 뿐, 완성은 운영에서 결정된다\": AI 분석이라는 Long-running Task가 배포 전략 전체를 바꿔야 했던 경험에서 아키텍처 설계의 중요성을 깨달았습니다.",
-        "트레이드오프의 이해: Redis나 WebSocket이 항상 정답은 아닙니다. 데이터 중요도, 실시간성 요구, 서버 리소스를 종합적으로 고려하여 적정 기술을 선택하는 안목을 길렀습니다.",
-        "Observability의 가치: Loki + Prometheus를 직접 세팅하며, 로그와 메트릭 없는 장애 추적은 눈을 감고 운전하는 것과 같다는 것을 체감했습니다.",
+        "\"기능 구현은 시작일 뿐, 완성은 운영에서 결정된다\": AI 분석이라는 Long-running Task가 배포 전략 전체를 바꿔야 했던 경험에서 아키텍처 설계의 중요성 체감.",
+        "트레이드오프의 이해: Redis나 WebSocket이 항상 정답은 아님. 데이터 중요도, 실시간성 요구, 서버 리소스를 종합적으로 고려하여 적정 기술 선택 안목 함양.",
+        "Observability의 가치: Loki + Prometheus를 직접 세팅하며, 로그와 메트릭 없는 장애 추적은 눈을 감고 운전하는 것과 같음을 체감.",
       ],
     },
   },
@@ -225,7 +225,7 @@ export const projects: Project[] = [
     title: "ColorFinder",
     type: "팀 프로젝트 (3인)",
     description:
-      "사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼입니다.\n\n단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발되었습니다. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류합니다.\n\n또한 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하며, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선적으로 노출하는 개인화 알고리즘을 구현했습니다.",
+      "사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼.\n\n단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류.\n\n기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현.",
     tech: [
       "Java",
       "Spring Boot",
@@ -263,14 +263,14 @@ export const projects: Project[] = [
         "REST API 설계 및 구현: 회원·상품·주문·결제 도메인 Spring Boot 백엔드 API 개발 (Controller → Service → Repository 레이어 구조)",
       ],
       techAndReason: [
-        "Spring Boot: 퍼스널 컬러 진단과 의류 추천이라는 복합적인 비즈니스 로직을 트랜잭션 단위로 안정적으로 처리하기 위해 선택했습니다.",
-        "JPA (Hibernate): 복잡한 SQL 쿼리 없이 객체 중심의 도메인 설계를 통해, 추천 알고리즘 구현 자체에 집중할 수 있는 환경을 만들었습니다.",
-        "Google Vision AI: 자체 모델 학습 비용을 절감하고, 상용 API의 높은 정확도(Dominant Color 추출)를 활용하여 '색상 매핑 알고리즘' 개발에 더 시간을 투자하는 전략을 취했습니다.",
-        "MySQL: 다대다(N:M) 관계인 사용자와 의류 데이터를 명확한 스키마로 관리하고, 추천 쿼리의 조인 성능을 고려하여 RDBMS를 채택했습니다.",
+        "Spring Boot: 퍼스널 컬러 진단과 의류 추천이라는 복합적인 비즈니스 로직을 트랜잭션 단위로 안정적으로 처리하기 위해 선택.",
+        "JPA (Hibernate): 복잡한 SQL 쿼리 없이 객체 중심의 도메인 설계를 통해, 추천 알고리즘 구현 자체에 집중할 수 있는 환경 마련.",
+        "Google Vision AI: 자체 모델 학습 비용을 절감하고, 상용 API의 높은 정확도(Dominant Color 추출)를 활용하여 '색상 매핑 알고리즘' 개발에 집중하는 전략 채택.",
+        "MySQL: 다대다(N:M) 관계인 사용자와 의류 데이터를 명확한 스키마로 관리하고, 추천 쿼리의 조인 성능을 고려하여 RDBMS 채택.",
       ],
       implementation: [
-        "색상 추출 파이프라인: Google Vision AI로 의류 이미지의 Dominant Color(RGB)를 추출하고, 미리 정의된 12가지 퍼스널 컬러 타입의 대표 색상값과 유클리디안 거리를 계산하여 가장 가까운 타입으로 자동 태깅했습니다.",
-        "기상청 데이터 캐싱: 기상청 API의 응답 속도 불안정 문제를 해결하기 위해, 1시간 단위로 날씨 정보를 조회하여 Redis(또는 인메모리)에 캐싱하고, 사용자 요청 시 캐시된 데이터를 기반으로 추천 카테고리를 필터링했습니다.",
+        "색상 추출 파이프라인: Google Vision AI로 의류 이미지의 Dominant Color(RGB)를 추출하고, 미리 정의된 12가지 퍼스널 컬러 타입의 대표 색상값과 유클리디안 거리를 계산하여 가장 가까운 타입으로 자동 태깅.",
+        "기상청 데이터 캐싱: 기상청 API의 응답 속도 불안정 문제를 해결하기 위해, 1시간 단위로 날씨 정보를 조회하여 Redis(또는 인메모리)에 캐싱하고, 사용자 요청 시 캐시된 데이터를 기반으로 추천 카테고리 필터링.",
       ],
       implementationImage: colorFinderSubject,
       troubleshooting: [
@@ -302,9 +302,9 @@ export const projects: Project[] = [
         "CQRS 패턴 도입: 상품 조회와 주문 처리 로직 분리로 확장성 확보",
       ],
       retrospective: [
-        "외부 AI API를 비즈니스 로직에 통합하는 과정에서 데이터 전처리(RGB 보정)의 중요성을 체감했습니다.",
-        "단순한 기능 구현을 넘어, '나에게 어울리는 색'이라는 사용자 가치를 기술적으로 해결하는 과정이 즐거웠습니다.",
-        "기상청 API 장애 상황에 대한 예외 처리(Fallback) 로직의 필요성을 배웠습니다.",
+        "외부 AI API를 비즈니스 로직에 통합하는 과정에서 데이터 전처리(RGB 보정)의 중요성 체감.",
+        "단순한 기능 구현을 넘어, '나에게 어울리는 색'이라는 사용자 가치를 기술적으로 해결하는 과정이 즐거웠음.",
+        "기상청 API 장애 상황에 대한 예외 처리(Fallback) 로직의 필요성 인지.",
       ],
     },
   },
@@ -314,7 +314,7 @@ export const projects: Project[] = [
     type: "산학 과제 (3인)",
     role: "위성 시뮬레이터 환경 구축 및 문제 해결",
     description:
-      "NASA의 오픈소스 위성 시뮬레이션 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드입니다. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경을 마련하는 것입니다. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리했습니다.",
+      "NASA의 오픈소스 위성 시뮬레이션 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리.",
     tech: [
       "NOS3",
       "Linux",
@@ -328,7 +328,7 @@ export const projects: Project[] = [
       "Git",
     ],
     impact:
-      "클라우드 서버에서 VirtualBox 중첩 가상화 제약을 우회할 수 있는 설치 절차를 검토·정리했습니다.\nNOS3 installer(MIN/COSMOS/CUSTOM)와 빌드/실행 스크립트(Build/Run/Stop/Clean) 실행 순서를 문서화했습니다.\nRuby(Nokogiri) 의존성 및 경로 하드코딩 이슈를 수정해 주요 설치 실패 원인을 줄였습니다.\n로컬 VM 기반 설치와 클라우드 기반 설치를 비교 정리해 재현 가능한 실험 환경 구축에 기여했습니다.",
+      "클라우드 서버에서 VirtualBox 중첩 가상화 제약을 우회할 수 있는 설치 절차 검토·정리.\nNOS3 installer(MIN/COSMOS/CUSTOM)와 빌드/실행 스크립트(Build/Run/Stop/Clean) 실행 순서 문서화.\nRuby(Nokogiri) 의존성 및 경로 하드코딩 이슈를 수정해 주요 설치 실패 원인 감소.\n로컬 VM 기반 설치와 클라우드 기반 설치를 비교 정리해 재현 가능한 실험 환경 구축에 기여.",
     images: {
       main: nos3Main,
       architecture: [nos3Arch1, nos3Arch2],
@@ -345,39 +345,39 @@ export const projects: Project[] = [
         "의존성·경로 오류 수정: Nokogiri gem 버전 고정(1.12.5) 및 빌드 스크립트 하드코딩 경로 교정으로 설치-실행 파이프라인 안정화",
       ],
       techAndReason: [
-        "NOS3/cFS/42/COSMOS: 비행 소프트웨어와 시뮬레이터, 지상국 구성요소를 함께 다뤄 우주 통신망 실험 환경 구성에 적합했습니다.",
-        "NCloud Init Script: 서버 생성 시 초기 스크립트를 자동 실행할 수 있어 수동 설정 편차를 줄이고 반복 설치에 유리했습니다.",
-        "Shell Script: MIN/COSMOS/CUSTOM 및 Build/Run/Stop/Clean 작업을 명령 단위로 표준화해 재현 가능한 운영 절차를 만들었습니다.",
-        "xrdp: 클라우드 리눅스 서버에 GUI 접근을 제공해 시뮬레이터 관찰 및 데모 진행 효율을 높였습니다.",
+        "NOS3/cFS/42/COSMOS: 비행 소프트웨어와 시뮬레이터, 지상국 구성요소를 함께 다뤄 우주 통신망 실험 환경 구성에 적합.",
+        "NCloud Init Script: 서버 생성 시 초기 스크립트를 자동 실행할 수 있어 수동 설정 편차를 줄이고 반복 설치에 유리.",
+        "Shell Script: MIN/COSMOS/CUSTOM 및 Build/Run/Stop/Clean 작업을 명령 단위로 표준화해 재현 가능한 운영 절차 마련.",
+        "xrdp: 클라우드 리눅스 서버에 GUI 접근을 제공해 시뮬레이터 관찰 및 데모 진행 효율 향상.",
       ],
       implementation: [
-        "기존 설치 경로 분석: 로컬 환경 기준 절차(`git clone` -> `submodule init/update` -> `/deployment` 설정 -> `vagrant up`)를 분해해 클라우드에서 대체 가능한 단계와 불가능한 단계를 구분했습니다.",
-        "클라우드 설치 자동화: NCloud 서버 생성 시 Init Script를 적용하고, `~/nos3/support/installers/ubuntu`에서 MIN -> COSMOS -> CUSTOM 순으로 설치되도록 스크립트화했습니다.",
-        "빌드/실행 표준화: `~/Desktop`의 `nos3-build.sh`, `nos3-run.sh`, `nos3-stop.sh`, `nos3-clean.sh` 실행 순서를 작업 가이드로 정리해 운영 실수를 줄였습니다.",
-        "구성요소 구조 문서화: cFS APPS, CFE/OSAL, HWLIB, LIBA3200/LIBA3200NOS, NOS Engine Client/Server의 역할을 정리해 팀 내부 지식 자산으로 남겼습니다.",
+        "기존 설치 경로 분석: 로컬 환경 기준 절차(`git clone` -> `submodule init/update` -> `/deployment` 설정 -> `vagrant up`)를 분해해 클라우드에서 대체 가능한 단계와 불가능한 단계 구분.",
+        "클라우드 설치 자동화: NCloud 서버 생성 시 Init Script를 적용하고, `~/nos3/support/installers/ubuntu`에서 MIN -> COSMOS -> CUSTOM 순으로 설치 스크립트화.",
+        "빌드/실행 표준화: `~/Desktop`의 `nos3-build.sh`, `nos3-run.sh`, `nos3-stop.sh`, `nos3-clean.sh` 실행 순서를 작업 가이드로 정리해 운영 실수 최소화.",
+        "구성요소 구조 문서화: cFS APPS, CFE/OSAL, HWLIB, LIBA3200/LIBA3200NOS, NOS Engine Client/Server의 역할을 정리해 팀 내부 지식 자산 확보.",
       ],
       troubleshooting: [
         {
           title: "이중 가상화 충돌 및 VirtualBox 의존성 해결",
           items: [
-            "문제: NOS3 기본 절차는 VirtualBox VM 생성을 전제로 하지만, 이미 가상화된 클라우드 서버에서는 중첩 가상화 제약으로 동일한 방식이 실패했습니다.",
-            "접근: Vagrant/VirtualBox 의존 단계를 제거하고, installer 스크립트 실행과 패키지 직접 설치 방식으로 절차를 전환했습니다.",
-            "해결: VM 생성 없이도 NOS3 구성요소를 실행할 수 있도록 설치 경로를 재정의해 클라우드 환경에서 구동에 성공했습니다.",
+            "문제: NOS3 기본 절차는 VirtualBox VM 생성을 전제로 하지만, 이미 가상화된 클라우드 서버에서는 중첩 가상화 제약으로 동일한 방식 실패.",
+            "접근: Vagrant/VirtualBox 의존 단계를 제거하고, installer 스크립트 실행과 패키지 직접 설치 방식으로 절차 전환.",
+            "해결: VM 생성 없이도 NOS3 구성요소를 실행할 수 있도록 설치 경로를 재정의해 클라우드 환경에서 구동 성공.",
           ],
         },
         {
           title: "Ruby 라이브러리 및 하드코딩 경로 오류 수정",
           items: [
-            "문제: `nos3_ubuntu_64_COSMOS.sh` 실행 시 Nokogiri 미설치/버전 이슈로 Ruby 의존성 오류가 발생했습니다.",
-            "해결: 스크립트에 `gem install nokogiri -v 1.12.5`를 추가해 의존성을 고정했습니다.",
-            "문제: 설치 스크립트(`~/nos3/support/installers/ubuntu`)와 빌드/실행 스크립트(`~/Desktop`)의 경로 가정이 달라 스크립트 실행이 중단됐습니다.",
-            "해결: `nos3-build.sh` 등 스크립트 내 경로를 실제 서버 구조에 맞게 수정해 Build/Run 절차를 정상화했습니다.",
+            "문제: `nos3_ubuntu_64_COSMOS.sh` 실행 시 Nokogiri 미설치/버전 이슈로 Ruby 의존성 오류 발생.",
+            "해결: 스크립트에 `gem install nokogiri -v 1.12.5`를 추가해 의존성 버전 고정.",
+            "문제: 설치 스크립트(`~/nos3/support/installers/ubuntu`)와 빌드/실행 스크립트(`~/Desktop`)의 경로 가정이 달라 스크립트 실행 중단.",
+            "해결: `nos3-build.sh` 등 스크립트 내 경로를 실제 서버 구조에 맞게 수정해 Build/Run 절차 정상화.",
           ],
         },
       ],
       retrospective: [
-        "오픈소스 시뮬레이터를 다른 인프라에 이식할 때는 기능 구현보다 설치 체계와 의존성 정리가 우선이라는 점을 배웠습니다.",
-        "클라우드 Init Script 기반 자동화가 반복 배포 안정성과 팀 협업 속도에 직접적인 영향을 준다는 것을 확인했습니다.",
+        "오픈소스 시뮬레이터를 다른 인프라에 이식할 때는 기능 구현보다 설치 체계와 의존성 정리가 우선임을 인지.",
+        "클라우드 Init Script 기반 자동화가 반복 배포 안정성과 팀 협업 속도에 직접적인 영향을 준다는 것을 확인.",
       ],
     },
   },
