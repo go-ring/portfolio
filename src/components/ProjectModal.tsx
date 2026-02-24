@@ -51,6 +51,45 @@ function DetailBlock({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+const TROUBLE_LABELS: Record<string, { icon: string; color: string }> = {
+  '문제':  { icon: '🔴', color: 'text-red-400' },
+  '원인':  { icon: '⚠',  color: 'text-amber-400' },
+  '해결':  { icon: '🛠',  color: 'text-blue-400' },
+  '결과':  { icon: '📊', color: 'text-blue-400' },
+};
+
+const HIGHLIGHT_PHRASES = [
+  'AI 분석 성공률 99\.9% 달성',
+  'backend·fastapi 간 depends_on 제거',
+  '배포 시 AI 워커 컨테이너도 함께 재시작',
+  'backend와 fastapi 컨테이너의 수명 주기가 결합',
+  '배포 시, 진행 중인 분석이 강제 종료',
+  '수 분 소요',
+  'AI 분석',
+];
+
+function HighlightedText({ text }: { text: string }) {
+  const pattern = new RegExp(`(${HIGHLIGHT_PHRASES.join('|')})`, 'g');
+  const segs: { text: string; highlight: boolean }[] = [];
+  let last = 0, m: RegExpExecArray | null;
+  while ((m = pattern.exec(text)) !== null) {
+    if (m.index > last) segs.push({ text: text.slice(last, m.index), highlight: false });
+    segs.push({ text: m[0], highlight: true });
+    last = pattern.lastIndex;
+  }
+  if (last < text.length) segs.push({ text: text.slice(last), highlight: false });
+  return (
+    <>
+      {segs.map((s, i) =>
+        s.highlight
+          ? <span key={i} className="font-semibold text-blue-300">{s.text}</span>
+          : <span key={i}>{s.text}</span>
+      )}
+    </>
+  );
+}
+
+
 import { useScrollSpy } from '../hooks/useScrollSpy';
 
 // ...
@@ -410,23 +449,49 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         </section>
 
                         {/* 5. Troubleshooting */}
-                        <section id="troubleshooting" className="space-y-8 scroll-mt-24 min-h-[100px]">
-                             <SectionHeader title="트러블슈팅" variant="sidebar" />
-                             <div className="grid gap-6">
-                                {project.details?.troubleshooting?.map((section, index) => (
-                                    <div key={index} className="bg-[#1a1f2c] p-6 rounded-xl border border-white/5">
-                                        <h5 className="text-lg font-bold text-white mb-3 text-pink-400">{section.title}</h5>
-                                         <ul className="space-y-2 text-[15px] text-gray-300 leading-relaxed">
-                                            {section.items.map((item, idx) => (
-                                            <li key={idx} className="flex gap-3">
-                                                <span className="mt-[9px] h-[4px] w-[4px] rounded-full bg-gray-500 shrink-0" />
-                                                <span>{item}</span>
-                                            </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                             </div>
+                        <section id="troubleshooting" className="space-y-6 scroll-mt-24 min-h-[100px]">
+                          <SectionHeader title="트러블슈팅" variant="sidebar" />
+                          <div className="grid gap-5">
+                            {project.details?.troubleshooting?.map((section, index) => (
+                              <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 8 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: index * 0.08 }}
+                                className="bg-[#1a1f2c] rounded-xl border border-white/5 overflow-hidden hover:bg-[#1d2235] hover:shadow-lg transition-all duration-300"
+                              >
+                                {/* Card Title */}
+                                <div className="px-6 pt-5 pb-4 border-b border-white/[0.06]">
+                                  <h5 className="text-[17px] font-bold text-white leading-snug">{section.title}</h5>
+                                </div>
+
+                                {/* Items */}
+                                <div className="px-6 py-4 space-y-3">
+                                  {section.items.map((item, idx) => {
+                                    const colonIdx = item.indexOf(':');
+                                    const rawLabel = colonIdx !== -1 ? item.slice(0, colonIdx).trim() : null;
+                                    const labelInfo = rawLabel ? TROUBLE_LABELS[rawLabel] : null;
+                                    const content = colonIdx !== -1 ? item.slice(colonIdx + 1).trim() : item;
+
+                                    return (
+                                      <div key={idx} className="rounded-lg bg-white/[0.025] border border-white/[0.04] px-4 py-3">
+                                        {labelInfo && (
+                                          <div className={`flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase mb-2 ${labelInfo.color}`}>
+                                            <span>{labelInfo.icon}</span>
+                                            <span>{rawLabel}</span>
+                                          </div>
+                                        )}
+                                        <p className="text-[14px] text-gray-300 leading-[1.7]">
+                                          <HighlightedText text={content} />
+                                        </p>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
                         </section>
 
                         {/* 6. Outcomes & Awards */}
