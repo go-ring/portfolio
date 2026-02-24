@@ -87,16 +87,15 @@ function TroubleIcon({ type }: { type: string }) {
 }
 
 const HIGHLIGHT_PHRASES = [
-  // 문제
-  'AI 분석 성공률 99\\.9% 달성',
+  // AI 카드 — 문제
   '최대 10분 소요',
   'CI/CD 배포 시',
   '진행 중인 분석이 강제 종료',
-  // 원인
+  // AI 카드 — 원인
   'AI 분석이 Spring으로 진행률을 보고',
   '연결이 끊기면',
   '분석 파이프라인 전체 종료',
-  // 해결
+  // AI 카드 — 해결
   '두 컨테이너의 수명 주기를 물리적으로 분리',
   'Spring이 재시작 중이어서 보고에 실패하더라도',
   '끝까지 실행됩니다',
@@ -104,15 +103,15 @@ const HIGHLIGHT_PHRASES = [
   // 공통
   'AI 분석',
   // Redis 카드 — 문제
-  'Disk I/O로 응답 지연',
-  '대용량 트래픽 시 커넥션 풀 고갈 위험',
+  'Write가 많아질수록 DB에 부담이 가중됨',
   // Redis 카드 — 원인
-  '보안 판별 로직이 Disk I/O가 발생하는 MySQL에 의존',
+  '빈번하게 발생하는 쓰기 연산까지 Disk I/O가 있는 MySQL에 의존',
   // Redis 카드 — 해결
+  '위반 횟수 카운팅은 Redis로, 영구 차단 정보는 MySQL로 이원화',
+  '원자적으로 증가',
   'Spring Security 진입 전',
-  '원자적 증가',
-  'TTL로 임시 차단은 자동 해제',
   // Redis 카드 — 결과
+  'Race Condition 없이 정확한 집계 보장',
   '120ms → 5ms',
   'CPU 사용률 80% 감소',
   '초당 1,000회',

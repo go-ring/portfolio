@@ -192,10 +192,10 @@ export const projects: Project[] = [
         {
           title: "🛡️ 보안 검사를 매 요청마다 해야 하는데, DB 조회면 API가 느려진다",
           items: [
-            "문제: 블랙리스트 여부를 모든 API 요청마다 확인해야 함. \nMySQL 조회 시 Disk I/O로 응답 지연 발생, 대용량 트래픽 시 커넥션 풀 고갈 위험 존재.",
-            "원인: 보안 판별 로직이 Disk I/O가 발생하는 MySQL에 의존하는 구조.",
-            "해결: Redis(In-Memory)를 도입해 차단 여부를 마이크로초 단위로 조회. \n JwtAuthenticationTokenFilter에서 Spring Security 진입 전 violation:user:{id} 키를 Redis에서 조회해, 존재하면 즉시 403으로 차단하고 없으면 통과. 위반 감지 시 RedisTemplate.opsForValue().increment()로 카운터 원자적 증가, 5회 누적 시 영구 차단, TTL로 임시 차단은 자동 해제.",
-            "결과: JMeter 초당 1,000회 부하 테스트에서 응답속도 120ms → 5ms, CPU 사용률 80% 감소.\n 보안 로직을 전체 API에 적용했음에도 성능 저하 없음 확인.",
+            "문제: 비정상 접근을 반복하는 사용자를 모든 API 요청마다 확인해야 하는데, 위반 횟수 집계를 MySQL에서 하면 Write가 많아질수록 DB에 부담이 가중됨.",
+            "원인: 위반 카운팅처럼 빈번하게 발생하는 쓰기 연산까지 Disk I/O가 있는 MySQL에 의존하는 구조.",
+            "해결: 위반 횟수 카운팅은 Redis로, 영구 차단 정보는 MySQL로 이원화. \n 위반 감지 시 RedisTemplate.opsForValue().increment()로 violation:{userId} 카운터를 원자적으로 증가. \n TTL자동 초기화. 누적 횟수가 5회를 초과하면 MySQL BlackListUser 테이블에 영구 저장. \n JwtAuthenticationTokenFilter가 Spring Security 진입 전 isBlocked()로 해당 테이블을 조회해 즉시 403으로 차단",
+            "결과: 위반 카운팅 연산이 Redis 원자 연산으로 처리되어 동시 요청 시 Race Condition 없이 정확한 집계 보장.\n JMeter 초당 1,000회 부하 테스트에서 응답 속도 120ms → 5ms, CPU 사용률 80% 감소 확인.",
           ],
         },
         {
