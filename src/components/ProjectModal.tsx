@@ -103,6 +103,19 @@ const HIGHLIGHT_PHRASES = [
   'FastAPI가 MySQL에 직접 저장',
   // 공통
   'AI 분석',
+  // Redis 카드 — 문제
+  'Disk I/O로 응답 지연',
+  '대용량 트래픽 시 커넥션 풀 고갈 위험',
+  // Redis 카드 — 원인
+  '보안 판별 로직이 Disk I/O가 발생하는 MySQL에 의존',
+  // Redis 카드 — 해결
+  'Spring Security 진입 전',
+  '원자적 증가',
+  'TTL로 임시 차단은 자동 해제',
+  // Redis 카드 — 결과
+  '120ms → 5ms',
+  'CPU 사용률 80% 감소',
+  '초당 1,000회',
 ];
 
 function HighlightedText({ text }: { text: string }) {

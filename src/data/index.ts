@@ -192,10 +192,10 @@ export const projects: Project[] = [
         {
           title: "🛡️ 보안 검사를 매 요청마다 해야 하는데, DB 조회면 API가 느려진다",
           items: [
-            "문제: 블랙리스트 여부를 모든 API 요청마다 확인해야 함. MySQL 조회 시 Disk I/O로 응답 지연 발생, 대용량 트래픽 시 커넥션 풀 고갈 위험 존재.",
+            "문제: 블랙리스트 여부를 모든 API 요청마다 확인해야 함. \nMySQL 조회 시 Disk I/O로 응답 지연 발생, 대용량 트래픽 시 커넥션 풀 고갈 위험 존재.",
             "원인: 보안 판별 로직이 Disk I/O가 발생하는 MySQL에 의존하는 구조.",
-            "해결: Redis(In-Memory) 도입. JwtAuthenticationTokenFilter에서 Spring Security 진입 전 violation:user:{id} 키를 조회 — 존재하면 즉시 403 차단, 없으면 통과. 위반 감지 시 RedisTemplate.opsForValue().increment()로 카운터 원자적 증가, TTL로 자동 해제.",
-            "결과: JMeter 초당 1,000회 부하 테스트에서 응답속도 120ms → 5ms, CPU 사용률 80% 감소. 보안 로직 전면 적용에도 성능 저하 없음 확인.",
+            "해결: Redis(In-Memory)를 도입해 차단 여부를 마이크로초 단위로 조회. \n JwtAuthenticationTokenFilter에서 Spring Security 진입 전 violation:user:{id} 키를 Redis에서 조회해, 존재하면 즉시 403으로 차단하고 없으면 통과. 위반 감지 시 RedisTemplate.opsForValue().increment()로 카운터 원자적 증가, 5회 누적 시 영구 차단, TTL로 임시 차단은 자동 해제.",
+            "결과: JMeter 초당 1,000회 부하 테스트에서 응답속도 120ms → 5ms, CPU 사용률 80% 감소.\n 보안 로직을 전체 API에 적용했음에도 성능 저하 없음 확인.",
           ],
         },
         {
