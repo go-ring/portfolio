@@ -87,12 +87,21 @@ function TroubleIcon({ type }: { type: string }) {
 }
 
 const HIGHLIGHT_PHRASES = [
+  // 문제
   'AI 분석 성공률 99\\.9% 달성',
-  'backend·fastapi 간 depends_on 제거',
-  '배포 시 AI 워커 컨테이너도 함께 재시작',
-  'backend와 fastapi 컨테이너의 수명 주기가 결합',
-  '배포 시, 진행 중인 분석이 강제 종료',
-  '수 분 소요',
+  '최대 10분 소요',
+  'CI/CD 배포 시',
+  '진행 중인 분석이 강제 종료',
+  // 원인
+  'AI 분석이 Spring으로 진행률을 보고',
+  '연결이 끊기면',
+  '분석 파이프라인 전체 종료',
+  // 해결
+  '두 컨테이너의 수명 주기를 물리적으로 분리',
+  'Spring이 재시작 중이어서 보고에 실패하더라도',
+  '끝까지 실행됩니다',
+  'FastAPI가 MySQL에 직접 저장',
+  // 공통
   'AI 분석',
 ];
 
