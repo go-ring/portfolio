@@ -183,17 +183,17 @@ export const projects: Project[] = [
         {
           title: "🐳 배포가 진행 중인 AI 분석을 중단시킨다",
           items: [
-            "문제: AI 분석은 총 7단계(git clone → 단일 레포 분석 → OCR → DB 로드 → 통합 분석 → Fit Score 계산 → DB 저장)를 순차 실행하며 수 분 소요. 배포 시 진행 중인 분석이 강제 종료되어 사용자가 처음부터 다시 기다려야 하는 문제 발생.",
-            "1차 방어 — 컨테이너 수명주기 분리: docker-compose.prod.yml에서 backend와 fastapi 간 depends_on을 의도적으로 제거. docker compose up -d backend를 실행해도 fastapi 컨테이너는 재시작되지 않아, Spring 배포가 AI 워커 동작에 물리적으로 영향 불가.",
-            "2차 방어 — Fault-Tolerant 콜백: AI 워커(orchestrator.py)의 notify_spring() 함수가 각 단계(40%→60%→80%→95%→100%) 완료 후 Spring에 진행률 보고. 콜백을 try-except-pass로 감싸, 보고 실패 시에도 파이프라인은 다음 단계로 계속 진행.",
-            "데이터 유실 방지: 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장. Spring 다운 중에도 데이터는 DB에 보존되어 재시작 후 정상 조회 가능. (Eventual Consistency)",
-            "결과: docker restart baekgu-backend 실행 후 AI 워커 로그에서 'Connection refused' 경고만 찍히고 OCR → 통합 분석 → Fit Score 단계까지 파이프라인이 끝까지 완료됨. AI 분석 성공률 99.9% 달성.",
+            "문제: AI 분석은 총 7단계(git clone → 단일 레포 분석 → OCR → DB 로드 → 통합 분석 → Fit Score 계산 → DB 저장)를 순차 실행하며 수 분 소요. 하루에도 수 차례 이루어지는 CI/CD 배포 시, 진행 중인 분석이 강제 종료되어 사용자가 처음부터 다시 기다려야 하는 문제 발생.",
+            "원인: docker-compose.prod.yml에서 backend와 fastapi 컨테이너의 수명 주기가 결합되어 있어, Spring 배포 시 AI 워커 컨테이너도 함께 재시작되는 구조.",
+            "해결: 이중 방어선 적용. [1차] backend·fastapi 간 depends_on 제거 — docker compose up -d backend를 실행해도 fastapi 컨테이너는 재시작되지 않아 Spring 배포가 AI 워커 동작에 물리적으로 영향 불가. [2차] orchestrator.py의 notify_spring()을 try-except-pass로 감싸 Progress(40%→60%→80%→95%→100%) 보고가 실패해도 파이프라인은 다음 단계로 계속 진행. 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장해 Spring 다운 중에도 데이터 보존. (Eventual Consistency)",
+            "결과: docker restart baekgu-backend 실행 후 AI 워커 로그에서 'Connection refused' 경고만 찍히고, OCR → 통합 분석 → Fit Score 단계까지 파이프라인이 끝까지 완료됨. AI 분석 성공률 99.9% 달성.",
           ],
         },
         {
           title: "🛡️ 보안 검사를 매 요청마다 해야 하는데, DB 조회면 API가 느려진다",
           items: [
-            "문제: 블랙리스트 여부를 모든 API 요청마다 확인해야 함. MySQL 조회 시 Disk I/O로 응답 지연, 대용량 트래픽 시 커넥션 풀 고갈 위험 존재.",
+            "문제: 블랙리스트 여부를 모든 API 요청마다 확인해야 함. MySQL 조회 시 Disk I/O로 응답 지연 발생, 대용량 트래픽 시 커넥션 풀 고갈 위험 존재.",
+            "원인: 보안 판별 로직이 Disk I/O가 발생하는 MySQL에 의존하는 구조.",
             "해결: Redis(In-Memory) 도입. JwtAuthenticationTokenFilter에서 Spring Security 진입 전 violation:user:{id} 키를 조회 — 존재하면 즉시 403 차단, 없으면 통과. 위반 감지 시 RedisTemplate.opsForValue().increment()로 카운터 원자적 증가, TTL로 자동 해제.",
             "결과: JMeter 초당 1,000회 부하 테스트에서 응답속도 120ms → 5ms, CPU 사용률 80% 감소. 보안 로직 전면 적용에도 성능 저하 없음 확인.",
           ],
@@ -201,10 +201,9 @@ export const projects: Project[] = [
         {
           title: "💬 채팅방 목록이 데이터가 쌓일수록 점점 느려졌다",
           items: [
-            "문제: 테스트 데이터가 누적되면서 채팅방 목록 로딩 속도가 200ms → 1.5s로 급격히 저하.",
+            "문제: 테스트 데이터 누적 후 채팅방 목록 로딩 속도가 200ms → 1.5s로 급격히 저하.",
             "원인: JPA Lazy Loading으로 인한 N+1. 방 목록 1건마다 '안 읽은 메시지 수(N) + 상대방 프로필(N) + 마지막 메시지(N)'를 각각 별도 쿼리로 조회하는 구조.",
-            "시도와 한계: QueryDSL Fetch Join을 적용하려 했지만, 안 읽은 메시지 수 집계(COUNT)와 최신 메시지 조회(MAX), 페이징이 동시에 필요한 구조에서 Fetch Join 단독으로는 해결 불가.",
-            "해결: Projections.constructor로 DTO를 직접 조회하고, 집계 값들을 SELECT 절 인라인 서브쿼리로 처리해 여러 번 나가던 쿼리를 단 1회로 통합. (ChatRoomQueryRepositoryImpl.java)",
+            "해결: QueryDSL Fetch Join을 우선 시도했지만 집계(COUNT, MAX)와 페이징이 동시에 필요한 구조에서 한계 봉착. Projections.constructor로 DTO를 직접 조회하고, 집계 값들을 SELECT 절 인라인 서브쿼리로 처리해 여러 번 나가던 쿼리를 단 1회로 통합. (ChatRoomQueryRepositoryImpl.java)",
             "결과: 데이터 1만 건 이상에서도 채팅방 목록 로딩 50ms 미만으로 안정적 유지. 1.5s → 50ms, 30배 개선.",
           ],
         },
