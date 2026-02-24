@@ -51,15 +51,43 @@ function DetailBlock({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-const TROUBLE_LABELS: Record<string, { icon: string; color: string }> = {
-  '문제':  { icon: '🔴', color: 'text-red-400' },
-  '원인':  { icon: '⚠',  color: 'text-amber-400' },
-  '해결':  { icon: '🛠',  color: 'text-blue-400' },
-  '결과':  { icon: '📊', color: 'text-blue-400' },
+const TROUBLE_LABELS: Record<string, { color: string }> = {
+  '문제': { color: 'text-[#E85C5C]' },
+  '원인': { color: 'text-[#F4C430]' },
+  '해결': { color: 'text-[#6AA8FF]' },
+  '결과': { color: 'text-[#7DD3FC]' },
 };
 
+function TroubleIcon({ type }: { type: string }) {
+  const svg = (path: React.ReactNode) => (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {path}
+    </svg>
+  );
+  if (type === '문제') return svg(<>
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="8" x2="12" y2="12" />
+    <line x1="12" y1="16" x2="12.01" y2="16" />
+  </>);
+  if (type === '원인') return svg(<>
+    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+    <path d="M12 9v4" />
+    <path d="M12 17h.01" />
+  </>);
+  if (type === '해결') return svg(
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+  );
+  if (type === '결과') return svg(<>
+    <line x1="18" x2="18" y1="20" y2="10" />
+    <line x1="12" x2="12" y1="20" y2="4" />
+    <line x1="6"  x2="6"  y1="20" y2="14" />
+  </>);
+  return null;
+}
+
 const HIGHLIGHT_PHRASES = [
-  'AI 분석 성공률 99\.9% 달성',
+  'AI 분석 성공률 99\\.9% 달성',
   'backend·fastapi 간 depends_on 제거',
   '배포 시 AI 워커 컨테이너도 함께 재시작',
   'backend와 fastapi 컨테이너의 수명 주기가 결합',
@@ -82,7 +110,7 @@ function HighlightedText({ text }: { text: string }) {
     <>
       {segs.map((s, i) =>
         s.highlight
-          ? <span key={i} className="font-semibold text-blue-300">{s.text}</span>
+          ? <span key={i} className="font-semibold text-[#6AA8FF]">{s.text}</span>
           : <span key={i}>{s.text}</span>
       )}
     </>
@@ -478,11 +506,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                       <div key={idx} className="rounded-lg bg-white/[0.025] border border-white/[0.04] px-4 py-3">
                                         {labelInfo && (
                                           <div className={`flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase mb-2 ${labelInfo.color}`}>
-                                            <span>{labelInfo.icon}</span>
+                                            <TroubleIcon type={rawLabel!} />
                                             <span>{rawLabel}</span>
                                           </div>
                                         )}
-                                        <p className="text-[14px] text-gray-300 leading-[1.7]">
+                                        <p className="text-[14px] text-gray-300 leading-[1.7] whitespace-pre-line">
                                           <HighlightedText text={content} />
                                         </p>
                                       </div>

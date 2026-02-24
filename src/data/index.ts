@@ -183,10 +183,10 @@ export const projects: Project[] = [
         {
           title: "🐳 배포가 진행 중인 AI 분석을 중단시킨다",
           items: [
-            "문제: AI 분석은 총 7단계(git clone → 단일 레포 분석 → OCR → DB 로드 → 통합 분석 → Fit Score 계산 → DB 저장)를 순차 실행하며 수 분 소요. 하루에도 수 차례 이루어지는 CI/CD 배포 시, 진행 중인 분석이 강제 종료되어 사용자가 처음부터 다시 기다려야 하는 문제 발생.",
-            "원인: docker-compose.prod.yml에서 backend와 fastapi 컨테이너의 수명 주기가 결합되어 있어, Spring 배포 시 AI 워커 컨테이너도 함께 재시작되는 구조.",
-            "해결: 이중 방어선 적용. [1차] backend·fastapi 간 depends_on 제거 — docker compose up -d backend를 실행해도 fastapi 컨테이너는 재시작되지 않아 Spring 배포가 AI 워커 동작에 물리적으로 영향 불가. [2차] orchestrator.py의 notify_spring()을 try-except-pass로 감싸 Progress(40%→60%→80%→95%→100%) 보고가 실패해도 파이프라인은 다음 단계로 계속 진행. 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장해 Spring 다운 중에도 데이터 보존. (Eventual Consistency)",
-            "결과: docker restart baekgu-backend 실행 후 AI 워커 로그에서 'Connection refused' 경고만 찍히고, OCR → 통합 분석 → Fit Score 단계까지 파이프라인이 끝까지 완료됨. AI 분석 성공률 99.9% 달성.",
+            "문제: AI 분석은 총 7단계(git clone → 단일 레포 분석 → OCR → DB 로드 → 통합 분석 → Fit Score 계산 → DB 저장)를 순차 실행하며, 최대 10분 소요. 하루에도 수 차례 이루어지는 CI/CD 배포 시, 진행 중인 분석이 강제 종료되어 사용자가 처음부터 다시 기다려야 하는 문제 발생.",
+            "원인: Spring 배포 타이밍에 진행 중인 AI 분석이 Spring으로 진행률을 보고(notify_spring())하는 순간 연결이 끊기면, 처리되지 않은 예외가 발생해 분석 파이프라인 전체 종료.\ndocker-compose.prod.yml에서 fastapi가 backend에 의존(depends_on)하도록 설정되어 있어, Spring 컨테이너가 재시작되면 FastAPI 컨테이너도 함께 재시작.",
+            "해결: 이중 방어선 적용.\n[1차] fastapi의 depends_on에서 backend 의존성을 제거해 두 컨테이너의 수명 주기를 물리적으로 분리. docker compose up -d backend 실행 시 fastapi 컨테이너는 재시작되지 않음.\n[2차] AI 분석은 총 5번에 걸쳐 Spring에 진행 상황(40% → 100%)을 보고합니다. 이 보고 로직(notify_spring())을 try-except-pass로 감싸, Spring이 재시작 중이어서 보고에 실패하더라도 분석 자체는 멈추지 않고 끝까지 실행됩니다. 분석 결과는 Spring을 거치지 않고 FastAPI가 MySQL에 직접 저장하기 때문에, Spring이 꺼져 있는 동안에도 데이터가 유실되지 않습니다. Spring이 재기동된 후 사용자는 정상적으로 결과를 조회할 수 있습니다. (Eventual Consistency)",
+            "결과: docker restart baekgu-backend 실행 후 AI 워커 로그에서 Connection refused 경고만 찍히고, OCR → 통합 분석 → Fit Score 단계까지 파이프라인이 끝까지 완료됨.",
           ],
         },
         {
