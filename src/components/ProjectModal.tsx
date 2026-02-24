@@ -115,6 +115,12 @@ const HIGHLIGHT_PHRASES = [
   '120ms → 5ms',
   'CPU 사용률 80% 감소',
   '초당 1,000회',
+  // WebSocket 카드 — 원인
+  '커스텀 HTTP 헤더를 붙이는 기능 자체가 없음',
+  // WebSocket 카드 — 해결
+  '인증 시점을 HTTP 레이어에서 STOMP 레이어로 분리',
+  'CONNECT 프레임 수신 시 JWT 검증',
+  'SimpUserRegistry에 정상 전파',
 ];
 
 function HighlightedText({ text }: { text: string }) {

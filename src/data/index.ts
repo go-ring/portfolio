@@ -181,7 +181,7 @@ export const projects: Project[] = [
       ],
       troubleshooting: [
         {
-          title: "🐳 배포가 진행 중인 AI 분석을 중단시킨다",
+          title: "🐳 CI/CD 배포가 진행 중인 AI 분석을 강제 종료한다",
           items: [
             "문제: AI 분석은 총 7단계(git clone → 단일 레포 분석 → OCR → DB 로드 → 통합 분석 → Fit Score 계산 → DB 저장)를 순차 실행하며, 최대 10분 소요. 하루에도 수 차례 이루어지는 CI/CD 배포 시, 진행 중인 분석이 강제 종료되어 사용자가 처음부터 다시 기다려야 하는 문제 발생.",
             "원인: Spring 배포 타이밍에 진행 중인 AI 분석이 Spring으로 진행률을 보고(notify_spring())하는 순간 연결이 끊기면, 처리되지 않은 예외가 발생해 분석 파이프라인 전체 종료.\ndocker-compose.prod.yml에서 fastapi가 backend에 의존(depends_on)하도록 설정되어 있어, Spring 컨테이너가 재시작되면 FastAPI 컨테이너도 함께 재시작.",
@@ -190,7 +190,7 @@ export const projects: Project[] = [
           ],
         },
         {
-          title: "🛡️ 보안 검사를 매 요청마다 해야 하는데, DB 조회면 API가 느려진다",
+          title: "🛡️ DB 기반 보안 검사가 매 요청마다 API를 느리게 만든다",
           items: [
             "문제: 비정상 접근을 반복하는 사용자를 모든 API 요청마다 확인해야 하는데, 위반 횟수 집계를 MySQL에서 하면 Write가 많아질수록 DB에 부담이 가중됨.",
             "원인: 위반 카운팅처럼 빈번하게 발생하는 쓰기 연산까지 Disk I/O가 있는 MySQL에 의존하는 구조.",
@@ -199,12 +199,12 @@ export const projects: Project[] = [
           ],
         },
         {
-          title: "💬 채팅방 목록이 데이터가 쌓일수록 점점 느려졌다",
+          title: "💬 WebSocket 핸드셰이크에서 JWT 헤더가 서버에 닿지 않는다",
           items: [
-            "문제: 테스트 데이터 누적 후 채팅방 목록 로딩 속도가 200ms → 1.5s로 급격히 저하.",
-            "원인: JPA Lazy Loading으로 인한 N+1. 방 목록 1건마다 '안 읽은 메시지 수(N) + 상대방 프로필(N) + 마지막 메시지(N)'를 각각 별도 쿼리로 조회하는 구조.",
-            "해결: QueryDSL Fetch Join을 우선 시도했지만 집계(COUNT, MAX)와 페이징이 동시에 필요한 구조에서 한계 봉착. Projections.constructor로 DTO를 직접 조회하고, 집계 값들을 SELECT 절 인라인 서브쿼리로 처리해 여러 번 나가던 쿼리를 단 1회로 통합. (ChatRoomQueryRepositoryImpl.java)",
-            "결과: 데이터 1만 건 이상에서도 채팅방 목록 로딩 50ms 미만으로 안정적 유지. 1.5s → 50ms, 30배 개선.",
+            "문제: WebSocket에 JWT 인증 적용. HTTP 업그레이드 방식으로 연결되므로, 핸드셰이크 시 Authorization: Bearer 헤더를 전달하면 HandshakeInterceptor에서 받아 인증할 수 있을 것으로 예상했으나, 헤더가 서버에 도달하지 않음",
+            "원인: JavaScript의 new WebSocket(url) 호출 시, 커스텀 HTTP 헤더를 붙이는 기능 자체가 없음. 브라우저 WebSocket API 스펙(RFC 6455)의 제약.",
+            "해결: 인증 시점을 HTTP 레이어에서 STOMP 레이어로 분리.\n[HTTP 레이어] WebSocketHandshakeInterceptor — 핸드셰이크는 인증 없이 무조건 통과.\n[STOMP 레이어] JwtChannelInterceptor — CONNECT 프레임 수신 시 JWT 검증, Access Token 타입 확인, userId 세션 저장. return message 대신 createMessage()로 반환해야 변경된 Principal이 SimpUserRegistry에 정상 전파되어 /user/queue 개인 구독(1:1 Push)이 동작.",
+            "결과: STOMP CONNECT 프레임 안에 Authorization 헤더 포함 전송 확인. Nginx 로그에 토큰 미노출 확인. /user/queue 개인 구독 1:1 메시지 Push 정상 작동.",
           ],
         },
       ],
