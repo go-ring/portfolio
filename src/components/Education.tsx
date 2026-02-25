@@ -78,10 +78,16 @@ export function Education() {
                             </span>
                         )}
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:gap-2 text-[0.92rem] leading-[1.55] font-medium opacity-80">
-                        <span className="text-gray-300">{edu.degree}</span>
-                        <span className="hidden sm:inline text-gray-600">|</span>
-                        <span className="text-gray-400 font-normal opacity-75 text-[0.90rem] leading-[1.65]">{edu.description}</span>
+                        <div className="flex flex-wrap items-center gap-x-2 text-[0.90rem] leading-[1.65] font-medium text-gray-400/80">
+                            <span className="text-gray-300">{edu.degree}</span>
+                            {edu.organizer && (
+                                <>
+                                    <span className="text-gray-600 opacity-50">|</span>
+                                    <span className="text-gray-300">{edu.organizer}</span>
+                                </>
+                            )}
+                            <span className="text-gray-600 opacity-50">|</span>
+                            <span className="font-normal">{edu.description}</span>
                         </div>
                     </div>
                     </div>

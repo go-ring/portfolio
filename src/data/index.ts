@@ -68,6 +68,7 @@ export interface EducationItem {
   degree: string;
   gpa?: string;
   description?: string;
+  organizer?: string;
 }
 
 export interface CertificationItem {
@@ -398,6 +399,7 @@ export const education: EducationItem[] = [
     period: "2025.08 ~ 현재",
     degree: "14기 교육생",
     description: "알고리즘 및 웹 개발 심화 과정",
+    organizer: "삼성전자",
   },
   {
     school: "CIA Academy",
@@ -410,6 +412,7 @@ export const education: EducationItem[] = [
     period: "2022.10 ~ 2024.01",
     degree: "학부 연구생",
     description: "논문 작성 및 최신 기술 동향 연구",
+    organizer: "한남대학교",
   },
 ];
 
