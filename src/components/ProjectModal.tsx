@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github, BookOpen, Presentation, BadgeCheck, Trophy, List, ChevronRight, ExternalLink } from 'lucide-react';
 import { Project } from '../data';
+import { renderLinked } from '../utils/renderUtils';
+
 
 interface ProjectModalProps {
   project: Project | null;
@@ -43,7 +45,7 @@ function DetailBlock({ title, items }: { title: string; items: string[] }) {
         {items.map((item, idx) => (
           <li key={idx} className="flex gap-3">
             <span className="mt-[9px] h-[4px] w-[4px] rounded-full bg-gray-500 shrink-0" />
-            <span>{item}</span>
+            <span>{renderLinked(item)}</span>
           </li>
         ))}
       </ul>
@@ -137,8 +139,8 @@ function HighlightedText({ text }: { text: string }) {
     <>
       {segs.map((s, i) =>
         s.highlight
-          ? <span key={i} className="font-semibold text-[#6AA8FF]">{s.text}</span>
-          : <span key={i}>{s.text}</span>
+          ? <span key={i} className="font-semibold text-[#6AA8FF]">{renderLinked(s.text)}</span>
+          : <span key={i}>{renderLinked(s.text)}</span>
       )}
     </>
   );
@@ -373,7 +375,8 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                              <div>
                                 <SectionHeader title="프로젝트 개요" variant="sidebar" />
                                 <p className="text-gray-300 leading-relaxed text-[16px] whitespace-pre-wrap">
-                                    {project.description}
+                                    {renderLinked(project.description)}
+
                                 </p>
                              </div>
 
@@ -416,7 +419,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                       <div className="mt-1 h-2 w-2 rounded-full bg-primary shrink-0" />
                                       <div>
                                         <span className="font-bold text-primary text-[15px] block mb-1">{title}</span>
-                                        {body && <p className="text-gray-300 leading-relaxed text-[14px]">{body}</p>}
+                                        {body && <p className="text-gray-300 leading-relaxed text-[14px]">{renderLinked(body)}</p>}
                                       </div>
                                     </div>
                                   );
@@ -473,7 +476,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                                 <div className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
                                                 <div>
                                                     <span className="font-bold text-white text-lg block mb-1">{techName}</span>
-                                                    <p className="text-gray-300 leading-relaxed text-[15px]">{reason}</p>
+                                                    <p className="text-gray-300 leading-relaxed text-[15px]">{renderLinked(reason)}</p>
                                                 </div>
                                             </div>
                                         );
@@ -556,7 +559,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                             <div className="space-y-4">
                                 {project.impact && project.impact.split('\n').map((line, idx) => {
                                     // Check if this line is the one about the Smart Media Conference
-                                    const isPaperLine = line.includes("스마트미디어 추계학술대회");
+                                    const isAwardLine = line.includes("우수상") || line.includes("상장");
+                                    const isPaperLine = line.includes("학술 논문") || line.includes("학술대회");
+                                    const isReportLine = line.includes("연구 보고서") || line.includes("검토·정리");
 
                                     return (
                                         <div key={idx} className="bg-[#1a1f2c] p-5 rounded-xl border border-white/10 flex items-start gap-4">
@@ -565,17 +570,41 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                                 <span className="text-[15px] text-gray-200 font-medium leading-relaxed">
                                                     {line}
                                                 </span>
-                                                {isPaperLine && project.links.paper && (
-                                                    <a 
-                                                        href={project.links.paper}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="shrink-0 flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium whitespace-nowrap"
-                                                    >
-                                                        <ExternalLink size={14} />
-                                                        Paper
-                                                    </a>
-                                                )}
+                                                <div className="flex gap-3 shrink-0">
+                                                    {isAwardLine && project.links.proof && (
+                                                        <a 
+                                                            href={project.links.proof}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex items-center gap-1 text-sm text-yellow-500 hover:text-yellow-400 hover:underline transition-colors font-medium whitespace-nowrap"
+                                                        >
+                                                            <ExternalLink size={14} />
+                                                            Award
+                                                        </a>
+                                                    )}
+                                                    {isPaperLine && project.links.paper && (
+                                                        <a 
+                                                            href={project.links.paper}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium whitespace-nowrap"
+                                                        >
+                                                            <ExternalLink size={14} />
+                                                            Paper
+                                                        </a>
+                                                    )}
+                                                    {isReportLine && project.links.proof && (
+                                                        <a 
+                                                            href={project.links.proof}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300 hover:underline transition-colors font-medium whitespace-nowrap"
+                                                        >
+                                                            <ExternalLink size={14} />
+                                                            Report
+                                                        </a>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
                                     );

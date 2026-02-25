@@ -1,7 +1,7 @@
 import { Section } from './Section';
-import { profile, education, certifications, research } from '../data';
+import { profile, education, certifications, research, awards } from '../data';
 import { motion } from 'framer-motion';
-import { User, Award, GraduationCap, FileText } from 'lucide-react';
+import { User, Award, GraduationCap, FileText, Trophy } from 'lucide-react';
 import { Card } from './common/Card';
 
 export function Education() {
@@ -88,6 +88,30 @@ export function Education() {
                 );
                 })}
             </div>
+            </div>
+
+            {/* Awards section - Moved up below Education */}
+            <div className="mb-12">
+                <h3 className="text-[0.78rem] leading-[1.1] font-bold tracking-[0.12em] text-primary uppercase flex items-center gap-2 mb-6 opacity-85 [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+                    <Trophy size={14} /> Awards
+                </h3>
+                <div className="space-y-6">
+                    {awards.map((item, idx) => (
+                        <div key={idx} className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 group">
+                            <div className="w-32 text-[0.82rem] leading-[1.35] font-medium text-gray-400 opacity-65 tabular-nums shrink-0">
+                                {item.date}
+                            </div>
+                            <div className="flex-1">
+                                <h4 className="text-[1.05rem] leading-[1.35] font-bold text-white opacity-[0.98] group-hover:text-primary transition-colors mb-1">
+                                    {item.competition} {item.name}
+                                </h4>
+                                <p className="text-[0.92rem] leading-[1.55] font-medium text-gray-400 opacity-80 group-hover:text-gray-300 transition-colors">
+                                    {item.organization}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* Bottom Row: Research */}

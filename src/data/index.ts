@@ -82,6 +82,13 @@ export interface ResearchItem {
   date: string;
 }
 
+export interface AwardItem {
+  name: string;
+  competition: string;
+  organization: string;
+  date: string;
+}
+
 export const profile = {
   name: "이가은",
   enName: "Lee GaEun",
@@ -132,7 +139,7 @@ export const projects: Project[] = [
     period: "2026.01.05 ~ 2026.02.09",
     role: ["백엔드 리드 & 인프라"],
     description:
-      "GitHub 코드 분석 기반의 올인원 개발자 취업 솔루션. '개발자는 코드로 말하고 싶은데, 기업은 자소서를 원한다'는 채용의 병목 문제를 해결하기 위해 탄생.\n\nGitHub 레포지토리(실제 커밋/코드)와 기업의 최신 데이터(DART 공시, Perplexity AI)를 교차 분석하여, 기술 역량 기반 공고 매칭과 근거 있는 자기소개서 작성을 자동화. 범용 LLM의 할루시네이션(Hallucination) 문제를 극복하고, SSAFY 취업 컨설턴트 자문을 반영한 증거 중심 커리어 솔루션.",
+      "GitHub 코드 분석 기반의 올인원 개발자 취업 솔루션. '개발자는 코드로 말하고 싶은데, 기업은 자소서를 원한다'는 채용의 병목 문제를 해결하기 위해 탄생.\n\nGitHub 레포지토리(실제 커밋/코드)와 기업의 최신 데이터(DART 공시, Perplexity AI)를 교차 분석하여, 기술 역량 기반 공고 매칭과 근거 있는 자기소개서 작성을 자동화. 범용 LLM의 할루시네이션(Hallucination) 문제를 극복하고, SSAFY 취업 컨설턴트 자문을 반영한 증거 중심 커리어 솔루션. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))",
     tech: [
       "Java 17",
       "Spring Boot 3.2",
@@ -162,9 +169,9 @@ export const projects: Project[] = [
     details: {
       roleAndContribution: [
         "모니터링 시스템 구축: Prometheus + Grafana + Loki를 연동해 서버 메트릭·애플리케이션 로그·트래픽을 단일 대시보드에서 통합 관제. 장애 발생 시 로그 스택 트레이스를 수 초 내 추적 가능한 환경 마련",
-        "Redis 기반 블랙리스트 자동 차단 시스템: 모니터링 지표 기반으로 비정상 접근(4xx 반복)을 감지 → RedisTemplate Atomic Counter로 카운트 → 임계치 초과 시 Spring Security 진입 전 즉시 403 차단 + TTL 자동 해제 (BlackListServiceImpl.java)",
+        "Redis 기반 블랙리스트 자동 차단 시스템: 모니터링 지표 기반으로 비정상 접근(4xx 반복)을 감지 → RedisTemplate Atomic Counter로 카운트 → 임계치 초과 시 Spring Security 진입 전 즉시 403 차단 + TTL 자동 해제 ([BlackListServiceImpl.java](https://github.com/go-ring/baekgu/blob/master/backend/baekgu/src/main/java/ssafy/project/baekgu/auth/service/impl/BlackListServiceImpl.java))",
         "GitLab CI/CD 파이프라인 구축: 코드 푸시 → 자동 빌드·테스트·배포 흐름 구성. Docker Compose 서비스 분리 전략으로 backend 재배포 시 AI 워커(FastAPI) 컨테이너 무중단 유지",
-        "WebSocket/STOMP 채팅 서버 구현: SimpMessagingTemplate 기반 Pub/Sub 메시징 구조 적용. 채팅방 목록 조회의 N+1 문제를 QueryDSL Projections.constructor + 서브쿼리로 해결 → 1.5s → 50ms (ChatRoomQueryRepositoryImpl.java)",
+        "WebSocket/STOMP 채팅 서버 구현: SimpMessagingTemplate 기반 Pub/Sub 메시징 구조 적용. 채팅방 목록 조회의 N+1 문제를 QueryDSL Projections.constructor + 서브쿼리로 해결 → 1.5s → 50ms ([ChatRoomQueryRepositoryImpl.java](https://github.com/go-ring/baekgu/blob/master/backend/baekgu/src/main/java/ssafy/project/baekgu/chat/repository/query/ChatRoomQueryRepositoryImpl.java))",
       ],
       techAndReason: [
         "Spring Boot + FastAPI 분리: 비즈니스 로직(Spring)과 AI 연산(FastAPI)의 부하를 격리하여, AI 작업의 CPU 집약적 연산이 사용자 API 응답 속도에 영향을 주지 않도록 부하 격리 설계.",
@@ -175,8 +182,8 @@ export const projects: Project[] = [
       implementation: [
         "IP 바인딩 JWT: 토큰 발급 시 클라이언트 IP를 암호화하여 Payload에 포함하고, JwtAuthenticationTokenFilter에서 매 요청마다 실제 IP와 대조. 세션 하이재킹 원천 차단.",
         "Redis Atomic Counter 블랙리스트: 비정상 접근(4xx 에러 반복) 감지 시 RedisTemplate.opsForValue().increment()로 카운트 증가, 임계치 초과 시 Spring Security 필터 진입 전 즉시 403 차단.",
-        "채팅 N+1 최적화: '방 목록(1) + 안 읽은 메시지 수(N) + 상대 프로필(N) + 마지막 메시지(N)' 패턴을 Projections.constructor와 서브쿼리를 활용한 단일 QueryDSL 쿼리로 해결. 1만 건 이상 데이터에서도 50ms 미만 유지.",
-        "결함 허용(Fault-Tolerant) AI 파이프라인 — 이중 방어선: [1차] docker-compose.prod.yml에서 backend·fastapi 간 depends_on 없이 독립 컨테이너로 분리, Spring 배포가 FastAPI 수명 주기에 물리적으로 영향 없음. [2차] orchestrator.py의 notify_spring()에서 Spring 콜백을 try-except-pass로 감싸, Progress 40%(Step 2) → 60%(Step 3) → 80%(Step 5) → 95%(Step 6) → 100%(Step 7) 각 단계 보고가 실패해도 파이프라인은 계속 진행. 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장하여 Spring 재시작 후에도 사용자가 정상 조회 가능 (Eventual Consistency 보장).",
+        "채팅 N+1 최적화: '방 목록(1) + 안 읽은 메시지 수(N) + 상대 프로필(N) + 마지막 메시지(N)' 패턴을 Projections.constructor와 서브쿼리를 활용한 단일 QueryDSL 쿼리로 해결. 1만 건 이상 데이터에서도 50ms 미만 유지 ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing)).",
+        "결함 허용(Fault-Tolerant) AI 파이프라인 — 이중 방어선: [1차] docker-compose.prod.yml에서 backend·fastapi 간 depends_on 없이 독립 컨테이너로 분리, Spring 배포가 FastAPI 수명 주기에 물리적으로 영향 없음. [2차] orchestrator.py의 notify_spring()에서 Spring 콜백을 try-except-pass로 감싸, Progress 40% → 100% 각 단계 보고가 실패해도 파이프라인은 계속 진행. 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장하여 Spring 재시작 후에도 사용자가 정상 조회 가능 ([발표자료 참고](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing)).",
         "데이터 수집 파이프라인: DART OpenAPI로 기업 공시 데이터 추출, Perplexity sonar-pro로 최신 뉴스 수집, GitHub API로 커밋 이력 수집, git clone으로 전체 소스 분석, Playwright로 자소설닷컴 공고(네트워크 인터셉트 방식) 크롤링.",
       ],
       troubleshooting: [
@@ -224,7 +231,7 @@ export const projects: Project[] = [
     title: "ColorFinder",
     type: "팀 프로젝트 (3인)",
     description:
-      "사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼.\n\n단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류.\n\n기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현.",
+      "사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼.\n\n단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류.\n\n기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))",
     tech: [
       "Java",
       "Spring Boot",
@@ -238,7 +245,7 @@ export const projects: Project[] = [
     period: "2024.01.13 ~ 2024.06.03",
     role: "백엔드 개발",
     impact:
-      "한남대학교 캡스톤 경진대회 우수상 (2024)\n2024 스마트미디어 추계학술대회 학술 논문 발표 \n42명의 베타 테스터 대상 사용자 만족도 조사 결과, 평균 4.7/5.0점 달성 (추천 정확도 92% 긍정)",
+      "한남대학교 캡스톤 경진대회 우수상 (2024)\n2024 스마트미디어 추계학술대회 학술 논문 발표\n42명의 베타 테스터 대상 사용자 만족도 조사 결과, 평균 4.7/5.0점 달성 (추천 정확도 92% 긍정)",
     links: {
       repo: "https://github.com/chaeha617/capstone_colorfinder",
       demo: "http://color-finder.site",
@@ -258,7 +265,7 @@ export const projects: Project[] = [
       roleAndContribution: [
         "색상 추출 파이프라인 구현: Google Vision AI로 의류 이미지의 Dominant Color(RGB) 추출 → 유클리디안 거리 기반 퍼스널 컬러 타입 자동 태깅. 분류 성공률 98% 달성",
         "퍼스널 컬러 DB 설계: 잭슨의 Color Me Beautiful 이론 기반 12가지 타입 표본 데이터 구축 및 RGB 색상 매핑 로직 설계",
-        "날씨 기반 추천 필터링: 기상청 단기 예보 API 연동, 실시간 기온 기반 의류 카테고리 필터링 + 30분 단위 캐싱으로 메인 페이지 로딩 1.5s → 0.2s",
+        "날씨 기반 추천 필터링: 기상청 단기 예보 API 연동, 실시간 기온 기반 의류 카테고리 필터링 + 30분 단위 캐싱으로 메인 페이지 로딩 1.5s → 0.2s ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu))",
         "REST API 설계 및 구현: 회원·상품·주문·결제 도메인 Spring Boot 백엔드 API 개발 (Controller → Service → Repository 레이어 구조)",
       ],
       techAndReason: [
@@ -315,7 +322,7 @@ export const projects: Project[] = [
     type: "산학 과제 (3인)",
     role: "위성 시뮬레이터 환경 구축 및 문제 해결",
     description:
-      "NASA의 오픈소스 위성 시뮬레이션 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리.",
+      "NASA의 오픈소스 위성 시뮬레이션 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))",
     tech: [
       "NOS3",
       "Linux",
@@ -436,5 +443,14 @@ export const research: ResearchItem[] = [
     title: "빅데이터 분석 방법 비교",
     conference: "2023 한국스마트미디어학회 심포지움",
     date: "2023.10",
+  },
+];
+
+export const awards: AwardItem[] = [
+  {
+    name: "우수상",
+    competition: "캡스톤 디자인 대회",
+    organization: "한남대학교",
+    date: "2024.06.10",
   },
 ];
