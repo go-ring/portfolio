@@ -96,7 +96,10 @@ export const profile = {
   birthdate: "2002.04.01",
   title: "Backend Developer",
   shortBio: "데이터와 논리적인 사고를 바탕으로 성장하는 백엔드 개발자입니다.",
-  education: "한남대학교 컴퓨터공학과 (졸업)",
+  education: {
+    school: "한남대학교 컴퓨터공학과",
+    major: "학사 4.09/4.5"
+  },
   missionStatement:
     "깊이 있는 탐구와 끊임없는 도전을 통해 더 나은 소프트웨어를 만듭니다.",
   keywords: ["성실함", "책임감", "논리적사고", "협업", "성장"],

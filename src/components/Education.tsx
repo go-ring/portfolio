@@ -25,9 +25,14 @@ export function Education() {
                     <span className="text-[0.92rem] leading-[1.55] font-medium text-gray-400 opacity-80">생년월일</span>
                     <span className="text-[1.05rem] leading-[1.35] font-bold text-white opacity-[0.98]">{profile.birthdate}</span>
                 </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                    <span className="text-[0.92rem] leading-[1.55] font-medium text-gray-400 opacity-80">학력</span>
-                    <span className="text-[1.05rem] leading-[1.35] font-bold text-white opacity-[0.98] text-right">{profile.education}</span>
+                <div className="flex justify-between items-start border-b border-white/5 pb-2">
+                    <span className="text-[0.92rem] leading-[1.55] font-medium text-gray-400 opacity-80 shrink-0">학력</span>
+                    <div className="flex flex-col items-end text-right">
+                        <span className="text-[1.1rem] leading-[1.1] font-bold text-white opacity-[0.98] mb-1.5">{profile.education.school}</span>
+                        <div className="text-[0.9rem] leading-[1.4] font-medium text-gray-300 opacity-90 tracking-tight">
+                            {profile.education.major}
+                        </div>
+                    </div>
                 </div>
                 </div>
             </div>
