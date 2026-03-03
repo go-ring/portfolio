@@ -24,6 +24,9 @@ import nos3Arch2 from "../resourse/artificialSatellite/architecture2.bmp";
 import baekguMain from "../resourse/baekgu/main.gif";
 import baekguArch from "../resourse/baekgu/architecture.png";
 
+import algogoMain from "../resourse/baekgu/main.gif";
+import algogoArch from "../resourse/baekgu/architecture.png";
+
 export interface Project {
   title: string;
   role: string | string[];
@@ -37,6 +40,8 @@ export interface Project {
     paper?: string;
     presentation?: string;
     proof?: string;
+    jira?: string;
+    notion?: string;
   };
   images?: {
     main?: string;
@@ -169,6 +174,8 @@ export const projects: Project[] = [
       repo: "https://github.com/go-ring/baekgu",
       presentation: "https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing",
       proof: "https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing",
+      jira: "https://ssafy.atlassian.net/jira/software/c/projects/S14P11B111/boards/11955",
+      notion: "https://www.notion.so/2e03b20e2ab480089393e059585d614c",
     },
     details: {
       roleAndContribution: [
@@ -176,6 +183,7 @@ export const projects: Project[] = [
         "Redis 기반 블랙리스트 자동 차단 시스템: 모니터링 지표 기반으로 비정상 접근(4xx 반복)을 감지 → RedisTemplate Atomic Counter로 카운트 → 임계치 초과 시 Spring Security 진입 전 즉시 403 차단 + TTL 자동 해제 ([BlackListServiceImpl.java](https://github.com/go-ring/baekgu/blob/master/backend/baekgu/src/main/java/ssafy/project/baekgu/auth/service/impl/BlackListServiceImpl.java))",
         "GitLab CI/CD 파이프라인 구축: 코드 푸시 → 자동 빌드·테스트·배포 흐름 구성. Docker Compose 서비스 분리 전략으로 backend 재배포 시 AI 워커(FastAPI) 컨테이너 무중단 유지",
         "WebSocket/STOMP 채팅 서버 구현: SimpMessagingTemplate 기반 Pub/Sub 메시징 구조 적용. 채팅방 목록 조회의 N+1 문제를 QueryDSL Projections.constructor + 서브쿼리로 해결 → 1.5s → 50ms ([ChatRoomQueryRepositoryImpl.java](https://github.com/go-ring/baekgu/blob/master/backend/baekgu/src/main/java/ssafy/project/baekgu/chat/repository/query/ChatRoomQueryRepositoryImpl.java))",
+        "팀 생산성 및 애자일 프로세스 리딩: Jira 에픽-스토리 기반의 스프린트 스크럼 마스터 역할 수행 및 Notion을 통한 API 명세서, 팀 컨벤션 등 전체 산출물 문서화 주도 ([Jira 보드](https://ssafy.atlassian.net/jira/software/c/projects/S14P11B111/boards/11955), [Notion 워크스페이스](https://www.notion.so/2e03b20e2ab480089393e059585d614c))",
       ],
       techAndReason: [
         "Spring Boot + FastAPI 분리: 비즈니스 로직(Spring)과 AI 연산(FastAPI)의 부하를 격리하여, AI 작업의 CPU 집약적 연산이 사용자 API 응답 속도에 영향을 주지 않도록 부하 격리 설계.",
@@ -228,6 +236,94 @@ export const projects: Project[] = [
         "\"기능 구현은 시작일 뿐, 완성은 운영에서 결정된다\": AI 분석이라는 Long-running Task가 배포 전략 전체를 바꿔야 했던 경험에서 아키텍처 설계의 중요성 체감.",
         "트레이드오프의 이해: Redis나 WebSocket이 항상 정답은 아님. 데이터 중요도, 실시간성 요구, 서버 리소스를 종합적으로 고려하여 적정 기술 선택 안목 함양.",
         "Observability의 가치: Loki + Prometheus를 직접 세팅하며, 로그와 메트릭 없는 장애 추적은 눈을 감고 운전하는 것과 같음을 체감.",
+      ],
+    },
+  },
+  {
+    title: "Algogo (알고고)",
+    type: "팀 프로젝트 (5인)",
+    period: "2025.10.14 ~ 2025.12.02",
+    role: ["백엔드 & 인프라"],
+    description:
+      "알고리즘 스터디의 운영 자동화와 강제적 코드 리뷰 시스템을 통해 학습 효율을 극대화하는 스터디 관리 플랫폼. \n\n기존 스터디의 고질적인 문제인 '운영 피로도'와 '형식적인 리뷰'를 해결하기 위해 탄생. 단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합하여, 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공합니다.",
+    tech: [
+      "Java 17",
+      "Spring Boot 3.3",
+      "Spring Data JPA",
+      "QueryDSL",
+      "MySQL",
+      "Redis",
+      "AWS S3",
+      "OpenAI API",
+      "Jenkins",
+      "Docker",
+      "Nginx",
+      "TypeScript",
+      "React",
+    ],
+    impact:
+      "Blue-Green 무중단 배포 도입: 신규 버전 업데이트 시 서비스 중단율 0% 달성\nCI/CD 최적화: Multi-stage 빌드 및 캐싱 전략으로 배포 시간 12분 → 4분 (66% 단축)\n이미지 경량화: 런타임 이미지 용량 1.2GB → 320MB (73% 감소)로 서버 리소스 효율화\n서빙 최적화: CloudFront CDN 도입으로 S3 직접 접근 대비 자산 로딩 속도 40% 향상",
+    images: {
+      preview: algogoMain,
+      architecture: algogoArch,
+    },
+    links: {
+      repo: "https://github.com/go-ring/algogo",
+      notion: "https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc",
+    },
+    details: {
+      roleAndContribution: [
+        "Blue-Green 무중단 배포 시스템 구축: Nginx Gateway 스위칭 기반 아키텍처를 설계하고 Jenkins 파이프라인을 자동화. 서버 상태(Health Check)와 연동하여 트래픽 유실 없는 배포 환경 구현",
+        "Cloud-Native 데이터 관리 설계: S3와 CloudFront를 결합하여 제출 코드 및 자산의 효율적 아카이빙 구축. UUID 기반 파일 충돌 방지 및 CDN 서빙으로 오리진 부하 분산",
+        "Docker 최적화 및 보안 고도화: Multi-stage 빌드 전략으로 실행 이미지 크기 최소화 및 비루트(Non-root) 계정 기반의 컨테이너 구동으로 호스트 OS 보안 격리성 확보",
+        "지능형 리뷰어 매칭 알고리즘 구현: ReviewMatchRanker를 통해 노후화(Aging), 알고리즘 유사도(Jaccard Similarity) 등을 고려한 다차원 가중치 기반 매칭 시스템 구축",
+        "AI 코드 평가 파이프라인 구축: OpenAI logprobs 데이터를 활용해 시간/공간 복잡도 등을 0~100점으로 정량화하는 G-Eval 방법론 기반 평가 서비스 구현",
+      ],
+      techAndReason: [
+        "Blue-Green (vs Rolling): 가용성이 최우선인 플랫폼 특성상, 구 버전과 신 버전을 동시에 띄워 완벽한 롤백 지점을 확보하고 트래픽 유실을 0으로 만들기 위해 선택.",
+        "S3 + CloudFront: 서버 확장 시 파일 동기화 문제를 해결하기 위해 무상태(Stateless) 아키텍처를 지향. CDN을 통해 전송 비용 절감 및 로딩 속도 최적화.",
+        "Multi-stage 빌드: 빌드 도구와 런타임 환경을 분리하여 보안 취약점을 줄이고, 컨테이너 전송 효율을 극대화하여 배포 사이클 단축.",
+        "Spring Event (비동기 처리): AI 코드 분석과 같은 고부하 작업이 메인 트랜잭션에 영향을 주지 않도록 TransactionalEventListener를 활용해 사용자 응답성 확보.",
+      ],
+      implementation: [
+        "Nginx Dynamic Upstream: switch_upstream.sh를 통해 Nginx의 proxy_pass 대상을 실시간으로 전환. Spring Boot Actuator의 /health 상태가 UP임을 확인 후 스위칭하여 안정성 확보.",
+        "Docker BuildKit 캐시 마운트: --mount=type=cache를 사용해 Gradle 의존성을 호스트 캐시와 연결. 매 빌드마다 라이브러리를 새로 받지 않아 빌드 속도를 3배 이상 향상.",
+        "S3 Key 격리: files/{userId}/{UUID}.txt 구조를 사용해 유저별 데이터 격리성 확보 및 파일 이름 충돌 가능성을 원천 차단.",
+        "SSH Tunneling (Bastion): Private Subnet에 배치된 RDS 접근을 위해 Bastion Host를 경유하는 SSH 터널링 자동화 스크립트를 배포하여 보안과 개발 편의성 양립.",
+      ],
+      troubleshooting: [
+        {
+          title: "🚀 Blue-Green 배포 시 발생하는 간헐적 502 Bad Gateway",
+          items: [
+            "문제: Jenkins 배포 완료 직후 약 10~20초간 사용자가 서비스 요청에 실패하는 현상 발생.",
+            "원인: 컨테이너가 Running 상태가 되자마자 Nginx가 트래픽을 넘겼으나, JVM 내부의 Spring Boot 애플리케이션이 구동(Bean 등록 및 Warm-up)을 완료하기 전이라 요청을 처리하지 못함.",
+            "해결: Health Check 폴링 도입. curl을 사용해 /actuator/health 엔드포인트가 'UP' 상태가 될 때까지 대기하는 로직을 배포 스크립트에 추가하여 확인 후 스위칭.",
+            "결과: 배포 중 트래픽 유실 0건 달성. 완전한 L7 레이어 무중단 배포 실현.",
+          ],
+        },
+        {
+          title: "📦 Docker 단일 스테이지 빌드로 인한 이미지 전송 병목",
+          items: [
+            "문제: 빌드 시간이 10분 이상 소요되고, 이미지 용량이 1GB를 초과하여 배포 효율 저하.",
+            "원인: 실행 이미지에 소스 코드, Gradle 빌드 툴, 캐시 등이 모두 포함되어 불필요한 레이어가 누적됨.",
+            "해결: Multi-stage Build 적용. builder 단계에서 gradle/bootJar를 생성하고, runtime 단계에서는 경량 JRE만 사용하여 최종 이미지 구성.",
+            "결과: 이미지 용량 1.2GB → 320MB(73% 감소), 빌드 시간 12분 → 4분(66% 단축)으로 CI/CD 생산성 대폭 개선.",
+          ],
+        },
+        {
+          title: "🔍 AI 분석 중 Spring 재기동 시 발생하는 파이프라인 중단",
+          items: [
+            "문제: 최대 10분이 걸리는 AI 분석 도중 Spring 서버가 배포로 인해 재시작되면 보고(Callback) 과정에서 Connection refused 예외가 발생해 분석이 강제 종료됨.",
+            "원인: fastapi 컨테이너가 backend에 의존(depends_on)하도록 설정되어 있어 Spring 재시작 시 동반 재시작되는 구조.",
+            "해결: [1차] depends_on 제거로 수명 주기 분리. [2차] 보고 로직을 try-except-pass로 감싸 Spring 상태와 무관하게 분석을 끝까지 진행하도록 설계. 결과는 FastAPI가 DB에 직접 커밋.",
+            "결과: Spring 재기동 중에도 AI 분석 파이프라인은 100% 완료되며 데이터 정합성 유지.",
+          ],
+        },
+      ],
+      retrospective: [
+        "인프라는 애플리케이션의 연장선: Spring Actuator와 Nginx 상태 체크를 연동하며, 진정한 무중단 시스템은 코드와 인프라의 유기적 결합에서 온다는 것을 체감.",
+        "보안과 편리함의 트레이드오프: Private RDS 환경을 구축하며 겪은 불편함을 SSH 터널링 자동화로 해결하며, 안전하면서도 개발하기 좋은 환경의 중요성을 인지.",
+        "정교한 비동기 설계: @TransactionalEventListener와 스레드 풀 관리를 통해 장애 전파(Cascading Failure)를 방지하는 설계의 중요성을 체감.",
       ],
     },
   },
