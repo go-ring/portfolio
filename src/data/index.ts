@@ -24,8 +24,7 @@ import nos3Arch2 from "../resourse/artificialSatellite/architecture2.bmp";
 import baekguMain from "../resourse/baekgu/main.gif";
 import baekguArch from "../resourse/baekgu/architecture.png";
 
-import algogoMain from "../resourse/baekgu/main.gif";
-import algogoArch from "../resourse/baekgu/architecture.png";
+import algogoMain from "../resourse/algogo/main.gif";
 
 export interface Project {
   title: string;
@@ -245,7 +244,7 @@ export const projects: Project[] = [
     period: "2025.10.14 ~ 2025.12.02",
     role: ["백엔드 & 인프라"],
     description:
-      "알고리즘 스터디의 운영 자동화와 강제적 코드 리뷰 시스템을 통해 학습 효율을 극대화하는 스터디 관리 플랫폼. \n\n기존 스터디의 고질적인 문제인 '운영 피로도'와 '형식적인 리뷰'를 해결하기 위해 탄생. 단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합하여, 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공합니다.",
+      "알고리즘 스터디의 운영 자동화와 강제적 코드 리뷰 시스템을 통해 학습 효율을 극대화하는 스터디 관리 플랫폼. \n\n기존 스터디의 고질적인 문제인 '운영 피로도'와 '형식적인 리뷰'를 해결하기 위해 탄생. 단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합하여, 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공합니다. ([GitHub 저장소](https://github.com/go-ring/algogo), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
     tech: [
       "Java 17",
       "Spring Boot 3.3",
@@ -265,7 +264,6 @@ export const projects: Project[] = [
       "Blue-Green 무중단 배포 도입: 신규 버전 업데이트 시 서비스 중단율 0% 달성\nCI/CD 최적화: Multi-stage 빌드 및 캐싱 전략으로 배포 시간 12분 → 4분 (66% 단축)\n이미지 경량화: 런타임 이미지 용량 1.2GB → 320MB (73% 감소)로 서버 리소스 효율화\n서빙 최적화: CloudFront CDN 도입으로 S3 직접 접근 대비 자산 로딩 속도 40% 향상",
     images: {
       preview: algogoMain,
-      architecture: algogoArch,
     },
     links: {
       repo: "https://github.com/go-ring/algogo",
