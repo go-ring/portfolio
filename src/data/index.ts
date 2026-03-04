@@ -239,7 +239,7 @@ export const projects: Project[] = [
     },
   },
   {
-    title: "Algogo (알고고)",
+    title: "알고가자(Algogo)",
     type: "팀 프로젝트 (5인)",
     period: "2025.10.14 ~ 2025.12.02",
     role: ["백엔드 & 인프라"],
