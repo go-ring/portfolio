@@ -15,7 +15,6 @@ export interface ProjectDetails {
 import colorFinderSubject from "../resourse/colorfinder/subject.png";
 
 import colorFinderArch from "../resourse/colorfinder/architecture.png";
-import colorFinderPreview from "../resourse/colorfinder/preview.gif";
 
 import nos3Main from "../resourse/artificialSatellite/main.bmp";
 import nos3Arch1 from "../resourse/artificialSatellite/architecture1.bmp";
@@ -23,13 +22,16 @@ import nos3Arch2 from "../resourse/artificialSatellite/architecture2.bmp";
 
 import baekguMain from "../resourse/baekgu/main.gif";
 import baekguArch from "../resourse/baekgu/architecture.png";
+import baekguCardPreview from "../resourse/baekgu/baekgu.png";
 
 import algogoMain from "../resourse/algogo/main.gif";
+import algogoCardPreview from "../resourse/algogo/algogo.png";
 
 export interface Project {
   title: string;
   role: string | string[];
   description: string;
+  shortDescription: string;
   tech: string[];
   impact?: string;
   links: {
@@ -144,8 +146,9 @@ export const projects: Project[] = [
   {
     title: "백구 (Baekgu)",
     type: "팀 프로젝트 (6인)",
-    period: "2026.01.05 ~ 2026.02.09",
+    period: "2026.01.19 ~ 2026.02.06 (3주)",
     role: ["백엔드 리드 & 인프라"],
+    shortDescription: "GitHub 코드 분석 기반의 올인원 개발자 취업 솔루션",
     description:
       "GitHub 코드 분석 기반의 올인원 개발자 취업 솔루션. '개발자는 코드로 말하고 싶은데, 기업은 자소서를 원한다'는 채용의 병목 문제를 해결하기 위해 탄생.\n\nGitHub 레포지토리(실제 커밋/코드)와 기업의 최신 데이터(DART 공시, Perplexity AI)를 교차 분석하여, 기술 역량 기반 공고 매칭과 근거 있는 자기소개서 작성을 자동화. 범용 LLM의 할루시네이션(Hallucination) 문제를 극복하고, SSAFY 취업 컨설턴트 자문을 반영한 증거 중심 커리어 솔루션. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))",
     tech: [
@@ -166,8 +169,9 @@ export const projects: Project[] = [
     impact:
       "AI 분석 파이프라인 성공률 99.9% 달성 (배포 중단 이슈 해결)\n보안 시스템: 모의 해킹(Brute-force) 시나리오 평균 0.05초 내 자동 차단\n채팅 지연 1초(Polling) → 10ms 미만(WebSocket Push)으로 단축\n채팅방 목록 조회 1.5s → 50ms로 30배 성능 개선 (QueryDSL 최적화)\n보안 로직 DB → Redis 전환: 응답속도 120ms → 5ms, CPU 사용률 80% 감소",
     images: {
-      preview: baekguMain,
+      preview: baekguCardPreview,
       architecture: baekguArch,
+      main: baekguMain
     },
     links: {
       repo: "https://github.com/go-ring/baekgu",
@@ -241,8 +245,9 @@ export const projects: Project[] = [
   {
     title: "알고가자(Algogo)",
     type: "팀 프로젝트 (5인)",
-    period: "2025.10.14 ~ 2025.12.02",
+    period: "2025.11.20 ~ 2026.01.20 (9주)",
     role: ["백엔드 & 인프라"],
+    shortDescription: "알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼",
     description:
       "알고리즘 스터디의 운영 자동화와 강제적 코드 리뷰 시스템을 통해 학습 효율을 극대화하는 스터디 관리 플랫폼. \n\n기존 스터디의 고질적인 문제인 '운영 피로도'와 '형식적인 리뷰'를 해결하기 위해 탄생. 단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합하여, 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공합니다. ([GitHub 저장소](https://github.com/go-ring/algogo), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
     tech: [
@@ -263,7 +268,8 @@ export const projects: Project[] = [
     impact:
       "Blue-Green 무중단 배포 도입: 신규 버전 업데이트 시 서비스 중단율 0% 달성\nCI/CD 최적화: Multi-stage 빌드 및 캐싱 전략으로 배포 시간 12분 → 4분 (66% 단축)\n이미지 경량화: 런타임 이미지 용량 1.2GB → 320MB (73% 감소)로 서버 리소스 효율화\n서빙 최적화: CloudFront CDN 도입으로 S3 직접 접근 대비 자산 로딩 속도 40% 향상",
     images: {
-      preview: algogoMain,
+      preview: algogoCardPreview,
+      main: algogoMain
     },
     links: {
       repo: "https://github.com/go-ring/algogo",
@@ -328,6 +334,7 @@ export const projects: Project[] = [
   {
     title: "ColorFinder",
     type: "팀 프로젝트 (3인)",
+    shortDescription: "안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼",
     description:
       "사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼.\n\n단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류.\n\n기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))",
     tech: [
@@ -357,7 +364,6 @@ export const projects: Project[] = [
     },
     images: {
       architecture: colorFinderArch,
-      preview: colorFinderPreview,
     },
     details: {
       roleAndContribution: [
@@ -419,6 +425,7 @@ export const projects: Project[] = [
     period: "2023.04.01 ~ 2023.10.31",
     type: "산학 과제 (3인)",
     role: "위성 시뮬레이터 환경 구축 및 문제 해결",
+    shortDescription: "클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석",
     description:
       "NASA의 오픈소스 위성 시뮬레이션 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))",
     tech: [

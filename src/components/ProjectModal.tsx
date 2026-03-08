@@ -180,7 +180,6 @@ import { useScrollSpy } from '../hooks/useScrollSpy';
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const isAnimatedPreview = !!project?.images?.preview?.toLowerCase().endsWith('.gif');
 
   const { activeId, scrollToId } = useScrollSpy(
     contentRef, 
@@ -372,45 +371,8 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         {/* 1. Overview */}
                         <section id="overview" className="space-y-6 scroll-mt-24">
                              
-                             {/* Preview GIF (Priority 1) */}
-                             {project.images?.preview && (
-                                <div className="mb-8">
-                                    <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center">
-                                        <img 
-                                            src={project.images.preview} 
-                                            alt="Preview" 
-                                            loading="eager"
-                                            decoding={isAnimatedPreview ? 'sync' : 'async'}
-                                            className={`w-full h-auto max-h-[500px] object-contain block ${
-                                              isAnimatedPreview ? '[transform:translateZ(0)] will-change-transform' : ''
-                                            }`}
-                                            style={isAnimatedPreview ? { contain: 'paint' } : undefined}
-                                        />
-                                    </div>
-                                    <p className="text-center text-sm text-gray-500 mt-2">최종 결과물 시연 화면</p>
-                                </div>
-                             )}
-
-                             {/* Main Image (Priority 2 - if lives with preview) */}
-                             {project.images?.main && !project.images.preview && (
-                                <div className="mb-8 flex justify-center">
-                                    <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center max-w-4xl w-full">
-                                        <img 
-                                            src={project.images.main} 
-                                            alt="Main" 
-                                            className="w-full h-auto max-h-[420px] object-contain" 
-                                        />
-                                    </div>
-                                </div>
-                             )}
-                             
-                             {/* ... (Skipping preview+main case for brevity in reasoning, but must handle if I replace block) ... 
-                                Actually, I should probably target the specific Main Image blocks or use multi-replace.
-                                Let's stick to the specific block logic. 
-                             */}
-
-                             {/* Main Image (Priority 2 - if exists AND preview exists) */}
-                             {project.images?.main && project.images.preview && (
+                             {/* Main Image */}
+                             {project.images?.main && (
                                 <div className="mb-8 flex justify-center">
                                     <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center max-w-4xl w-full">
                                         <img 
