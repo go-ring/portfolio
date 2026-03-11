@@ -157,6 +157,7 @@ export const projects: Project[] = [
       "FastAPI",
       "WebSocket/STOMP",
       "GitLab CI/CD",
+      "Jira",
       "Grafana",
       "Loki",
       "MySQL 8.0",
@@ -177,7 +178,6 @@ export const projects: Project[] = [
       repo: "https://github.com/go-ring/baekgu",
       presentation: "https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing",
       proof: "https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing",
-      jira: "https://ssafy.atlassian.net/jira/software/c/projects/S14P11B111/boards/11955",
       notion: "https://www.notion.so/2e03b20e2ab480089393e059585d614c",
     },
     details: {
@@ -249,7 +249,7 @@ export const projects: Project[] = [
     role: ["백엔드 & 인프라"],
     shortDescription: "알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼",
     description:
-      "알고리즘 스터디의 운영 자동화와 강제적 코드 리뷰 시스템을 통해 학습 효율을 극대화하는 스터디 관리 플랫폼. \n\n기존 스터디의 고질적인 문제인 '운영 피로도'와 '형식적인 리뷰'를 해결하기 위해 탄생. 단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합하여, 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공합니다. ([GitHub 저장소](https://github.com/go-ring/algogo), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
+      "알고리즘 스터디의 운영 자동화와 강제적 코드 리뷰 시스템을 통해 학습 효율을 극대화하는 스터디 관리 플랫폼. \n\n기존 스터디의 고질적인 문제인 '운영 피로도'와 '형식적인 리뷰'를 해결하기 위해 탄생. 단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합하여, 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공합니다. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/go-ring/algogo), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
     tech: [
       "Java 17",
       "Spring Boot 3.3",
@@ -274,6 +274,7 @@ export const projects: Project[] = [
     links: {
       repo: "https://github.com/go-ring/algogo",
       notion: "https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc",
+      proof: "https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing",
     },
     details: {
       roleAndContribution: [
