@@ -278,11 +278,10 @@ export const projects: Project[] = [
     },
     details: {
       roleAndContribution: [
-        "Blue-Green 무중단 배포 시스템 구축: Nginx Gateway 스위칭 기반 아키텍처를 설계하고 Jenkins 파이프라인을 자동화. 서버 상태(Health Check)와 연동하여 트래픽 유실 없는 배포 환경 구현",
-        "Cloud-Native 데이터 관리 설계: S3와 CloudFront를 결합하여 제출 코드 및 자산의 효율적 아카이빙 구축. UUID 기반 파일 충돌 방지 및 CDN 서빙으로 오리진 부하 분산",
-        "Docker 최적화 및 보안 고도화: Multi-stage 빌드 전략으로 실행 이미지 크기 최소화 및 비루트(Non-root) 계정 기반의 컨테이너 구동으로 호스트 OS 보안 격리성 확보",
-        "지능형 리뷰어 매칭 알고리즘 구현: ReviewMatchRanker를 통해 노후화(Aging), 알고리즘 유사도(Jaccard Similarity) 등을 고려한 다차원 가중치 기반 매칭 시스템 구축",
-        "AI 코드 평가 파이프라인 구축: OpenAI logprobs 데이터를 활용해 시간/공간 복잡도 등을 0~100점으로 정량화하는 G-Eval 방법론 기반 평가 서비스 구현",
+        "Blue-Green 무중단 배포 시스템 구축: Jenkins와 Nginx를 활용하여 서버 상태(Health Check)를 검증하고 트래픽을 스위칭하는 Blue-Green 기반 무중단 배포 파이프라인 구축",
+        "컨테이너 환경 최적화 및 보안 고도화: Docker Multi-stage Build로 실행 이미지를 경량화하고, Non-root 계정 권한 분리 실행 기반으로 컨테이너 보안 강화",
+        "Cloud-Native 자산 관리 아키텍처 설계: 오리진 부하 분산 및 효율적인 처리를 위해 AWS S3·CloudFront 기반 제출 코드 및 정적 자산 아카이빙 구조 설계",
+        "안정적인 비동기 파이프라인 구성: OpenAI API 응답 지연으로부터 메인 DB 커넥션 풀을 보호하기 위해 비동기 이벤트 기반 AI 코드 평가 파이프라인 구축",
       ],
       techAndReason: [
         "Blue-Green (vs Rolling): 가용성이 최우선인 플랫폼 특성상, 구 버전과 신 버전을 동시에 띄워 완벽한 롤백 지점을 확보하고 트래픽 유실을 0으로 만들기 위해 선택.",
