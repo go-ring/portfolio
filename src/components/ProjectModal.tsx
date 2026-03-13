@@ -24,14 +24,12 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-const EMPHASIS_TECH = new Set([
-  // ColorFinder / NOS3
-  'Java', 'Spring Boot', 'MySQL', 'NOS3', 'Linux', 'NCloud',
-  // Baekgu
-  'Java 17', 'Spring Boot 3.2', 'FastAPI', 'WebSocket/STOMP', 'GitLab CI/CD', 'Jira', 'Grafana', 'Loki',
-  // Algogo
-  'Jenkins', 'Nginx', 'Docker', 'AWS S3', 'CloudFront', 'OpenAI API (GPT-4o-mini)', 'G-Eval',
-]);
+const EMPHASIS_TECH: Record<string, Set<string>> = {
+  'ColorFinder': new Set(['Google Vision AI', 'Python', 'OpenCV', 'Selenium']),
+  '가상화 기반 우주 통신망 연동 및 사이버 위협 연구': new Set(['NOS3', 'NCloud', 'Cloud-Init', 'Ruby', 'xrdp']),
+  '백구 (Baekgu)': new Set(['GitLab CI/CD', 'Docker', 'Redis', 'QueryDSL', 'Prometheus', 'Grafana', 'Loki']),
+  '알고가자(Algogo)': new Set(['Jenkins', 'Nginx', 'Docker', 'AWS S3', 'CloudFront', 'OpenAI API (GPT-4o-mini)', 'G-Eval']),
+};
 
 const TOC_ITEMS = [
   { id: 'overview', label: '프로젝트 개요' },
@@ -396,7 +394,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                              <div className="mt-8">
                                 <div className="flex flex-wrap gap-x-6 gap-y-3"> 
                                     {project.tech.map(tech => {
-                                        const isEmphasis = EMPHASIS_TECH.has(tech);
+                                        const isEmphasis = EMPHASIS_TECH[project.title]?.has(tech) || false;
                                         return (
                                             <span
                                             key={tech}
