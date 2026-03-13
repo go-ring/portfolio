@@ -267,7 +267,7 @@ export const projects: Project[] = [
       "G-Eval",
     ],
     impact:
-      "Blue-Green 무중단 배포 도입: 신규 버전 업데이트 시 서비스 중단율 0% 달성\nCI/CD 최적화: Multi-stage 빌드 및 캐싱 전략으로 배포 시간 12분 → 4분 (66% 단축)\n이미지 경량화: 런타임 이미지 용량 1.2GB → 320MB (73% 감소)로 서버 리소스 효율화\n서빙 최적화: CloudFront CDN 도입으로 S3 직접 접근 대비 자산 로딩 속도 40% 향상",
+      "Blue-Green 배포 안정화: Health Check 스위칭으로 502 에러 및 배포 간 트래픽 유실 0건 달성\nCI/CD 빌드 최적화: 레이어 캐싱 및 Multi-stage 빌드로 파이프라인 배포 구조 66% 단축(12분 → 4분)\n이미지 경량화 & 보안 달성: 런타임 이미지 용량 73% 감소(1.2GB → 320MB) 및 Non-root 권한 분리\nEdge Caching 파훼 및 CDN 캐싱 100% 활용: S3 Key 구조 개선을 통한 썸네일/에셋 캐싱 강제 무효화 최적화\nDB 커넥션 고갈 원천 차단: 커스텀 @Async 스레드 분리를 통한 AI 응답 지연의 시스템 전파 방지",
     images: {
       preview: algogoCardPreview,
       main: algogoMain
@@ -285,16 +285,16 @@ export const projects: Project[] = [
         "안정적인 비동기 파이프라인 구성: OpenAI API 응답 지연으로부터 메인 DB 커넥션 풀을 보호하기 위해 비동기 이벤트 기반 AI 코드 평가 파이프라인 구축",
       ],
       techAndReason: [
-        "Blue-Green (vs Rolling): 가용성이 최우선인 플랫폼 특성상, 구 버전과 신 버전을 동시에 띄워 완벽한 롤백 지점을 확보하고 트래픽 유실을 0으로 만들기 위해 선택.",
-        "S3 + CloudFront: 서버 확장 시 파일 동기화 문제를 해결하기 위해 무상태(Stateless) 아키텍처를 지향. CDN을 통해 전송 비용 절감 및 로딩 속도 최적화.",
-        "Multi-stage 빌드: 빌드 도구와 런타임 환경을 분리하여 보안 취약점을 줄이고, 컨테이너 전송 효율을 극대화하여 배포 사이클 단축.",
-        "Spring Event (비동기 처리): AI 코드 분석과 같은 고부하 작업이 메인 트랜잭션에 영향을 주지 않도록 TransactionalEventListener를 활용해 사용자 응답성 확보.",
+        "Blue-Green (vs Rolling): 가용성이 최우선인 플랫폼 특성상, 구 버전과 신 버전을 동시에 띄워 완벽한 롤백 지점을 확보하고 트래픽 유실을 0으로 만들기 위해 도입",
+        "S3 + CloudFront: 단순 파일 저장을 넘어 분산 서빙과 CDN 엣지 캐싱을 결합하여, 서버 증설 시 파일 동기화 문제를 해결하는 Cloud-Native 무상태(Stateless) 아키텍처 구현",
+        "Docker Multi-stage & Non-root: 캐싱 레이어 분리를 통해 CI 파이프라인 소요 시간을 극대화함과 동시에 컨테이너 내 권한 분리(Least Privilege)로 호스트 OS 보안 격리성 달성",
+        "Spring Event & @Async: 장시간 소요되는 OpenAI API 요청이 메인 트랜잭션을 잡고 있어 발생하는 HikariCP 고갈 현상을 방지하기 위해 트랜잭션 경계 분리 및 논리적 스레드 파이프라인 구성",
       ],
       implementation: [
-        "Nginx Dynamic Upstream: switch_upstream.sh를 통해 Nginx의 proxy_pass 대상을 실시간으로 전환. Spring Boot Actuator의 /health 상태가 UP임을 확인 후 스위칭하여 안정성 확보.",
-        "Docker BuildKit 캐시 마운트: --mount=type=cache를 사용해 Gradle 의존성을 호스트 캐시와 연결. 매 빌드마다 라이브러리를 새로 받지 않아 빌드 속도를 3배 이상 향상.",
-        "S3 Key 격리: files/{userId}/{UUID}.txt 구조를 사용해 유저별 데이터 격리성 확보 및 파일 이름 충돌 가능성을 원천 차단.",
-        "SSH Tunneling (Bastion): Private Subnet에 배치된 RDS 접근을 위해 Bastion Host를 경유하는 SSH 터널링 자동화 스크립트를 배포하여 보안과 개발 편의성 양립.",
+        "Nginx Actuator 폴링 검증: 단순 스크립트 전환 대신, 새로 구동된 타겟 컨테이너의 /actuator/health가 UP 상태를 반환할 때까지 curl로 대기 후 라우팅을 스위칭하여 안전한 무중단 배포 구현",
+        "Docker 레이어 구조 개편 및 파일 소유권 분리: gradlew 및 설정 파일만 선행 COPY하는 캐싱 최적화 반영, 그리고 실행 워크스페이스 권한을 chown으로 분리 후 Non-root(appuser) 컨테이너 기동",
+        "S3 Key UUID 마이그레이션 전략: 동일 파일명 덮어쓰기에 따른 CloudFront 캐시 갱신 지연(무효화 오버헤드) 문제를 방지하고자, 이미지 변경 시마다 고유 UUID 기반의 URL 스킴 서빙 반영",
+        "OpenAI G-Eval 외부 평가 비동기 분리: 트랜잭션이 시작된 메인 스레드 밖에서 GPT 기반 평가 로직을 수행하도록 Custom Executor 처리 후, 마지막 DB 저장에만 짧은 트랜잭션을 사용하는 점유 최소화 로직 구성",
       ],
       troubleshooting: [
         {
@@ -326,9 +326,10 @@ export const projects: Project[] = [
         },
       ],
       retrospective: [
-        "인프라는 애플리케이션의 연장선: Spring Actuator와 Nginx 상태 체크를 연동하며, 진정한 무중단 시스템은 코드와 인프라의 유기적 결합에서 온다는 것을 체감.",
-        "보안과 편리함의 트레이드오프: Private RDS 환경을 구축하며 겪은 불편함을 SSH 터널링 자동화로 해결하며, 안전하면서도 개발하기 좋은 환경의 중요성을 인지.",
-        "정교한 비동기 설계: @TransactionalEventListener와 스레드 풀 관리를 통해 장애 전파(Cascading Failure)를 방지하는 설계의 중요성을 체감.",
+        "어플리케이션과 Nginx Gateway 간의 유기적 결합: 무중단 배포 트러블 슈팅을 통해 Spring Lifecycle(Ready 상태)에 대한 완벽한 이해와 Health Check 폴링 연동의 중요성 체감",
+        "보안과 성능을 포괄하는 도커 아키텍처: 레이어 배치 순서 하나가 CI 시간에 직결되고, 권한 분리가 컨테이너 로그 쓰기 권한 에러로 이어질 수 있음을 확인하며 데브옵스 엔지니어링의 디테일 인지",
+        "CloudFront 엣지 캐싱의 맹점과 트레이드오프 솔루션: Invalidation API의 호출 비용 및 지연 문제를 우회하는 UUID 기반 캐시 파훼(Cache Busting) 전략을 통해 글로벌 인프라 CDN 활용 역량 고도화",
+        "가용성을 지키는 논리적 스레드풀 격리: 외부 외부 API 요청이 커넥션 풀을 말리고 전체 서비스로 장애 파급(Cascading Failure)을 일으킬 수 있는 병목 구조를 분리하며, 시스템 안티프래질(Antifragile) 설계의 필수성 인지",
       ],
     },
   },
