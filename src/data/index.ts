@@ -310,8 +310,8 @@ export const projects: Project[] = [
           title: "📦 Docker 빌드 캐싱 최적화 및 Non-root 권한 분리 이슈 극복",
           items: [
             "문제: 배포 파이프라인에서 매번 모든 라이브러리 의존성을 새로 다운로드하면서 빌드 시간이 지나치게 길어졌고, 운영 컨테이너를 appuser (UID: 10001)라는 Non-root 계정으로 실행하도록 변경하자 어플리케이션이 기동 중 권한 부족(Permission Denied)으로 크래시 발생.",
-            "원인: [1] COPY . . 명령어가 도커파일 상단에 위치해 소스코드가 1줄만 바뀌어도 Gradle 캐시가 깨짐. [2] Non-root 유저로 전환(USER appuser)했으나, Spring Boot가 로그를 작성해야 하는 /app/logs 디렉터리에 대한 쓰기 권한은 여전히 root에게 있었음.",
-            "해결: [성능 개선] gradlew 및 build.gradle 등 설정 파일만 먼저 COPY하고 의존성을 다운받도록 단계를 분리하여 Docker Layer 캐싱 극대화. [보안 및 안정성] RUN mkdir -p /app/logs && chown -R appuser:app /app 명령어를 통해 실행 시 필요한 워크스페이스의 소유권을 명확히 부여한 뒤 USER appuser로 컨테이너가 실행되도록 구조 수정.",
+            "원인: [1] COPY . . 명령어가 도커파일 상단에 위치해 소스코드가 1줄만 바뀌어도 Gradle 캐시가 깨짐.\n[2] Non-root 유저로 전환(USER appuser)했으나, Spring Boot가 로그를 작성해야 하는 /app/logs 디렉터리에 대한 쓰기 권한은 여전히 root에게 있었음.",
+            "해결: [성능 개선] gradlew 및 build.gradle 등 설정 파일만 먼저 COPY하고 의존성을 다운받도록 단계를 분리하여 Docker Layer 캐싱 극대화.\n[보안 및 안정성] RUN mkdir -p /app/logs && chown -R appuser:app /app 명령어를 통해 실행 시 필요한 워크스페이스의 소유권을 명확히 부여한 뒤 USER appuser로 컨테이너가 실행되도록 구조 수정.",
             "결과: CI 빌드 소요 시간을 대폭 단축함과 동시에 최소 권한의 원칙(Least Privilege)을 준수하여 애플리케이션의 보안성 강화.",
           ],
         },
@@ -320,7 +320,7 @@ export const projects: Project[] = [
           items: [
             "문제: 다수 사용자가 동시에 코드를 제출 시, OpenAI API 응답 지연(평균 수 초 ~ 수십 초 소요)이 발생하며, HikariCP (DB 커넥션 풀) 고갈 에러가 발생하여 다른 일반 API 서비스마저 지연/마비되는 현상 목격.",
             "원인: @Transactional이 시작된 스레드 내부에서 OpenAI API를 동기적으로 호출하고 대기할 경우, 긴 응답시간 동안 DB Connection이 반환되지 않고 묶여 스레드 풀 및 DB 커넥션 풀을 고갈시킴.",
-            "해결: [1] 제출된 평가는 Spring Event와 @Async를 활용하여 주 트랜잭션과 독립적인 Thread Pool(Custom Executor)에서 비동기 처리로 분리. [2] 외부 통신 구간(OpenAiEvaluationServiceImpl)을 DB 트랜잭션 영역 밖으로 완전히 분리 설계. [3] 평가 완료 시 최종 결과를 저장할 때만 짧게 트랜잭션을 여는 방식으로 점유 최소화.",
+            "해결: [1] 제출된 평가는 Spring Event와 @Async를 활용하여 주 트랜잭션과 독립적인 Thread Pool(Custom Executor)에서 비동기 처리로 분리.\n[2] 외부 통신 구간(OpenAiEvaluationServiceImpl)을 DB 트랜잭션 영역 밖으로 완전히 분리 설계.\n[3] 평가 완료 시 최종 결과를 저장할 때만 짧게 트랜잭션을 여는 방식으로 점유 최소화.",
             "결과: OpenAI 응답 지연이 DB나 시스템 전체 장애로 전파되는 병목 현상을 방지해 안정적인 커넥션 관리와 API 서비스 응답성을 유지함. (예외 발생 시에도 안전한 복구 로직 적용)",
           ],
         },
