@@ -30,7 +30,7 @@ const EMPHASIS_TECH = new Set([
   // Baekgu
   'Java 17', 'Spring Boot 3.2', 'FastAPI', 'WebSocket/STOMP', 'GitLab CI/CD', 'Jira', 'Grafana', 'Loki',
   // Algogo
-  'Spring Boot 3.3', 'Jenkins', 'Blue/Green', 'G-Eval',
+  'Jenkins', 'Nginx', 'Docker', 'AWS S3', 'CloudFront', 'OpenAI API (GPT-4o-mini)', 'G-Eval',
 ]);
 
 const TOC_ITEMS = [
