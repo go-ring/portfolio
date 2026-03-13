@@ -249,7 +249,7 @@ export const projects: Project[] = [
     role: ["백엔드 & 인프라"],
     shortDescription: "알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼",
     description:
-      "알고리즘 스터디의 운영 자동화와 강제적 코드 리뷰 시스템을 통해 학습 효율을 극대화하는 스터디 관리 플랫폼. \n\n기존 스터디의 고질적인 문제인 '운영 피로도'와 '형식적인 리뷰'를 해결하기 위해 탄생. 단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합하여, 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공합니다. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/go-ring/algogo), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
+      "알고리즘 문제 및 제출 관리, 강제적 코드 리뷰 규칙 적용, 활동 현황 시각화를 하나의 플랫폼으로 통합하여, 스터디 운영의 피로도를 줄이고 코드 리뷰가 반드시 이루어지는 학습 구조를 시스템으로 구현한 스터디 관리 플랫폼.\n\n단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 지능형 리뷰어 매칭 알고리즘, 그리고 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합해 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/go-ring/algogo), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
     tech: [
       "Java 17",
       "Spring Boot 3.3",
