@@ -148,9 +148,9 @@ export const projects: Project[] = [
     type: "팀 프로젝트 (6인)",
     period: "2026.01.19 ~ 2026.02.06 (3주)",
     role: ["백엔드 리드 & 인프라"],
-    shortDescription: "GitHub 코드 분석 기반의 올인원 개발자 취업 솔루션",
+    shortDescription: "사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼",
     description:
-      "GitHub 코드 분석 기반의 올인원 개발자 취업 솔루션. '개발자는 코드로 말하고 싶은데, 기업은 자소서를 원한다'는 채용의 병목 문제를 해결하기 위해 탄생.\n\nGitHub 레포지토리(실제 커밋/코드)와 기업의 최신 데이터(DART 공시, Perplexity AI)를 교차 분석하여, 기술 역량 기반 공고 매칭과 근거 있는 자기소개서 작성을 자동화. 범용 LLM의 할루시네이션(Hallucination) 문제를 극복하고, SSAFY 취업 컨설턴트 자문을 반영한 증거 중심 커리어 솔루션. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))",
+      "기업의 재무/뉴스 데이터(DART, NATE)와 개발자의 기술 경험(GitHub, 포트폴리오)을 AI로 교차 분석하여, 사용자와 핏한 공고 매칭 및 자기소개서 작성을 돕는 AI 채용/구직 플랫폼.\n\n범용 LLM의 한계를 넘어 실제 커밋/코드 기반의 객관적인 기술 역량을 정량화하고 증거 중심의 데이터(Evidence-based)를 활용해, 취업 준비 과정에서의 정보 비대칭성을 해소하고 지원자의 실질적인 합격 가능성을 고도화하는 맞춤형 커리어 솔루션을 제공. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))",
     tech: [
       "Java 17",
       "Spring Boot 3.2",
