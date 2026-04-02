@@ -500,8 +500,8 @@ export const projects: Project[] = [
 
 export const education: EducationItem[] = [
   {
-    school: "Samsung SW·AI Academy For Youth (SSAFY)",
-    period: "2025.08 ~ 현재",
+    school: "삼성 청년 SW·AI 아카데미 (SSAFY)",
+    period: "2025.07 ~ 2026.06",
     degree: "14기 교육생",
     description: "알고리즘 및 웹 개발 심화 과정",
     organizer: "삼성전자",
