@@ -254,7 +254,7 @@ export const projects: Project[] = [
     role: ["백엔드 & 인프라"],
     shortDescription: "알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼",
     description:
-      "알고리즘 문제 및 제출 관리, 강제적 코드 리뷰 규칙 적용, 활동 현황 시각화를 하나의 플랫폼으로 통합하여, 스터디 운영의 피로도를 줄이고 코드 리뷰가 반드시 이루어지는 학습 구조를 시스템으로 구현한 스터디 관리 플랫폼.\n\n단순한 문제 풀이를 넘어, 제출 잠금(Lock) 시스템을 통한 선순환 리뷰 루프와 지능형 리뷰어 매칭 알고리즘, 그리고 G-Eval 방법론 기반의 AI 코드 분석 엔진을 결합해 사용자가 알고리즘 학습의 본질인 '사고의 공유'에 집중할 수 있는 환경을 제공. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
+      "알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼.\n\n제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
     tech: [
       "Java 17",
       "Spring Boot 3.3",
@@ -284,22 +284,24 @@ export const projects: Project[] = [
     },
     details: {
       roleAndContribution: [
-        "Blue-Green 무중단 배포 시스템 구축: Jenkins와 Nginx를 활용하여 서버 상태(Health Check)를 검증하고 트래픽을 스위칭하는 Blue-Green 기반 무중단 배포 파이프라인 구축",
-        "컨테이너 환경 최적화 및 보안 고도화: Docker Multi-stage Build로 실행 이미지를 경량화하고, Non-root 계정 권한 분리 실행 기반으로 컨테이너 보안 강화",
-        "Cloud-Native 자산 관리 아키텍처 설계: 오리진 부하 분산 및 효율적인 처리를 위해 AWS S3·CloudFront 기반 제출 코드 및 정적 자산 아카이빙 구조 설계",
-        "안정적인 비동기 파이프라인 구성: OpenAI API 응답 지연으로부터 메인 DB 커넥션 풀을 보호하기 위해 비동기 이벤트 기반 AI 코드 평가 파이프라인 구축",
+        "문제집 및 리뷰 도메인 코어 API 설계 및 구현: 그룹 및 캠페인 목적에 맞춘 알고리즘 문제집(Program-Problem) 관리 로직과, 제출된 코드의 특정 라인(Line)에 매핑되는 계층형 리뷰 및 반응(Reaction) 도메인 전체 개발",
+        "OpenAI API 연동 비동기 이벤트 아키텍처 설계: AI 코드 평가 대기 중 발생할 수 있는 메인 DB 커넥션 풀(HikariCP) 고갈 이슈를 방지하고자, 비동기 구조 기반의 독립적인 트랜잭션 격리 환경 구축",
+        "Jenkins·Nginx 기반 Blue-Green 무중단 CI/CD 파이프라인 구축: Nginx Gateway 서버와 통합 API 서버를 물리적으로 분리하고, Health Check 기반 자동 트래픽 스위칭을 도입하여 트래픽 전환 가용성 100% 달성",
+        "Docker Multi-stage Build 및 Non-root 권한 격리 적용: BuildKit Layer 캐싱을 도입하여 컨테이너 빌드 소요 시간을 단축(66%)함과 동시에, appuser 권한 분리를 통한 호스트 OS 보안성 대폭 강화",
+        "AWS S3 및 CloudFront 기반 클라우드 네이티브 자산 서빙 구조 설계: 다수의 스터디 자료 및 이미지 서빙 시 오리진 인스턴스의 트래픽 부하를 엣지 로케이션으로 분산시켜 데이터 전송 안정성 확보",
       ],
       techAndReason: [
-        "Blue-Green (vs Rolling): 가용성이 최우선인 플랫폼 특성상, 구 버전과 신 버전을 동시에 띄워 완벽한 롤백 지점을 확보하고 트래픽 유실을 0으로 만들기 위해 도입",
-        "S3 + CloudFront: 단순 파일 저장을 넘어 분산 서빙과 CDN 엣지 캐싱을 결합하여, 서버 증설 시 파일 동기화 문제를 해결하는 Cloud-Native 무상태(Stateless) 아키텍처 구현",
-        "Docker Multi-stage & Non-root: 캐싱 레이어 분리를 통해 CI 파이프라인 소요 시간을 극대화함과 동시에 컨테이너 내 권한 분리(Least Privilege)로 호스트 OS 보안 격리성 달성",
-        "Spring Event & @Async: 장시간 소요되는 OpenAI API 요청이 메인 트랜잭션을 잡고 있어 발생하는 HikariCP 고갈 현상을 방지하기 위해 트랜잭션 경계 분리 및 논리적 스레드 파이프라인 구성",
+        "Blue-Green 배포: 단일 운영 서버(EC2) 한계상 롤링 배포가 불가능한 환경에서, 신/구 버전을 동시 기동 후 Nginx 라우팅을 전환하여 완벽한 롤백 지점 확보 및 무중단 배포(0 Downtime) 달성",
+        "S3 + CloudFront: 다수의 문제집 이미지 등 정적 에셋 서빙 시 발생하는 EC2 대역폭 부하를 분산시키기 위해 도입. CDN 엣지 캐싱을 통해 오리진(API 서버)을 완전한 무상태(Stateless) 기반 구조로 전환",
+        "Docker 캐싱 & Non-root: CI 빌드 시 종속성 레이어 캐싱을 적용해 소요 시간을 극대화하여 단축하고, 런타임 이미지는 최소 권한의 appuser(10001)로 실행시켜 호스트 OS와의 권한 상승(Privilege Escalation) 보안 취약점 사전 차단",
+        "Spring Event + @Async (OpenAI): GPT API의 수 초 단위 응답 대기 시간 동안 메인 트랜잭션이 유지되며 발생하는 DB 커넥션 풀(HikariCP) 고갈 및 데드락을 원천 차단하기 위해, 애플리케이션 이벤트를 활용한 논리적 스레드 분리",
       ],
       implementation: [
-        "Nginx Actuator 폴링 검증: 단순 스크립트 전환 대신, 새로 구동된 타겟 컨테이너의 /actuator/health가 UP 상태를 반환할 때까지 curl로 대기 후 라우팅을 스위칭하여 안전한 무중단 배포 구현",
-        "Docker 레이어 구조 개편 및 파일 소유권 분리: gradlew 및 설정 파일만 선행 COPY하는 캐싱 최적화 반영, 그리고 실행 워크스페이스 권한을 chown으로 분리 후 Non-root(appuser) 컨테이너 기동",
-        "S3 Key UUID 마이그레이션 전략: 동일 파일명 덮어쓰기에 따른 CloudFront 캐시 갱신 지연(무효화 오버헤드) 문제를 방지하고자, 이미지 변경 시마다 고유 UUID 기반의 URL 스킴 서빙 반영",
-        "OpenAI G-Eval 외부 평가 비동기 분리: 트랜잭션이 시작된 메인 스레드 밖에서 GPT 기반 평가 로직을 수행하도록 Custom Executor 처리 후, 마지막 DB 저장에만 짧은 트랜잭션을 사용하는 점유 최소화 로직 구성",
+        "제출 잠금(Lock) 기반 강제 리뷰: 타인의 코드를 반드시 일정 횟수 이상 리뷰해야만 새로운 코드를 제출할 수 있는 선순환 피드백 시스템 구축",
+        "LLM 기반 정밀 코드 평가: OpenAI(G-Eval)를 활용하여 제출된 코드의 최적화 수준, 복잡도, 예외 처리 능력을 객관적으로 수치화 및 자동 피드백",
+        "스터디 운영 체계 자동화: 주차별 문제 출제, 미제출자 자동 알림 패널티 부과 기능을 통해 운영진의 스터디 관리 리소스 최소화",
+        "코드 라인별 계층형 리뷰: 제출된 코드의 특정 라인(Line)을 지정한 피드백 및 대댓글(Thread) 기능을 설계하여 밀도 높은 기술 소통 지원",
+        "개인별 성취도 지표 시각화: 문제 난이도별 성공률, 시도 횟수, 실행 시간 및 메모리 추이 등 상세 학습 지표를 시각화하여 체계적 관리 구현",
       ],
       troubleshooting: [
         {

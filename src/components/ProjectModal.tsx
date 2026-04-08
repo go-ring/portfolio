@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Github, BookOpen, Presentation, BadgeCheck, Trophy, List, ChevronRight, ExternalLink, MessageCircle, Sparkles, Building2, Target, FileText, ShieldCheck, SearchCode } from 'lucide-react';
+import { X, Github, BookOpen, Presentation, BadgeCheck, Trophy, List, ChevronRight, ExternalLink, MessageCircle, Sparkles, Building2, Target, FileText, ShieldCheck, SearchCode, Lock, Bot, Settings, GitPullRequest, BarChart } from 'lucide-react';
 
 const JiraIcon = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="-3 -3 30 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -57,6 +57,11 @@ function ImplementationCard({ item, index }: { item: string; index: number }) {
 
   const getIcon = (title: string) => {
     const t = title.toLowerCase();
+    if (t.includes('잠금') || t.includes('강제')) return <Lock size={16} />;
+    if (t.includes('llm') || t.includes('ai') || t.includes('지능')) return <Bot size={16} />;
+    if (t.includes('자동화') || t.includes('운영')) return <Settings size={16} />;
+    if (t.includes('라인') || t.includes('계층형') || t.includes('리뷰')) return <GitPullRequest size={16} />;
+    if (t.includes('시각화') || t.includes('성취도') || t.includes('통계')) return <BarChart size={16} />;
     if (t.includes('역량') || t.includes('분석')) return <SearchCode size={16} />;
     if (t.includes('기업') || t.includes('데이터')) return <Building2 size={16} />;
     if (t.includes('매칭') || t.includes('추천')) return <Target size={16} />;
