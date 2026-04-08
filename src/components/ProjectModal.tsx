@@ -27,7 +27,7 @@ interface ProjectModalProps {
 const EMPHASIS_TECH: Record<string, Set<string>> = {
   'ColorFinder': new Set(['Google Vision AI', 'Python', 'OpenCV', 'Selenium']),
   '가상화 기반 우주 통신망 연동 및 사이버 위협 연구': new Set(['NOS3', 'NCloud', 'Cloud-Init', 'Ruby', 'xrdp']),
-  '백구 (Baekgu)': new Set(['GitLab CI/CD', 'Docker', 'Redis', 'QueryDSL', 'Prometheus', 'Grafana', 'Loki']),
+  '백구(BAEKGU)': new Set(['GitLab CI/CD', 'Redis', 'JPA / QueryDSL', 'WebSocket (STOMP)', 'Prometheus / Grafana', 'Loki']),
   '알고가자(Algogo)': new Set(['Jenkins', 'Nginx', 'Docker', 'AWS S3', 'CloudFront', 'OpenAI API (GPT-4o-mini)', 'G-Eval']),
 };
 
@@ -53,11 +53,11 @@ function DetailBlock({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
       <SectionHeader title={title} variant="sidebar" />
-      <ul className="space-y-2 text-[15px] text-gray-300 leading-relaxed">
+      <ul className="space-y-4 text-[16px] text-gray-300 leading-relaxed">
         {items.map((item, idx) => (
           <li key={idx} className="flex gap-3">
-            <span className="mt-[9px] h-[4px] w-[4px] rounded-full bg-gray-500 shrink-0" />
-            <span>{renderLinked(item)}</span>
+            <span className="mt-[10.5px] h-[4px] w-[4px] rounded-full bg-primary shrink-0" />
+            <p className="block m-0 break-keep">{renderLinked(item)}</p>
           </li>
         ))}
       </ul>
@@ -93,10 +93,10 @@ function ImplementationCard({ item, index }: { item: string; index: number }) {
         {getIcon(title)}
       </div>
       <div className="flex-1 min-w-0 py-0.5">
-        <h5 className="font-bold text-white text-[15.5px] mb-0.5 group-hover:text-primary transition-colors">
+        <h5 className="font-bold text-white text-[16.5px] mb-0.5 group-hover:text-primary transition-colors">
           {title}
         </h5>
-        {body && <p className="text-gray-200 text-[14.5px] leading-snug group-hover:text-white transition-colors">{renderLinked(body)}</p>}
+        {body && <p className="text-gray-200 text-[15.5px] leading-snug group-hover:text-white transition-colors">{renderLinked(body)}</p>}
       </div>
     </motion.div>
   );
@@ -420,7 +420,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                       <div>
                         <SectionHeader title="프로젝트 개요" variant="sidebar" />
-                        <p className="text-gray-300 leading-relaxed text-[16px] whitespace-pre-wrap">
+                        <p className="text-gray-300 leading-relaxed text-[17px] whitespace-pre-wrap">
                           {renderLinked(project.description)}
 
                         </p>
@@ -438,7 +438,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                   "transition-all duration-300 flex items-center gap-2 " +
                                   (isEmphasis
                                     ? "text-primary text-lg font-bold"
-                                    : "text-gray-400 hover:text-gray-200 text-[16px] font-medium")
+                                    : "text-gray-400 hover:text-gray-200 text-[17px] font-medium")
                                 }
                               >
                                 {isEmphasis && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
@@ -487,8 +487,8 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                 <div key={idx} className="group flex gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-200">
                                   <div className="mt-2.5 h-2 w-2 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(var(--primary-rgb),0.4)]" />
                                   <div className="flex-1 min-w-0 py-0.5">
-                                    <span className="font-bold text-primary text-[15.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>
-                                    {body && <p className="text-gray-200 leading-snug text-[14.5px] group-hover:text-white transition-colors">{renderLinked(body)}</p>}
+                                    <span className="font-bold text-primary text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>
+                                    {body && <p className="text-gray-200 leading-snug text-[15.5px] group-hover:text-white transition-colors">{renderLinked(body)}</p>}
                                   </div>
                                 </div>
                               );
@@ -534,18 +534,18 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                       {/* Tech Reasons */}
                       {project.details?.techAndReason && (
-                        <div className="grid gap-4">
+                        <div className="grid gap-3">
                           {project.details.techAndReason.map((item, idx) => {
                             const splitIndex = item.indexOf(':');
                             const techName = splitIndex !== -1 ? item.slice(0, splitIndex) : item;
                             const reason = splitIndex !== -1 ? item.slice(splitIndex + 1) : '';
 
                             return (
-                              <div key={idx} className="flex gap-4 p-4 rounded-lg hover:bg-white/5 transition-colors">
-                                <div className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
-                                <div>
-                                  <span className="font-bold text-white text-lg block mb-1">{techName}</span>
-                                  <p className="text-gray-300 leading-relaxed text-[15px]">{renderLinked(reason)}</p>
+                              <div key={idx} className="group flex gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-200">
+                                <div className="mt-2.5 h-2 w-2 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(var(--primary-rgb),0.4)]" />
+                                <div className="flex-1 min-w-0 py-0.5">
+                                  <span className="font-bold text-primary text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{techName}</span>
+                                  {reason && <p className="text-gray-200 leading-snug text-[15.5px] group-hover:text-white transition-colors">{renderLinked(reason)}</p>}
                                 </div>
                               </div>
                             );
@@ -569,7 +569,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                           >
                             {/* Card Title */}
                             <div className="px-6 pt-5 pb-4 border-b border-white/[0.06]">
-                              <h5 className="text-[17px] font-bold text-white leading-snug">{section.title}</h5>
+                              <h5 className="text-[18px] font-bold text-white leading-snug">{section.title}</h5>
                             </div>
 
                             {/* Items */}
@@ -583,12 +583,12 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                 return (
                                   <div key={idx} className="rounded-lg bg-white/[0.025] border border-white/[0.04] px-4 py-3">
                                     {labelInfo && (
-                                      <div className={`flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase mb-2 ${labelInfo.color}`}>
+                                      <div className={`flex items-center gap-1.5 text-[12px] font-semibold tracking-widest uppercase mb-2 ${labelInfo.color}`}>
                                         <TroubleIcon type={rawLabel!} />
                                         <span>{rawLabel}</span>
                                       </div>
                                     )}
-                                    <p className="text-[14px] text-gray-300 leading-[1.7] whitespace-pre-line">
+                                    <p className="text-[15px] text-gray-300 leading-[1.7] whitespace-pre-line">
                                       <HighlightedText text={content} />
                                     </p>
                                   </div>
@@ -604,55 +604,62 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     <section id="outcomes" className="space-y-6 scroll-mt-24 min-h-[200px]">
                       <SectionHeader title="성과 및 결과" variant="sidebar" /> {/* No Icon */}
 
-                      <div className="space-y-4">
+                      <div className="grid gap-3">
                         {project.impact && project.impact.split('\n').map((line, idx) => {
                           // Check if this line is the one about the Smart Media Conference
                           const isAwardLine = line.includes("우수상") || line.includes("상장");
                           const isPaperLine = line.includes("학술 논문") || line.includes("학술대회");
                           const isReportLine = line.includes("연구 보고서") || line.includes("검토·정리");
 
+                          const colonIdx = line.indexOf(':');
+                          const title = colonIdx !== -1 ? line.slice(0, colonIdx).trim() : null;
+                          const content = colonIdx !== -1 ? line.slice(colonIdx + 1).trim() : line;
+
                           return (
-                            <div key={idx} className="bg-[#1a1f2c] p-5 rounded-xl border border-white/10 flex items-start gap-4">
-                              <Trophy className="text-yellow-500 mt-1 shrink-0" size={20} />
-                              <div className="flex-1 flex items-start justify-between gap-4">
-                                <span className="text-[15px] text-gray-200 font-medium leading-relaxed">
-                                  {line}
-                                </span>
-                                <div className="flex gap-3 shrink-0">
-                                  {isAwardLine && project.links.proof && (
-                                    <a
-                                      href={project.links.proof}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="flex items-center gap-1 text-sm text-yellow-500 hover:text-yellow-400 hover:underline transition-colors font-medium whitespace-nowrap"
-                                    >
-                                      <ExternalLink size={14} />
-                                      Award
-                                    </a>
-                                  )}
-                                  {isPaperLine && project.links.paper && (
-                                    <a
-                                      href={project.links.paper}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium whitespace-nowrap"
-                                    >
-                                      <ExternalLink size={14} />
-                                      Paper
-                                    </a>
-                                  )}
-                                  {isReportLine && project.links.proof && (
-                                    <a
-                                      href={project.links.proof}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300 hover:underline transition-colors font-medium whitespace-nowrap"
-                                    >
-                                      <ExternalLink size={14} />
-                                      Report
-                                    </a>
-                                  )}
+                            <div key={idx} className="group flex flex-col sm:flex-row gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-yellow-500/30 transition-all duration-200 items-start">
+                              <div className="flex gap-3.5 items-start flex-1 min-w-0">
+                                <Trophy className="text-yellow-500 mt-0.5 shrink-0" size={18} />
+                                <div className="flex-1 min-w-0 py-0.5">
+                                  {title && <span className="font-bold text-yellow-500/90 text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>}
+                                  <span className="text-[15.5px] text-gray-200 leading-snug group-hover:text-white transition-colors block">
+                                    {renderLinked(content)}
+                                  </span>
                                 </div>
+                              </div>
+                              <div className="flex gap-3 shrink-0 items-center justify-end w-full sm:w-auto mt-2 sm:mt-0 sm:ml-4">
+                                {isAwardLine && project.links.proof && (
+                                  <a
+                                    href={project.links.proof}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1 text-sm text-yellow-500 hover:text-yellow-400 hover:underline transition-colors font-medium whitespace-nowrap bg-yellow-500/10 px-2 py-1 rounded"
+                                  >
+                                    <ExternalLink size={14} />
+                                    Award
+                                  </a>
+                                )}
+                                {isPaperLine && project.links.paper && (
+                                  <a
+                                    href={project.links.paper}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium whitespace-nowrap bg-blue-500/10 px-2 py-1 rounded"
+                                  >
+                                    <ExternalLink size={14} />
+                                    Paper
+                                  </a>
+                                )}
+                                {isReportLine && project.links.proof && (
+                                  <a
+                                    href={project.links.proof}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300 hover:underline transition-colors font-medium whitespace-nowrap bg-purple-500/10 px-2 py-1 rounded"
+                                  >
+                                    <ExternalLink size={14} />
+                                    Report
+                                  </a>
+                                )}
                               </div>
                             </div>
                           );
