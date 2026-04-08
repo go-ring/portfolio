@@ -182,10 +182,11 @@ export const projects: Project[] = [
     },
     details: {
       roleAndContribution: [
-        "CI/CD 빌드 및 배포 무중단 파이프라인: GitLab CI/CD 파이프라인 구축 및 Docker Compose 기반 서비스 분리 전략을 적용해 백엔드 재배포 시 AI 워커(FastAPI) 무중단 유지",
-        "인메모리 기반 보안 시스템: Redis Atomic Counter 기반 비정상 접근 자동 차단 시스템 구현으로 반복적인 4xx 요청을 감지하고 Spring Security 진입 전 403 차단",
-        "실시간 스트리밍 시스템 고도화: WebSocket/STOMP 기반 실시간 채팅 서버 구현 및 QueryDSL을 활용한 채팅방 조회 성능 최적화",
-        "통합 모니터링 환경 구성: Prometheus·Grafana·Loki 기반 서버 메트릭 및 로그 통합 모니터링 시스템 구축",
+        "GitLab CI/CD 기반 백엔드-AI 서버 분리 구조 설계: FastAPI와 Spring Boot의 수명 주기를 분리하여 백엔드 배포 중에도 AI 분석 파이프라인이 중단되지 않는 Fault-Tolerant 아키텍처 구축",
+        "FastAPI-Spring 비동기 처리 및 작업 안정성 확보: 분석 결과 보고 로직을 비동기 콜백 구조로 설계하고 예외 처리를 강화하여 서버 결합도 해소 및 데이터 전송의 최종 일관성 확보",
+        "공고·채팅·자소서 핵심 도메인 API 설계 및 구현: 시노님 기반 공고 매칭 로직, WebSocket 기반 실시간 채팅, LLM 연동 자소서 생성 지원 등 서비스 주요 비즈니스 도메인 전체 개발",
+        "Prometheus·Grafana·Loki 기반 통합 모니터링 구축: 서버 메트릭 수집부터 로그 통합 분석까지 전체 시스템 가시성을 확보하여 장애 조치 및 성능 관찰 환경 조성",
+        "Redis 기반 비정상 요청 차단 시스템 구현 (블랙리스트 관리): Redis Atomic Counter를 활용한 비정상 호출 실시간 탐지 및 블랙리스트 관리 체계 구축으로 시스템 보안 강화",
       ],
       techAndReason: [
         "Spring Boot + FastAPI 분리: 비즈니스 로직(Spring)과 AI 연산(FastAPI)의 부하를 격리하여, AI 작업의 CPU 집약적 연산이 사용자 API 응답 속도에 영향을 주지 않도록 부하 격리 설계.",
@@ -194,11 +195,11 @@ export const projects: Project[] = [
         "Git Clone (vs GitHub API): GitHub Contents API는 파일당 1건의 요청을 소비해 Rate Limit(5,000건/시간)이 빠르게 소진. git clone은 단 1번의 명령으로 전체 코드를 가져오며, Rate Limit 미소비.",
       ],
       implementation: [
-        "IP 바인딩 JWT: 토큰 발급 시 클라이언트 IP를 암호화하여 Payload에 포함하고, JwtAuthenticationTokenFilter에서 매 요청마다 실제 IP와 대조. 세션 하이재킹 원천 차단.",
-        "Redis Atomic Counter 블랙리스트: 비정상 접근(4xx 에러 반복) 감지 시 RedisTemplate.opsForValue().increment()로 카운트 증가, 임계치 초과 시 Spring Security 필터 진입 전 즉시 403 차단.",
-        "채팅 N+1 최적화: '방 목록(1) + 안 읽은 메시지 수(N) + 상대 프로필(N) + 마지막 메시지(N)' 패턴을 Projections.constructor와 서브쿼리를 활용한 단일 QueryDSL 쿼리로 해결. 1만 건 이상 데이터에서도 50ms 미만 유지 ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing)).",
-        "결함 허용(Fault-Tolerant) AI 파이프라인 — 이중 방어선: [1차] docker-compose.prod.yml에서 backend·fastapi 간 depends_on 없이 독립 컨테이너로 분리, Spring 배포가 FastAPI 수명 주기에 물리적으로 영향 없음. [2차] orchestrator.py의 notify_spring()에서 Spring 콜백을 try-except-pass로 감싸, Progress 40% → 100% 각 단계 보고가 실패해도 파이프라인은 계속 진행. 분석 결과는 FastAPI가 MySQL에 직접 db.commit()으로 저장하여 Spring 재시작 후에도 사용자가 정상 조회 가능 ([발표자료 참고](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing)).",
-        "데이터 수집 파이프라인: DART OpenAPI로 기업 공시 데이터 추출, Perplexity sonar-pro로 최신 뉴스 수집, GitHub API로 커밋 이력 수집, git clone으로 전체 소스 분석, Playwright로 자소설닷컴 공고(네트워크 인터셉트 방식) 크롤링.",
+        "사용자 개발 역량 정밀 분석: GitHub 커밋 빈도, 코드 기여도 등 실질적 활동 데이터를 기반으로 핵심 기술 역량을 객관적으로 도출 (Git Clone & LLM 분석)",
+        "지능형 기업 데이터 분석: DART(재무제표)와 실시간 뉴스(비즈니스 트렌드)를 결합하여 기업의 안정성 및 성장성을 정밀 검증 (Perplexity AI 연동)",
+        "AI 맞춤형 공고 매칭: 분석된 사용자 역량과 실시간 채용 데이터를 온톨로지 기반 기술 매칭 시스템으로 정합하여 최적의 커리어 경로 및 추천 근거 제시",
+        "데이터 기반 자소서 자동 작성: 역량-공고-기업 분석 데이터를 종합하여 구체적 실적 근거(Evidence) 중심의 고품질 자기소개서 생성",
+        "실시간 직무 소통 네트워크: WebSocket 및 STOMP 기반 오픈채팅 시스템을 통한 지원자 및 현직자 간의 투명한 정보 공유 지원",
       ],
       troubleshooting: [
         {
@@ -428,7 +429,7 @@ export const projects: Project[] = [
     role: "위성 시뮬레이터 환경 구축 및 문제 해결",
     shortDescription: "클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석",
     description:
-      "NASA의 오픈소스 위성 시뮬레이션 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))",
+      "NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))",
     tech: [
       "NOS3",
       "Linux",
