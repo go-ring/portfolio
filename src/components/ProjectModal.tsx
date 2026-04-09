@@ -25,7 +25,7 @@ interface ProjectModalProps {
 }
 
 const EMPHASIS_TECH: Record<string, Set<string>> = {
-  'ColorFinder': new Set(['Google Vision AI', 'Python', 'OpenCV', 'Selenium']),
+  'ColorFinder': new Set(['Google Vision AI', 'Spring Boot 3.2.5', 'Flask', 'OpenCV & NumPy', 'KMA API (Weather)', 'Selenium']),
   '가상화 기반 우주 통신망 연동 및 사이버 위협 연구': new Set(['NOS3', 'NCloud', 'Cloud-Init', 'Ruby', 'xrdp']),
   '백구(BAEKGU)': new Set(['GitLab CI/CD', 'Redis', 'JPA / QueryDSL', 'WebSocket (STOMP)', 'Prometheus / Grafana', 'Loki']),
   '알고가자(Algogo)': new Set(['Blue-Green', 'Vercel', 'AWS S3 & CloudFront', 'Nginx', 'Jenkins', 'OpenAI API (G-Eval & WebClient)', 'Spring Boot Actuator & Prometheus']),
@@ -374,8 +374,8 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         key={item.id}
                         onClick={() => handleScrollTo(item.id)}
                         className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all flex items-center justify-between group ${activeId === item.id
-                            ? 'bg-primary/10 text-primary font-medium'
-                            : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
+                          ? 'bg-primary/10 text-primary font-medium'
+                          : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
                           }`}
                       >
                         {item.label}
