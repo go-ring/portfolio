@@ -152,10 +152,10 @@ export const projects: Project[] = [
     description:
       "개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼.\n\n구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))",
     tech: [
+      "Java 17",
       "Spring Boot 3.2",
-      "FastAPI (Async)",
+      "FastAPI",
       "JPA / QueryDSL",
-      "Spring Security",
       "MySQL 8.0",
       "Redis",
       "AWS EC2 / S3",
