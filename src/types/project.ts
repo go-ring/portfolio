@@ -34,6 +34,7 @@ export interface Project {
     main?: string;
     architecture?: string | string[];
     preview?: string;
+    overviewGallery?: string[];
   };
   period: string;
   type: string; // Team Project, Personal Project, Paper

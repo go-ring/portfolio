@@ -3,6 +3,7 @@ export const EMPHASIS_TECH: Record<string, Set<string>> = {
   '가상화 기반 우주 통신망 연동 및 사이버 위협 연구': new Set(['NOS3', 'NCloud', 'Cloud-Init', 'Ruby', 'xrdp']),
   '백구(BAEKGU)': new Set(['GitLab CI/CD', 'Redis', 'JPA / QueryDSL', 'WebSocket (STOMP)', 'Prometheus / Grafana', 'Loki']),
   '알고가자(Algogo)': new Set(['Blue-Green', 'Vercel', 'AWS S3 & CloudFront', 'Nginx', 'Jenkins', 'OpenAI API (G-Eval & WebClient)', 'Spring Boot Actuator & Prometheus']),
+  'DDOYA (또야)': new Set(['Firebase Admin SDK', 'FCM Push', 'Spring Scheduler', 'FastAPI', 'YOLOv8', 'Docker Compose', 'Jenkins']),
 };
 
 export const TOC_ITEMS = [

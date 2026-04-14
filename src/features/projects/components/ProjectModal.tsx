@@ -52,6 +52,8 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
   if (typeof document === 'undefined') return null;
 
+  const isDdoya = project.title === 'DDOYA (또야)';
+
   return createPortal(
     <AnimatePresence>
       {isOpen && (
@@ -90,7 +92,21 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     <section id="overview" className="space-y-6 scroll-mt-24">
 
                       {/* Main Image */}
-                      {project.images?.main && (
+                      {project.images?.overviewGallery ? (
+                        <div className="mb-8 flex justify-center">
+                          <div className="grid grid-cols-3 gap-4 w-full max-w-4xl">
+                            {project.images.overviewGallery.map((image, idx) => (
+                              <div key={idx} className="overflow-hidden">
+                                <img
+                                  src={image}
+                                  alt={`Overview ${idx + 1}`}
+                                  className="w-full h-[270px] object-contain"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ) : project.images?.main && (
                         <div className="mb-8 flex justify-center">
                           <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center max-w-4xl w-full">
                             <img
@@ -168,18 +184,21 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                               const title = colonIdx !== -1 ? item.slice(0, colonIdx).trim() : item;
                               const body = colonIdx !== -1 ? item.slice(colonIdx + 1).trim() : '';
                               const roleImage = project.details?.roleAndContributionImages?.[idx];
+                              const useSideRoleImage = isDdoya && roleImage;
                               return (
                                 <div key={idx} className="group flex gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-200">
                                   <div className="mt-2.5 h-2 w-2 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(var(--primary-rgb),0.4)]" />
-                                  <div className="flex-1 min-w-0 py-0.5">
-                                    <span className="font-bold text-primary text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>
-                                    {body && <p className="text-gray-200 leading-snug text-[15.5px] group-hover:text-white transition-colors">{renderLinked(body)}</p>}
+                                  <div className={`flex-1 min-w-0 py-0.5 ${useSideRoleImage ? "md:flex md:items-start md:gap-5" : ""}`}>
+                                    <div className="min-w-0 flex-1">
+                                      <span className="font-bold text-primary text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>
+                                      {body && <p className="text-gray-200 leading-snug text-[15.5px] group-hover:text-white transition-colors">{renderLinked(body)}</p>}
+                                    </div>
                                     {roleImage && (
-                                      <div className="mt-4 rounded-lg overflow-hidden border border-white/10 bg-black/20 p-2 max-w-xl">
+                                      <div className={`mt-4 rounded-lg overflow-hidden border border-white/10 bg-black/20 p-2 ${useSideRoleImage ? "md:mt-0 w-full md:w-[220px] shrink-0" : "max-w-xl"}`}>
                                         <img
                                           src={roleImage}
                                           alt={`${title} detail`}
-                                          className="w-full h-auto max-h-[260px] object-contain rounded-md"
+                                          className={`w-full h-auto object-contain rounded-md ${useSideRoleImage ? "max-h-[220px]" : "max-h-[260px]"}`}
                                         />
                                       </div>
                                     )}
