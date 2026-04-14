@@ -1,0 +1,241 @@
+{
+  "mode": "final",
+  "baseUrl": "http://127.0.0.1:4273/",
+  "generatedAt": "2026-04-14T04:37:12.644Z",
+  "viewports": {
+    "desktop": {
+      "interactions": [
+        {
+          "type": "nav-click",
+          "target": "home",
+          "scrollY": 0
+        },
+        {
+          "type": "nav-click",
+          "target": "projects",
+          "scrollY": 1666
+        },
+        {
+          "type": "nav-click",
+          "target": "skills",
+          "scrollY": 2763
+        },
+        {
+          "type": "nav-click",
+          "target": "about",
+          "scrollY": 3110
+        },
+        {
+          "type": "project-card-click",
+          "modalVisible": 1
+        }
+      ],
+      "links": [
+        {
+          "text": "goring",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Home",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Projects",
+          "href": "#projects",
+          "target": null
+        },
+        {
+          "text": "Skills",
+          "href": "#skills",
+          "target": null
+        },
+        {
+          "text": "About",
+          "href": "#about",
+          "target": null
+        },
+        {
+          "text": "010-3480-9550",
+          "href": "tel:010-3480-9550",
+          "target": null
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/go-ring",
+          "target": "_blank"
+        },
+        {
+          "text": "",
+          "href": "https://github.com/go-ring/baekgu",
+          "target": "_blank"
+        },
+        {
+          "text": "",
+          "href": "https://www.notion.so/2e03b20e2ab480089393e059585d614c",
+          "target": "_blank"
+        },
+        {
+          "text": "",
+          "href": "https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "",
+          "href": "https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "시연 영상",
+          "href": "https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "발표 자료",
+          "href": "https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "GitHub Repository",
+          "href": "https://github.com/go-ring/baekgu",
+          "target": "_blank"
+        },
+        {
+          "text": "프로젝트 노션 (Notion Workspace)",
+          "href": "https://www.notion.so/2e03b20e2ab480089393e059585d614c",
+          "target": "_blank"
+        },
+        {
+          "text": "발표 자료 (Presentation)",
+          "href": "https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "증빙 자료 및 데모 시연 영상",
+          "href": "https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing",
+          "target": "_blank"
+        }
+      ]
+    },
+    "mobile": {
+      "interactions": [
+        {
+          "type": "nav-click",
+          "target": "home",
+          "scrollY": 0
+        },
+        {
+          "type": "nav-click",
+          "target": "projects",
+          "scrollY": 1220
+        },
+        {
+          "type": "nav-click",
+          "target": "skills",
+          "scrollY": 3260
+        },
+        {
+          "type": "nav-click",
+          "target": "about",
+          "scrollY": 4548
+        },
+        {
+          "type": "mobile-menu-open",
+          "visible": 1
+        },
+        {
+          "type": "project-card-click",
+          "modalVisible": 1
+        }
+      ],
+      "links": [
+        {
+          "text": "goring",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Home",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Projects",
+          "href": "#projects",
+          "target": null
+        },
+        {
+          "text": "Skills",
+          "href": "#skills",
+          "target": null
+        },
+        {
+          "text": "About",
+          "href": "#about",
+          "target": null
+        },
+        {
+          "text": "010-3480-9550",
+          "href": "tel:010-3480-9550",
+          "target": null
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/go-ring",
+          "target": "_blank"
+        },
+        {
+          "text": "",
+          "href": "https://github.com/go-ring/baekgu",
+          "target": "_blank"
+        },
+        {
+          "text": "",
+          "href": "https://www.notion.so/2e03b20e2ab480089393e059585d614c",
+          "target": "_blank"
+        },
+        {
+          "text": "",
+          "href": "https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "",
+          "href": "https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "시연 영상",
+          "href": "https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "발표 자료",
+          "href": "https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "GitHub Repository",
+          "href": "https://github.com/go-ring/baekgu",
+          "target": "_blank"
+        },
+        {
+          "text": "프로젝트 노션 (Notion Workspace)",
+          "href": "https://www.notion.so/2e03b20e2ab480089393e059585d614c",
+          "target": "_blank"
+        },
+        {
+          "text": "발표 자료 (Presentation)",
+          "href": "https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing",
+          "target": "_blank"
+        },
+        {
+          "text": "증빙 자료 및 데모 시연 영상",
+          "href": "https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing",
+          "target": "_blank"
+        }
+      ]
+    }
+  }
+}

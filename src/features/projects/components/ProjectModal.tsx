@@ -1,16 +1,17 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Github, BookOpen, Presentation, BadgeCheck, Trophy, List, ChevronRight, ExternalLink } from 'lucide-react';
-import { Project } from '@/constants/portfolio';
+import type { Project } from '@/types/project';
 import { renderLinked } from '@/utils/renderUtils';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { SectionHeader } from '@/components/common/SectionHeader';
-import { Tooltip } from '@/components/common/Tooltip';
-import { HighlightedText } from './HighlightedText';
 import { ImplementationCard } from './ImplementationCard';
-import { EMPHASIS_TECH, TOC_ITEMS, TROUBLE_LABELS } from './ProjectModal.constants';
-import { JiraIcon, NotionIcon, TroubleIcon } from './ProjectModalIcons';
+import { EMPHASIS_TECH, TOC_ITEMS } from './ProjectModal.constants';
+import { ProjectModalHeader } from './ProjectModalHeader';
+import { ProjectModalLinksSection } from './ProjectModalLinksSection';
+import { ProjectModalOutcomesSection } from './ProjectModalOutcomesSection';
+import { ProjectModalSidebar } from './ProjectModalSidebar';
+import { ProjectModalTroubleshootingSection } from './ProjectModalTroubleshootingSection';
 
 
 interface ProjectModalProps {
@@ -72,135 +73,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             <div className="bg-surface w-full max-w-7xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col border border-white/10 text-white">
 
               {/* Header - Compact Single Line */}
-              <div
-                ref={headerRef}
-                className="flex items-center justify-between px-6 py-3 border-b border-white/6 bg-[#10141b] z-20 shrink-0 sticky top-0"
-              >
-                <div className="flex items-center gap-3 overflow-hidden">
-                  <h3 className="text-xl font-bold text-white whitespace-nowrap">{project.title}</h3>
-
-                  {/* Type */}
-                  <span className="hidden sm:block text-sm text-gray-300 font-medium whitespace-nowrap border-l border-white/10 pl-3">
-                    {project.type}
-                  </span>
-
-                  {/* Role & Period */}
-                  <span className="hidden md:flex items-center gap-3 text-sm text-gray-500 font-medium border-l border-white/10 pl-3">
-                    <span className="text-gray-300">{Array.isArray(project.role) ? project.role[0] : project.role}</span>
-                    <span className="w-1 h-1 bg-gray-700 rounded-full" />
-                    <span>{project.period}</span>
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3 md:gap-5">
-                  {/* Links - Icon Only */}
-                  <div className="flex items-center gap-3 md:gap-4 border-r border-white/10 pr-4 md:pr-6 mr-1">
-                    {project.links.repo && (
-                      <Tooltip content="GitHub Repository">
-                        <a
-                          href={project.links.repo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-white transition-colors"
-                        >
-                          <Github size={18} />
-                        </a>
-                      </Tooltip>
-                    )}
-                    {project.links.blog && (
-                      <Tooltip content="Technical Blog">
-                        <a
-                          href={project.links.blog}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-[#20C997] transition-colors"
-                        >
-                          <BookOpen size={18} />
-                        </a>
-                      </Tooltip>
-                    )}
-                    {project.links.jira && (
-                      <Tooltip content="Jira (Sprint/Issue Tracker)">
-                        <a
-                          href={project.links.jira}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-[#0052CC] transition-colors"
-                        >
-                          <JiraIcon size={18} />
-                        </a>
-                      </Tooltip>
-                    )}
-                    {project.links.notion && (
-                      <Tooltip content="Notion (Workspace)">
-                        <a
-                          href={project.links.notion}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-white transition-colors"
-                        >
-                          <NotionIcon size={18} />
-                        </a>
-                      </Tooltip>
-                    )}
-                    {project.links.presentation && (
-                      <Tooltip content="Presentation (PPT)">
-                        <a
-                          href={project.links.presentation}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-orange-400 transition-colors"
-                        >
-                          <Presentation size={18} />
-                        </a>
-                      </Tooltip>
-                    )}
-                    {project.links.proof && (
-                      <Tooltip content="Verification/Proof">
-                        <a
-                          href={project.links.proof}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-yellow-400 transition-colors"
-                        >
-                          <BadgeCheck size={18} />
-                        </a>
-                      </Tooltip>
-                    )}
-                  </div>
-
-                  <button
-                    onClick={onClose}
-                    className="p-1.5 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
-                  >
-                    <X size={22} />
-                  </button>
-                </div>
-              </div>
+              <ProjectModalHeader project={project} headerRef={headerRef} onClose={onClose} />
 
               <div className="flex flex-1 overflow-hidden">
                 {/* Left Sidebar: TOC - Sticky */}
-                <aside className="w-64 hidden md:flex flex-col border-r border-white/10 bg-[#141820] p-6 overflow-y-auto shrink-0">
-                  <div className="flex items-center gap-2 mb-6 text-primary font-bold">
-                    <List size={20} />
-                    <span>목차</span>
-                  </div>
-                  <nav className="space-y-1">
-                    {TOC_ITEMS.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => handleScrollTo(item.id)}
-                        className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all flex items-center justify-between group ${activeId === item.id
-                          ? 'bg-primary/10 text-primary font-medium'
-                          : 'text-gray-400 hover:bg-white/5 hover:text-gray-200'
-                          }`}
-                      >
-                        {item.label}
-                        {activeId === item.id && <ChevronRight size={14} />}
-                      </button>
-                    ))}
-                  </nav>
-                </aside>
+                <ProjectModalSidebar activeId={activeId} onScrollTo={handleScrollTo} />
 
                 {/* Main Content - Scrollable */}
                 <main
@@ -362,117 +239,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     </section>
 
                     {/* 5. Troubleshooting */}
-                    <section id="troubleshooting" className="space-y-6 scroll-mt-24 min-h-[100px]">
-                      <SectionHeader title="트러블슈팅" variant="sidebar" />
-                      <div className="grid gap-5">
-                        {project.details?.troubleshooting?.map((section, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 8 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.08 }}
-                            className="bg-[#1a1f2c] rounded-xl border border-white/5 overflow-hidden hover:bg-[#1d2235] hover:shadow-lg transition-all duration-300"
-                          >
-                            {/* Card Title */}
-                            <div className="px-6 pt-5 pb-4 border-b border-white/[0.06]">
-                              <h5 className="text-[18px] font-bold text-white leading-snug">{section.title}</h5>
-                            </div>
-
-                            {/* Items */}
-                            <div className="px-6 py-4 space-y-3">
-                              {section.items.map((item, idx) => {
-                                const colonIdx = item.indexOf(':');
-                                const rawLabel = colonIdx !== -1 ? item.slice(0, colonIdx).trim() : null;
-                                const labelInfo = rawLabel ? TROUBLE_LABELS[rawLabel] : null;
-                                const content = colonIdx !== -1 ? item.slice(colonIdx + 1).trim() : item;
-
-                                return (
-                                  <div key={idx} className="rounded-lg bg-white/[0.025] border border-white/[0.04] px-4 py-3">
-                                    {labelInfo && (
-                                      <div className={`flex items-center gap-1.5 text-[12px] font-semibold tracking-widest uppercase mb-2 ${labelInfo.color}`}>
-                                        <TroubleIcon type={rawLabel!} />
-                                        <span>{rawLabel}</span>
-                                      </div>
-                                    )}
-                                    <p className="text-[15px] text-gray-300 leading-[1.7] whitespace-pre-line">
-                                      <HighlightedText text={content} />
-                                    </p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </section>
+                    <ProjectModalTroubleshootingSection project={project} />
 
                     {/* 6. Outcomes & Awards */}
-                    <section id="outcomes" className="space-y-6 scroll-mt-24 min-h-[200px]">
-                      <SectionHeader title="성과 및 결과" variant="sidebar" /> {/* No Icon */}
-
-                      <div className="grid gap-3">
-                        {project.impact && project.impact.split('\n').map((line, idx) => {
-                          // Check if this line is the one about the Smart Media Conference
-                          const isAwardLine = line.includes("우수상") || line.includes("상장");
-                          const isPaperLine = line.includes("학술 논문") || line.includes("학술대회");
-                          const isReportLine = line.includes("연구 보고서") || line.includes("검토·정리");
-
-                          const colonIdx = line.indexOf(':');
-                          const title = colonIdx !== -1 ? line.slice(0, colonIdx).trim() : null;
-                          const content = colonIdx !== -1 ? line.slice(colonIdx + 1).trim() : line;
-
-                          return (
-                            <div key={idx} className="group flex flex-col sm:flex-row gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-yellow-500/30 transition-all duration-200 items-start">
-                              <div className="flex gap-3.5 items-start flex-1 min-w-0">
-                                <Trophy className="text-yellow-500 mt-0.5 shrink-0" size={18} />
-                                <div className="flex-1 min-w-0 py-0.5">
-                                  {title && <span className="font-bold text-yellow-500/90 text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>}
-                                  <span className="text-[15.5px] text-gray-200 leading-snug group-hover:text-white transition-colors block">
-                                    {renderLinked(content)}
-                                  </span>
-                                </div>
-                              </div>
-                              <div className="flex gap-3 shrink-0 items-center justify-end w-full sm:w-auto mt-2 sm:mt-0 sm:ml-4">
-                                {isAwardLine && project.links.proof && (
-                                  <a
-                                    href={project.links.proof}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-1 text-sm text-yellow-500 hover:text-yellow-400 hover:underline transition-colors font-medium whitespace-nowrap bg-yellow-500/10 px-2 py-1 rounded"
-                                  >
-                                    <ExternalLink size={14} />
-                                    Award
-                                  </a>
-                                )}
-                                {isPaperLine && project.links.paper && (
-                                  <a
-                                    href={project.links.paper}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium whitespace-nowrap bg-blue-500/10 px-2 py-1 rounded"
-                                  >
-                                    <ExternalLink size={14} />
-                                    Paper
-                                  </a>
-                                )}
-                                {isReportLine && project.links.proof && (
-                                  <a
-                                    href={project.links.proof}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300 hover:underline transition-colors font-medium whitespace-nowrap bg-purple-500/10 px-2 py-1 rounded"
-                                  >
-                                    <ExternalLink size={14} />
-                                    Report
-                                  </a>
-                                )}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </section>
+                    <ProjectModalOutcomesSection project={project} />
 
                     {/* 7. Retrospective */}
                     <section id="retrospective" className="scroll-mt-24">
@@ -491,57 +261,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     </section>
 
                     {/* 8. Links */}
-                    {Object.keys(project.links).length > 0 && (
-                      <section id="links" className="scroll-mt-24 space-y-6">
-                        <SectionHeader title="관련 자료" variant="sidebar" />
-                        <div className="grid gap-3">
-                          {project.links.repo && (
-                            <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/50 transition-all duration-300">
-                              <Github size={22} className="text-gray-400 group-hover:text-white transition-colors shrink-0" />
-                              <span className="text-[16px] font-semibold text-gray-200 group-hover:text-white transition-colors">GitHub Repository</span>
-                              <ExternalLink size={16} className="ml-auto text-gray-500 group-hover:text-white -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-                            </a>
-                          )}
-                          {project.links.notion && (
-                            <a href={project.links.notion} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/50 transition-all duration-300">
-                              <div className="shrink-0 text-gray-400 group-hover:text-white transition-colors">
-                                <NotionIcon size={22} />
-                              </div>
-                              <span className="text-[16px] font-semibold text-gray-200 group-hover:text-white transition-colors">프로젝트 노션 (Notion Workspace)</span>
-                              <ExternalLink size={16} className="ml-auto text-gray-500 group-hover:text-white -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-                            </a>
-                          )}
-                          {project.links.presentation && (
-                            <a href={project.links.presentation} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.08] hover:border-orange-400/50 transition-all duration-300">
-                              <Presentation size={22} className="text-gray-400 group-hover:text-orange-400 transition-colors shrink-0" />
-                              <span className="text-[16px] font-semibold text-gray-200 group-hover:text-white transition-colors">발표 자료 (Presentation)</span>
-                              <ExternalLink size={16} className="ml-auto text-gray-500 group-hover:text-orange-400 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-                            </a>
-                          )}
-                          {project.links.proof && (
-                            <a href={project.links.proof} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.08] hover:border-yellow-400/50 transition-all duration-300">
-                              <BadgeCheck size={22} className="text-gray-400 group-hover:text-yellow-400 transition-colors shrink-0" />
-                              <span className="text-[16px] font-semibold text-gray-200 group-hover:text-white transition-colors">증빙 자료 및 데모 시연 영상</span>
-                              <ExternalLink size={16} className="ml-auto text-gray-500 group-hover:text-yellow-400 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-                            </a>
-                          )}
-                          {project.links.demo && (
-                            <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.08] hover:border-[#20C997]/50 transition-all duration-300">
-                              <ExternalLink size={22} className="text-gray-400 group-hover:text-[#20C997] transition-colors shrink-0" />
-                              <span className="text-[16px] font-semibold text-gray-200 group-hover:text-white transition-colors">라이브 데모 (Live Demo)</span>
-                              <ExternalLink size={16} className="ml-auto text-gray-500 group-hover:text-[#20C997] -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-                            </a>
-                          )}
-                          {project.links.paper && (
-                            <a href={project.links.paper} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.08] hover:border-[#20C997]/50 transition-all duration-300">
-                              <BookOpen size={22} className="text-gray-400 group-hover:text-[#20C997] transition-colors shrink-0" />
-                              <span className="text-[16px] font-semibold text-gray-200 group-hover:text-white transition-colors">관련 논문 (Paper)</span>
-                              <ExternalLink size={16} className="ml-auto text-gray-500 group-hover:text-[#20C997] -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-                            </a>
-                          )}
-                        </div>
-                      </section>
-                    )}
+                    <ProjectModalLinksSection project={project} />
 
                   </div>
                 </main>

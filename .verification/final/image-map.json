@@ -1,0 +1,170 @@
+[
+  {
+    "variableName": "turtleLogo",
+    "importPath": "/turtle.svg",
+    "declaredIn": "src/components/Layout.tsx",
+    "usedAt": [
+      {
+        "file": "src/components/Layout.tsx",
+        "lineNumber": 48,
+        "line": "<img src={turtleLogo} alt=\"Turtle Logo\" className=\"w-full h-full object-contain p-[3px]\" />"
+      }
+    ]
+  },
+  {
+    "variableName": "algogoMain",
+    "importPath": "@/assets/images/algogo/main.gif",
+    "declaredIn": "src/constants/projects/algogo.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/algogo.ts",
+        "lineNumber": 34,
+        "line": "main: algogoMain"
+      }
+    ]
+  },
+  {
+    "variableName": "algogoCardPreview",
+    "importPath": "@/assets/images/algogo/algogo.png",
+    "declaredIn": "src/constants/projects/algogo.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/algogo.ts",
+        "lineNumber": 33,
+        "line": "preview: algogoCardPreview,"
+      }
+    ]
+  },
+  {
+    "variableName": "nos3Main",
+    "importPath": "@/assets/images/artificialSatellite/main.bmp",
+    "declaredIn": "src/constants/projects/artificialSatellite.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/artificialSatellite.ts",
+        "lineNumber": 29,
+        "line": "main: nos3Main,"
+      }
+    ]
+  },
+  {
+    "variableName": "nos3Arch1",
+    "importPath": "@/assets/images/artificialSatellite/architecture1.bmp",
+    "declaredIn": "src/constants/projects/artificialSatellite.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/artificialSatellite.ts",
+        "lineNumber": 30,
+        "line": "architecture: [nos3Arch1, nos3Arch2],"
+      }
+    ]
+  },
+  {
+    "variableName": "nos3Arch2",
+    "importPath": "@/assets/images/artificialSatellite/architecture2.bmp",
+    "declaredIn": "src/constants/projects/artificialSatellite.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/artificialSatellite.ts",
+        "lineNumber": 30,
+        "line": "architecture: [nos3Arch1, nos3Arch2],"
+      }
+    ]
+  },
+  {
+    "variableName": "baekguMain",
+    "importPath": "@/assets/images/baekgu/main.gif",
+    "declaredIn": "src/constants/projects/baekgu.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/baekgu.ts",
+        "lineNumber": 40,
+        "line": "main: baekguMain"
+      }
+    ]
+  },
+  {
+    "variableName": "baekguArch",
+    "importPath": "@/assets/images/baekgu/architecture.png",
+    "declaredIn": "src/constants/projects/baekgu.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/baekgu.ts",
+        "lineNumber": 39,
+        "line": "architecture: baekguArch,"
+      }
+    ]
+  },
+  {
+    "variableName": "baekguCardPreview",
+    "importPath": "@/assets/images/baekgu/baekgu.png",
+    "declaredIn": "src/constants/projects/baekgu.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/baekgu.ts",
+        "lineNumber": 38,
+        "line": "preview: baekguCardPreview,"
+      }
+    ]
+  },
+  {
+    "variableName": "colorFinderSubject",
+    "importPath": "@/assets/images/colorfinder/subject.png",
+    "declaredIn": "src/constants/projects/colorfinder.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/colorfinder.ts",
+        "lineNumber": 59,
+        "line": "implementationImage: colorFinderSubject,"
+      }
+    ]
+  },
+  {
+    "variableName": "colorFinderArch",
+    "importPath": "@/assets/images/colorfinder/architecture.png",
+    "declaredIn": "src/constants/projects/colorfinder.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/projects/colorfinder.ts",
+        "lineNumber": 40,
+        "line": "architecture: colorFinderArch,"
+      }
+    ]
+  },
+  {
+    "variableName": "profile1",
+    "importPath": "@/assets/images/profile1.jpg",
+    "declaredIn": "src/features/hero/components/ProfileCarouselCard.tsx",
+    "usedAt": [
+      {
+        "file": "src/features/hero/components/ProfileCarouselCard.tsx",
+        "lineNumber": 10,
+        "line": "const images = [profile1, profile2, profile3];"
+      }
+    ]
+  },
+  {
+    "variableName": "profile2",
+    "importPath": "@/assets/images/profile2.jpg",
+    "declaredIn": "src/features/hero/components/ProfileCarouselCard.tsx",
+    "usedAt": [
+      {
+        "file": "src/features/hero/components/ProfileCarouselCard.tsx",
+        "lineNumber": 10,
+        "line": "const images = [profile1, profile2, profile3];"
+      }
+    ]
+  },
+  {
+    "variableName": "profile3",
+    "importPath": "@/assets/images/profile3.jpg",
+    "declaredIn": "src/features/hero/components/ProfileCarouselCard.tsx",
+    "usedAt": [
+      {
+        "file": "src/features/hero/components/ProfileCarouselCard.tsx",
+        "lineNumber": 10,
+        "line": "const images = [profile1, profile2, profile3];"
+      }
+    ]
+  }
+]

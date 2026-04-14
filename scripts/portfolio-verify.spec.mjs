@@ -5,8 +5,10 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const mode = process.env.VERIFY_MODE ?? 'baseline';
+const baselineMode = process.env.VERIFY_BASELINE_MODE ?? 'baseline';
 const baseUrl = process.env.VERIFY_URL ?? 'http://127.0.0.1:4173/';
 const maxDiffPixels = Number(process.env.VERIFY_MAX_DIFF_PIXELS ?? 250000);
+const compareScreenshots = process.env.VERIFY_COMPARE === '1';
 const outDir = path.resolve('.verification', mode);
 const viewports = [
   { name: 'desktop', width: 1440, height: 1600 },
@@ -20,8 +22,8 @@ async function saveOrCompareScreenshot(page, name) {
   const image = await page.screenshot({ path: screenshotPath, fullPage: true });
   screenshotNames.push(name);
 
-  if (mode !== 'baseline') {
-    const baselinePath = path.resolve('.verification', 'baseline', name);
+  if (compareScreenshots) {
+    const baselinePath = path.resolve('.verification', baselineMode, name);
     const diffPath = path.resolve('.verification', mode, name.replace(/\.png$/, '-diff.png'));
     const baseline = PNG.sync.read(await readFile(baselinePath));
     const current = PNG.sync.read(image);

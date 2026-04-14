@@ -1,0 +1,170 @@
+[
+  {
+    "variableName": "colorFinderSubject",
+    "importPath": "@/assets/images/colorfinder/subject.png",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 416,
+        "line": "implementationImage: colorFinderSubject,"
+      }
+    ]
+  },
+  {
+    "variableName": "colorFinderArch",
+    "importPath": "@/assets/images/colorfinder/architecture.png",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 397,
+        "line": "architecture: colorFinderArch,"
+      }
+    ]
+  },
+  {
+    "variableName": "nos3Main",
+    "importPath": "@/assets/images/artificialSatellite/main.bmp",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 477,
+        "line": "main: nos3Main,"
+      }
+    ]
+  },
+  {
+    "variableName": "nos3Arch1",
+    "importPath": "@/assets/images/artificialSatellite/architecture1.bmp",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 478,
+        "line": "architecture: [nos3Arch1, nos3Arch2],"
+      }
+    ]
+  },
+  {
+    "variableName": "nos3Arch2",
+    "importPath": "@/assets/images/artificialSatellite/architecture2.bmp",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 478,
+        "line": "architecture: [nos3Arch1, nos3Arch2],"
+      }
+    ]
+  },
+  {
+    "variableName": "baekguMain",
+    "importPath": "@/assets/images/baekgu/main.gif",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 180,
+        "line": "main: baekguMain"
+      }
+    ]
+  },
+  {
+    "variableName": "baekguArch",
+    "importPath": "@/assets/images/baekgu/architecture.png",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 179,
+        "line": "architecture: baekguArch,"
+      }
+    ]
+  },
+  {
+    "variableName": "baekguCardPreview",
+    "importPath": "@/assets/images/baekgu/baekgu.png",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 178,
+        "line": "preview: baekguCardPreview,"
+      }
+    ]
+  },
+  {
+    "variableName": "algogoMain",
+    "importPath": "@/assets/images/algogo/main.gif",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 279,
+        "line": "main: algogoMain"
+      }
+    ]
+  },
+  {
+    "variableName": "algogoCardPreview",
+    "importPath": "@/assets/images/algogo/algogo.png",
+    "declaredIn": "src/constants/portfolio.ts",
+    "usedAt": [
+      {
+        "file": "src/constants/portfolio.ts",
+        "lineNumber": 278,
+        "line": "preview: algogoCardPreview,"
+      }
+    ]
+  },
+  {
+    "variableName": "profile1",
+    "importPath": "@/assets/images/profile1.jpg",
+    "declaredIn": "src/features/hero/components/ProfileCarouselCard.tsx",
+    "usedAt": [
+      {
+        "file": "src/features/hero/components/ProfileCarouselCard.tsx",
+        "lineNumber": 10,
+        "line": "const images = [profile1, profile2, profile3];"
+      }
+    ]
+  },
+  {
+    "variableName": "profile2",
+    "importPath": "@/assets/images/profile2.jpg",
+    "declaredIn": "src/features/hero/components/ProfileCarouselCard.tsx",
+    "usedAt": [
+      {
+        "file": "src/features/hero/components/ProfileCarouselCard.tsx",
+        "lineNumber": 10,
+        "line": "const images = [profile1, profile2, profile3];"
+      }
+    ]
+  },
+  {
+    "variableName": "profile3",
+    "importPath": "@/assets/images/profile3.jpg",
+    "declaredIn": "src/features/hero/components/ProfileCarouselCard.tsx",
+    "usedAt": [
+      {
+        "file": "src/features/hero/components/ProfileCarouselCard.tsx",
+        "lineNumber": 10,
+        "line": "const images = [profile1, profile2, profile3];"
+      }
+    ]
+  },
+  {
+    "variableName": "turtleLogo",
+    "importPath": "/turtle.svg",
+    "declaredIn": "src/components/Layout.tsx",
+    "usedAt": [
+      {
+        "file": "src/components/Layout.tsx",
+        "lineNumber": 127,
+        "line": "<img src={turtleLogo} alt=\"Turtle Logo\" className=\"w-full h-full object-contain p-[3px]\" />"
+      }
+    ]
+  }
+]

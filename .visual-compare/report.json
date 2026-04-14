@@ -1,0 +1,946 @@
+{
+  "desktop": {
+    "local": {
+      "visibleText": "goring\nHome\nProjects\nSkills\nAbout\n안녕하세요!\n백엔드 개발자 이가은입니다.\n\n배우고 적용하며,\n결과를 만듭니다.\n\n책임감\n성장형\n계획형\n\n기능 구현을 넘어 서비스 흐름과 사용자 경험까지 함께 설계합니다.\n\n확장 가능한 아키텍처와 안정적인 운영을 기반으로 개선을 반복합니다.\n\n010-3480-9550\ndlrkdms001@gmail.com\nGitHub\nLee GaEun\n\nBackend Engineer\n\nProjects\n백구(BAEKGU)\n\n2026.01.19 ~ 2026.02.06 (3주)\n\n팀 프로젝트 (6인)\n\n백엔드 리드 & 인프라\n\n사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼\n\n개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))\n\nJava 17\nSpring Boot 3.2\nFastAPI\nJPA / QueryDSL\n+15\nCase Study\n알고가자(Algogo)\n\n2025.11.20 ~ 2026.01.20 (9주)\n\n팀 프로젝트 (5인)\n\n백엔드 & 인프라\n\n알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼\n\n알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))\n\nJava 17\nSpring Boot 3.5.7\nJPA / QueryDSL\nMySQL 8.0\n+11\nCase Study\nColorFinder\n\n2024.04.08 ~ 2024.06.10 (10주)\n\n팀 프로젝트 (3인)\n\n백엔드 개발\n\n안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼\n\n사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))\n\nJava 17\nPython 3.11\nSpring Boot 3.2.5\nFlask\n+7\nCase Study\n가상화 기반 우주 통신망 연동 및 사이버 위협 연구\n\n2023.04.01 ~ 2023.10.31\n\n산학 과제 (3인)\n\n위성 시뮬레이터 환경 구축 및 문제 해결\n\n클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석\n\nNASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))\n\nNOS3\nLinux\nNCloud\nCloud-Init\n+6\nCase Study\nSkills\nLanguage\nJava\nPython\nC\nBackend\nSpring\nSpring Boot\nSpring Data JPA\nQueryDSL\nFastAPI\nData\nMySQL\nRedis\nElasticSearch\nDevOps\nGit\nDocker\nAWS\nAbout Me\nPROFILE\n생년월일\n2002.04.01\n학력\n한남대학교 컴퓨터공학과\n학사 4.09/4.5\nLICENSE\nOPIC IM2\n2025.09\n정보처리기사\n2025.09\nSQLD\n2025.04\nEDUCATION\n2025.07 ~ 2026.06\n삼성 청년 SW·AI 아카데미 (SSAFY)\n14기 교육생\n|\n삼성전자\n|\n알고리즘 및 웹 개발 심화 과정\n2024.07 ~ 2024.09\nCIA Academy\n어학연수\n|\n글로벌 커뮤니케이션 능력 향상 및 문화 교류\n2022.10 ~ 2024.01\n시스템 소프트웨어 공학 연구실\n학부 연구생\n|\n한남대학교\n|\n논문 작성 및 최신 기술 동향 연구\nAWARDS\n2024.06.10\n캡스톤 디자인 대회 우수상\n\n한남대학교\n\nRESEARCH & PAPERS\n2024.10\n안면 색상 데이터 기반 퍼스널 컬러 진단 서비스\n\n2024 한국스마트미디어학회&한국전자거래학회 추계학술대회\n\n2023.04\nChatGPT를 활용한 대화형 플랫폼: 동향과 전망\n\n2023 한국스마트미디어학회 종합학술대회\n\n2023.10\n빅데이터 분석 방법 비교\n\n2023 한국스마트미디어학회 심포지움",
+      "normalizedText": "goring Home Projects Skills About 안녕하세요! 백엔드 개발자 이가은입니다. 배우고 적용하며, 결과를 만듭니다. 책임감 성장형 계획형 기능 구현을 넘어 서비스 흐름과 사용자 경험까지 함께 설계합니다. 확장 가능한 아키텍처와 안정적인 운영을 기반으로 개선을 반복합니다. 010-3480-9550 dlrkdms001@gmail.com GitHub Lee GaEun Backend Engineer Projects 백구(BAEKGU) 2026.01.19 ~ 2026.02.06 (3주) 팀 프로젝트 (6인) 백엔드 리드 & 인프라 사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼 개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing)) Java 17 Spring Boot 3.2 FastAPI JPA / QueryDSL +15 Case Study 알고가자(Algogo) 2025.11.20 ~ 2026.01.20 (9주) 팀 프로젝트 (5인) 백엔드 & 인프라 알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼 알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc)) Java 17 Spring Boot 3.5.7 JPA / QueryDSL MySQL 8.0 +11 Case Study ColorFinder 2024.04.08 ~ 2024.06.10 (10주) 팀 프로젝트 (3인) 백엔드 개발 안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼 사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing)) Java 17 Python 3.11 Spring Boot 3.2.5 Flask +7 Case Study 가상화 기반 우주 통신망 연동 및 사이버 위협 연구 2023.04.01 ~ 2023.10.31 산학 과제 (3인) 위성 시뮬레이터 환경 구축 및 문제 해결 클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석 NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing)) NOS3 Linux NCloud Cloud-Init +6 Case Study Skills Language Java Python C Backend Spring Spring Boot Spring Data JPA QueryDSL FastAPI Data MySQL Redis ElasticSearch DevOps Git Docker AWS About Me PROFILE 생년월일 2002.04.01 학력 한남대학교 컴퓨터공학과 학사 4.09/4.5 LICENSE OPIC IM2 2025.09 정보처리기사 2025.09 SQLD 2025.04 EDUCATION 2025.07 ~ 2026.06 삼성 청년 SW·AI 아카데미 (SSAFY) 14기 교육생 | 삼성전자 | 알고리즘 및 웹 개발 심화 과정 2024.07 ~ 2024.09 CIA Academy 어학연수 | 글로벌 커뮤니케이션 능력 향상 및 문화 교류 2022.10 ~ 2024.01 시스템 소프트웨어 공학 연구실 학부 연구생 | 한남대학교 | 논문 작성 및 최신 기술 동향 연구 AWARDS 2024.06.10 캡스톤 디자인 대회 우수상 한남대학교 RESEARCH & PAPERS 2024.10 안면 색상 데이터 기반 퍼스널 컬러 진단 서비스 2024 한국스마트미디어학회&한국전자거래학회 추계학술대회 2023.04 ChatGPT를 활용한 대화형 플랫폼: 동향과 전망 2023 한국스마트미디어학회 종합학술대회 2023.10 빅데이터 분석 방법 비교 2023 한국스마트미디어학회 심포지움",
+      "sections": [
+        {
+          "id": "home",
+          "top": 0,
+          "left": 0,
+          "width": 1440,
+          "height": 1600
+        },
+        {
+          "id": "projects",
+          "top": 1600,
+          "left": 0,
+          "width": 1440,
+          "height": 1116
+        },
+        {
+          "id": "skills",
+          "top": 2716,
+          "left": 0,
+          "width": 1440,
+          "height": 728
+        },
+        {
+          "id": "about",
+          "top": 3444,
+          "left": 0,
+          "width": 1440,
+          "height": 1266
+        }
+      ],
+      "links": [
+        {
+          "text": "goring",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Home",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Projects",
+          "href": "#projects",
+          "target": null
+        },
+        {
+          "text": "Skills",
+          "href": "#skills",
+          "target": null
+        },
+        {
+          "text": "About",
+          "href": "#about",
+          "target": null
+        },
+        {
+          "text": "010-3480-9550",
+          "href": "tel:010-3480-9550",
+          "target": null
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/go-ring",
+          "target": "_blank"
+        }
+      ],
+      "images": [
+        {
+          "alt": "Turtle Logo",
+          "src": "http://127.0.0.1:4273/turtle.svg",
+          "width": 452,
+          "height": 438,
+          "renderedWidth": 38,
+          "renderedHeight": 38
+        },
+        {
+          "alt": "Profile 1",
+          "src": "http://127.0.0.1:4273/assets/profile1-E9toH_4g.jpg",
+          "width": 689,
+          "height": 886,
+          "renderedWidth": 256,
+          "renderedHeight": 341
+        },
+        {
+          "alt": "백구(BAEKGU) preview",
+          "src": "http://127.0.0.1:4273/assets/baekgu-DTfSg8EY.png",
+          "width": 1317,
+          "height": 785,
+          "renderedWidth": 466,
+          "renderedHeight": 216
+        },
+        {
+          "alt": "알고가자(Algogo) preview",
+          "src": "http://127.0.0.1:4273/assets/algogo-CzsbjTDj.png",
+          "width": 1892,
+          "height": 837,
+          "renderedWidth": 466,
+          "renderedHeight": 216
+        }
+      ],
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "안녕하세요!"
+        },
+        {
+          "tag": "H2",
+          "text": "백엔드 개발자 이가은입니다."
+        },
+        {
+          "tag": "H3",
+          "text": "Lee GaEun"
+        },
+        {
+          "tag": "H2",
+          "text": "Projects"
+        },
+        {
+          "tag": "H3",
+          "text": "백구(BAEKGU)"
+        },
+        {
+          "tag": "H3",
+          "text": "알고가자(Algogo)"
+        },
+        {
+          "tag": "H3",
+          "text": "ColorFinder"
+        },
+        {
+          "tag": "H3",
+          "text": "가상화 기반 우주 통신망 연동 및 사이버 위협 연구"
+        },
+        {
+          "tag": "H2",
+          "text": "Skills"
+        },
+        {
+          "tag": "H3",
+          "text": "Language"
+        },
+        {
+          "tag": "H3",
+          "text": "Backend"
+        },
+        {
+          "tag": "H3",
+          "text": "Data"
+        },
+        {
+          "tag": "H3",
+          "text": "DevOps"
+        },
+        {
+          "tag": "H2",
+          "text": "About Me"
+        },
+        {
+          "tag": "H3",
+          "text": "Profile"
+        },
+        {
+          "tag": "H3",
+          "text": "License"
+        },
+        {
+          "tag": "H3",
+          "text": "Education"
+        },
+        {
+          "tag": "H4",
+          "text": "삼성 청년 SW·AI 아카데미 (SSAFY)"
+        },
+        {
+          "tag": "H4",
+          "text": "CIA Academy"
+        },
+        {
+          "tag": "H4",
+          "text": "시스템 소프트웨어 공학 연구실"
+        },
+        {
+          "tag": "H3",
+          "text": "Awards"
+        },
+        {
+          "tag": "H4",
+          "text": "캡스톤 디자인 대회 우수상"
+        },
+        {
+          "tag": "H3",
+          "text": "Research & Papers"
+        },
+        {
+          "tag": "H4",
+          "text": "안면 색상 데이터 기반 퍼스널 컬러 진단 서비스"
+        },
+        {
+          "tag": "H4",
+          "text": "ChatGPT를 활용한 대화형 플랫폼: 동향과 전망"
+        },
+        {
+          "tag": "H4",
+          "text": "빅데이터 분석 방법 비교"
+        }
+      ],
+      "buttons": [
+        "",
+        "dlrkdms001@gmail.com",
+        "Previous image",
+        "Next image",
+        "Go to slide 1",
+        "Go to slide 2",
+        "Go to slide 3"
+      ],
+      "cards": [
+        "백구(BAEKGU)2026.01.19 ~ 2026.02.06 (3주)팀 프로젝트 (6인)백엔드 리드 & 인프라사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))Java 17Spring Boot 3.2FastAPIJPA / QueryDSL+15Case Study",
+        "알고가자(Algogo)2025.11.20 ~ 2026.01.20 (9주)팀 프로젝트 (5인)백엔드 & 인프라알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))Java 17Spring Boot 3.5.7JPA / QueryDSLMySQL 8.0+11Case Study",
+        "ColorFinder2024.04.08 ~ 2024.06.10 (10주)팀 프로젝트 (3인)백엔드 개발안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))Java 17Python 3.11Spring Boot 3.2.5Flask+7Case Study",
+        "가상화 기반 우주 통신망 연동 및 사이버 위협 연구2023.04.01 ~ 2023.10.31산학 과제 (3인)위성 시뮬레이터 환경 구축 및 문제 해결클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))NOS3LinuxNCloudCloud-Init+6Case Study"
+      ],
+      "url": "http://127.0.0.1:4273/",
+      "title": "LeeGaEun",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 403 ()"
+      ],
+      "screenshot": ".visual-compare\\desktop-local.png"
+    },
+    "remote": {
+      "visibleText": "goring\nHome\nProjects\nSkills\nAbout\n안녕하세요!\n백엔드 개발자 이가은입니다.\n\n배우고 적용하며,\n결과를 만듭니다.\n\n책임감\n성장형\n계획형\n\n기능 구현을 넘어 서비스 흐름과 사용자 경험까지 함께 설계합니다.\n\n확장 가능한 아키텍처와 안정적인 운영을 기반으로 개선을 반복합니다.\n\n010-3480-9550\ndlrkdms001@gmail.com\nGitHub\nLee GaEun\n\nBackend Engineer\n\nProjects\n백구(BAEKGU)\n\n2026.01.19 ~ 2026.02.06 (3주)\n\n팀 프로젝트 (6인)\n\n백엔드 리드 & 인프라\n\n사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼\n\n개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))\n\nJava 17\nSpring Boot 3.2\nFastAPI\nJPA / QueryDSL\n+15\nCase Study\n알고가자(Algogo)\n\n2025.11.20 ~ 2026.01.20 (9주)\n\n팀 프로젝트 (5인)\n\n백엔드 & 인프라\n\n알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼\n\n알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))\n\nJava 17\nSpring Boot 3.5.7\nJPA / QueryDSL\nMySQL 8.0\n+11\nCase Study\nColorFinder\n\n2024.04.08 ~ 2024.06.10 (10주)\n\n팀 프로젝트 (3인)\n\n백엔드 개발\n\n안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼\n\n사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))\n\nJava 17\nPython 3.11\nSpring Boot 3.2.5\nFlask\n+7\nCase Study\n가상화 기반 우주 통신망 연동 및 사이버 위협 연구\n\n2023.04.01 ~ 2023.10.31\n\n산학 과제 (3인)\n\n위성 시뮬레이터 환경 구축 및 문제 해결\n\n클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석\n\nNASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))\n\nNOS3\nLinux\nNCloud\nCloud-Init\n+6\nCase Study\nSkills\nLanguage\nJava\nPython\nC\nBackend\nSpring\nSpring Boot\nSpring Data JPA\nQueryDSL\nFastAPI\nData\nMySQL\nRedis\nElasticSearch\nDevOps\nGit\nDocker\nAWS\nAbout Me\nPROFILE\n생년월일\n2002.04.01\n학력\n한남대학교 컴퓨터공학과\n학사 4.09/4.5\nLICENSE\nOPIC IM2\n2025.09\n정보처리기사\n2025.09\nSQLD\n2025.04\nEDUCATION\n2025.07 ~ 2026.06\n삼성 청년 SW·AI 아카데미 (SSAFY)\n14기 교육생\n|\n삼성전자\n|\n알고리즘 및 웹 개발 심화 과정\n2024.07 ~ 2024.09\nCIA Academy\n어학연수\n|\n글로벌 커뮤니케이션 능력 향상 및 문화 교류\n2022.10 ~ 2024.01\n시스템 소프트웨어 공학 연구실\n학부 연구생\n|\n한남대학교\n|\n논문 작성 및 최신 기술 동향 연구\nAWARDS\n2024.06.10\n캡스톤 디자인 대회 우수상\n\n한남대학교\n\nRESEARCH & PAPERS\n2024.10\n안면 색상 데이터 기반 퍼스널 컬러 진단 서비스\n\n2024 한국스마트미디어학회&한국전자거래학회 추계학술대회\n\n2023.04\nChatGPT를 활용한 대화형 플랫폼: 동향과 전망\n\n2023 한국스마트미디어학회 종합학술대회\n\n2023.10\n빅데이터 분석 방법 비교\n\n2023 한국스마트미디어학회 심포지움",
+      "normalizedText": "goring Home Projects Skills About 안녕하세요! 백엔드 개발자 이가은입니다. 배우고 적용하며, 결과를 만듭니다. 책임감 성장형 계획형 기능 구현을 넘어 서비스 흐름과 사용자 경험까지 함께 설계합니다. 확장 가능한 아키텍처와 안정적인 운영을 기반으로 개선을 반복합니다. 010-3480-9550 dlrkdms001@gmail.com GitHub Lee GaEun Backend Engineer Projects 백구(BAEKGU) 2026.01.19 ~ 2026.02.06 (3주) 팀 프로젝트 (6인) 백엔드 리드 & 인프라 사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼 개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing)) Java 17 Spring Boot 3.2 FastAPI JPA / QueryDSL +15 Case Study 알고가자(Algogo) 2025.11.20 ~ 2026.01.20 (9주) 팀 프로젝트 (5인) 백엔드 & 인프라 알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼 알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc)) Java 17 Spring Boot 3.5.7 JPA / QueryDSL MySQL 8.0 +11 Case Study ColorFinder 2024.04.08 ~ 2024.06.10 (10주) 팀 프로젝트 (3인) 백엔드 개발 안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼 사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing)) Java 17 Python 3.11 Spring Boot 3.2.5 Flask +7 Case Study 가상화 기반 우주 통신망 연동 및 사이버 위협 연구 2023.04.01 ~ 2023.10.31 산학 과제 (3인) 위성 시뮬레이터 환경 구축 및 문제 해결 클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석 NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing)) NOS3 Linux NCloud Cloud-Init +6 Case Study Skills Language Java Python C Backend Spring Spring Boot Spring Data JPA QueryDSL FastAPI Data MySQL Redis ElasticSearch DevOps Git Docker AWS About Me PROFILE 생년월일 2002.04.01 학력 한남대학교 컴퓨터공학과 학사 4.09/4.5 LICENSE OPIC IM2 2025.09 정보처리기사 2025.09 SQLD 2025.04 EDUCATION 2025.07 ~ 2026.06 삼성 청년 SW·AI 아카데미 (SSAFY) 14기 교육생 | 삼성전자 | 알고리즘 및 웹 개발 심화 과정 2024.07 ~ 2024.09 CIA Academy 어학연수 | 글로벌 커뮤니케이션 능력 향상 및 문화 교류 2022.10 ~ 2024.01 시스템 소프트웨어 공학 연구실 학부 연구생 | 한남대학교 | 논문 작성 및 최신 기술 동향 연구 AWARDS 2024.06.10 캡스톤 디자인 대회 우수상 한남대학교 RESEARCH & PAPERS 2024.10 안면 색상 데이터 기반 퍼스널 컬러 진단 서비스 2024 한국스마트미디어학회&한국전자거래학회 추계학술대회 2023.04 ChatGPT를 활용한 대화형 플랫폼: 동향과 전망 2023 한국스마트미디어학회 종합학술대회 2023.10 빅데이터 분석 방법 비교 2023 한국스마트미디어학회 심포지움",
+      "sections": [
+        {
+          "id": "home",
+          "top": 0,
+          "left": 0,
+          "width": 1440,
+          "height": 1600
+        },
+        {
+          "id": "projects",
+          "top": 1600,
+          "left": 0,
+          "width": 1440,
+          "height": 1116
+        },
+        {
+          "id": "skills",
+          "top": 2716,
+          "left": 0,
+          "width": 1440,
+          "height": 728
+        },
+        {
+          "id": "about",
+          "top": 3444,
+          "left": 0,
+          "width": 1440,
+          "height": 1266
+        }
+      ],
+      "links": [
+        {
+          "text": "goring",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Home",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Projects",
+          "href": "#projects",
+          "target": null
+        },
+        {
+          "text": "Skills",
+          "href": "#skills",
+          "target": null
+        },
+        {
+          "text": "About",
+          "href": "#about",
+          "target": null
+        },
+        {
+          "text": "010-3480-9550",
+          "href": "tel:010-3480-9550",
+          "target": null
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/go-ring",
+          "target": "_blank"
+        }
+      ],
+      "images": [
+        {
+          "alt": "Turtle Logo",
+          "src": "https://go-ring.github.io/portfolio/turtle.svg",
+          "width": 452,
+          "height": 438,
+          "renderedWidth": 38,
+          "renderedHeight": 38
+        },
+        {
+          "alt": "Profile 1",
+          "src": "https://go-ring.github.io/portfolio/assets/profile1-E9toH_4g.jpg",
+          "width": 689,
+          "height": 886,
+          "renderedWidth": 256,
+          "renderedHeight": 341
+        },
+        {
+          "alt": "백구(BAEKGU) preview",
+          "src": "https://go-ring.github.io/portfolio/assets/baekgu-DTfSg8EY.png",
+          "width": 1317,
+          "height": 785,
+          "renderedWidth": 466,
+          "renderedHeight": 216
+        },
+        {
+          "alt": "알고가자(Algogo) preview",
+          "src": "https://go-ring.github.io/portfolio/assets/algogo-CzsbjTDj.png",
+          "width": 1892,
+          "height": 837,
+          "renderedWidth": 466,
+          "renderedHeight": 216
+        }
+      ],
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "안녕하세요!"
+        },
+        {
+          "tag": "H2",
+          "text": "백엔드 개발자 이가은입니다."
+        },
+        {
+          "tag": "H3",
+          "text": "Lee GaEun"
+        },
+        {
+          "tag": "H2",
+          "text": "Projects"
+        },
+        {
+          "tag": "H3",
+          "text": "백구(BAEKGU)"
+        },
+        {
+          "tag": "H3",
+          "text": "알고가자(Algogo)"
+        },
+        {
+          "tag": "H3",
+          "text": "ColorFinder"
+        },
+        {
+          "tag": "H3",
+          "text": "가상화 기반 우주 통신망 연동 및 사이버 위협 연구"
+        },
+        {
+          "tag": "H2",
+          "text": "Skills"
+        },
+        {
+          "tag": "H3",
+          "text": "Language"
+        },
+        {
+          "tag": "H3",
+          "text": "Backend"
+        },
+        {
+          "tag": "H3",
+          "text": "Data"
+        },
+        {
+          "tag": "H3",
+          "text": "DevOps"
+        },
+        {
+          "tag": "H2",
+          "text": "About Me"
+        },
+        {
+          "tag": "H3",
+          "text": "Profile"
+        },
+        {
+          "tag": "H3",
+          "text": "License"
+        },
+        {
+          "tag": "H3",
+          "text": "Education"
+        },
+        {
+          "tag": "H4",
+          "text": "삼성 청년 SW·AI 아카데미 (SSAFY)"
+        },
+        {
+          "tag": "H4",
+          "text": "CIA Academy"
+        },
+        {
+          "tag": "H4",
+          "text": "시스템 소프트웨어 공학 연구실"
+        },
+        {
+          "tag": "H3",
+          "text": "Awards"
+        },
+        {
+          "tag": "H4",
+          "text": "캡스톤 디자인 대회 우수상"
+        },
+        {
+          "tag": "H3",
+          "text": "Research & Papers"
+        },
+        {
+          "tag": "H4",
+          "text": "안면 색상 데이터 기반 퍼스널 컬러 진단 서비스"
+        },
+        {
+          "tag": "H4",
+          "text": "ChatGPT를 활용한 대화형 플랫폼: 동향과 전망"
+        },
+        {
+          "tag": "H4",
+          "text": "빅데이터 분석 방법 비교"
+        }
+      ],
+      "buttons": [
+        "",
+        "dlrkdms001@gmail.com",
+        "Previous image",
+        "Next image",
+        "Go to slide 1",
+        "Go to slide 2",
+        "Go to slide 3"
+      ],
+      "cards": [
+        "백구(BAEKGU)2026.01.19 ~ 2026.02.06 (3주)팀 프로젝트 (6인)백엔드 리드 & 인프라사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))Java 17Spring Boot 3.2FastAPIJPA / QueryDSL+15Case Study",
+        "알고가자(Algogo)2025.11.20 ~ 2026.01.20 (9주)팀 프로젝트 (5인)백엔드 & 인프라알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))Java 17Spring Boot 3.5.7JPA / QueryDSLMySQL 8.0+11Case Study",
+        "ColorFinder2024.04.08 ~ 2024.06.10 (10주)팀 프로젝트 (3인)백엔드 개발안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))Java 17Python 3.11Spring Boot 3.2.5Flask+7Case Study",
+        "가상화 기반 우주 통신망 연동 및 사이버 위협 연구2023.04.01 ~ 2023.10.31산학 과제 (3인)위성 시뮬레이터 환경 구축 및 문제 해결클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))NOS3LinuxNCloudCloud-Init+6Case Study"
+      ],
+      "url": "https://go-ring.github.io/portfolio/",
+      "title": "LeeGaEun",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 403 ()"
+      ],
+      "screenshot": ".visual-compare\\desktop-remote.png"
+    },
+    "diffPixels": 0,
+    "textDiff": {
+      "onlyA": [],
+      "onlyB": []
+    },
+    "sameNormalizedText": true
+  },
+  "mobile": {
+    "local": {
+      "visibleText": "goring\n안녕하세요!\n백엔드 개발자 이가은입니다.\n\n배우고 적용하며, 결과를 만듭니다.\n\n책임감\n성장형\n계획형\n\n기능 구현을 넘어 서비스 흐름과 사용자 경험까지 함께 설계합니다.\n\n확장 가능한 아키텍처와 안정적인 운영을 기반으로 개선을 반복합니다.\n\n010-3480-9550\ndlrkdms001@gmail.com\nGitHub\nLee GaEun\n\nBackend Engineer\n\nProjects\n백구(BAEKGU)\n\n2026.01.19 ~ 2026.02.06 (3주)\n\n팀 프로젝트 (6인)\n\n백엔드 리드 & 인프라\n\n사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼\n\n개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))\n\nJava 17\nSpring Boot 3.2\nFastAPI\nJPA / QueryDSL\n+15\nCase Study\n알고가자(Algogo)\n\n2025.11.20 ~ 2026.01.20 (9주)\n\n팀 프로젝트 (5인)\n\n백엔드 & 인프라\n\n알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼\n\n알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))\n\nJava 17\nSpring Boot 3.5.7\nJPA / QueryDSL\nMySQL 8.0\n+11\nCase Study\nColorFinder\n\n2024.04.08 ~ 2024.06.10 (10주)\n\n팀 프로젝트 (3인)\n\n백엔드 개발\n\n안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼\n\n사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))\n\nJava 17\nPython 3.11\nSpring Boot 3.2.5\nFlask\n+7\nCase Study\n가상화 기반 우주 통신망 연동 및 사이버 위협 연구\n\n2023.04.01 ~ 2023.10.31\n\n산학 과제 (3인)\n\n위성 시뮬레이터 환경 구축 및 문제 해결\n\n클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석\n\nNASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))\n\nNOS3\nLinux\nNCloud\nCloud-Init\n+6\nCase Study\nSkills\nLanguage\nJava\nPython\nC\nBackend\nSpring\nSpring Boot\nSpring Data JPA\nQueryDSL\nFastAPI\nData\nMySQL\nRedis\nElasticSearch\nDevOps\nGit\nDocker\nAWS\nAbout Me\nPROFILE\n생년월일\n2002.04.01\n학력\n한남대학교 컴퓨터공학과\n학사 4.09/4.5\nLICENSE\nOPIC IM2\n2025.09\n정보처리기사\n2025.09\nSQLD\n2025.04\nEDUCATION\n2025.07 ~ 2026.06\n삼성 청년 SW·AI 아카데미 (SSAFY)\n14기 교육생\n|\n삼성전자\n|\n알고리즘 및 웹 개발 심화 과정\n2024.07 ~ 2024.09\nCIA Academy\n어학연수\n|\n글로벌 커뮤니케이션 능력 향상 및 문화 교류\n2022.10 ~ 2024.01\n시스템 소프트웨어 공학 연구실\n학부 연구생\n|\n한남대학교\n|\n논문 작성 및 최신 기술 동향 연구\nAWARDS\n2024.06.10\n캡스톤 디자인 대회 우수상\n\n한남대학교\n\nRESEARCH & PAPERS\n2024.10\n안면 색상 데이터 기반 퍼스널 컬러 진단 서비스\n\n2024 한국스마트미디어학회&한국전자거래학회 추계학술대회\n\n2023.04\nChatGPT를 활용한 대화형 플랫폼: 동향과 전망\n\n2023 한국스마트미디어학회 종합학술대회\n\n2023.10\n빅데이터 분석 방법 비교\n\n2023 한국스마트미디어학회 심포지움",
+      "normalizedText": "goring 안녕하세요! 백엔드 개발자 이가은입니다. 배우고 적용하며, 결과를 만듭니다. 책임감 성장형 계획형 기능 구현을 넘어 서비스 흐름과 사용자 경험까지 함께 설계합니다. 확장 가능한 아키텍처와 안정적인 운영을 기반으로 개선을 반복합니다. 010-3480-9550 dlrkdms001@gmail.com GitHub Lee GaEun Backend Engineer Projects 백구(BAEKGU) 2026.01.19 ~ 2026.02.06 (3주) 팀 프로젝트 (6인) 백엔드 리드 & 인프라 사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼 개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing)) Java 17 Spring Boot 3.2 FastAPI JPA / QueryDSL +15 Case Study 알고가자(Algogo) 2025.11.20 ~ 2026.01.20 (9주) 팀 프로젝트 (5인) 백엔드 & 인프라 알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼 알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc)) Java 17 Spring Boot 3.5.7 JPA / QueryDSL MySQL 8.0 +11 Case Study ColorFinder 2024.04.08 ~ 2024.06.10 (10주) 팀 프로젝트 (3인) 백엔드 개발 안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼 사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing)) Java 17 Python 3.11 Spring Boot 3.2.5 Flask +7 Case Study 가상화 기반 우주 통신망 연동 및 사이버 위협 연구 2023.04.01 ~ 2023.10.31 산학 과제 (3인) 위성 시뮬레이터 환경 구축 및 문제 해결 클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석 NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing)) NOS3 Linux NCloud Cloud-Init +6 Case Study Skills Language Java Python C Backend Spring Spring Boot Spring Data JPA QueryDSL FastAPI Data MySQL Redis ElasticSearch DevOps Git Docker AWS About Me PROFILE 생년월일 2002.04.01 학력 한남대학교 컴퓨터공학과 학사 4.09/4.5 LICENSE OPIC IM2 2025.09 정보처리기사 2025.09 SQLD 2025.04 EDUCATION 2025.07 ~ 2026.06 삼성 청년 SW·AI 아카데미 (SSAFY) 14기 교육생 | 삼성전자 | 알고리즘 및 웹 개발 심화 과정 2024.07 ~ 2024.09 CIA Academy 어학연수 | 글로벌 커뮤니케이션 능력 향상 및 문화 교류 2022.10 ~ 2024.01 시스템 소프트웨어 공학 연구실 학부 연구생 | 한남대학교 | 논문 작성 및 최신 기술 동향 연구 AWARDS 2024.06.10 캡스톤 디자인 대회 우수상 한남대학교 RESEARCH & PAPERS 2024.10 안면 색상 데이터 기반 퍼스널 컬러 진단 서비스 2024 한국스마트미디어학회&한국전자거래학회 추계학술대회 2023.04 ChatGPT를 활용한 대화형 플랫폼: 동향과 전망 2023 한국스마트미디어학회 종합학술대회 2023.10 빅데이터 분석 방법 비교 2023 한국스마트미디어학회 심포지움",
+      "sections": [
+        {
+          "id": "home",
+          "top": 0,
+          "left": 0,
+          "width": 390,
+          "height": 1200
+        },
+        {
+          "id": "projects",
+          "top": 1200,
+          "left": 0,
+          "width": 390,
+          "height": 2040
+        },
+        {
+          "id": "skills",
+          "top": 3240,
+          "left": 0,
+          "width": 390,
+          "height": 1288
+        },
+        {
+          "id": "about",
+          "top": 4528,
+          "left": 0,
+          "width": 390,
+          "height": 1723
+        }
+      ],
+      "links": [
+        {
+          "text": "goring",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Home",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Projects",
+          "href": "#projects",
+          "target": null
+        },
+        {
+          "text": "Skills",
+          "href": "#skills",
+          "target": null
+        },
+        {
+          "text": "About",
+          "href": "#about",
+          "target": null
+        },
+        {
+          "text": "010-3480-9550",
+          "href": "tel:010-3480-9550",
+          "target": null
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/go-ring",
+          "target": "_blank"
+        }
+      ],
+      "images": [
+        {
+          "alt": "Turtle Logo",
+          "src": "http://127.0.0.1:4273/turtle.svg",
+          "width": 452,
+          "height": 438,
+          "renderedWidth": 38,
+          "renderedHeight": 38
+        },
+        {
+          "alt": "Profile 1",
+          "src": "http://127.0.0.1:4273/assets/profile1-E9toH_4g.jpg",
+          "width": 689,
+          "height": 886,
+          "renderedWidth": 252,
+          "renderedHeight": 337
+        },
+        {
+          "alt": "백구(BAEKGU) preview",
+          "src": "http://127.0.0.1:4273/assets/baekgu-DTfSg8EY.png",
+          "width": 1317,
+          "height": 785,
+          "renderedWidth": 300,
+          "renderedHeight": 240
+        },
+        {
+          "alt": "알고가자(Algogo) preview",
+          "src": "http://127.0.0.1:4273/assets/algogo-CzsbjTDj.png",
+          "width": 1892,
+          "height": 837,
+          "renderedWidth": 300,
+          "renderedHeight": 240
+        }
+      ],
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "안녕하세요!"
+        },
+        {
+          "tag": "H2",
+          "text": "백엔드 개발자 이가은입니다."
+        },
+        {
+          "tag": "H3",
+          "text": "Lee GaEun"
+        },
+        {
+          "tag": "H2",
+          "text": "Projects"
+        },
+        {
+          "tag": "H3",
+          "text": "백구(BAEKGU)"
+        },
+        {
+          "tag": "H3",
+          "text": "알고가자(Algogo)"
+        },
+        {
+          "tag": "H3",
+          "text": "ColorFinder"
+        },
+        {
+          "tag": "H3",
+          "text": "가상화 기반 우주 통신망 연동 및 사이버 위협 연구"
+        },
+        {
+          "tag": "H2",
+          "text": "Skills"
+        },
+        {
+          "tag": "H3",
+          "text": "Language"
+        },
+        {
+          "tag": "H3",
+          "text": "Backend"
+        },
+        {
+          "tag": "H3",
+          "text": "Data"
+        },
+        {
+          "tag": "H3",
+          "text": "DevOps"
+        },
+        {
+          "tag": "H2",
+          "text": "About Me"
+        },
+        {
+          "tag": "H3",
+          "text": "Profile"
+        },
+        {
+          "tag": "H3",
+          "text": "License"
+        },
+        {
+          "tag": "H3",
+          "text": "Education"
+        },
+        {
+          "tag": "H4",
+          "text": "삼성 청년 SW·AI 아카데미 (SSAFY)"
+        },
+        {
+          "tag": "H4",
+          "text": "CIA Academy"
+        },
+        {
+          "tag": "H4",
+          "text": "시스템 소프트웨어 공학 연구실"
+        },
+        {
+          "tag": "H3",
+          "text": "Awards"
+        },
+        {
+          "tag": "H4",
+          "text": "캡스톤 디자인 대회 우수상"
+        },
+        {
+          "tag": "H3",
+          "text": "Research & Papers"
+        },
+        {
+          "tag": "H4",
+          "text": "안면 색상 데이터 기반 퍼스널 컬러 진단 서비스"
+        },
+        {
+          "tag": "H4",
+          "text": "ChatGPT를 활용한 대화형 플랫폼: 동향과 전망"
+        },
+        {
+          "tag": "H4",
+          "text": "빅데이터 분석 방법 비교"
+        }
+      ],
+      "buttons": [
+        "",
+        "dlrkdms001@gmail.com",
+        "Previous image",
+        "Next image",
+        "Go to slide 1",
+        "Go to slide 2",
+        "Go to slide 3"
+      ],
+      "cards": [
+        "백구(BAEKGU)2026.01.19 ~ 2026.02.06 (3주)팀 프로젝트 (6인)백엔드 리드 & 인프라사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))Java 17Spring Boot 3.2FastAPIJPA / QueryDSL+15Case Study",
+        "알고가자(Algogo)2025.11.20 ~ 2026.01.20 (9주)팀 프로젝트 (5인)백엔드 & 인프라알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))Java 17Spring Boot 3.5.7JPA / QueryDSLMySQL 8.0+11Case Study",
+        "ColorFinder2024.04.08 ~ 2024.06.10 (10주)팀 프로젝트 (3인)백엔드 개발안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))Java 17Python 3.11Spring Boot 3.2.5Flask+7Case Study",
+        "가상화 기반 우주 통신망 연동 및 사이버 위협 연구2023.04.01 ~ 2023.10.31산학 과제 (3인)위성 시뮬레이터 환경 구축 및 문제 해결클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))NOS3LinuxNCloudCloud-Init+6Case Study"
+      ],
+      "url": "http://127.0.0.1:4273/",
+      "title": "LeeGaEun",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 403 ()"
+      ],
+      "screenshot": ".visual-compare\\mobile-local.png"
+    },
+    "remote": {
+      "visibleText": "goring\n안녕하세요!\n백엔드 개발자 이가은입니다.\n\n배우고 적용하며, 결과를 만듭니다.\n\n책임감\n성장형\n계획형\n\n기능 구현을 넘어 서비스 흐름과 사용자 경험까지 함께 설계합니다.\n\n확장 가능한 아키텍처와 안정적인 운영을 기반으로 개선을 반복합니다.\n\n010-3480-9550\ndlrkdms001@gmail.com\nGitHub\nLee GaEun\n\nBackend Engineer\n\nProjects\n백구(BAEKGU)\n\n2026.01.19 ~ 2026.02.06 (3주)\n\n팀 프로젝트 (6인)\n\n백엔드 리드 & 인프라\n\n사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼\n\n개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))\n\nJava 17\nSpring Boot 3.2\nFastAPI\nJPA / QueryDSL\n+15\nCase Study\n알고가자(Algogo)\n\n2025.11.20 ~ 2026.01.20 (9주)\n\n팀 프로젝트 (5인)\n\n백엔드 & 인프라\n\n알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼\n\n알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))\n\nJava 17\nSpring Boot 3.5.7\nJPA / QueryDSL\nMySQL 8.0\n+11\nCase Study\nColorFinder\n\n2024.04.08 ~ 2024.06.10 (10주)\n\n팀 프로젝트 (3인)\n\n백엔드 개발\n\n안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼\n\n사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))\n\nJava 17\nPython 3.11\nSpring Boot 3.2.5\nFlask\n+7\nCase Study\n가상화 기반 우주 통신망 연동 및 사이버 위협 연구\n\n2023.04.01 ~ 2023.10.31\n\n산학 과제 (3인)\n\n위성 시뮬레이터 환경 구축 및 문제 해결\n\n클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석\n\nNASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))\n\nNOS3\nLinux\nNCloud\nCloud-Init\n+6\nCase Study\nSkills\nLanguage\nJava\nPython\nC\nBackend\nSpring\nSpring Boot\nSpring Data JPA\nQueryDSL\nFastAPI\nData\nMySQL\nRedis\nElasticSearch\nDevOps\nGit\nDocker\nAWS\nAbout Me\nPROFILE\n생년월일\n2002.04.01\n학력\n한남대학교 컴퓨터공학과\n학사 4.09/4.5\nLICENSE\nOPIC IM2\n2025.09\n정보처리기사\n2025.09\nSQLD\n2025.04\nEDUCATION\n2025.07 ~ 2026.06\n삼성 청년 SW·AI 아카데미 (SSAFY)\n14기 교육생\n|\n삼성전자\n|\n알고리즘 및 웹 개발 심화 과정\n2024.07 ~ 2024.09\nCIA Academy\n어학연수\n|\n글로벌 커뮤니케이션 능력 향상 및 문화 교류\n2022.10 ~ 2024.01\n시스템 소프트웨어 공학 연구실\n학부 연구생\n|\n한남대학교\n|\n논문 작성 및 최신 기술 동향 연구\nAWARDS\n2024.06.10\n캡스톤 디자인 대회 우수상\n\n한남대학교\n\nRESEARCH & PAPERS\n2024.10\n안면 색상 데이터 기반 퍼스널 컬러 진단 서비스\n\n2024 한국스마트미디어학회&한국전자거래학회 추계학술대회\n\n2023.04\nChatGPT를 활용한 대화형 플랫폼: 동향과 전망\n\n2023 한국스마트미디어학회 종합학술대회\n\n2023.10\n빅데이터 분석 방법 비교\n\n2023 한국스마트미디어학회 심포지움",
+      "normalizedText": "goring 안녕하세요! 백엔드 개발자 이가은입니다. 배우고 적용하며, 결과를 만듭니다. 책임감 성장형 계획형 기능 구현을 넘어 서비스 흐름과 사용자 경험까지 함께 설계합니다. 확장 가능한 아키텍처와 안정적인 운영을 기반으로 개선을 반복합니다. 010-3480-9550 dlrkdms001@gmail.com GitHub Lee GaEun Backend Engineer Projects 백구(BAEKGU) 2026.01.19 ~ 2026.02.06 (3주) 팀 프로젝트 (6인) 백엔드 리드 & 인프라 사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼 개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing)) Java 17 Spring Boot 3.2 FastAPI JPA / QueryDSL +15 Case Study 알고가자(Algogo) 2025.11.20 ~ 2026.01.20 (9주) 팀 프로젝트 (5인) 백엔드 & 인프라 알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼 알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc)) Java 17 Spring Boot 3.5.7 JPA / QueryDSL MySQL 8.0 +11 Case Study ColorFinder 2024.04.08 ~ 2024.06.10 (10주) 팀 프로젝트 (3인) 백엔드 개발 안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼 사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing)) Java 17 Python 3.11 Spring Boot 3.2.5 Flask +7 Case Study 가상화 기반 우주 통신망 연동 및 사이버 위협 연구 2023.04.01 ~ 2023.10.31 산학 과제 (3인) 위성 시뮬레이터 환경 구축 및 문제 해결 클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석 NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing)) NOS3 Linux NCloud Cloud-Init +6 Case Study Skills Language Java Python C Backend Spring Spring Boot Spring Data JPA QueryDSL FastAPI Data MySQL Redis ElasticSearch DevOps Git Docker AWS About Me PROFILE 생년월일 2002.04.01 학력 한남대학교 컴퓨터공학과 학사 4.09/4.5 LICENSE OPIC IM2 2025.09 정보처리기사 2025.09 SQLD 2025.04 EDUCATION 2025.07 ~ 2026.06 삼성 청년 SW·AI 아카데미 (SSAFY) 14기 교육생 | 삼성전자 | 알고리즘 및 웹 개발 심화 과정 2024.07 ~ 2024.09 CIA Academy 어학연수 | 글로벌 커뮤니케이션 능력 향상 및 문화 교류 2022.10 ~ 2024.01 시스템 소프트웨어 공학 연구실 학부 연구생 | 한남대학교 | 논문 작성 및 최신 기술 동향 연구 AWARDS 2024.06.10 캡스톤 디자인 대회 우수상 한남대학교 RESEARCH & PAPERS 2024.10 안면 색상 데이터 기반 퍼스널 컬러 진단 서비스 2024 한국스마트미디어학회&한국전자거래학회 추계학술대회 2023.04 ChatGPT를 활용한 대화형 플랫폼: 동향과 전망 2023 한국스마트미디어학회 종합학술대회 2023.10 빅데이터 분석 방법 비교 2023 한국스마트미디어학회 심포지움",
+      "sections": [
+        {
+          "id": "home",
+          "top": 0,
+          "left": 0,
+          "width": 390,
+          "height": 1200
+        },
+        {
+          "id": "projects",
+          "top": 1200,
+          "left": 0,
+          "width": 390,
+          "height": 2040
+        },
+        {
+          "id": "skills",
+          "top": 3240,
+          "left": 0,
+          "width": 390,
+          "height": 1288
+        },
+        {
+          "id": "about",
+          "top": 4528,
+          "left": 0,
+          "width": 390,
+          "height": 1723
+        }
+      ],
+      "links": [
+        {
+          "text": "goring",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Home",
+          "href": "#home",
+          "target": null
+        },
+        {
+          "text": "Projects",
+          "href": "#projects",
+          "target": null
+        },
+        {
+          "text": "Skills",
+          "href": "#skills",
+          "target": null
+        },
+        {
+          "text": "About",
+          "href": "#about",
+          "target": null
+        },
+        {
+          "text": "010-3480-9550",
+          "href": "tel:010-3480-9550",
+          "target": null
+        },
+        {
+          "text": "GitHub",
+          "href": "https://github.com/go-ring",
+          "target": "_blank"
+        }
+      ],
+      "images": [
+        {
+          "alt": "Turtle Logo",
+          "src": "https://go-ring.github.io/portfolio/turtle.svg",
+          "width": 452,
+          "height": 438,
+          "renderedWidth": 38,
+          "renderedHeight": 38
+        },
+        {
+          "alt": "Profile 1",
+          "src": "https://go-ring.github.io/portfolio/assets/profile1-E9toH_4g.jpg",
+          "width": 689,
+          "height": 886,
+          "renderedWidth": 252,
+          "renderedHeight": 337
+        },
+        {
+          "alt": "백구(BAEKGU) preview",
+          "src": "https://go-ring.github.io/portfolio/assets/baekgu-DTfSg8EY.png",
+          "width": 1317,
+          "height": 785,
+          "renderedWidth": 300,
+          "renderedHeight": 240
+        },
+        {
+          "alt": "알고가자(Algogo) preview",
+          "src": "https://go-ring.github.io/portfolio/assets/algogo-CzsbjTDj.png",
+          "width": 1892,
+          "height": 837,
+          "renderedWidth": 300,
+          "renderedHeight": 240
+        }
+      ],
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "안녕하세요!"
+        },
+        {
+          "tag": "H2",
+          "text": "백엔드 개발자 이가은입니다."
+        },
+        {
+          "tag": "H3",
+          "text": "Lee GaEun"
+        },
+        {
+          "tag": "H2",
+          "text": "Projects"
+        },
+        {
+          "tag": "H3",
+          "text": "백구(BAEKGU)"
+        },
+        {
+          "tag": "H3",
+          "text": "알고가자(Algogo)"
+        },
+        {
+          "tag": "H3",
+          "text": "ColorFinder"
+        },
+        {
+          "tag": "H3",
+          "text": "가상화 기반 우주 통신망 연동 및 사이버 위협 연구"
+        },
+        {
+          "tag": "H2",
+          "text": "Skills"
+        },
+        {
+          "tag": "H3",
+          "text": "Language"
+        },
+        {
+          "tag": "H3",
+          "text": "Backend"
+        },
+        {
+          "tag": "H3",
+          "text": "Data"
+        },
+        {
+          "tag": "H3",
+          "text": "DevOps"
+        },
+        {
+          "tag": "H2",
+          "text": "About Me"
+        },
+        {
+          "tag": "H3",
+          "text": "Profile"
+        },
+        {
+          "tag": "H3",
+          "text": "License"
+        },
+        {
+          "tag": "H3",
+          "text": "Education"
+        },
+        {
+          "tag": "H4",
+          "text": "삼성 청년 SW·AI 아카데미 (SSAFY)"
+        },
+        {
+          "tag": "H4",
+          "text": "CIA Academy"
+        },
+        {
+          "tag": "H4",
+          "text": "시스템 소프트웨어 공학 연구실"
+        },
+        {
+          "tag": "H3",
+          "text": "Awards"
+        },
+        {
+          "tag": "H4",
+          "text": "캡스톤 디자인 대회 우수상"
+        },
+        {
+          "tag": "H3",
+          "text": "Research & Papers"
+        },
+        {
+          "tag": "H4",
+          "text": "안면 색상 데이터 기반 퍼스널 컬러 진단 서비스"
+        },
+        {
+          "tag": "H4",
+          "text": "ChatGPT를 활용한 대화형 플랫폼: 동향과 전망"
+        },
+        {
+          "tag": "H4",
+          "text": "빅데이터 분석 방법 비교"
+        }
+      ],
+      "buttons": [
+        "",
+        "dlrkdms001@gmail.com",
+        "Previous image",
+        "Next image",
+        "Go to slide 1",
+        "Go to slide 2",
+        "Go to slide 3"
+      ],
+      "cards": [
+        "백구(BAEKGU)2026.01.19 ~ 2026.02.06 (3주)팀 프로젝트 (6인)백엔드 리드 & 인프라사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼. 구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))Java 17Spring Boot 3.2FastAPIJPA / QueryDSL+15Case Study",
+        "알고가자(Algogo)2025.11.20 ~ 2026.01.20 (9주)팀 프로젝트 (5인)백엔드 & 인프라알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 지능형 학습 관리 플랫폼. 제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))Java 17Spring Boot 3.5.7JPA / QueryDSLMySQL 8.0+11Case Study",
+        "ColorFinder2024.04.08 ~ 2024.06.10 (10주)팀 프로젝트 (3인)백엔드 개발안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼. 단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류. 기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))Java 17Python 3.11Spring Boot 3.2.5Flask+7Case Study",
+        "가상화 기반 우주 통신망 연동 및 사이버 위협 연구2023.04.01 ~ 2023.10.31산학 과제 (3인)위성 시뮬레이터 환경 구축 및 문제 해결클라우드 기반 NOS3 위성 통신망 시뮬레이션 환경 구축 및 분석NASA의 오픈소스 위성 시뮬레시연 플랫폼 NOS3를 기반으로, 가상 인공위성-지상국(GS)-사용자 환경을 클라우드에서 재현하기 위한 연구형 테스트베드. 핵심 목표는 우주 통신망 연동 구조를 가상화 환경에서 검증하고, 사이버 위협 대응 실험이 가능한 기본 실행 환경 마련. NOS Engine, cFS, 42, COSMOS 등 구성요소를 중심으로 통신/운영 흐름을 분석하고 클라우드에서 재현 가능한 형태로 정리. ([연구 보고서](https://drive.google.com/file/d/1wtzY7gHgHmb1sj4i1sMoRnfpqYnxw1jh/view?usp=sharing))NOS3LinuxNCloudCloud-Init+6Case Study"
+      ],
+      "url": "https://go-ring.github.io/portfolio/",
+      "title": "LeeGaEun",
+      "errors": [
+        "Failed to load resource: the server responded with a status of 403 ()"
+      ],
+      "screenshot": ".visual-compare\\mobile-remote.png"
+    },
+    "diffPixels": 0,
+    "textDiff": {
+      "onlyA": [],
+      "onlyB": []
+    },
+    "sameNormalizedText": true
+  }
+}
