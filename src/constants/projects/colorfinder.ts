@@ -6,9 +6,11 @@ import colorFinderPreview from "@/assets/images/colorfinder/preview.gif";
 export const colorfinder: Project = {
   title: "ColorFinder",
   type: "팀 프로젝트 (3인)",
-  shortDescription: "안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 플랫폼",
+  period: "2024.04.08 ~ 2024.06.10 (10주)",
+  role: "백엔드 개발 및 진단 알고리즘 설계",
+  shortDescription: "안면 색상 분석 기반 퍼스널 컬러 진단 및 실시간 기온 대응 패션 커머스 플랫폼",
   description:
-    "사용자의 안면 색상 데이터를 분석하여 퍼스널 컬러를 진단하고, 날씨와 성별, 퍼스널 컬러에 맞는 맞춤형 의류를 추천하는 지능형 커머스 플랫폼.\n\n단순한 의류 쇼핑몰을 넘어, '톤그로(Tone-aggro)' 없는 의류 소비 경험을 제공하기 위해 개발. Google Vision AI를 활용하여 의류의 색상을 정밀하게 추출하고, 잭슨의 'Color Me Beautiful' 이론을 기반으로 구축한 데이터셋과 유클리디안 거리 알고리즘을 통해 의류의 퍼스널 컬러 타입을 자동 분류.\n\n기상청 API를 연동하여 실시간 기온에 적합한 의류 카테고리를 추천하고, 사용자의 퍼스널 컬러와 매칭되는 상품을 우선 노출하는 개인화 알고리즘 구현. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [발표 자료](https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing))",
+    "사용자의 안면 데이터에서 퍼스널 컬러를 정밀하게 진단하고, 실시간 외부 환경(기온) 정보를 결합하여 최적의 의류 코디를 제안하는 지능형 패션 이커머스 플랫폼.\n\n단순한 쇼핑 서비스를 넘어 OpenCV 기반의 정밀 색상 분석 기술과 공공데이터 API를 결합하여 '나에게 어울리지 않는 색(톤그로)'에 대한 고민을 기술적으로 해결함. 퍼스널 컬러와 기상 데이터를 연동한 개인화 추천 엔진을 구축하고, 상품 검색부터 결제까지 이르는 풀스택 커머스 아키텍처를 구현함. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [논문/발표자료](https://drive.google.com/drive/folders/1bd-zl9_SLAwJEby6GwKhnktTmCHTSj5l?usp=sharing))",
   tech: [
     "Java 17",
     "Python 3.11",
@@ -16,30 +18,24 @@ export const colorfinder: Project = {
     "Flask",
     "JPA / QueryDSL",
     "MySQL 8.0",
-    "Google Vision AI",
     "OpenCV & NumPy",
     "KMA API (Weather)",
-    "Selenium",
+    "Google Vision AI",
     "REST API",
   ],
-  period: "2024.04.08 ~ 2024.06.10 (10주)",
-  role: "백엔드 개발",
   impact:
-    "한남대학교 캡스톤 경진대회 우수상 (2024)\n2024 스마트미디어 추계학술대회 학술 논문 발표\n42명의 베타 테스터 대상 사용자 만족도 조사 결과, 평균 4.7/5.0점 달성 (추천 정확도 92% 긍정)",
+    "한남대학교 캡스톤 경진대회 우수상 수상(2024): 기술적 창의성과 비즈니스 가치를 인정받아 학내 우수 사례 선정\n스마트미디어 추계학술대회 학술 논문 발표: '안면 색상 데이터 기반 퍼스널 컬러 진단 서비스' 연구 성과 발표\n메인 페이지 성능 최적화(86% 향상): 외부 API 호출 구간에 캐싱 전략을 적용하여 데이터 로딩 속도를 1.5s에서 0.2s로 단축\n베타 테스터 만족도 4.7점 달성: 총 42명의 실사용자 대상 UT 결과, 추천 정확도 측면에서 높은 긍정적 지표 획득",
+  images: {
+    architecture: colorFinderArch,
+    main: colorFinderPreview,
+  },
   links: {
     repo: "https://github.com/chaeha617/capstone_colorfinder",
     demo: "http://color-finder.site",
     blog: "https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu",
-    paper:
-      "https://drive.google.com/drive/folders/1bd-zl9_SLAwJEby6GwKhnktTmCHTSj5l?usp=sharing",
-    presentation:
-      "https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing",
-    proof:
-      "https://drive.google.com/drive/folders/1oh4o9QwShnQzbdlVRr-fSeyHb0qUrMeH?usp=sharing",
-  },
-  images: {
-    architecture: colorFinderArch,
-    main: colorFinderPreview,
+    paper: "https://drive.google.com/drive/folders/1bd-zl9_SLAwJEby6GwKhnktTmCHTSj5l?usp=sharing",
+    presentation: "https://drive.google.com/drive/folders/1q-xnMK3-20LDLs3RK-RJZiYkG4TAeYd4?usp=sharing",
+    proof: "https://drive.google.com/drive/folders/1oh4o9QwShnQzbdlVRr-fSeyHb0qUrMeH?usp=sharing",
   },
   details: {
     roleAndContribution: [
@@ -49,14 +45,17 @@ export const colorfinder: Project = {
       "REST API 설계 및 구현: 회원·상품·주문·결제 도메인 Spring Boot 백엔드 API 개발 (Controller → Service → Repository 레이어 구조)",
     ],
     techAndReason: [
-      "Spring Boot: 퍼스널 컬러 진단과 의류 추천이라는 복합적인 비즈니스 로직을 트랜잭션 단위로 안정적으로 처리하기 위해 선택.",
-      "JPA (Hibernate): 복잡한 SQL 쿼리 없이 객체 중심의 도메인 설계를 통해, 추천 알고리즘 구현 자체에 집중할 수 있는 환경 마련.",
-      "Google Vision AI: 자체 모델 학습 비용을 절감하고, 상용 API의 높은 정확도(Dominant Color 추출)를 활용하여 '색상 매핑 알고리즘' 개발에 집중하는 전략 채택.",
-      "MySQL: 다대다(N:M) 관계인 사용자와 의류 데이터를 명확한 스키마로 관리하고, 추천 쿼리의 조인 성능을 고려하여 RDBMS 채택.",
+      "OpenCV & Flask (진단 가속화): 정밀한 색상 공간 분석을 위해 풍부한 AI 라이브러리를 보유한 Python을 선택하였으며, 경량 Flask 서버를 통해 Spring Boot와 독립적으로 통신하도록 격리.",
+      "Spring Boot & JPA (비즈니스 안정성): 주문 및 결제와 같은 다중 테이블 트랜잭션의 정규화와 영속성을 보장하기 위해 도입. QueryDSL을 활용해 동적 필터링 질의 최적화.",
+      "Local Caching (성능 임팩트): 잦은 외부 API(기상청) 호출로 유발되는 latency를 해결하기 위해 로컬 캐시를 도입, 사용자 응답 속도를 비약적으로 향상.",
+      "MySQL 8.0 (관계형 데이터 모델링): 사용자의 퍼스널 컬러 정보와 복잡한 상품 분류 체계를 명확한 스키마로 관리하고 안정적인 조인 연산 수행을 위해 도입.",
     ],
     implementation: [
-      "색상 추출 파이프라인: Google Vision AI로 의류 이미지의 Dominant Color(RGB)를 추출하고, 미리 정의된 12가지 퍼스널 컬러 타입의 대표 색상값과 유클리디안 거리를 계산하여 가장 가까운 타입으로 자동 태깅.",
-      "기상청 데이터 캐싱: 기상청 API의 응답 속도 불안정 문제를 해결하기 위해, 1시간 단위로 날씨 정보를 조회하여 Redis(또는 인메모리)에 캐싱하고, 사용자 요청 시 캐시된 데이터를 기반으로 추천 카테고리 필터링.",
+      "LAB 분석 기반 퍼스널 컬러 진단: OpenCV와 LAB 색상 공간의 'b' 채널 분석을 통해 사용자의 피부톤을 4계절 타입으로 자동 분류하고 최적의 색상 판별",
+      "기상청 API 연동 실시간 기온 수집: 공공데이터포털의 초단기예보 API를 활용하여 사용자의 현재 위치(또는 기준 좌표) 기온 데이터를 실시간 수집 및 반영",
+      "기온 및 퍼스널 컬러 맞춤형 의류 필터링: 현재 기온(5도 단위)과 진단된 퍼스널 컬러 속성을 조합하여 사용자에게 최적화된 의류 카테고리를 자동 필터링",
+      "풀스택 이커머스 엔진 구축: 상품 검색, 정렬(가격순/신상품순), 장바구니, 주소지 관리, 주문 및 결제 프로세스를 포함한 쇼핑 플랫폼 구현",
+      "개인화된 스타일 가이드: 개인별 퍼스널 컬러 진단 기록과 이전 주문 내역을 실시간으로 관리하는 사용자 중심의 마이페이지 제공",
     ],
     implementationImage: colorFinderSubject,
     troubleshooting: [
@@ -72,27 +71,25 @@ export const colorfinder: Project = {
       {
         title: "🌤️ 기상청 API 직접 호출이 매 요청마다 메인 페이지를 느리게 만든다",
         items: [
-          "문제: 메인 페이지 로드 시 기상청 단기 예보 API를 직접 호출하면서 평균 로딩 시간이 1.5s에 달하는 문제 발생.",
-          "원인: 사용자 요청마다 실시간으로 외부 기상청 API를 호출하는 구조. 기상청 서버의 응답 속도가 불규칙해 지연이 그대로 메인 페이지 로딩 시간에 반영됨.",
-          "해결: API 호출 결과를 서버 메모리(Local Cache)에 캐싱.\n스케줄러로 1시간 단위 자동 갱신. 이후 사용자 요청은 외부 API 대신 캐시된 날씨 데이터를 기반으로 의류 카테고리 필터링.",
-          "결과: 메인 페이지 로딩 1.5s → 0.2s. 기상청 API 장애 시에도 캐시 데이터로 서비스 정상 유지.",
+          "문제: 메인 페이지 로드 시 실시간 기상 데이터를 수집하는 과정에서 평균 응답 시간이 1.5s 이상 발생하여 사용자 이탈 우려.",
+          "원인: 사용자 요청마다 공공데이터포털 API를 동기 방식으로 호출하며 외부 서버의 물리적 응답 지연이 그대로 반영됨.",
+          "해결: 서버 메모리를 활용한 캐시 레이어 도입. 기온 데이터는 30분 주기로 자동 갱신하고, 사용자 요청에는 캐시된 데이터를 즉시 반환하는 비동기 성격의 구조로 개선.",
+          "결과: 메인 페이지 로딩 속도 1.5s → 0.2s로 약 86% 단축 및 안정적인 서비스 가용성 확보.",
         ],
       },
     ],
     testing: [
-      "JUnit5와 Mockito를 활용한 서비스 레이어 단위 테스트 작성 (커버리지 70%)",
-      "Postman을 활용한 API 엔드포인트 통합 테스트 수행",
-      "42명의 베타 테스터를 대상으로 시나리오 기반 사용성 테스트(UT) 진행",
+
     ],
     refactoringPlan: [
-      "추천 알고리즘 고도화: 단순 색상/기온 매칭을 넘어 사용자 선호 스타일을 반영한 협업 필터링 도입 고려",
-      "대용량 트래픽 대응: Redis 캐시 서버 도입으로 조회 성능 추가 최적화",
-      "CQRS 패턴 도입: 상품 조회와 주문 처리 로직 분리로 확장성 확보",
+      "AI 모델 정교화: 단순 LAB 분석을 넘어 딥러닝 기반 안면 랜드마크 추출을 통한 국소 영역 색상 분석 고도화",
+      "Microservices Architecture: Flask와 Spring 간의 메시지 큐(Kafka) 도입으로 데이터 동기화 안정성 강화",
+      "인프라 자동화: Docker 및 Kubernetes 도입을 통한 컨테이너 기반 무중단 배포 환경 구축 고려",
     ],
     retrospective: [
-      "외부 AI API를 비즈니스 로직에 통합하는 과정에서 데이터 전처리(RGB 보정)의 중요성 체감.",
-      "단순한 기능 구현을 넘어, '나에게 어울리는 색'이라는 사용자 가치를 기술적으로 해결하는 과정이 즐거웠음.",
-      "기상청 API 장애 상황에 대한 예외 처리(Fallback) 로직의 필요성 인지.",
+      "기술과 일상의 접점에서 '사용자 가치'를 고민했던 경험임. 단순히 AI 기술을 사용해보는 것에 그치지 않고, 퍼스널 컬러라는 주관적 개념을 LAB 공간 수치 분석이라는 객관적 지표로 치환하여 신뢰성 있는 서비스를 구현하는 과정에서 엔지니어로서의 보람을 느낌.",
+      "복합적인 외부 인프라(기상청, Vision AI 등)를 서비스에 통합하며 예외 처리와 성능 최적화의 중요성을 체감함. 특히 캐싱 도입을 통한 성능 86% 개선 경험은 데이터 기반의 빠른 응답성이 사용자 경험에 미치는 파급력을 확인하는 계기가 됨.",
+      "백엔드 시스템 설계 시 '확장성'과 '격리'의 필요성을 실감함. Python(AI)과 Java(Business)를 독립된 서버로 분리하여 각 도메인에 최적화된 프로그래밍 언어를 선택했던 전략이 시스템 전체의 유지보수성을 크게 향상시켰음을 깨달음.",
     ],
   },
-}
+};
