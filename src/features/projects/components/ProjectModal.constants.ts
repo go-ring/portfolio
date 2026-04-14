@@ -1,0 +1,62 @@
+export const EMPHASIS_TECH: Record<string, Set<string>> = {
+  'ColorFinder': new Set(['Google Vision AI', 'Spring Boot 3.2.5', 'Flask', 'OpenCV & NumPy', 'KMA API (Weather)', 'Selenium']),
+  '가상화 기반 우주 통신망 연동 및 사이버 위협 연구': new Set(['NOS3', 'NCloud', 'Cloud-Init', 'Ruby', 'xrdp']),
+  '백구(BAEKGU)': new Set(['GitLab CI/CD', 'Redis', 'JPA / QueryDSL', 'WebSocket (STOMP)', 'Prometheus / Grafana', 'Loki']),
+  '알고가자(Algogo)': new Set(['Blue-Green', 'Vercel', 'AWS S3 & CloudFront', 'Nginx', 'Jenkins', 'OpenAI API (G-Eval & WebClient)', 'Spring Boot Actuator & Prometheus']),
+};
+
+export const TOC_ITEMS = [
+  { id: 'overview', label: '프로젝트 개요' },
+  { id: 'implementation', label: '핵심 기능' },
+  { id: 'role', label: '담당 역할' },
+  { id: 'tech', label: '사용 기술 및 아키텍처' },
+  { id: 'troubleshooting', label: '트러블슈팅' },
+  { id: 'outcomes', label: '성과 및 결과' },
+  { id: 'retrospective', label: '회고 및 배운 점' },
+  { id: 'links', label: '관련 자료' },
+];
+
+export const TROUBLE_LABELS: Record<string, { color: string }> = {
+  '문제': { color: 'text-[#E85C5C]' },
+  '원인': { color: 'text-[#F4C430]' },
+  '해결': { color: 'text-[#6AA8FF]' },
+  '결과': { color: 'text-[#7DD3FC]' },
+};
+
+export const HIGHLIGHT_PHRASES = [
+  '최대 10분 소요',
+  'CI/CD 배포 시',
+  '진행 중인 분석이 강제 종료',
+  'AI 분석이 Spring으로 진행률을 보고',
+  '연결이 끊기면',
+  '분석 파이프라인 전체 종료',
+  '두 컨테이너의 수명 주기를 물리적으로 분리',
+  'Spring이 재시작 중이어서 보고에 실패하더라도',
+  '끝까지 실행됩니다',
+  'FastAPI가 MySQL에 직접 저장',
+  'AI 분석',
+  'Write가 많아질수록 DB에 부담이 가중됨',
+  '빈번하게 발생하는 쓰기 연산까지 Disk I/O가 있는 MySQL에 의존',
+  '위반 횟수 카운팅은 Redis로, 영구 차단 정보는 MySQL로 이원화',
+  '원자적으로 증가',
+  'Spring Security 진입 전',
+  'Race Condition 없이 정확한 집계 보장',
+  '120ms → 5ms',
+  'CPU 사용률 80% 감소',
+  '초당 1,000회',
+  '커스텀 HTTP 헤더를 붙이는 기능 자체가 없음',
+  '인증 시점을 HTTP 레이어에서 STOMP 레이어로 분리',
+  'CONNECT 프레임 수신 시 JWT 검증',
+  'SimpUserRegistry에 정상 전파',
+  '간헐적 502 Bad Gateway',
+  'JVM 내부의 Spring Boot 애플리케이션이 구동',
+  'Health Check 폴링 도입',
+  '트래픽 유실 0건 달성',
+  '이미지 용량이 1GB를 초과',
+  'Multi-stage Build 적용',
+  '73% 감소',
+  '66% 단축',
+  'Connection refused 예외',
+  '수명 주기 분리',
+  '보고 로직을 try-except-pass로 감싸',
+];
