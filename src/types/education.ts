@@ -7,7 +7,10 @@ export interface ExperienceItem {
 
 export interface SkillGroup {
   category: string;
-  items: string[];
+  items: {
+    name: string;
+    level: '상' | '중' | '하';
+  }[];
 }
 
 export interface EducationItem {
