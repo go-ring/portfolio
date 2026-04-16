@@ -1,6 +1,7 @@
 import type { Project } from '@/types/project';
 import ddoyaArch from "@/assets/images/ddoya/architecture.png";
 import intakeAlarm from "@/assets/images/ddoya/features/섭취알람.jpg";
+import intakeComplete from "@/assets/images/ddoya/features/섭취완료.jpg";
 import stockAlarm from "@/assets/images/ddoya/features/재고알람.jpg";
 import dailyRoutine from "@/assets/images/ddoya/features/데일리섭취루틴.jpg";
 import reportNutrient from "@/assets/images/ddoya/features/레포트_성분과잉부족_1.jpg";
@@ -66,7 +67,7 @@ export const ddoya: Project = {
       "Docker Compose 기반 운영 구성: MySQL, FastAPI AI 서버, Spring Boot 백엔드 컨테이너의 healthcheck와 depends_on 조건을 구성해 서비스 기동 순서를 안정화하고 Jenkins에서 백엔드/AI 이미지를 빌드·푸시·배포하도록 연결",
     ],
     roleAndContributionImages: {
-      1: intakeAlarm,
+      1: [intakeAlarm, intakeComplete],
       2: stockAlarm,
     },
     techAndReason: [

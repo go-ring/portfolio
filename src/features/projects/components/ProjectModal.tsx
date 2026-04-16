@@ -94,13 +94,13 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       {/* Main Image */}
                       {project.images?.overviewGallery ? (
                         <div className="mb-8 flex justify-center">
-                          <div className="grid grid-cols-3 gap-4 w-full max-w-4xl">
+                          <div className="grid grid-cols-3 gap-0 w-full max-w-5xl">
                             {project.images.overviewGallery.map((image, idx) => (
                               <div key={idx} className="overflow-hidden">
                                 <img
                                   src={image}
                                   alt={`Overview ${idx + 1}`}
-                                  className="w-full h-[270px] object-contain"
+                                  className="w-full h-auto max-h-[420px] object-contain"
                                 />
                               </div>
                             ))}
@@ -184,6 +184,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                               const title = colonIdx !== -1 ? item.slice(0, colonIdx).trim() : item;
                               const body = colonIdx !== -1 ? item.slice(colonIdx + 1).trim() : '';
                               const roleImage = project.details?.roleAndContributionImages?.[idx];
+                              const roleImages = roleImage ? (Array.isArray(roleImage) ? roleImage : [roleImage]) : [];
                               const useSideRoleImage = isDdoya && roleImage;
                               return (
                                 <div key={idx} className="group flex gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-200">
@@ -193,13 +194,18 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                       <span className="font-bold text-primary text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>
                                       {body && <p className="text-gray-200 leading-snug text-[15.5px] group-hover:text-white transition-colors">{renderLinked(body)}</p>}
                                     </div>
-                                    {roleImage && (
-                                      <div className={`mt-4 rounded-lg overflow-hidden border border-white/10 bg-black/20 p-2 ${useSideRoleImage ? "md:mt-0 w-full md:w-[220px] shrink-0" : "max-w-xl"}`}>
-                                        <img
-                                          src={roleImage}
-                                          alt={`${title} detail`}
-                                          className={`w-full h-auto object-contain rounded-md ${useSideRoleImage ? "max-h-[220px]" : "max-h-[260px]"}`}
-                                        />
+                                    {roleImages.length > 0 && (
+                                      <div className={`mt-4 ${useSideRoleImage ? "md:mt-0 w-full md:w-[300px] shrink-0" : "rounded-lg overflow-hidden border border-white/10 bg-black/20 p-2 max-w-xl"}`}>
+                                        <div className={`${roleImages.length > 1 ? "grid grid-cols-2 gap-0.5" : ""}`}>
+                                          {roleImages.map((image, imageIdx) => (
+                                            <img
+                                              key={imageIdx}
+                                              src={image}
+                                              alt={`${title} detail ${imageIdx + 1}`}
+                                              className={`w-full h-auto object-contain ${useSideRoleImage ? "max-h-[220px]" : "max-h-[260px] rounded-md"}`}
+                                            />
+                                          ))}
+                                        </div>
                                       </div>
                                     )}
                                   </div>

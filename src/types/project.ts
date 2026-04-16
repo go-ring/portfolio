@@ -1,6 +1,6 @@
 export interface ProjectDetails {
   roleAndContribution?: string[];
-  roleAndContributionImages?: Record<number, string>;
+  roleAndContributionImages?: Record<number, string | string[]>;
   techAndReason?: string[];
   implementation?: string[];
   implementationImage?: string;
