@@ -29,6 +29,7 @@ export interface Project {
     proof?: string;
     jira?: string;
     notion?: string;
+    award?: string;
   };
   images?: {
     main?: string;

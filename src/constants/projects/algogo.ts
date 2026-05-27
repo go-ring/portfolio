@@ -1,6 +1,5 @@
 import type { Project } from '@/types/project';
 import algogoMain from "@/assets/images/algogo/main.gif";
-import algogoCardPreview from "@/assets/images/algogo/algogo.png";
 
 export const algogo: Project = {
     title: "알고가자(Algogo)",
@@ -30,7 +29,6 @@ export const algogo: Project = {
     impact:
       "실운영 약 120명 유저 유치 및 리뷰 선순환 생태계 안착: SSAFY 14·15기 교육생 대상으로 플랫폼을 런칭, 코드 리뷰를 강제하는 잠금(Lock) 비즈니스 설계를 통해 밀도 높은 실제 스터디 생태계 구축\nHealth Check 연동 무중단 배포(0 Downtime) 달성: Nginx 라우팅과 애플리케이션의 Ready 생명주기를 동기화하는 Blue-Green 파이프라인을 구축해 배포 중 발생하는 트래픽 유실과 502 에러 100% 차단\n비동기 격리를 통한 DB 커넥션 풀 고갈 방어: 지연이 잦은 OpenAI API 연동망을 트랜잭션 외부 독립 스레드풀로 분리, 트래픽 스파이크 시에도 타 API가 연쇄 마비되는 현상(Cascading Failure) 원천 차단\n계층형 N+1 병목 최적화 (단일 쿼리 트리 조립): QueryDSL Flat 쿼리 및 O(N) 메모리 트리 조립 알고리즘을 도입해 아무리 깊은 대댓글 뎁스에서도 DB 조회를 단 1회로 병합 종결\nDocker 레이어 캐시 최적화 및 보안 컨테이너 구축: 구조 개편으로 CI 빌드 시간을 66% 단축(12분→4분)하고, 최하위 권한(Non-root) 런타임 적용으로 권한 상승 공격 컨테이너 취약점 전면 제거\n클라우드 네이티브(S3·CloudFront) 정적 리소스 분리: 정적 에셋 서빙 비용을 엣지 로케이션(CDN)으로 넘겨 API 서버(오리진)의 부하를 없애고 사용자 체감 응답 속도 향상 달성",
     images: {
-      preview: algogoCardPreview,
       main: algogoMain
     },
     links: {

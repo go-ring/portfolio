@@ -1,4 +1,4 @@
-import { Github, BookOpen, Presentation, BadgeCheck, ExternalLink } from 'lucide-react';
+import { Github, BookOpen, Presentation, BadgeCheck, ExternalLink, Trophy } from 'lucide-react';
 import type { Project } from '@/types/project';
 import { SectionHeader } from '@/components/common/SectionHeader';
 import { NotionIcon } from './ProjectModalIcons';
@@ -35,6 +35,13 @@ export function ProjectModalLinksSection({ project }: ProjectModalLinksSectionPr
             <Presentation size={22} className="text-gray-400 group-hover:text-orange-400 transition-colors shrink-0" />
             <span className="text-[16px] font-semibold text-gray-200 group-hover:text-white transition-colors">발표 자료 (Presentation)</span>
             <ExternalLink size={16} className="ml-auto text-gray-500 group-hover:text-orange-400 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
+          </a>
+        )}
+        {project.links.award && (
+          <a href={project.links.award} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 px-5 py-4 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.08] hover:border-yellow-500/50 transition-all duration-300">
+            <Trophy size={22} className="text-gray-400 group-hover:text-yellow-500 transition-colors shrink-0" />
+            <span className="text-[16px] font-semibold text-gray-200 group-hover:text-white transition-colors">수상내역 (Awards)</span>
+            <ExternalLink size={16} className="ml-auto text-gray-500 group-hover:text-yellow-500 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
           </a>
         )}
         {project.links.proof && (

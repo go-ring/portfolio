@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import { X, Github, BookOpen, Presentation, BadgeCheck } from 'lucide-react';
+import { X, Github, BookOpen, Presentation, BadgeCheck, Trophy } from 'lucide-react';
 import type { Project } from '@/types/project';
 import { Tooltip } from '@/components/common/Tooltip';
 import { JiraIcon, NotionIcon } from './ProjectModalIcons';
@@ -92,6 +92,18 @@ export function ProjectModalHeader({ project, headerRef, onClose }: ProjectModal
                 className="text-gray-400 hover:text-orange-400 transition-colors"
               >
                 <Presentation size={18} />
+              </a>
+            </Tooltip>
+          )}
+          {project.links.award && (
+            <Tooltip content="Awards (수상내역)">
+              <a
+                href={project.links.award}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-yellow-500 transition-colors"
+              >
+                <Trophy size={18} />
               </a>
             </Tooltip>
           )}

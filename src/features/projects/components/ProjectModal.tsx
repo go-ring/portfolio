@@ -94,7 +94,12 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       {/* Main Image */}
                       {project.images?.overviewGallery ? (
                         <div className="mb-8 flex justify-center">
-                          <div className="grid grid-cols-3 gap-0 w-full max-w-5xl">
+                          <div
+                            className="grid gap-0 w-full max-w-6xl"
+                            style={{
+                              gridTemplateColumns: `repeat(${project.images.overviewGallery.length}, minmax(0, 1fr))`,
+                            }}
+                          >
                             {project.images.overviewGallery.map((image, idx) => (
                               <div key={idx} className="overflow-hidden">
                                 <img
