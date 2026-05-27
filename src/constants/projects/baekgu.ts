@@ -48,7 +48,7 @@ export const baekgu: Project = {
     roleAndContribution: [
       "GitLab CI/CD 기반 백엔드-AI 서버 분리 구조 설계: FastAPI와 Spring Boot의 수명 주기를 분리하여 백엔드 배포 중에도 AI 분석 파이프라인이 중단되지 않는 Fault-Tolerant 아키텍처 구축",
       "FastAPI-Spring 비동기 처리 및 작업 안정성 확보: 분석 결과 보고 로직을 비동기 콜백 구조로 설계하고 예외 처리를 강화하여 서버 결합도 해소 및 데이터 전송의 최종 일관성 확보",
-      "공고·채팅·자소서 핵심 도메인 API 설계 및 구현: 시노님 기반 공고 매칭 로직, WebSocket 기반 실시간 채팅, LLM 연동 자소서 생성 지원 등 서비스 주요 비즈니스 도메인 전체 개발",
+      "공고 · 채팅 · 자소서 도메인 API 설계 및 구현: SYNONYM 기반 공고 매칭 로직, WebSocket 기반 실시간 채팅, LLM 연동 자소서 생성 지원 등 서비스 주요 비즈니스 도메인 개발",
       "Prometheus·Grafana·Loki 기반 통합 모니터링 구축: 서버 메트릭 수집부터 로그 통합 분석까지 전체 시스템 가시성을 확보하여 장애 조치 및 성능 관찰 환경 조성",
       "Redis 기반 비정상 요청 차단 시스템 구현 (블랙리스트 관리): Redis Atomic Counter를 활용한 비정상 호출 실시간 탐지 및 블랙리스트 관리 체계 구축으로 시스템 보안 강화",
     ],
