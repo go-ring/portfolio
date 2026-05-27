@@ -10,9 +10,9 @@ import conversationGuide from '@/assets/images/bbaekkom/대화가이드1.jpg';
 export const bbaekkom: Project = {
   title: '빼꼼(BBAEKKOM)',
   type: '팀 프로젝트 (6인)',
-  period: '2026.05.06 ~ 2026.05.20',
+  period: '2026.05.06 ~ 2026.05.27 (3주)',
   role: ['프론트엔드 & 백엔드 & AI'],
-  shortDescription: '아이의 애착 사물을 AI 캐릭터 친구로 만들어 대화와 성장 리포트를 제공하는 모바일 앱',
+  shortDescription: '사진 기반 캐릭터 생성 및 실시간 음성 대화와 성장 리포트를 지원하는 AI 육아 플랫폼',
   description:
     '일상 속 사물을 AI 캐릭터로 변환해 아동과 실시간 음성 대화를 나누고, 대화 데이터를 분석하여 주간 아동 발달 지표 및 육아 리포트를 제공하는 플랫폼.\n\n' +
     '사물 사진 한 장에서 이목구비를 정밀 감지하고 추출한 뒤 빈자리를 텍스처로 자연스럽게 메우는 Grounded-SAM-LaMa 비전 파이프라인으로 실시간 표정 변화가 가능한 입체 캐릭터를 생성. AI 캐릭터 대화 품질이 아동에게 안전하고 발달 수준에 부합하도록 10가지 대화 평가 루브릭을 수립하고, DeepEval G-Eval(LLM-as-a-Judge) 평가 체계를 구축. 단순 대화를 넘어 pgvector 기반 시간 소멸식 가중 RAG와 Redis 세션 컨텍스트로 이전 대화를 기억하며, 수면 시나리오에 맞춰 음성과 동기화하여 방 조명의 조도 조절 및 소등을 능동 제어하는 "상황 맥락 인지형 SmartThings IoT 연동" 루프 실현.\n\n' +
@@ -22,7 +22,7 @@ export const bbaekkom: Project = {
     'Java 21',
     'Spring Boot 3.5',
     'JPA / QueryDSL',
-    'PostgreSQL / pgvector',
+    'PostgreSQL (pgvector)',
     'MySQL 8.0',
     'Redis',
     'SSE',

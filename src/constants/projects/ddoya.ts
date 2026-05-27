@@ -12,9 +12,9 @@ export const ddoya: Project = {
   type: "팀 프로젝트 (6인)",
   period: "2026.02.23 ~ 2026.03.29 (5주)",
   role: ["백엔드 & 인프라", "푸시 알림 로직"],
-  shortDescription: "인증 없이는 멈추지 않는 집착형 복약 관리 및 AI 성분 분석 서비스",
+  shortDescription: "인증 없이는 멈추지 않는 집착형 복약 관리 및 AI 성분 분석 플랫폼",
   description:
-    "삼성 청년 SW·AI 아카데미 14기에서 6인 팀으로 개발한 Native App 기반 집착형 스마트 헬스케어 솔루션.\n\n사용자가 복용 중인 영양제를 등록하면 성분표 OCR과 AI 리포트를 통해 중복·과다 섭취 위험을 분석하고, 복약 시간이 지나도 인증되지 않은 기록에는 FCM 기반 재알림을 반복 발송하여 당일 복용을 끝까지 유도함. Spring Boot 백엔드, FastAPI AI 서버, React Native 앱, Docker Compose 기반 배포 환경을 연결해 복약 인증, 재고 차감, 재구매 알림까지 이어지는 모바일 헬스케어 흐름을 구현함. ([GitHub 저장소](https://github.com/go-ring/DDOYA), [Notion](https://www.notion.so/30cd6fafcbd280cca50dd1845138d5c3), [실제 화면](https://drive.google.com/drive/folders/1neonqMLU7-53-WhoPH_Fy7Od50LgdMzL), [발표 자료](https://drive.google.com/drive/folders/1zKLDYEJUsuZqS0tlo_Ish4N73Ht9loAb?usp=sharing))",
+    "복약 인증 기반으로 지속적인 복용을 유도하고, AI 성분 분석 리포트를 제공하는 스마트 복약 관리 플랫폼.\n\n사용자가 복용 중인 영양제를 등록하면 성분표 OCR과 AI 리포트를 통해 중복·과다 섭취 위험을 분석하고, 복약 시간이 지나도 인증되지 않은 기록에는 FCM 기반 재알림을 반복 발송하여 당일 복용을 끝까지 유도함. Spring Boot 백엔드, FastAPI AI 서버, React Native 앱, Docker Compose 기반 배포 환경을 연결해 복약 인증, 재고 차감, 재구매 알림까지 이어지는 모바일 헬스케어 흐름을 구현함. ([GitHub 저장소](https://github.com/go-ring/DDOYA), [Notion](https://www.notion.so/30cd6fafcbd280cca50dd1845138d5c3), [실제 화면](https://drive.google.com/drive/folders/1neonqMLU7-53-WhoPH_Fy7Od50LgdMzL), [발표 자료](https://drive.google.com/drive/folders/1zKLDYEJUsuZqS0tlo_Ish4N73Ht9loAb?usp=sharing))",
   tech: [
     "Java 21",
     "Spring Boot 3.5.11",
