@@ -16,7 +16,7 @@ export const bbaekkom: Project = {
   description:
     '일상 속 사물을 AI 캐릭터로 변환해 아동과 실시간 음성 대화를 나누고, 대화 데이터를 분석하여 주간 아동 발달 지표 및 육아 리포트를 제공하는 플랫폼.\n\n' +
     '사물 사진 한 장에서 이목구비를 정밀 감지하고 추출한 뒤 빈자리를 텍스처로 자연스럽게 메우는 Grounded-SAM-LaMa 비전 파이프라인으로 실시간 표정 변화가 가능한 입체 캐릭터를 생성. AI 캐릭터 대화 품질이 아동에게 안전하고 발달 수준에 부합하도록 10가지 대화 평가 루브릭을 수립하고, DeepEval G-Eval(LLM-as-a-Judge) 평가 체계를 구축. 단순 대화를 넘어 pgvector 기반 시간 소멸식 가중 RAG와 Redis 세션 컨텍스트로 이전 대화를 기억하며, 수면 시나리오에 맞춰 음성과 동기화하여 방 조명의 조도 조절 및 소등을 능동 제어하는 "상황 맥락 인지형 SmartThings IoT 연동" 루프 실현.\n\n' +
-    '아동 언어 치료 현장의 학술 기준인 "자발화 분석"을 자동화하기 위해 Kiwi 형태소 분석기로 측정한 평균 발화 길이(MLU-m) 규칙 점수와 LLM의 통사·맥락 완성도 점수를 교차 검증하는 하이브리드 발달 진단 엔진 구축. 이를 통해 또래 대비 정밀한 언어/감정 성장 지표를 입체적인 도서형 주간 성장노트 대시보드로 시각화하여, 부모의 반복적 훈육 피로감과 아동 발달 상태 진단의 높은 장벽을 해결.',
+    '아동 언어 치료 현장의 학술 기준인 "자발화 분석"을 자동화하기 위해 Kiwi 형태소 분석기로 측정한 평균 발화 길이(MLU-m) 규칙 점수와 LLM의 통사·맥락 완성도 점수를 교차 검증하는 하이브리드 발달 진단 엔진 구축. 이를 통해 또래 대비 정밀한 언어/감정 성장 지표를 입체적인 도서형 주간 성장노트 대시보드로 시각화하여, 부모의 반복적 훈육 피로감과 아동 발달 상태 진단의 높은 장벽을 해결. ([GitHub](https://github.com/go-ring/bbaekkom.git), [시연 영상](https://drive.google.com/drive/folders/1P4bT4RehdQ4RQSMzQYVQJ8rl4BwSe18u?usp=drive_link), [발표 자료](https://drive.google.com/drive/folders/1pTeZ0BGsm4O_ZvsffDL0Uy6ruBkhpVq9?usp=sharing))',
   tech: [
     'React Native 0.85',
     'Java 21',
