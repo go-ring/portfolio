@@ -10,7 +10,7 @@ import conversationGuide from '@/assets/images/bbaekkom/대화가이드1.jpg';
 export const bbaekkom: Project = {
   title: '빼꼼(BBAEKKOM)',
   type: '팀 프로젝트 (6인)',
-  period: '2026.05.06 ~ 2026.05.27 (3주)',
+  period: '2026.04.27 ~ 2026.05.27 (4주)',
   role: ['프론트엔드 & 백엔드 & AI'],
   shortDescription: '사진 기반 캐릭터 생성 및 실시간 음성 대화와 성장 리포트를 지원하는 AI 육아 플랫폼',
   description:
@@ -45,10 +45,9 @@ export const bbaekkom: Project = {
     'Git',
   ],
   impact:
-    'React Native, Spring Boot, FastAPI를 역할별로 분리해 모바일 UX, 비즈니스 로직, AI 추론을 독립적으로 확장할 수 있는 구조를 구성했습니다.\n' +
-    '대화 세션 컨텍스트를 Redis에 유지하고 STT-LLM-TTS 파이프라인을 FastAPI에서 처리해 실시간 음성 대화 흐름을 구현했습니다.\n' +
-    '객체 후보 이미지를 S3에 임시 저장하고 Redis TTL 캐시로 관리해 캐릭터 생성 전 확인 단계를 안전하게 설계했습니다.\n' +
-    'Nginx upstream 전환 기반 Blue-Green 배포와 Prometheus/Grafana/Loki 관측 구성을 통해 운영 중단과 장애 추적 리스크를 줄였습니다.',
+    "하이브리드 음성 인식 설계 (Streaming & ASR): 실시간 자막 노출로 UX 지루함을 해결하는 Streaming STT와 오류율(CER) 13.34%의 아동 발화 맞춤형 Qwen3-ASR을 결합한 이중 음성 인식 파이프라인 구축\n" +
+    "G-Eval 기반 프롬프트 최적화 (Prompt Tuning): 아동 무해성 10대 루브릭 기준의 G-Eval 검증을 순환 가동하여 프롬프트를 점진 개선, 대화 안전 통과율(Pass Rate)을 50.00%에서 93.33%로 대폭 향상\n" +
+    "시간 소멸식 RAG 기억 엔진 구축 (pgvector): 외부 독립 벡터 DB 도입 비용 없이 단일 PostgreSQL(pgvector HNSW 인덱싱) 내에서 시간 경과에 따른 가중치 소멸 알고리즘을 융합, 10ms 이하로 과거 핵심 기억을 실시간 추출하여 장기 대화의 일관성 완성",
   images: {
     preview: bbaekkomThumbnail,
     architecture: bbaekkomArchitecture,
@@ -124,9 +123,9 @@ export const bbaekkom: Project = {
       '배포 검증: Blue-Green 배포 스크립트에서 target 컨테이너 health check, Nginx 설정 검증, upstream rollback 절차를 포함해 배포 실패 시 이전 슬롯을 유지하도록 했습니다.',
     ],
     retrospective: [
-      'AI 기능은 모델 호출 자체보다 세션 상태, 실패 복구, 사용자 피드백, 데이터 저장 경계가 더 중요하다는 점을 체감했습니다. 특히 실시간 대화에서는 작은 지연이나 실패도 UX에 바로 드러나므로 파이프라인을 단계별로 분리하고 관측 가능하게 만드는 설계가 필요했습니다.',
-      '모바일 앱에서 카메라, 마이크, TTS, 애니메이션, 서버 이벤트를 동시에 다루면서 프론트엔드 상태 관리의 복잡도가 빠르게 커진다는 것을 배웠습니다. React Query와 Zustand를 역할별로 나누고, 화면 컴포넌트는 사용자 흐름 중심으로 정리하는 방식이 유지보수에 도움이 됐습니다.',
-      '외부 IoT 제어는 AI 응답을 그대로 믿는 대신 서버에서 명령 범위와 대상 기기를 검증해야 실제 서비스로 이어질 수 있었습니다. AI와 현실 세계를 연결할 때는 안전한 중간 계층이 필수라는 점을 확인했습니다.',
+      '실시간 AI 음성 대화 중 음성 지연과 정확도라는 상충된 한계를 극복하기 위해 Streaming 자막 STT와 로컬 Qwen3-ASR을 설계하며, 기술적 오차와 모바일 UX 요구사항을 영리하게 조율하는 법을 배움.',
+      'LLM의 정서적 무해성을 확보하기 위해 아동용 10대 루브릭을 정의하고 G-Eval로 벤치마크 평가를 순환 가동하며 50.00%에서 93.33%로 안전 통과율을 끌어올리는 과정에서, 주관적 판단 대신 수치 데이터를 기준으로 프롬프트를 개선해 나가는 경험을 쌓음.',
+      '고비용 외부 DB 대신 pgvector HNSW를 활용해 10ms 이하의 시간 소멸식 RAG를 구현하고 Spring Scheduler 배치 이관으로 DB 부하를 90% 이상 예방하며, 제한된 자원 속에서 비용을 아끼고 성능을 극한으로 쥐어짜는 현실적인 아키텍처 설계 요령을 익힘.',
     ],
   },
 };
