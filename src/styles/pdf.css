@@ -1,0 +1,880 @@
+.pdf-root {
+  min-height: 100vh;
+  background: #d8edf5;
+  color: #171717;
+  font-family: Pretendard, "Noto Sans KR", Inter, Arial, sans-serif;
+}
+
+.pdf-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid #cbd7dc;
+}
+
+.pdf-toolbar button,
+.pdf-toolbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid #111;
+  border-radius: 6px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.pdf-toolbar-link {
+  background: #fff;
+  color: #111;
+}
+
+.pdf-document {
+  width: 297mm;
+  margin: 24px auto 80px;
+}
+
+.pdf-slide {
+  width: 297mm;
+  height: 167.0625mm;
+  padding: 8mm;
+  overflow: hidden;
+  background: #d8edf5;
+  page-break-after: always;
+  break-after: page;
+}
+
+.pdf-tone-green {
+  background: #e9f5dc;
+}
+
+.pdf-tone-blue {
+  background: #dcecf8;
+}
+
+.pdf-tone-yellow {
+  background: #fff1c9;
+}
+
+.pdf-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 16mm 18mm;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.pdf-page-label {
+  position: absolute;
+  top: 11mm;
+  right: 17mm;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.pdf-page-label span {
+  color: #a0a0a0;
+}
+
+.pdf-cover-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 28mm 31mm;
+}
+
+.pdf-cover-card h1 {
+  margin: 0;
+  color: #050505;
+  font-size: 84px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.pdf-cover-card p {
+  margin: 9mm 0 4mm;
+  color: #8b8aa8;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.pdf-cover-contact {
+  position: absolute;
+  right: 1mm;
+  bottom: 12mm;
+  width: 86mm;
+  margin: 0;
+}
+
+.pdf-cover-contact strong {
+  display: block;
+  margin-bottom: 5mm;
+  color: #171717;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.pdf-cover-contact div {
+  display: grid;
+  gap: 3mm;
+}
+
+.pdf-cover-contact p {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #171717;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.pdf-cover-contact svg {
+  color: #8b8aa8;
+}
+
+.pdf-cover-contact span {
+  overflow-wrap: anywhere;
+}
+
+.pdf-section-title {
+  margin: 0 0 8mm;
+}
+
+.pdf-section-title span {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 28px;
+}
+
+.pdf-section-title h1 {
+  margin: 0;
+  max-width: 190mm;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -0.04em;
+}
+
+.pdf-section-title strong,
+.pdf-about strong {
+  font-weight: 900;
+}
+
+.pdf-tags {
+  margin: -3mm 0 6mm;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.pdf-about {
+  display: grid;
+  grid-template-columns: 80mm 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 0 10mm;
+}
+
+.pdf-about .pdf-section-title,
+.pdf-tags {
+  grid-column: 1 / -1;
+}
+
+.pdf-about-photo {
+  width: 80mm;
+  height: 96mm;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #edf1f6;
+}
+
+.pdf-about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.pdf-about-side {
+  grid-row: 3;
+}
+
+.pdf-contact-list {
+  display: grid;
+  gap: 2.2mm;
+  margin-top: 4mm;
+  padding-left: 1mm;
+}
+
+.pdf-contact-list p {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #222;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.pdf-contact-list svg {
+  color: #697a91;
+}
+
+.pdf-contact-list span {
+  overflow-wrap: anywhere;
+}
+
+.pdf-about-info {
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8mm 12mm;
+  align-content: start;
+  padding: 8mm 9mm;
+  border-radius: 22px;
+  background: #f8f8f8;
+}
+
+.pdf-about-info h2,
+.pdf-skill-columns h2,
+.pdf-project-copy h2,
+.pdf-role-list h2,
+.pdf-role-list h3,
+.pdf-tech-list h2 {
+  margin: 0 0 4mm;
+  color: #8b8aa8;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.pdf-about-info p {
+  margin: 0 0 5mm;
+  color: #222;
+  font-size: 15px;
+  line-height: 1.48;
+}
+
+.pdf-about-info span {
+  display: block;
+  color: #333;
+  font-size: 13px;
+}
+
+.pdf-skills-page .pdf-section-title h1,
+.pdf-projects-overview .pdf-section-title h1 {
+  font-size: 42px;
+  letter-spacing: 0;
+}
+
+.pdf-skill-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6mm;
+}
+
+.pdf-skill-columns section {
+  min-height: 31mm;
+  padding: 5mm;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.pdf-skill-columns div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.pdf-skill-columns span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 8px;
+  background: #d8edf5;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.pdf-projects-overview > div:last-child {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6mm;
+}
+
+.pdf-project-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 84mm;
+  padding: 5mm;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.pdf-project-green {
+  background: #e6f3d7;
+}
+
+.pdf-project-blue {
+  background: #e0e6ff;
+}
+
+.pdf-project-pink {
+  background: #ffd9d5;
+}
+
+.pdf-project-yellow {
+  background: #fff0c8;
+}
+
+.pdf-project-purple {
+  background: #ece0ff;
+}
+
+.pdf-project-gray {
+  background: #e8edf1;
+}
+
+.pdf-project-card figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 31mm;
+  margin: 0 0 4mm;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.pdf-project-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pdf-project-card h2 {
+  margin: 0 0 2mm;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.pdf-project-card p,
+.pdf-project-card strong,
+.pdf-project-card small {
+  display: block;
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.pdf-project-card strong {
+  margin-top: 4mm;
+  font-size: 16px;
+}
+
+.pdf-project-card small {
+  margin-top: auto;
+  text-align: left;
+  font-weight: 800;
+}
+
+.pdf-project-intro {
+  display: grid;
+  grid-template-columns: 92mm 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 18mm;
+}
+
+.pdf-project-name {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 7mm;
+}
+
+.pdf-project-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 17mm;
+  height: 17mm;
+  border-radius: 8px;
+  background: #b8dca1;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.pdf-project-name h1 {
+  margin: 0;
+  font-size: 39px;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+
+.pdf-project-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88mm;
+  overflow: hidden;
+}
+
+.pdf-project-visual img {
+  max-width: 100%;
+  max-height: 88mm;
+  object-fit: contain;
+}
+
+.pdf-project-copy {
+  align-self: center;
+}
+
+.pdf-project-copy p,
+.pdf-project-copy li,
+.pdf-project-copy footer {
+  color: #202020;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.pdf-project-copy p {
+  margin: 0 0 7mm;
+}
+
+.pdf-project-copy ul {
+  margin: 0 0 7mm;
+  padding-left: 20px;
+}
+
+.pdf-project-copy li {
+  margin-bottom: 2mm;
+}
+
+.pdf-project-copy footer strong,
+.pdf-project-copy footer span {
+  display: block;
+}
+
+.pdf-project-copy footer {
+  font-weight: 600;
+}
+
+.pdf-role-page {
+  display: grid;
+  grid-template-columns: 87mm 1fr;
+  gap: 22mm;
+  align-items: center;
+}
+
+.pdf-role-page .pdf-section-title h1 {
+  font-size: 34px;
+}
+
+.pdf-tech-list {
+  display: grid;
+  gap: 7mm;
+}
+
+.pdf-tech-list section div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4mm;
+}
+
+.pdf-tech-list span {
+  display: flex;
+  align-items: center;
+  min-height: 22mm;
+  padding: 0 6mm;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.pdf-role-list {
+  align-self: center;
+}
+
+.pdf-role-list h2 {
+  font-size: 30px;
+}
+
+.pdf-role-list h3 {
+  margin-top: 5mm;
+  color: #171717;
+  font-size: 20px;
+}
+
+.pdf-role-list ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.pdf-role-list li {
+  margin-bottom: 2.5mm;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.pdf-role-list p {
+  margin: 7mm 0 0;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+/* Fit pass: keep every 16:9 reference-style slide within one printable page. */
+.pdf-slide {
+  padding: 6mm;
+}
+
+.pdf-card {
+  padding: 11mm 13mm;
+}
+
+.pdf-page-label {
+  top: 9mm;
+  right: 13mm;
+  font-size: 18px;
+}
+
+.pdf-section-title {
+  margin-bottom: 5mm;
+}
+
+.pdf-section-title span {
+  font-size: 22px;
+}
+
+.pdf-section-title h1 {
+  font-size: 28px;
+}
+
+.pdf-tags {
+  margin: -2mm 0 4mm;
+  font-size: 16px;
+}
+
+.pdf-about {
+  grid-template-columns: 70mm 1fr;
+  gap: 0 8mm;
+}
+
+.pdf-about-photo {
+  width: 70mm;
+  height: 78mm;
+}
+
+.pdf-contact-list {
+  gap: 1.8mm;
+  margin-top: 3mm;
+}
+
+.pdf-contact-list p {
+  font-size: 10.5px;
+}
+
+.pdf-about-info {
+  gap: 5mm 8mm;
+  padding: 5mm 6mm;
+}
+
+.pdf-about-info h2,
+.pdf-skill-columns h2,
+.pdf-project-copy h2,
+.pdf-role-list h2,
+.pdf-role-list h3,
+.pdf-tech-list h2 {
+  margin-bottom: 2.5mm;
+  font-size: 18px;
+}
+
+.pdf-about-info p {
+  margin-bottom: 3mm;
+  font-size: 12px;
+  line-height: 1.38;
+}
+
+.pdf-about-info span {
+  font-size: 10.5px;
+}
+
+.pdf-skills-page .pdf-section-title h1,
+.pdf-projects-overview .pdf-section-title h1 {
+  font-size: 34px;
+}
+
+.pdf-skill-columns {
+  gap: 4mm;
+}
+
+.pdf-skill-columns section {
+  min-height: 25mm;
+  padding: 3.5mm;
+}
+
+.pdf-skill-columns span {
+  min-height: 20px;
+  padding: 0 7px;
+  font-size: 10.5px;
+}
+
+.pdf-projects-overview > div:last-child {
+  gap: 4mm;
+}
+
+.pdf-project-card {
+  height: 50mm;
+  min-height: 0;
+  padding: 3.5mm;
+}
+
+.pdf-project-card figure {
+  height: 20mm;
+  margin-bottom: 2mm;
+}
+
+.pdf-project-card h2 {
+  margin-bottom: 1mm;
+  font-size: 14px;
+}
+
+.pdf-project-card p,
+.pdf-project-card strong,
+.pdf-project-card small {
+  font-size: 10px;
+  line-height: 1.28;
+}
+
+.pdf-project-card strong,
+.pdf-project-card small {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.pdf-project-card strong {
+  margin-top: 1.5mm;
+  font-size: 11px;
+  -webkit-line-clamp: 3;
+}
+
+.pdf-project-card small {
+  margin-top: 1.5mm;
+  -webkit-line-clamp: 2;
+}
+
+.pdf-project-intro {
+  grid-template-columns: 82mm 1fr;
+  column-gap: 12mm;
+}
+
+.pdf-project-name {
+  margin-bottom: 4mm;
+}
+
+.pdf-project-logo {
+  width: 13mm;
+  height: 13mm;
+  font-size: 14px;
+}
+
+.pdf-project-name h1 {
+  font-size: 28px;
+}
+
+.pdf-project-visual {
+  min-height: 70mm;
+}
+
+.pdf-project-visual img {
+  max-height: 70mm;
+}
+
+.pdf-project-copy p,
+.pdf-project-copy li,
+.pdf-project-copy footer {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.pdf-project-copy p,
+.pdf-project-copy ul {
+  margin-bottom: 4mm;
+}
+
+.pdf-role-page {
+  grid-template-columns: 76mm 1fr;
+  gap: 14mm;
+  align-items: start;
+}
+
+.pdf-role-page .pdf-section-title h1 {
+  font-size: 25px;
+}
+
+.pdf-tech-list {
+  gap: 2.2mm;
+}
+
+.pdf-tech-list section div {
+  gap: 2mm;
+}
+
+.pdf-tech-list span {
+  min-height: 10mm;
+  padding: 0 3mm;
+  font-size: 12px;
+}
+
+.pdf-role-list h2 {
+  font-size: 24px;
+}
+
+.pdf-role-list h3 {
+  margin-top: 2mm;
+  font-size: 16px;
+}
+
+.pdf-role-list li {
+  margin-bottom: 1mm;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.pdf-role-list p {
+  margin-top: 3mm;
+  font-size: 12.5px;
+}
+
+/* Final readability pass after PDF render review. */
+.pdf-section-title h1 {
+  font-size: 32px;
+}
+
+.pdf-about {
+  grid-template-columns: 78mm 1fr;
+}
+
+.pdf-about-photo {
+  width: 76mm;
+  height: 82mm;
+}
+
+.pdf-contact-list p {
+  font-size: 11px;
+}
+
+.pdf-about-info p {
+  font-size: 13px;
+}
+
+.pdf-about-info span {
+  font-size: 11.5px;
+}
+
+.pdf-skill-columns section {
+  min-height: 28mm;
+}
+
+.pdf-skill-columns span {
+  min-height: 22px;
+  font-size: 11.5px;
+}
+
+.pdf-project-card {
+  height: 50.5mm;
+}
+
+.pdf-project-card h2 {
+  font-size: 15px;
+}
+
+.pdf-project-card p,
+.pdf-project-card strong,
+.pdf-project-card small {
+  font-size: 10.8px;
+}
+
+.pdf-project-intro {
+  grid-template-columns: 90mm 1fr;
+}
+
+.pdf-project-name h1 {
+  font-size: 31px;
+}
+
+.pdf-project-visual {
+  min-height: 77mm;
+}
+
+.pdf-project-visual img {
+  max-height: 77mm;
+}
+
+.pdf-project-copy p,
+.pdf-project-copy li,
+.pdf-project-copy footer {
+  font-size: 15px;
+}
+
+.pdf-role-list li,
+.pdf-role-list p {
+  font-size: 13.2px;
+}
+
+@page {
+  size: 297mm 167.0625mm;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body,
+  #root {
+    background: #fff !important;
+  }
+
+  .pdf-root {
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .pdf-toolbar {
+    display: none !important;
+  }
+
+  .pdf-document {
+    width: 297mm;
+    margin: 0;
+  }
+}

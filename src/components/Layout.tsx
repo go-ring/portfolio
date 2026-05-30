@@ -1,4 +1,4 @@
-import { Menu, X } from 'lucide-react';
+import { FileDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import turtleLogo from '/turtle.svg';
 import { useLayoutNavigation } from './layout/useLayoutNavigation';
@@ -74,6 +74,13 @@ export function Layout({ children }: LayoutProps) {
                   )}
                 </a>
               ))}
+              <a
+                href="?print=1"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-[#9FAA7C]/40 text-[#DBF06D] hover:bg-[#9FAA7C]/10 hover:text-white transition-colors text-sm font-bold"
+              >
+                <FileDown size={15} />
+                PDF
+              </a>
             </nav>
 
             {/* Mobile Menu Toggle */}
@@ -107,6 +114,13 @@ export function Layout({ children }: LayoutProps) {
                   {link.name}
                 </a>
               ))}
+              <a
+                href="?print=1"
+                className="flex items-center gap-2 text-[#DBF06D] font-bold py-2"
+              >
+                <FileDown size={16} />
+                PDF 출력
+              </a>
             </nav>
           </motion.div>
         )}
