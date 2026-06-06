@@ -5,12 +5,17 @@ export interface ExperienceItem {
   description: string;
 }
 
+export interface SkillItem {
+  name: string;
+  icon?: string;
+  level?: number;
+  points?: string[];
+  subItems?: { name: string; icon?: string }[];
+}
+
 export interface SkillGroup {
   category: string;
-  items: {
-    name: string;
-    level: '상' | '중' | '하';
-  }[];
+  items: SkillItem[];
 }
 
 export interface EducationItem {
