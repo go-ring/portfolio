@@ -52,6 +52,7 @@ export const artificialSatellite: Project = {
         "빌드/실행 표준화: `~/Desktop`의 `nos3-build.sh`, `nos3-run.sh`, `nos3-stop.sh`, `nos3-clean.sh` 실행 순서를 작업 가이드로 정리해 운영 실수 최소화.",
         "구성요소 구조 문서화: cFS APPS, CFE/OSAL, HWLIB, LIBA3200/LIBA3200NOS, NOS Engine Client/Server의 역할을 정리해 팀 내부 지식 자산 확보.",
       ],
+
       troubleshooting: [
         {
           title: "🛸 클라우드의 중첩 가상화 제약이 NOS3 기본 설치를 불가능하게 만든다",

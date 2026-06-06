@@ -11,5 +11,4 @@ export const projects = [
   algogo,
   ddoya,
   colorfinder,
-  artificialSatellite,
 ];

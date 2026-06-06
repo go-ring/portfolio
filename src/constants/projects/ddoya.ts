@@ -12,9 +12,11 @@ export const ddoya: Project = {
   type: "팀 프로젝트 (6인)",
   period: "2026.02.23 ~ 2026.03.29 (5주)",
   role: ["Backend & Infra"],
-  shortDescription: "인증 없이는 멈추지 않는 집착형 복약 관리 및 AI 성분 분석 플랫폼",
+  shortDescription: "복약 인증 기반으로 지속적인 복용을 유도하고, AI 성분 분석 리포트를 제공하는 스마트 복약 관리 앱",
   description:
-    "복약 인증 기반으로 지속적인 복용을 유도하고, AI 성분 분석 리포트를 제공하는 스마트 복약 관리 앱\n\n사용자가 복용 중인 영양제를 등록하면 성분표 OCR과 AI 리포트를 통해 중복·과다 섭취 위험을 분석하고, 복약 시간이 지나도 인증되지 않은 기록에는 FCM 기반 재알림을 반복 발송하여 당일 복용을 끝까지 유도함. Spring Boot 백엔드, FastAPI AI 서버, React Native 앱, Docker Compose 기반 배포 환경을 연결해 복약 인증, 재고 차감, 재구매 알림까지 이어지는 모바일 헬스케어 흐름을 구현함. ([GitHub 저장소](https://github.com/go-ring/DDOYA), [Notion](https://www.notion.so/30cd6fafcbd280cca50dd1845138d5c3), [실제 화면](https://drive.google.com/drive/folders/1neonqMLU7-53-WhoPH_Fy7Od50LgdMzL), [발표 자료](https://drive.google.com/drive/folders/1zKLDYEJUsuZqS0tlo_Ish4N73Ht9loAb?usp=sharing))",
+    "복약을 끝까지 챙기는 스마트 영양제 관리\n\n" +
+    "**AI 성분 분석**과 **복약 인증**을 통해\n" +
+    "건강한 복약 습관 형성을 돕는 **모바일 헬스케어** 플랫폼",
   tech: [
     "[Backend] Java 21, Spring Boot 3.5, JPA / QueryDSL, MySQL, Redis",
     "[Infra / DevOps] Docker, Nginx, Jenkins, Vercel, Kibana",
@@ -22,10 +24,10 @@ export const ddoya: Project = {
     "[협업 도구] GitLab, Jira, Notion, Mattermost"
   ],
   impact:
-    "Jenkins 기반 변경 감지 CI/CD를 구축해 단일 서버 변경 시 이미지 빌드·푸시 대상 50% 감소, 전체 배포 작업량 약 30~50% 절감 추정\n" +
-    "이미지 버전 관리 및 배포 검증 자동화로 장애 대응 시간 약 30~60% 단축(추산)\n" +
-    "FCM 알림 처리 비동기화로 사용자 요청과 알림 서비스 간 결합도 감소\n" +
-    "알림 대상자의 FCM 토큰을 한 번에 조회하도록 개선하여 DB 조회 횟수 최대 99% 감소",
+    "▪ 변경 감지 기반 Jenkins CI/CD 구축으로 불필요한 빌드·배포 작업 **30~50% 절감(추산)**\n" +
+    "▪ 배포 검증 자동화를 통해 **운영 안정성 향상 및 장애 대응 시간 단축**\n" +
+    "▪ FCM 알림 비동기 처리로 **서비스 간 결합도 감소**\n" +
+    "▪ FCM 토큰 일괄 조회 구조로 **DB 조회 횟수 최대 99% 감소**",
   images: {
     architecture: ddoyaArch,
     overviewGallery: [dailyRoutine, reportNutrient, routineRecommend],
@@ -38,21 +40,18 @@ export const ddoya: Project = {
   },
   details: {
     implementation: [
-      "집착형 복약 독촉 시스템 : 복약 시간이 지났지만 미섭취 상태인 영양제를 스케줄러가 1분 단위로 조회하고, 인증 전까지 복용 알림을 반복 발송",
-      "AI 기반 정밀 복약 인증 : 사용자가 찍은 섭취 인증 사진에서 YOLOv8로 알약 객체를 검출하고, DINOv2 임베딩·보조 특징 기반 매칭으로 실제 복용 대상과 탐지 결과를 대조",
-      "개인 맞춤형 영양 분석 리포트 : OCR로 추출한 영양제 성분과 사용자 복용 목록을 바탕으로 성분 과잉·부족, 상호작용, 섭취 타이밍, 추천 제품을 리포트로 제공",
-      "실시간 재고 및 재구매 알림 : 복약 인증 성공 시 영양제 재고를 차감하고, 재고 임계치 이하에 도달하면 사용자 알림 설정을 확인한 뒤 재구매 푸시 발송",
+      "영양제 성분표 OCR 분석을 통한 복약 정보 자동 등록",
+      "AI 기반 성분 분석으로 중복·과다 섭취 위험 및 맞춤형 리포트 제공",
+      "복약 인증 전까지 반복 알림을 발송하는 집착형 복약 관리 시스템",
+      "복약 기록 기반 재고 자동 차감 및 섭취 이력 관리",
+      "재고 부족 시 FCM 기반 재구매 알림 제공"
     ],
     roleAndContribution: [
-      "FCM 기반 푸시 알림 도메인 설계: DeviceToken, NotificationDeliveryLog, NotificationType, PushSendResult를 중심으로 기기 토큰 등록/비활성화, 발송 결과, 알림 이력을 분리해 추적 가능한 알림 모델 구축",
-      "섭취 알림 재발송 스케줄러 구현: IntakeNotificationScheduler와 NotificationProcessorService를 통해 매 1분마다 미복용 기록을 조회하고, 마지막 발송 로그 기준으로 55초 이상 지난 경우에만 다음 회차 알림 발송",
-      "챙김 알림 및 재구매 알림 연동: 외출 전 영양제 챙김 알림과 재고 10개 이하 재구매 알림을 NotificationFacade로 통합하고, 사용자 수신 설정과 개별 영양제 재고 알림 설정을 함께 검증",
-      "활성 기기 벌크 조회 및 예외 격리: 알림 대상자의 활성 디바이스 토큰을 한 번에 조회해 발송 불가능 대상을 선제 스킵하고, 개별 FCM 실패가 전체 스케줄러 루프를 중단시키지 않도록 처리",
-      "Docker Compose 기반 운영 구성: MySQL, FastAPI AI 서버, Spring Boot 백엔드 컨테이너의 healthcheck와 depends_on 조건을 구성해 서비스 기동 순서를 안정화하고 Jenkins에서 백엔드/AI 이미지를 빌드·푸시·배포하도록 연결",
+      "Infra: ▪ Docker 기반 마이크로서비스 아키텍처 구축\n▪ Docker Multi-stage Build 및 권한 분리 적용\n▪ Health Check 기반 서비스 의존성 관리\n▪ Jenkins CI/CD 기반 자동 빌드·배포 환경 구축",
+      "Backend: ▪ 복약 알림 · 챙김 알림 · 재구매 알림 도메인 API 설계 및 개발\n▪ 반복 알림 스케줄링 및 알림 이력 관리 기능 구현"
     ],
     roleAndContributionImages: {
-      1: [intakeAlarm, intakeComplete],
-      2: stockAlarm,
+      1: [intakeAlarm, intakeComplete, stockAlarm],
     },
     techAndReason: [
       "Firebase Admin SDK & FCM: 모바일 기기의 FCM 토큰을 사용자 단위로 저장하고, 섭취/챙김/재구매 알림을 OS 푸시로 발송하기 위해 도입. 알림 타입을 data payload에 함께 넣어 클라이언트 라우팅까지 고려.",
@@ -91,9 +90,9 @@ export const ddoya: Project = {
       },
     ],
     retrospective: [
-      "푸시 알림은 단순히 Firebase API를 호출하는 기능이 아니라, 언제 누구에게 다시 보내야 하는지와 보내지 말아야 하는지를 기록으로 통제해야 하는 도메인이라는 점을 체감함. NotificationDeliveryLog와 attemptNo를 두면서 알림도 추적 가능한 비즈니스 이벤트로 설계하는 관점을 얻음.",
-      "스케줄러는 작은 예외 하나가 전체 배치 흐름을 멈출 수 있어, 활성 기기 사전 필터링과 개별 발송 예외 격리가 중요했음. 성공·실패·스킵을 분리 집계하는 방식으로 운영 시 원인 파악이 쉬운 구조를 만드는 경험을 함.",
-      "AI 서버와 백엔드 서버를 컨테이너 단위로 분리하면서 모델 로딩이 필요한 FastAPI와 사용자 요청을 처리하는 Spring Boot의 생명주기를 따로 관리하는 필요성을 배움. healthcheck 기반 기동 순서와 Jenkins 배포 흐름을 통해 인프라가 애플리케이션 안정성에 직접 영향을 준다는 점을 확인함.",
+      "알림 서비스를 설계하며 이벤트 이력과 상태를 관리하는 **도메인 설계 역량 배양**",
+      "스케줄러 운영 과정에서 장애가 전체 흐름으로 확산되지 않는 **안정적인 처리 구조의 중요성 학습**",
+      "컨테이너 기반 서비스 분리와 자동 배포 환경을 구축하며 **인프라가 애플리케이션 안정성에 미치는 영향 체감**"
     ],
   },
 };

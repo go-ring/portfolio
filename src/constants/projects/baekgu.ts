@@ -8,7 +8,7 @@ export const baekgu: Project = {
   type: "팀 프로젝트 (6인)",
   period: "2026.01.19 ~ 2026.02.06 (3주)",
   role: ["Backend & Infra"],
-  shortDescription: "사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼",
+  shortDescription: "기업의 재무/뉴스 데이터와 개발자의 기술 경험(GitHub, 포트폴리오) 기반 사용자와 공고 추천 및 자기소개서 작성을 돕는 AI 구직 플랫폼",
   description:
     "개발자 맞춤형 AI 취업 도우미 플랫폼\n\n" +
     "사용자 GitHub 기반 **역량 분석** 결과와\n" +

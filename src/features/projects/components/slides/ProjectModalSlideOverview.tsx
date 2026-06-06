@@ -117,9 +117,9 @@ export function ProjectModalSlideOverview({ project }: { project: Project }) {
             {/* Impact Metrics (Under Text - MOBILE ONLY) */}
             {isMobileApp && project.impact && (
                <div className="flex flex-col gap-1.5">
-                 {project.impact.split('\n').slice(0, 2).map((line, idx) => (
+                 {(project.title.includes('빼꼼') ? project.impact.split('\n').slice(0, 2) : project.impact.split('\n')).map((line, idx) => (
                    <p key={idx} className="text-[16px] font-extrabold text-[#5A6B3A] whitespace-pre-wrap leading-[1.4]">
-                     {line.replace(/\*\*/g, '')}
+                     {line.replace(/\*\*/g, '').replace(/^▪\s*/, '')}
                    </p>
                  ))}
                </div>

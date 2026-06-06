@@ -6,7 +6,7 @@ export const algogo: Project = {
     type: "팀 프로젝트 (5인)",
     period: "2025.11.20 ~ 2026.01.20 (9주)",
     role: ["Backend & Infra"],
-    shortDescription: "알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼",
+    shortDescription: "알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 규칙을 통합한 스터디 관리 플랫폼",
     description:
       "리뷰가 학습이 되는 알고리즘 스터디\n\n" +
       "제출 잠금 기반 **강제 리뷰 시스템**과 **AI 코드 평가**로\n" +
@@ -32,7 +32,7 @@ export const algogo: Project = {
     },
     details: {
       roleAndContribution: [
-        "Infra: ▪ Docker 기반 마이크로서비스 아키텍처 구축\n▪ Docker Multi-stage Build 및 권한 분리 적용\n▪ CI/CD 기반 자동 빌드·배포 환경 구축\n▪ Jenkins · Nginx 기반 Blue-Green 무중단 배포 파이프라인 구축\n▪ AWS S3 · CloudFront 기반 정적 자산 서빙 환경 구축",
+        "Infra: ▪ Docker 기반 마이크로서비스 아키텍처 구축\n▪ Docker Multi-stage Build 및 권한 분리 적용\n▪ Jenkins CI/CD 기반 자동 빌드·배포 환경 구축\n▪ Jenkins · Nginx 기반 Blue-Green 무중단 배포 파이프라인 구축\n▪ AWS S3 · CloudFront 기반 정적 자산 서빙 환경 구축",
         "Backend: ▪ 문제집 · 코드 리뷰 도메인 API 설계 및 개발",
         "AI: ▪ OpenAI Logprobs 기반 G-Eval 코드 평가 시스템 설계 및 구현"
       ],
