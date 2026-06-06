@@ -11,36 +11,22 @@ export const ddoya: Project = {
   title: "DDOYA (또야)",
   type: "팀 프로젝트 (6인)",
   period: "2026.02.23 ~ 2026.03.29 (5주)",
-  role: ["백엔드 & 인프라", "푸시 알림 로직"],
+  role: ["Backend & Infra"],
   shortDescription: "인증 없이는 멈추지 않는 집착형 복약 관리 및 AI 성분 분석 플랫폼",
   description:
-    "복약 인증 기반으로 지속적인 복용을 유도하고, AI 성분 분석 리포트를 제공하는 스마트 복약 관리 플랫폼.\n\n사용자가 복용 중인 영양제를 등록하면 성분표 OCR과 AI 리포트를 통해 중복·과다 섭취 위험을 분석하고, 복약 시간이 지나도 인증되지 않은 기록에는 FCM 기반 재알림을 반복 발송하여 당일 복용을 끝까지 유도함. Spring Boot 백엔드, FastAPI AI 서버, React Native 앱, Docker Compose 기반 배포 환경을 연결해 복약 인증, 재고 차감, 재구매 알림까지 이어지는 모바일 헬스케어 흐름을 구현함. ([GitHub 저장소](https://github.com/go-ring/DDOYA), [Notion](https://www.notion.so/30cd6fafcbd280cca50dd1845138d5c3), [실제 화면](https://drive.google.com/drive/folders/1neonqMLU7-53-WhoPH_Fy7Od50LgdMzL), [발표 자료](https://drive.google.com/drive/folders/1zKLDYEJUsuZqS0tlo_Ish4N73Ht9loAb?usp=sharing))",
+    "복약 인증 기반으로 지속적인 복용을 유도하고, AI 성분 분석 리포트를 제공하는 스마트 복약 관리 앱\n\n사용자가 복용 중인 영양제를 등록하면 성분표 OCR과 AI 리포트를 통해 중복·과다 섭취 위험을 분석하고, 복약 시간이 지나도 인증되지 않은 기록에는 FCM 기반 재알림을 반복 발송하여 당일 복용을 끝까지 유도함. Spring Boot 백엔드, FastAPI AI 서버, React Native 앱, Docker Compose 기반 배포 환경을 연결해 복약 인증, 재고 차감, 재구매 알림까지 이어지는 모바일 헬스케어 흐름을 구현함. ([GitHub 저장소](https://github.com/go-ring/DDOYA), [Notion](https://www.notion.so/30cd6fafcbd280cca50dd1845138d5c3), [실제 화면](https://drive.google.com/drive/folders/1neonqMLU7-53-WhoPH_Fy7Od50LgdMzL), [발표 자료](https://drive.google.com/drive/folders/1zKLDYEJUsuZqS0tlo_Ish4N73Ht9loAb?usp=sharing))",
   tech: [
-    "Java 21",
-    "Spring Boot 3.5.11",
-    "JPA / QueryDSL",
-    "Firebase Admin SDK",
-    "FCM Push",
-    "Spring Scheduler",
-    "MySQL 8.0",
-    "FastAPI",
-    "Python 3.11",
-    "YOLOv8",
-    "DINOv2 Embedding",
-    "CLOVA OCR",
-    "OpenAI API",
-    "AWS S3",
-    "React Native 0.81",
-    "Expo 54",
-    "React Query",
-    "Zustand",
-    "Docker",
-    "Jenkins",
-    "Jira / Mattermost",
-    "Git",
+    "[Backend] Java 21, Spring Boot 3.5, JPA, QueryDSL",
+    "[Database] MySQL, Redis",
+    "[Infra / DevOps] Docker, Nginx, Jenkins, Vercel, Kibana",
+    "[AI] OpenAI, FastAPI, YOLOv8, Clova OCR",
+    "[협업 도구] GitLab, Jira, Notion, Mattermost"
   ],
   impact:
-    "집착형 복약 리마인드 구현: 섭취 시간이 지난 MISSED 기록을 매 1분마다 재조회하고, 최근 발송 로그 기준 55초 재전송 게이트를 적용해 인증 전까지 반복 알림이 가능한 구조 구축\n알림 도메인 단일 진입점 설계: 섭취 알림, 챙김 알림, 재구매 알림을 NotificationFacade로 통합하고 발송 성공 시 NotificationDeliveryLog를 저장해 알림 이력 추적성 확보\n활성 기기 벌크 조회 최적화: 알림 대상자의 활성 FCM 토큰을 사전 일괄 조회하여 기기 없는 사용자 발송을 스킵하고, 스케줄러 루프가 개별 예외로 중단되지 않도록 방어\n재고 기반 재구매 알림 연동: 복약 인증 성공 시 재고를 차감하고, 재고 10개 이하·사용자 수신 설정·개별 영양제 알림 설정을 모두 만족할 때 FCM 재구매 알림 발송",
+    "Jenkins 기반 변경 감지 CI/CD를 구축해 단일 서버 변경 시 이미지 빌드·푸시 대상 50% 감소, 전체 배포 작업량 약 30~50% 절감 추정\n" +
+    "이미지 버전 관리 및 배포 검증 자동화로 장애 대응 시간 약 30~60% 단축(추산)\n" +
+    "FCM 알림 처리 비동기화로 사용자 요청과 알림 서비스 간 결합도 감소\n" +
+    "알림 대상자의 FCM 토큰을 한 번에 조회하도록 개선하여 DB 조회 횟수 최대 99% 감소",
   images: {
     architecture: ddoyaArch,
     overviewGallery: [dailyRoutine, reportNutrient, routineRecommend],
@@ -53,11 +39,10 @@ export const ddoya: Project = {
   },
   details: {
     implementation: [
-      "집착형 복약 독촉 시스템: 복약 시간이 지났지만 MISSED 상태인 섭취 기록을 스케줄러가 1분 단위로 조회하고, 인증 전까지 FCM 복용 알림을 반복 발송",
-      "AI 기반 정밀 복약 인증: FastAPI 서버에서 YOLOv8로 알약 객체를 검출하고, 필요 시 DINOv2 임베딩·보조 특징 기반 매칭으로 실제 복용 대상과 탐지 결과를 대조",
-      "개인 맞춤형 영양 분석 리포트: OCR로 추출한 성분과 사용자 복용 목록을 바탕으로 성분 과잉·부족, 상호작용, 섭취 타이밍, 추천 제품을 리포트로 제공",
-      "실시간 재고 및 재구매 알림: 복약 인증 성공 시 영양제 재고를 차감하고, 재고 임계치 이하에 도달하면 사용자 알림 설정을 확인한 뒤 재구매 푸시 발송",
-      "모바일 네이티브 복약 경험: React Native/Expo 앱에서 카메라 촬영, 알림 수신, 데일리 루틴, 영양제 등록, AI 리포트 조회까지 이어지는 사용 흐름 구성",
+      "집착형 복약 독촉 시스템 : 복약 시간이 지났지만 미섭취 상태인 영양제를 스케줄러가 1분 단위로 조회하고, 인증 전까지 복용 알림을 반복 발송",
+      "AI 기반 정밀 복약 인증 : 사용자가 찍은 섭취 인증 사진에서 YOLOv8로 알약 객체를 검출하고, DINOv2 임베딩·보조 특징 기반 매칭으로 실제 복용 대상과 탐지 결과를 대조",
+      "개인 맞춤형 영양 분석 리포트 : OCR로 추출한 영양제 성분과 사용자 복용 목록을 바탕으로 성분 과잉·부족, 상호작용, 섭취 타이밍, 추천 제품을 리포트로 제공",
+      "실시간 재고 및 재구매 알림 : 복약 인증 성공 시 영양제 재고를 차감하고, 재고 임계치 이하에 도달하면 사용자 알림 설정을 확인한 뒤 재구매 푸시 발송",
     ],
     roleAndContribution: [
       "FCM 기반 푸시 알림 도메인 설계: DeviceToken, NotificationDeliveryLog, NotificationType, PushSendResult를 중심으로 기기 토큰 등록/비활성화, 발송 결과, 알림 이력을 분리해 추적 가능한 알림 모델 구축",

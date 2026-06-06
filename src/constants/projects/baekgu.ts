@@ -7,32 +7,23 @@ export const baekgu: Project = {
   title: "백구(BAEKGU)",
   type: "팀 프로젝트 (6인)",
   period: "2026.01.19 ~ 2026.02.06 (3주)",
-  role: ["백엔드 & 인프라"],
+  role: ["Backend & Infra"],
   shortDescription: "사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼",
   description:
-    "개발자의 GitHub 코드와 기업의 재무 데이터를 AI로 분석해 맞춤형 기업을 매칭하고 합격 가이드를 제공하는 지능형 채용 플랫폼.\n\n구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))",
+    "기업의 재무/뉴스 데이터(DART, Nate)와 개발자의 기술 경험(GitHub, 포트폴리오)을 AI로 교차 분석하여, 사용자와 핏한 공고 매칭과 자기소개서 작성을 돕는 AI 채용/구직 플랫폼\n\n" +
+    "구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))",
   tech: [
-    "Java 17",
-    "Spring Boot 3.2",
-    "FastAPI",
-    "JPA / QueryDSL",
-    "MySQL 8.0",
-    "Redis",
-    "AWS EC2 / S3",
-    "GitLab CI/CD",
-    "Docker",
-    "Nginx",
-    "OpenAI (GPT-4o)",
-    "PaddleOCR",
-    "Google Vision AI",
-    "OpenDartReader",
-    "WebSocket (STOMP)",
-    'Prometheus / Grafana / Loki',
-    "Jira / Mattermost",
-    "Git",
+    "[Backend] Java 17, Spring Boot 3.2, JPA, QueryDSL",
+    "[Database] MySQL, Redis",
+    "[Infra / DevOps] Docker, Nginx, GitLab CI/CD, Prometheus / Grafana / Loki",
+    "[AI] FastAPI, OpenAI, PaddleOCR, Playwright, BeautifulSoup, Pandas, NumPy",
+    "[External Services] GitHub API, Perplexity API, DART/OpenDART, Toss Payments",
+    "[협업 도구] GitLab, Jira, Notion, Mattermost"
   ],
   impact:
-    "QueryDSL 최적화(Fetch Join): 복잡한 다중 관계가 있는 채팅방 목록 조회 시 발생하는 N+1 문제를 해결하여, 쿼리 응답 속도를 1.2s에서 50ms 수준으로 최적화\nSpring-FastAPI 부하 격리 설계: CPU 점유율이 높은 AI 연산(정규표현식, OCR)을 비동기 워커로 분리하여, 다수 유저 분석 시에도 메인 웹 서버 가용성 100% 유지\nWebSocket(STOMP) 통신망 구축: 1초 주기의 지속 Polling 방식을 대체하여 헤더 오버헤드를 제거, 실시간성 확보는 물론 일일 기준 채팅망 네트워크 대역폭(Bandwidth) 약 85% 절감 달성\nRedis 인메모리 보안 모델: 매 요청마다 DB를 찌르던 블랙리스트 검증을 Redis로 이관, 악성 사용자 차단 필터 속도를 약 30ms → 2ms(90% 향상)로 단축해 Disk I/O 병목 해소",
+    "복잡한 다중 관계가 있는 채팅방 목록 조회 시 발생하는 N+1 문제를 해결하여, 쿼리 응답 속도를 1.2s에서 50ms 수준으로 최적화\n" +
+    "CPU 점유율이 높은 AI 연산(정규표현식, OCR)을 비동기 워커로 분리하여, 다수 유저 분석 시에도 메인 웹 서버 가용성 100% 유지\n" +
+    "매 요청마다 DB를 찌르던 블랙리스트 검증을 Redis로 이관, 악성 사용자 차단 필터 속도를 약 30ms → 2ms(90% 향상)로 단축해 Disk I/O 병목 해소",
   images: {
     preview: baekguCardPreview,
     architecture: baekguArch,
@@ -59,11 +50,11 @@ export const baekgu: Project = {
       "Git Clone (API Rate Limit 우회): 파일당 1회를 소모하는 GitHub API의 호출 한계를 피하기 위해 `git clone` 방식을 채택. 단 1회의 네트워크 호출로 대용량 코드 수집 한계 극복.",
     ],
     implementation: [
-      "사용자 개발 역량 정밀 분석: GitHub 커밋 빈도, 코드 기여도 등 실질적 활동 데이터를 기반으로 핵심 기술 역량을 객관적으로 도출 (Git Clone & LLM 분석)",
-      "지능형 기업 데이터 분석: DART(재무제표)와 실시간 뉴스(비즈니스 트렌드)를 결합하여 기업의 안정성 및 성장성을 정밀 검증 (Perplexity AI 연동)",
-      "AI 맞춤형 공고 매칭: 분석된 사용자 역량과 실시간 채용 데이터를 온톨로지 기반 기술 매칭 시스템으로 정합하여 최적의 커리어 경로 및 추천 근거 제시",
-      "데이터 기반 자소서 자동 작성: 역량-공고-기업 분석 데이터를 종합하여 구체적 실적 근거(Evidence) 중심의 고품질 자기소개서 생성",
-      "실시간 직무 소통 네트워크: WebSocket 및 STOMP 기반 오픈채팅 시스템을 통한 지원자 및 현직자 간의 투명한 정보 공유 지원",
+      "사용자 개발 역량 정밀 분석 : GitHub 커밋 빈도, 코드 기여도 등 실질적 활동 데이터를 기반으로 핵심 기술 역량을 객관적으로 도출 (Git Clone & LLM 분석)",
+      "지능형 기업 데이터 분석 : DART(재무제표)와 실시간 뉴스(비즈니스 트렌드)를 결합하여 기업의 안정성 및 성장성을 정밀 검증 (Perplexity AI 연동)",
+      "AI 맞춤형 공고 매칭 : 분석된 사용자 역량과 실시간 채용 데이터를 온톨로지 기반 기술 매칭 시스템으로 정합하여 최적의 커리어 경로 및 추천 근거 제시",
+      "데이터 기반 자소서 자동 작성 : 역량-공고-기업 분석 데이터를 종합하여 구체적 실적 근거(Evidence) 중심의 고품질 자기소개서 생성",
+      "실시간 직무 소통 네트워크 : WebSocket 및 STOMP 기반 오픈채팅 시스템을 통한 지원자 및 현직자 간의 투명한 정보 공유 지원",
     ],
     troubleshooting: [
       {

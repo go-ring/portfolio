@@ -1,18 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, X, ExternalLink, Github, FileText, MonitorPlay, BookOpen } from 'lucide-react';
 import type { Project } from '@/types/project';
-import { renderLinked } from '@/utils/renderUtils';
-import { useScrollSpy } from '@/hooks/useScrollSpy';
-import { SectionHeader } from '@/components/common/SectionHeader';
-import { ImplementationCard } from './ImplementationCard';
-import { EMPHASIS_TECH, TOC_ITEMS } from './ProjectModal.constants';
-import { ProjectModalHeader } from './ProjectModalHeader';
-import { ProjectModalLinksSection } from './ProjectModalLinksSection';
-import { ProjectModalOutcomesSection } from './ProjectModalOutcomesSection';
-import { ProjectModalSidebar } from './ProjectModalSidebar';
-import { ProjectModalTroubleshootingSection } from './ProjectModalTroubleshootingSection';
-
+import { ProjectModalSlideOverview } from './slides/ProjectModalSlideOverview';
+import { ProjectModalSlideTechRole } from './slides/ProjectModalSlideTechRole';
+import { ProjectModalSlideTrouble } from './slides/ProjectModalSlideTrouble';
+import { ProjectModalSlideOutcomes } from './slides/ProjectModalSlideOutcomes';
+import { ProjectModalSlideTechSelection } from './slides/ProjectModalSlideTechSelection';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -21,38 +16,40 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-
-  const { activeId, scrollToId } = useScrollSpy(
-    contentRef,
-    TOC_ITEMS.map(item => item.id),
-    {
-      offset: 12,
-      rootMargin: '-100px 0px -70% 0px'
-    }
-  );
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      setCurrentSlide(0); // Reset on open
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
-  const handleScrollTo = (id: string) => {
-    scrollToId(id);
-  };
+  if (!project || typeof document === 'undefined') return null;
 
-  if (!project) return null;
+  // Build slides array
+  const slides = [];
+  slides.push(<ProjectModalSlideOverview project={project} />);
+  if (project.tech && project.details?.roleAndContribution) {
+    slides.push(<ProjectModalSlideTechRole project={project} />);
+  }
+  if (project.details?.troubleshooting && project.details.troubleshooting.length > 0) {
+    project.details.troubleshooting.forEach(trouble => {
+       slides.push(<ProjectModalSlideTrouble project={project} trouble={trouble} />);
+    });
+  }
+  if (project.details?.techAndReason && project.details.techAndReason.length > 0) {
+    slides.push(<ProjectModalSlideTechSelection project={project} />);
+  }
+  if (project.impact || project.details?.retrospective) {
+    slides.push(<ProjectModalSlideOutcomes project={project} />);
+  }
 
-  if (typeof document === 'undefined') return null;
-
-  const isDdoya = project.title === 'DDOYA (또야)';
+  const handlePrev = () => setCurrentSlide(prev => Math.max(0, prev - 1));
+  const handleNext = () => setCurrentSlide(prev => Math.min(slides.length - 1, prev + 1));
 
   return createPortal(
     <AnimatePresence>
@@ -63,249 +60,122 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[100] bg-[#1F1D1B]/30 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] bg-[#1F1D1B]/40 backdrop-blur-sm"
           />
           <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.95 }}
+            initial={{ opacity: 0, y: 50, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.95 }}
+            exit={{ opacity: 0, y: 50, scale: 0.98 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-6 pointer-events-none"
+            className="fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-8 pointer-events-none"
           >
-            <div className="bg-white w-full max-w-7xl max-h-[90vh] rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden pointer-events-auto flex flex-col border border-[#D5CEC4] text-[#1F1D1B]">
+            <div className="bg-white w-[95vw] max-w-[1400px] h-[85vh] min-h-[600px] max-h-[850px] rounded-[32px] shadow-2xl overflow-hidden pointer-events-auto flex relative text-[#1F1D1B]">
+              
+              {/* Close Button */}
+              <button 
+                className="absolute top-6 right-6 z-50 p-2 text-[#857C75] hover:text-[#1F1D1B] bg-white/80 backdrop-blur rounded-full hover:bg-gray-100 transition-colors"
+                onClick={onClose}
+              >
+                <X size={28} />
+              </button>
 
-              {/* Header - Compact Single Line */}
-              <ProjectModalHeader project={project} headerRef={headerRef} onClose={onClose} />
-
-              <div className="flex flex-1 overflow-hidden">
-                {/* Left Sidebar: TOC - Sticky */}
-                <ProjectModalSidebar activeId={activeId} onScrollTo={handleScrollTo} />
-
-                {/* Main Content - Scrollable */}
-                <main
-                  ref={contentRef}
-                  className="flex-1 overflow-y-auto p-8 md:p-10 scroll-smooth custom-scrollbar bg-[#F8F6F0]"
-                >
-                  <div className="max-w-4xl mx-auto space-y-24 pb-32">
-
-                    {/* 1. Overview */}
-                    <section id="overview" className="space-y-6 scroll-mt-24">
-
-                      {/* Main Image */}
-                      {project.images?.overviewGallery ? (
-                        <div className="mb-8 flex justify-center">
-                          <div
-                            className="grid gap-0 w-full max-w-6xl"
-                            style={{
-                              gridTemplateColumns: `repeat(${project.images.overviewGallery.length}, minmax(0, 1fr))`,
-                            }}
-                          >
-                            {project.images.overviewGallery.map((image, idx) => (
-                              <div key={idx} className="overflow-hidden">
-                                <img
-                                  src={image}
-                                  alt={`Overview ${idx + 1}`}
-                                  className="w-full h-auto max-h-[420px] object-contain"
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ) : project.images?.main && (
-                        <div className="mb-8 flex justify-center">
-                          <div className="rounded-xl overflow-hidden border border-[#D5CEC4] shadow-sm bg-[#EBE5DC] flex justify-center max-w-4xl w-full">
-                            <img
-                              src={project.images.main}
-                              alt="Main"
-                              className="w-full h-auto max-h-[420px] object-contain"
-                            />
-                          </div>
-                        </div>
-                      )}
-
-                      <div>
-                        <SectionHeader title="프로젝트 개요" variant="sidebar" />
-                        <p className="text-[#5C554F] leading-relaxed text-[17px] whitespace-pre-wrap font-medium">
-                          {renderLinked(project.description)}
-
-                        </p>
-                      </div>
-
-                      {/* Tech Stack - No Title, Larger Font */}
-                      <div className="mt-8">
-                        <div className="flex flex-wrap gap-x-6 gap-y-3">
-                          {project.tech.map(tech => {
-                            const isEmphasis = EMPHASIS_TECH[project.title]?.has(tech) || false;
-                            return (
-                              <span
-                                key={tech}
-                                className={
-                                  "transition-all duration-300 flex items-center gap-2 " +
-                                  (isEmphasis
-                                    ? "text-[#5A6B3A] text-lg font-extrabold"
-                                    : "text-[#857C75] hover:text-[#5A6B3A] text-[17px] font-bold")
-                                }
-                              >
-                                {isEmphasis && <span className="w-1.5 h-1.5 rounded-full bg-[#5A6B3A]" />}
-                                {tech}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </section>
-
-                    {/* 2. Core Implementation */}
-                    <section id="implementation" className="scroll-mt-24 space-y-8">
-                      <SectionHeader title="핵심 기능" variant="sidebar" />
-
-                      <div className="grid grid-cols-1 gap-3">
-                        {project.details?.implementation?.map((item, idx) => (
-                          <ImplementationCard key={idx} item={item} index={idx} />
-                        ))}
-                      </div>
-
-                      {project.details?.implementationImage && (
-                        <div className="mt-8 flex justify-start">
-                          <div className="rounded-xl overflow-hidden border border-[#D5CEC4] shadow-sm max-w-lg p-2 bg-white">
-                            <img
-                              src={project.details.implementationImage}
-                              alt="Implemented Logic"
-                              className="w-full h-auto object-contain max-h-[300px] rounded-lg"
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </section>
-
-                    {/* 3. Role */}
-                    <section id="role" className="scroll-mt-24">
-                      {project.details?.roleAndContribution && (
-                        <div>
-                          <SectionHeader title="담당 역할" variant="sidebar" />
-                          <div className="grid gap-3">
-                            {project.details.roleAndContribution.map((item, idx) => {
-                              const colonIdx = item.indexOf(':');
-                              const title = colonIdx !== -1 ? item.slice(0, colonIdx).trim() : item;
-                              const body = colonIdx !== -1 ? item.slice(colonIdx + 1).trim() : '';
-                              const roleImage = project.details?.roleAndContributionImages?.[idx];
-                              const roleImages = roleImage ? (Array.isArray(roleImage) ? roleImage : [roleImage]) : [];
-                              const useSideRoleImage = isDdoya && roleImage;
-                              return (
-                                <div key={idx} className="group flex gap-3.5 px-4 py-3 rounded-xl bg-white border border-[#D5CEC4] hover:border-[#5A6B3A] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300">
-                                  <div className="mt-2.5 h-2 w-2 rounded-full bg-[#5A6B3A] shrink-0" />
-                                  <div className={`flex-1 min-w-0 py-0.5 ${useSideRoleImage ? "md:flex md:items-start md:gap-5" : ""}`}>
-                                    <div className="min-w-0 flex-1">
-                                      <span className="font-extrabold text-[#5A6B3A] text-[16.5px] block mb-1 group-hover:brightness-110 transition-all">{title}</span>
-                                      {body && <p className="text-[#5C554F] leading-snug text-[15.5px] font-medium group-hover:text-[#1F1D1B] transition-colors">{renderLinked(body)}</p>}
-                                    </div>
-                                    {roleImages.length > 0 && (
-                                      <div className={`mt-4 ${useSideRoleImage ? "md:mt-0 w-full md:w-[300px] shrink-0" : "rounded-lg overflow-hidden border border-[#D5CEC4] bg-[#EBE5DC] p-2 max-w-xl"}`}>
-                                        <div className={`${roleImages.length > 1 ? "grid grid-cols-2 gap-0.5" : ""}`}>
-                                          {roleImages.map((image, imageIdx) => (
-                                            <img
-                                              key={imageIdx}
-                                              src={image}
-                                              alt={`${title} detail ${imageIdx + 1}`}
-                                              className={`w-full h-auto object-contain ${useSideRoleImage ? "max-h-[220px]" : "max-h-[260px] rounded-md"}`}
-                                            />
-                                          ))}
-                                        </div>
-                                      </div>
-                                    )}
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
-                    </section>
-
-                    {/* 4. Tech & Architecture */}
-                    <section id="tech" className="space-y-6 scroll-mt-24">
-                      <SectionHeader title="사용 기술 및 아키텍처" variant="sidebar" />
-
-                      {/* Architecture Image - Array Support for Side-by-Side */}
-                      {project.images?.architecture && (
-                        <div className="mb-8">
-                          {Array.isArray(project.images.architecture) ? (
-                            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-                              {project.images.architecture.map((img, idx) => (
-                                <div
-                                  key={idx}
-                                  className="p-0 flex justify-center items-center w-fit"
-                                >
-                                  <img
-                                    src={img}
-                                    alt={`Architecture ${idx + 1}`}
-                                    className="w-full h-auto md:w-auto md:h-[350px] object-contain rounded-xl"
-                                  />
-                                </div>
-                              ))}
-                            </div>
-                          ) : (
-                            <div className="p-0 flex justify-center w-fit mx-auto">
-                              <img
-                                src={project.images.architecture}
-                                alt="Architecture"
-                                className="w-full h-auto object-contain max-h-[400px]"
-                              />
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      {/* Tech Reasons */}
-                      {project.details?.techAndReason && (
-                        <div className="grid gap-3">
-                          {project.details.techAndReason.map((item, idx) => {
-                            const splitIndex = item.indexOf(':');
-                            const techName = splitIndex !== -1 ? item.slice(0, splitIndex) : item;
-                            const reason = splitIndex !== -1 ? item.slice(splitIndex + 1) : '';
-
-                            return (
-                              <div key={idx} className="group flex gap-3.5 px-4 py-3 rounded-xl bg-white border border-[#D5CEC4] hover:border-[#5A6B3A] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300">
-                                <div className="mt-2.5 h-2 w-2 rounded-full bg-[#5A6B3A] shrink-0" />
-                                <div className="flex-1 min-w-0 py-0.5">
-                                  <span className="font-extrabold text-[#5A6B3A] text-[16.5px] block mb-1 group-hover:brightness-110 transition-all">{techName}</span>
-                                  {reason && <p className="text-[#5C554F] font-medium leading-snug text-[15.5px] group-hover:text-[#1F1D1B] transition-colors">{renderLinked(reason)}</p>}
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </section>
-
-                    {/* 5. Troubleshooting */}
-                    <ProjectModalTroubleshootingSection project={project} />
-
-                    {/* 6. Outcomes & Awards */}
-                    <ProjectModalOutcomesSection project={project} />
-
-                    {/* 7. Retrospective */}
-                    <section id="retrospective" className="scroll-mt-24">
-                      {project.details?.retrospective && (
-                        <div>
-                          <SectionHeader title="회고 및 배운 점" variant="sidebar" />
-                          <div className="space-y-4 px-2">
-                            {project.details.retrospective.map((line, idx) => (
-                              <p key={idx} className="text-[15.5px] text-[#5C554F] font-medium leading-[1.7] whitespace-pre-wrap break-keep">
-                                {renderLinked(line)}
-                              </p>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </section>
-
-                    {/* 8. Links */}
-                    <ProjectModalLinksSection project={project} />
-
+              {/* Left Static Panel */}
+              <div className="w-[230px] md:w-[250px] h-full bg-[#F8F6F0] flex flex-col px-4 py-8 md:px-5 md:py-10 border-r border-[#D5CEC4] shrink-0">
+                <div className="flex-1">
+                  <h2 className="text-3xl md:text-[34px] font-black text-[#1F1D1B] tracking-tight mb-8 leading-[1.15] break-keep">{project.title}</h2>
+                  
+                  <div className="space-y-1 mb-8 text-[14px] text-[#1F1D1B] font-bold">
+                    <p className="font-extrabold whitespace-nowrap tracking-tighter">{project.period}</p>
+                    <p className="leading-[1.4]">
+                      {Array.isArray(project.role) ? project.role.join(', ') : project.role}
+                    </p>
+                    <p>{project.type}</p>
                   </div>
-                </main>
+                </div>
+                
+                <div className="mt-auto">
+                  <h3 className="text-[12px] font-bold text-[#857C75] uppercase tracking-wider mb-2">Links</h3>
+                  <div className="flex flex-col gap-1">
+                    {project.links?.repo && (
+                      <a href={project.links.repo} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[14.5px] font-bold text-[#4A433D] hover:text-[#5A6B3A] transition-colors p-2 -ml-2 rounded-xl hover:bg-white/60">
+                        <Github size={16} /> GitHub Repository
+                      </a>
+                    )}
+                    {project.links?.notion && (
+                      <a href={project.links.notion} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[14.5px] font-bold text-[#4A433D] hover:text-[#5A6B3A] transition-colors p-2 -ml-2 rounded-xl hover:bg-white/60">
+                        <FileText size={16} /> Notion Workspace
+                      </a>
+                    )}
+                    {project.links?.presentation && (
+                      <a href={project.links.presentation} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[14.5px] font-bold text-[#4A433D] hover:text-[#5A6B3A] transition-colors p-2 -ml-2 rounded-xl hover:bg-white/60">
+                        <MonitorPlay size={16} /> Presentation
+                      </a>
+                    )}
+                    {project.links?.proof && (
+                      <a href={project.links.proof} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[14.5px] font-bold text-[#4A433D] hover:text-[#5A6B3A] transition-colors p-2 -ml-2 rounded-xl hover:bg-white/60">
+                        <ExternalLink size={16} /> Proof / Demo
+                      </a>
+                    )}
+                    {project.links?.paper && (
+                      <a href={project.links.paper} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[14.5px] font-bold text-[#4A433D] hover:text-[#5A6B3A] transition-colors p-2 -ml-2 rounded-xl hover:bg-white/60">
+                        <BookOpen size={16} /> Paper
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
+
+              {/* Right Main Panel (Carousel) */}
+              <div className="flex-1 h-full relative bg-white flex flex-col">
+                {/* Navigation Arrows (Floating) */}
+                <div className="absolute top-1/2 -translate-y-1/2 left-1 md:left-2 z-20">
+                  <button 
+                    onClick={handlePrev} 
+                    disabled={currentSlide === 0}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${currentSlide === 0 ? 'opacity-0 pointer-events-none' : 'bg-[#1F1D1B] text-white shadow-md hover:bg-[#332E2A] hover:scale-110 active:scale-95'}`}
+                  >
+                    <ChevronLeft size={22} strokeWidth={2.5} />
+                  </button>
+                </div>
+
+                <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-6 z-20">
+                  <button 
+                    onClick={handleNext} 
+                    disabled={currentSlide === slides.length - 1}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${currentSlide === slides.length - 1 ? 'opacity-0 pointer-events-none' : 'bg-[#1F1D1B] text-white shadow-md hover:bg-[#332E2A] hover:scale-110 active:scale-95'}`}
+                  >
+                    <ChevronRight size={22} strokeWidth={2.5} />
+                  </button>
+                </div>
+
+                {/* Slides Container */}
+                <div className="flex-1 overflow-hidden relative">
+                   <div 
+                      className="absolute inset-0 flex transition-transform duration-500 ease-in-out"
+                      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                   >
+                      {slides.map((slide, idx) => (
+                        <div key={idx} className="w-full h-full flex-shrink-0 px-12 md:px-20 pt-10 pb-12 overflow-y-auto custom-scrollbar flex flex-col">
+                           <div className="max-w-5xl mx-auto w-full">
+                             {slide}
+                           </div>
+                        </div>
+                      ))}
+                   </div>
+                </div>
+
+                {/* Bottom Navigation (Dots) */}
+                <div className="h-6 shrink-0 flex items-center justify-center gap-2.5 bg-white border-t border-gray-100 relative z-10">
+                  {slides.map((_, idx) => (
+                    <button 
+                      key={idx} 
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`transition-all rounded-full ${idx === currentSlide ? 'w-7 h-2 bg-[#5A6B3A]' : 'w-2 h-2 bg-[#D5CEC4] hover:bg-[#857C75]'}`} 
+                    />
+                  ))}
+                </div>
+              </div>
+
             </div>
           </motion.div>
         </>

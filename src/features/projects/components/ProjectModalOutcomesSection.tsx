@@ -24,12 +24,12 @@ export function ProjectModalOutcomesSection({ project }: ProjectModalOutcomesSec
           const content = colonIdx !== -1 ? line.slice(colonIdx + 1).trim() : line;
 
           return (
-            <div key={idx} className="group flex flex-col sm:flex-row gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-yellow-500/30 transition-all duration-200 items-start">
+            <div key={idx} className="group flex flex-col sm:flex-row gap-3.5 px-5 py-4 rounded-xl bg-white border border-[#D5CEC4] shadow-sm hover:border-[#1F1D1B] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 items-start">
               <div className="flex gap-3.5 items-start flex-1 min-w-0">
-                <Trophy className="text-yellow-500 mt-0.5 shrink-0" size={18} />
+                <Trophy className="text-[#5A6B3A] mt-0.5 shrink-0" size={18} />
                 <div className="flex-1 min-w-0 py-0.5">
-                  {title && <span className="font-bold text-yellow-500/90 text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>}
-                  <span className="text-[15.5px] text-gray-200 leading-snug group-hover:text-white transition-colors block">
+                  {title && <span className="font-extrabold text-[#1F1D1B] text-[17px] block mb-1 group-hover:text-[#5A6B3A] transition-colors">{title}</span>}
+                  <span className="text-[16px] text-[#4A433D] font-medium leading-relaxed group-hover:text-[#1F1D1B] transition-colors block">
                     {renderLinked(content)}
                   </span>
                 </div>

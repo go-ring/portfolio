@@ -21,11 +21,11 @@ export function ProjectModalTroubleshootingSection({ project }: ProjectModalTrou
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
-            className="bg-[#1a1f2c] rounded-xl border border-white/5 overflow-hidden hover:bg-[#1d2235] hover:shadow-lg transition-all duration-300"
+            className="bg-white rounded-xl border border-[#D5CEC4] overflow-hidden shadow-sm hover:border-[#1F1D1B] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300"
           >
             {/* Card Title */}
-            <div className="px-6 pt-5 pb-4 border-b border-white/[0.06]">
-              <h5 className="text-[18px] font-bold text-white leading-snug">{section.title}</h5>
+            <div className="px-6 pt-5 pb-4 border-b border-[#D5CEC4] bg-[#F8F6F0]">
+              <h5 className="text-[18px] font-extrabold text-[#1F1D1B] leading-snug">{section.title}</h5>
             </div>
 
             {/* Items */}
@@ -37,14 +37,14 @@ export function ProjectModalTroubleshootingSection({ project }: ProjectModalTrou
                 const content = colonIdx !== -1 ? item.slice(colonIdx + 1).trim() : item;
 
                 return (
-                  <div key={idx} className="rounded-lg bg-white/[0.025] border border-white/[0.04] px-4 py-3">
+                  <div key={idx} className="rounded-lg bg-white border border-[#EBE5DC] px-5 py-4">
                     {labelInfo && (
-                      <div className={`flex items-center gap-1.5 text-[12px] font-semibold tracking-widest uppercase mb-2 ${labelInfo.color}`}>
+                      <div className={`flex items-center gap-1.5 text-[12px] font-extrabold tracking-widest uppercase mb-2 ${labelInfo.color}`}>
                         <TroubleIcon type={rawLabel!} />
                         <span>{rawLabel}</span>
                       </div>
                     )}
-                    <p className="text-[15px] text-gray-300 leading-[1.7] whitespace-pre-line">
+                    <p className="text-[16px] text-[#4A433D] font-medium leading-[1.7] whitespace-pre-line group-hover:text-[#1F1D1B] transition-colors">
                       <HighlightedText text={content} />
                     </p>
                   </div>

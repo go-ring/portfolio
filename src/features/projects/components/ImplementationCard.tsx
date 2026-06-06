@@ -48,16 +48,16 @@ export function ImplementationCard({ item, index }: { item: string; index: numbe
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.2, delay: index * 0.04 }}
-      className="group flex gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-200"
+      className="group flex gap-3.5 px-5 py-4 rounded-xl bg-white border border-[#D5CEC4] hover:border-[#1F1D1B] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300"
     >
-      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary shrink-0 transition-colors group-hover:bg-primary/20">
+      <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#F8F6F0] text-[#1F1D1B] shrink-0 transition-colors group-hover:bg-[#1F1D1B] group-hover:text-white">
         {getIcon(title)}
       </div>
       <div className="flex-1 min-w-0 py-0.5">
-        <h5 className="font-bold text-white text-[16.5px] mb-0.5 group-hover:text-primary transition-colors">
+        <h5 className="font-extrabold text-[#1F1D1B] text-[17px] mb-1 group-hover:text-[#5A6B3A] transition-colors">
           {title}
         </h5>
-        {body && <p className="text-gray-200 text-[15.5px] leading-snug group-hover:text-white transition-colors">{renderLinked(body)}</p>}
+        {body && <p className="text-[#4A433D] text-[16px] font-medium leading-relaxed group-hover:text-[#1F1D1B] transition-colors">{renderLinked(body)}</p>}
       </div>
     </motion.div>
   );

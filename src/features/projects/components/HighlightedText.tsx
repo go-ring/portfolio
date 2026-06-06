@@ -15,7 +15,7 @@ export function HighlightedText({ text }: { text: string }) {
     <>
       {segs.map((s, i) =>
         s.highlight
-          ? <span key={i} className="font-semibold text-[#6AA8FF]">{renderLinked(s.text)}</span>
+          ? <span key={i} className="font-extrabold text-[#5A6B3A]">{renderLinked(s.text)}</span>
           : <span key={i}>{renderLinked(s.text)}</span>
       )}
     </>

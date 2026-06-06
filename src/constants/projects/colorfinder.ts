@@ -7,24 +7,21 @@ export const colorfinder: Project = {
   title: "ColorFinder",
   type: "팀 프로젝트 (3인)",
   period: "2024.04.08 ~ 2024.06.10 (10주)",
-  role: "백엔드 개발 및 진단 알고리즘 설계",
+  role: ["Frontend & Backend"],
   shortDescription: "안면 색상 분석 기반 퍼스널 컬러 진단 및 실시간 기온 대응 패션 커머스 플랫폼",
   description:
-    "사용자의 안면 데이터에서 퍼스널 컬러를 정밀하게 진단하고, 실시간 외부 환경(기온) 정보를 결합하여 최적의 의류 코디를 제안하는 지능형 패션 이커머스 플랫폼.\n\n단순한 쇼핑 서비스를 넘어 OpenCV 기반의 정밀 색상 분석 기술과 공공데이터 API를 결합하여 '나에게 어울리지 않는 색(톤그로)'에 대한 고민을 기술적으로 해결함. 퍼스널 컬러와 기상 데이터를 연동한 개인화 추천 엔진을 구축하고, 상품 검색부터 결제까지 이르는 풀스택 커머스 아키텍처를 구현함. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [논문/발표자료](https://drive.google.com/drive/folders/1bd-zl9_SLAwJEby6GwKhnktTmCHTSj5l?usp=sharing))",
+    "안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 쇼핑몰\n\n단순한 쇼핑 서비스를 넘어 OpenCV 기반의 정밀 색상 분석 기술과 공공데이터 API를 결합하여 '나에게 어울리지 않는 색(톤그로)'에 대한 고민을 기술적으로 해결함. 퍼스널 컬러와 기상 데이터를 연동한 개인화 추천 엔진을 구축하고, 상품 검색부터 결제까지 이르는 풀스택 커머스 아키텍처를 구현함. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [논문/발표자료](https://drive.google.com/drive/folders/1bd-zl9_SLAwJEby6GwKhnktTmCHTSj5l?usp=sharing))",
   tech: [
-    "Java 17",
-    "Python 3.11",
-    "Spring Boot 3.2.5",
-    "Flask",
-    "JPA / QueryDSL",
-    "MySQL 8.0",
-    "OpenCV",
-    "KMA API (Weather)",
-    "Google Vision AI",
-    "REST API",
+    "[Backend] Java 17, Spring Boot 3.3, JPA",
+    "[Database] MySQL",
+    "[AI] Flask, OpenCV, NumPy",
+    "[협업 도구] GitLab, Notion"
   ],
   impact:
-    "한남대학교 캡스톤 경진대회 우수상 수상(2024): 기술적 창의성과 비즈니스 가치를 인정받아 학내 우수 사례 선정\n스마트미디어 추계학술대회 학술 논문 발표: '안면 색상 데이터 기반 퍼스널 컬러 진단 서비스' 연구 성과 발표\n메인 페이지 성능 최적화(86% 향상): 외부 API 호출 구간에 캐싱 전략을 적용하여 데이터 로딩 속도를 1.5s에서 0.2s로 단축\n베타 테스터 만족도 4.7점 달성: 총 42명의 실사용자 대상 UT 결과, 추천 정확도 측면에서 높은 긍정적 지표 획득",
+    "한남대학교 캡스톤 경진대회 우수상 수상(2024)\n" +
+    "스마트미디어 추계학술대회 학술 논문 발표\n" +
+    "외부 API 호출 구간에 캐싱 전략을 적용하여 데이터 로딩 속도를 1.5s에서 0.2s로 단축\n" +
+    "베타 테스터 만족도 4.7점 달성",
   images: {
     architecture: colorFinderArch,
     main: colorFinderPreview,
@@ -40,7 +37,7 @@ export const colorfinder: Project = {
     roleAndContribution: [
       "색상 추출 파이프라인 구현: Google Vision AI로 의류 이미지의 Dominant Color(RGB) 추출 → 유클리디안 거리 기반 퍼스널 컬러 타입 자동 태깅. 분류 성공률 98% 달성",
       "퍼스널 컬러 DB 설계: 잭슨의 Color Me Beautiful 이론 기반 12가지 타입 표본 데이터 구축 및 RGB 색상 매핑 로직 설계",
-      "날씨 기반 추천 필터링: 기상청 단기 예보 API 연동, 실시간 기온 기반 의류 카테고리 필터링 + 30분 단위 캐싱으로 메인 페이지 로딩 1.5s → 0.2s ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu))",
+      "날씨 기반 추천 필터링: 기상청 단기 예보 API 연동, 실 실시간 기온 기반 의류 카테고리 필터링 + 30분 단위 캐싱으로 메인 페이지 로딩 1.5s → 0.2s ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu))",
       "REST API 설계 및 구현: 회원·상품·주문·결제 도메인 Spring Boot 백엔드 API 개발 (Controller → Service → Repository 레이어 구조)",
     ],
     roleAndContributionImages: {
@@ -53,11 +50,10 @@ export const colorfinder: Project = {
       "MySQL 8.0 (관계형 데이터 관리): 사용자, 퍼스널 컬러, 상품, 장바구니, 주문, 주소 데이터를 MySQL 스키마와 JPA 엔티티로 관리하고, 커머스 흐름에 필요한 조회와 저장을 관계형 모델 기반으로 구현.",
     ],
     implementation: [
-      "LAB 분석 기반 퍼스널 컬러 진단: OpenCV와 LAB 색상 공간의 'b' 채널 분석을 통해 사용자의 피부톤을 4계절 타입으로 자동 분류하고 최적의 색상 판별",
-      "기상청 API 연동 실시간 기온 수집: 공공데이터포털의 초단기예보 API를 활용하여 사용자의 현재 위치(또는 기준 좌표) 기온 데이터를 실시간 수집 및 반영",
-      "기온 및 퍼스널 컬러 맞춤형 의류 필터링: 현재 기온(5도 단위)과 진단된 퍼스널 컬러 속성을 조합하여 사용자에게 최적화된 의류 카테고리를 자동 필터링",
-      "풀스택 이커머스 엔진 구축: 상품 검색, 정렬(가격순/신상품순), 장바구니, 주소지 관리, 주문 및 결제 프로세스를 포함한 쇼핑 플랫폼 구현",
-      "개인화된 스타일 가이드: 개인별 퍼스널 컬러 진단 기록과 이전 주문 내역을 실시간으로 관리하는 사용자 중심의 마이페이지 제공",
+      "LAB 분석 기반 퍼스널 컬러 진단 : OpenCV와 LAB 색상 공간의 'b' 채널 분석을 통해 사용자의 피부톤을 4계절 타입으로 자동 분류",
+      "기상청 API 연동 실시간 기온 수집 : 공공데이터포털의 초단기예보 API를 활용하여 기온 데이터 실시간 수집 및 반영",
+      "기온 및 퍼스널 컬러 맞춤형 의류 필터링 : 현재 기온(5도 단위)과 진단된 퍼스널 컬러 속성을 조합하여 사용자에게 최적화된 의류 카테고리를 자동 필터링",
+      "풀스택 이커머스 엔진 구축 : 상품 검색, 정렬(가격순/신상품순), 장바구니, 주소지 관리, 주문 및 결제 프로세스를 포함한 쇼핑 플랫폼 구현",
     ],
     troubleshooting: [
       {
