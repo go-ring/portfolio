@@ -104,9 +104,4 @@ export const algogo: Project = {
         "데이터베이스와 클라우드 환경의 병목을 분석·개선하며 **근거 기반의 성능 최적화 역량 강화**"
       ],
     },
-    links: {
-      repo: "https://github.com/team-algogo/algogo_server.git",
-      notion: "https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc",
-      presentation: "https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing"
-    }
-  }
+};

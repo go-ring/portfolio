@@ -1,7 +1,7 @@
 import { renderLinked } from '@/utils/renderUtils';
 import type { Project } from '@/types/project';
 
-export function ProjectModalSlideTrouble({ project, trouble }: { project: Project, trouble: any }) {
+export function ProjectModalSlideTrouble({ trouble }: { project: Project, trouble: any }) {
   return (
     <div className="flex flex-col md:flex-row gap-12 h-full items-start">
       <div className="flex-1 flex flex-col h-full">

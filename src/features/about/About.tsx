@@ -2,7 +2,7 @@ import { education, certifications, awards, research } from '@/constants';
 import { profile } from '@/constants/profile/profile';
 import { Section } from '@/components/Section';
 import { Card } from '@/components/common/Card';
-import { Mail, Github, BookOpen } from 'lucide-react';
+import { Mail, Github } from 'lucide-react';
 import profileImg from '@/assets/images/profile1.jpg';
 
 export function About() {

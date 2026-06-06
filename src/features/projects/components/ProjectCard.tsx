@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Project } from '@/constants/portfolio';
-import { Badge } from '@/components/common/Badge';
+
 import { Card } from '@/components/common/Card';
 
 interface ProjectCardProps {
