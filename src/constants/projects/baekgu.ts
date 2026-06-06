@@ -10,20 +10,21 @@ export const baekgu: Project = {
   role: ["Backend & Infra"],
   shortDescription: "사용자 GitHub 기반 공고 추천 및 자소서 작성 지원 플랫폼",
   description:
-    "기업의 재무/뉴스 데이터(DART, Nate)와 개발자의 기술 경험(GitHub, 포트폴리오)을 AI로 교차 분석하여, 사용자와 핏한 공고 매칭과 자기소개서 작성을 돕는 AI 채용/구직 플랫폼\n\n" +
-    "구직자의 코드로 도출한 객관적 기술 역량과 DART/뉴스 기반의 기업 성장성 데이터를 통합 분석함. 단순 공고 추천을 넘어 지원자의 기술 지표가 반영된 '근거 중심(Evidence-based) 자기소개서' 생성을 지원하여 취업 시장의 정보 비대칭 문제를 해결함. ([시연 영상](https://drive.google.com/drive/folders/1aGZ_1izpcS2EAyXRVqEqdvG3YkIelbkJ?usp=sharing), [발표 자료](https://drive.google.com/drive/folders/1YyTF5Y8VIFfN4SU8AqsdHednnqFg9xkn?usp=sharing))",
+    "개발자 맞춤형 AI 취업 도우미 플랫폼\n\n" +
+    "사용자 GitHub 기반 **역량 분석** 결과와\n" +
+    "**기업 공고·재무 데이터 분석** 결과를 결합하여,\n" +
+    "**채용 공고 추천 및 자기소개서 작성** 지원",
   tech: [
-    "[Backend] Java 17, Spring Boot 3.2, JPA, QueryDSL",
-    "[Database] MySQL, Redis",
+    "[Backend] Java 17, Spring Boot 3.2, JPA / QueryDSL, MySQL, Redis",
     "[Infra / DevOps] Docker, Nginx, GitLab CI/CD, Prometheus / Grafana / Loki",
     "[AI] FastAPI, OpenAI, PaddleOCR, Playwright, BeautifulSoup, Pandas, NumPy",
     "[External Services] GitHub API, Perplexity API, DART/OpenDART, Toss Payments",
     "[협업 도구] GitLab, Jira, Notion, Mattermost"
   ],
   impact:
-    "복잡한 다중 관계가 있는 채팅방 목록 조회 시 발생하는 N+1 문제를 해결하여, 쿼리 응답 속도를 1.2s에서 50ms 수준으로 최적화\n" +
-    "CPU 점유율이 높은 AI 연산(정규표현식, OCR)을 비동기 워커로 분리하여, 다수 유저 분석 시에도 메인 웹 서버 가용성 100% 유지\n" +
-    "매 요청마다 DB를 찌르던 블랙리스트 검증을 Redis로 이관, 악성 사용자 차단 필터 속도를 약 30ms → 2ms(90% 향상)로 단축해 Disk I/O 병목 해소",
+    "▪ N+1 문제 해결로 채팅방 목록 조회 성능 **1.2초 → 50ms 개선**\n" +
+    "▪ AI 분석 작업 비동기화로 대량 요청 환경에서도 **서버 가용성 유지**\n" +
+    "▪ Redis 캐싱 도입으로 블랙리스트 검증 속도 **30ms → 2ms 개선** 및 DB 부하 감소",
   images: {
     preview: baekguCardPreview,
     architecture: baekguArch,
@@ -37,11 +38,9 @@ export const baekgu: Project = {
   },
   details: {
     roleAndContribution: [
-      "GitLab CI/CD 기반 백엔드-AI 서버 분리 구조 설계: FastAPI와 Spring Boot의 수명 주기를 분리하여 백엔드 배포 중에도 AI 분석 파이프라인이 중단되지 않는 Fault-Tolerant 아키텍처 구축",
-      "FastAPI-Spring 비동기 처리 및 작업 안정성 확보: 분석 결과 보고 로직을 비동기 콜백 구조로 설계하고 예외 처리를 강화하여 서버 결합도 해소 및 데이터 전송의 최종 일관성 확보",
-      "공고 · 채팅 · 자소서 도메인 API 설계 및 구현: SYNONYM 기반 공고 매칭 로직, WebSocket 기반 실시간 채팅, LLM 연동 자소서 생성 지원 등 서비스 주요 비즈니스 도메인 개발",
-      "Prometheus·Grafana·Loki 기반 통합 모니터링 구축: 서버 메트릭 수집부터 로그 통합 분석까지 전체 시스템 가시성을 확보하여 장애 조치 및 성능 관찰 환경 조성",
-      "Redis 기반 비정상 요청 차단 시스템 구현 (블랙리스트 관리): Redis Atomic Counter를 활용한 비정상 호출 실시간 탐지 및 블랙리스트 관리 체계 구축으로 시스템 보안 강화",
+      "Infra: ▪ GitLab CI/CD 기반 자동 배포 파이프라인 구축\n▪ Redis 기반 비정상 요청 차단 시스템 구현 (블랙리스트 관리)\n▪ Prometheus·Grafana·Loki 기반 통합 모니터링 구축",
+      "Backend: ▪ FastAPI-Spring 비동기 통신 구조 설계 및 구현\n▪ 공고 · 채팅 · 자소서 API 설계 및 개발",
+      "Frontend: ▪ 채팅 도메인 UI/UX 구현"
     ],
     techAndReason: [
       "Spring Boot + FastAPI 분리 (부하 격리): 무거운 AI 연산이 웹 API 응답을 지연시키지 않도록, I/O 처리(Spring)와 AI 연산(FastAPI) 서버를 물리적으로 격리하여 시스템 안정성 확보.",
@@ -50,11 +49,11 @@ export const baekgu: Project = {
       "Git Clone (API Rate Limit 우회): 파일당 1회를 소모하는 GitHub API의 호출 한계를 피하기 위해 `git clone` 방식을 채택. 단 1회의 네트워크 호출로 대용량 코드 수집 한계 극복.",
     ],
     implementation: [
-      "사용자 개발 역량 정밀 분석 : GitHub 커밋 빈도, 코드 기여도 등 실질적 활동 데이터를 기반으로 핵심 기술 역량을 객관적으로 도출 (Git Clone & LLM 분석)",
-      "지능형 기업 데이터 분석 : DART(재무제표)와 실시간 뉴스(비즈니스 트렌드)를 결합하여 기업의 안정성 및 성장성을 정밀 검증 (Perplexity AI 연동)",
-      "AI 맞춤형 공고 매칭 : 분석된 사용자 역량과 실시간 채용 데이터를 온톨로지 기반 기술 매칭 시스템으로 정합하여 최적의 커리어 경로 및 추천 근거 제시",
-      "데이터 기반 자소서 자동 작성 : 역량-공고-기업 분석 데이터를 종합하여 구체적 실적 근거(Evidence) 중심의 고품질 자기소개서 생성",
-      "실시간 직무 소통 네트워크 : WebSocket 및 STOMP 기반 오픈채팅 시스템을 통한 지원자 및 현직자 간의 투명한 정보 공유 지원",
+      "GitHub·포트폴리오를 분석하여 개발자의 핵심 역량 도출",
+      "재무 데이터(DART)와 기업 뉴스(Perplexity API)를 분석하여 기업 정보 수집 및 분석",
+      "사용자 역량과 기업 요구사항을 비교하여 맞춤형 공고 추천",
+      "기업 분석을 바탕으로 맞춤형 자기소개서 작성 지원",
+      "실시간 취업 정보 공유 커뮤니티 제공",
     ],
     troubleshooting: [
       {
@@ -91,9 +90,9 @@ export const baekgu: Project = {
       "채팅 N+1 검증: 브라우저 개발자 도구 Network → WS 탭에서 단일 WebSocket 연결 유지 확인, MySQL 쿼리 로그로 단일 쿼리 실행 검증",
     ],
     retrospective: [
-      "가장 크게 체감한 것은 결함 허용(Fault-Tolerance) 아키텍처의 가치임. AI 분석 중 서버 배포로 인해 파이프라인이 끊기는 이슈를 파헤치며, 단순히 동작하는 기능을 넘어 '어떤 악조건에서도 가용성이 무너지지 않는 구조'를 설계하는 것이 백엔드의 본질임을 깨달음.",
-      "수치와 근거에 기반한 기술의 트레이드오프 결정. Redis나 WebSocket을 유행처럼 도입하지 않고, DB I/O 병목과 네트워크 대역폭 낭비라는 명확한 지표적 한계를 확인한 뒤 타당한 해결책으로 적용함. 유행에 휩쓸리지 않고 데이터에 근거하여 기술을 취사선택하는 엔지니어링 가치관을 확립함.",
-      "트러블슈팅 과정에서 타협하지 않는 집요함을 기름. N+1 문제와 부하 테스트의 지연 속에서 로깅 및 메트릭(Loki, Prometheus)을 원인 분석의 도구로 삼아 끝내 50ms 수준의 응답 최적화를 이뤄냄. 병목을 끝까지 파고들어 한계를 극복했던 이 경험을 통해 근거 있는 개선을 주도하는 태도를 확립함."
+      "AI 서비스 개발 과정에서 장애 상황에서도 서비스가 지속될 수 있도록 설계하는 **Fault-Tolerant 아키텍처의 중요성 체감**",
+      "Redis, WebSocket 등 기술을 단순히 도입하는 것이 아니라 성능 지표와 병목 원인을 근거로 선택하는 **데이터 중심의 의사결정 방식 학습**",
+      "N+1 문제와 성능 병목을 분석·해결하는 과정에서 로그와 메트릭 기반으로 원인을 추적하며 문제를 끝까지 해결하는 **집요한 문제 해결 태도 배양**"
     ],
   },
 }

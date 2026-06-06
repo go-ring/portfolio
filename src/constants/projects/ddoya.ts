@@ -16,8 +16,7 @@ export const ddoya: Project = {
   description:
     "복약 인증 기반으로 지속적인 복용을 유도하고, AI 성분 분석 리포트를 제공하는 스마트 복약 관리 앱\n\n사용자가 복용 중인 영양제를 등록하면 성분표 OCR과 AI 리포트를 통해 중복·과다 섭취 위험을 분석하고, 복약 시간이 지나도 인증되지 않은 기록에는 FCM 기반 재알림을 반복 발송하여 당일 복용을 끝까지 유도함. Spring Boot 백엔드, FastAPI AI 서버, React Native 앱, Docker Compose 기반 배포 환경을 연결해 복약 인증, 재고 차감, 재구매 알림까지 이어지는 모바일 헬스케어 흐름을 구현함. ([GitHub 저장소](https://github.com/go-ring/DDOYA), [Notion](https://www.notion.so/30cd6fafcbd280cca50dd1845138d5c3), [실제 화면](https://drive.google.com/drive/folders/1neonqMLU7-53-WhoPH_Fy7Od50LgdMzL), [발표 자료](https://drive.google.com/drive/folders/1zKLDYEJUsuZqS0tlo_Ish4N73Ht9loAb?usp=sharing))",
   tech: [
-    "[Backend] Java 21, Spring Boot 3.5, JPA, QueryDSL",
-    "[Database] MySQL, Redis",
+    "[Backend] Java 21, Spring Boot 3.5, JPA / QueryDSL, MySQL, Redis",
     "[Infra / DevOps] Docker, Nginx, Jenkins, Vercel, Kibana",
     "[AI] OpenAI, FastAPI, YOLOv8, Clova OCR",
     "[협업 도구] GitLab, Jira, Notion, Mattermost"

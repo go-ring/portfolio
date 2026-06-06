@@ -12,7 +12,7 @@ export function ProjectModalSlideOutcomes({ project }: { project: Project }) {
              {project.impact?.split('\n').map((item, idx) => (
                 <li key={idx} className="flex gap-3.5 text-[16.5px] text-[#332E2A] font-medium break-keep leading-snug">
                  <span className="w-1.5 h-1.5 bg-[#5A6B3A] rounded-sm mt-2.5 shrink-0" />
-                 <span>{renderLinked(item)}</span>
+                 <span>{renderLinked(item.replace(/^▪\s*/, ''))}</span>
                </li>
              ))}
            </ul>

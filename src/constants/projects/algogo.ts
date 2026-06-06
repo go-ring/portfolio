@@ -10,8 +10,7 @@ export const algogo: Project = {
     description:
       "알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 알고리즘 스터디 관리 플랫폼\n\n제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
     tech: [
-      "[Backend] Java 17, Spring Boot 3.3, JPA, QueryDSL",
-      "[Database] MySQL, Redis",
+      "[Backend] Java 17, Spring Boot 3.3, JPA / QueryDSL, MySQL, Redis",
       "[Infra / DevOps] Docker, Nginx, Jenkins, Vercel, Kibana",
       "[AI] OpenAI, G-Eval",
       "[협업 도구] GitLab, Notion, Mattermost"

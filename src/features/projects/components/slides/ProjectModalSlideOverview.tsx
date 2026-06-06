@@ -2,14 +2,15 @@ import { renderLinked } from '@/utils/renderUtils';
 import type { Project } from '@/types/project';
 
 export function ProjectModalSlideOverview({ project }: { project: Project }) {
-  const isMobileApp = project.title.includes('빼꼼') || project.title.includes('DDOYA') || project.title.includes('백구');
+  const isMobileApp = project.title.includes('빼꼼') || project.title.includes('DDOYA');
   const gallery = project.images?.overviewGallery || [];
 
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col md:flex-row gap-12 items-start">
         {/* Left: Images */}
-        <div className="w-full md:w-5/12 shrink-0 flex flex-col gap-4">
+        {/* Left: Images */}
+        <div className={`w-full ${isMobileApp ? 'md:w-5/12' : 'md:w-1/2 lg:w-[58%] -ml-8 md:-ml-12'} shrink-0 flex flex-col items-start gap-4`}>
           {isMobileApp ? (
             <div className="relative w-full h-[460px] flex items-center justify-center mt-4">
                {/* Phone 1: Back Left */}
@@ -35,10 +36,23 @@ export function ProjectModalSlideOverview({ project }: { project: Project }) {
                )}
             </div>
           ) : (
-            <>
+            <div className="w-full flex flex-col gap-4 mt-2">
               {project.images?.main && (
-                <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-[#EBE5DC]">
-                  <img src={project.images.main} alt="Main" className="w-full h-auto object-contain max-h-[360px]" />
+                <div className="w-full rounded-2xl overflow-hidden shadow-md border border-gray-200 bg-white">
+                  {/* Clean Browser Header */}
+                  <div className="bg-[#F8F9FA] border-b border-gray-200 px-3 py-1.5 flex items-center gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/50"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/50"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/50"></div>
+                  </div>
+                  {/* Image Container */}
+                  <div className="relative overflow-hidden bg-white flex">
+                    <img 
+                      src={project.images.main} 
+                      alt="Main" 
+                      className="w-full h-auto object-cover object-top max-h-[500px]" 
+                    />
+                  </div>
                 </div>
               )}
               {gallery.length > 0 && (
@@ -50,7 +64,18 @@ export function ProjectModalSlideOverview({ project }: { project: Project }) {
                   ))}
                 </div>
               )}
-            </>
+            </div>
+          )}
+
+          {/* Impact Metrics (Under Browser - WEB ONLY) */}
+          {!isMobileApp && project.impact && (
+             <div className="w-full mt-5 px-1 flex flex-col gap-1.5">
+               {project.impact.split('\n').map((line, idx) => (
+                 <p key={idx} className="text-[15px] font-bold text-[#5A6B3A] whitespace-pre-wrap leading-[1.4]">
+                   {line.replace(/\*\*/g, '').replace(/^▪\s*/, '')}
+                 </p>
+               ))}
+             </div>
           )}
         </div>
 
@@ -89,10 +114,15 @@ export function ProjectModalSlideOverview({ project }: { project: Project }) {
           </div>
 
           <div className="mt-7">
-            {project.impact && (
-               <p className="text-[16px] font-extrabold text-[#5A6B3A] whitespace-pre-wrap leading-[1.4]">
-                 {project.impact.split('\n').slice(0, 2).join('\n').replace(/\*\*/g, '')}
-               </p>
+            {/* Impact Metrics (Under Text - MOBILE ONLY) */}
+            {isMobileApp && project.impact && (
+               <div className="flex flex-col gap-1.5">
+                 {project.impact.split('\n').slice(0, 2).map((line, idx) => (
+                   <p key={idx} className="text-[16px] font-extrabold text-[#5A6B3A] whitespace-pre-wrap leading-[1.4]">
+                     {line.replace(/\*\*/g, '')}
+                   </p>
+                 ))}
+               </div>
             )}
           </div>
         </div>

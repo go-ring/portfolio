@@ -12,8 +12,7 @@ export const colorfinder: Project = {
   description:
     "안면 색상 데이터 기반 퍼스널 컬러 진단 및 맞춤형 의류 추천 쇼핑몰\n\n단순한 쇼핑 서비스를 넘어 OpenCV 기반의 정밀 색상 분석 기술과 공공데이터 API를 결합하여 '나에게 어울리지 않는 색(톤그로)'에 대한 고민을 기술적으로 해결함. 퍼스널 컬러와 기상 데이터를 연동한 개인화 추천 엔진을 구축하고, 상품 검색부터 결제까지 이르는 풀스택 커머스 아키텍처를 구현함. ([기술 블로그](https://velog.io/@goring/ColorFinder-%EC%95%88%EB%A9%B4-%EC%83%89%EC%83%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B8%B0%EB%B0%98-%ED%8D%BC%EC%8A%A4%EB%84%90-%EC%BB%AC%EB%9F%AC-%EC%A7%84%EB%8B%A8-%EB%B0%8F-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%9D%98%EB%A5%98-%EC%B6%94%EC%B2%9C-%EC%87%BC%ED%95%91%EB%AA%B0-24ev5oqu), [논문/발표자료](https://drive.google.com/drive/folders/1bd-zl9_SLAwJEby6GwKhnktTmCHTSj5l?usp=sharing))",
   tech: [
-    "[Backend] Java 17, Spring Boot 3.3, JPA",
-    "[Database] MySQL",
+    "[Backend] Java 17, Spring Boot 3.3, JPA, MySQL",
     "[AI] Flask, OpenCV, NumPy",
     "[협업 도구] GitLab, Notion"
   ],
