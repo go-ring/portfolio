@@ -28,7 +28,7 @@ export function ProjectModalSlideTechSelection({ project }: { project: Project }
 
       {/* Right: Architecture Image */}
       {project.images?.architecture && (
-        <div className="w-full md:w-5/12 shrink-0 flex items-center justify-center pt-2 md:pt-10">
+        <div className="w-full md:w-5/12 shrink-0 flex items-center justify-center pt-2 md:pt-16">
           <img 
             src={Array.isArray(project.images.architecture) ? project.images.architecture[0] : project.images.architecture} 
             alt="Architecture" 
