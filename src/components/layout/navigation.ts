@@ -1,8 +1,8 @@
 export const navLinks = [
   { name: 'Home', href: '#home' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
   { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
 ];
 
-export const sectionIds = ['home', 'projects', 'skills', 'about'];
+export const sectionIds = ['home', 'about', 'skills', 'projects'];

@@ -10,9 +10,9 @@ export function Badge({ children, className = '', variant = 'default' }: BadgePr
   const baseStyles = "px-2 py-1 text-xs rounded-md font-medium whitespace-nowrap transition-colors";
   
   const variants = {
-    default: "bg-white/5 text-gray-400 border border-white/5",
-    outline: "bg-transparent text-gray-400 border border-white/10",
-    ghost: "bg-transparent text-gray-400 border-none hover:text-gray-200"
+    default: "bg-[#EBE5DC] text-[#4A433D] border border-[#D5CEC4]",
+    outline: "bg-transparent text-[#5C554F] border border-[#D5CEC4]",
+    ghost: "bg-transparent text-[#5C554F] border-none hover:text-[#1F1D1B]"
   };
 
   return (

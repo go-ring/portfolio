@@ -63,7 +63,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] bg-[#1F1D1B]/30 backdrop-blur-sm"
           />
           <motion.div
             initial={{ opacity: 0, y: 100, scale: 0.95 }}
@@ -72,7 +72,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-6 pointer-events-none"
           >
-            <div className="bg-surface w-full max-w-7xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden pointer-events-auto flex flex-col border border-white/10 text-white">
+            <div className="bg-white w-full max-w-7xl max-h-[90vh] rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden pointer-events-auto flex flex-col border border-[#D5CEC4] text-[#1F1D1B]">
 
               {/* Header - Compact Single Line */}
               <ProjectModalHeader project={project} headerRef={headerRef} onClose={onClose} />
@@ -84,7 +84,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 {/* Main Content - Scrollable */}
                 <main
                   ref={contentRef}
-                  className="flex-1 overflow-y-auto p-8 md:p-10 scroll-smooth custom-scrollbar bg-[#0f1219]"
+                  className="flex-1 overflow-y-auto p-8 md:p-10 scroll-smooth custom-scrollbar bg-[#F8F6F0]"
                 >
                   <div className="max-w-4xl mx-auto space-y-24 pb-32">
 
@@ -113,7 +113,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         </div>
                       ) : project.images?.main && (
                         <div className="mb-8 flex justify-center">
-                          <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black flex justify-center max-w-4xl w-full">
+                          <div className="rounded-xl overflow-hidden border border-[#D5CEC4] shadow-sm bg-[#EBE5DC] flex justify-center max-w-4xl w-full">
                             <img
                               src={project.images.main}
                               alt="Main"
@@ -125,7 +125,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                       <div>
                         <SectionHeader title="프로젝트 개요" variant="sidebar" />
-                        <p className="text-gray-300 leading-relaxed text-[17px] whitespace-pre-wrap">
+                        <p className="text-[#5C554F] leading-relaxed text-[17px] whitespace-pre-wrap font-medium">
                           {renderLinked(project.description)}
 
                         </p>
@@ -142,11 +142,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                                 className={
                                   "transition-all duration-300 flex items-center gap-2 " +
                                   (isEmphasis
-                                    ? "text-primary text-lg font-bold"
-                                    : "text-gray-400 hover:text-gray-200 text-[17px] font-medium")
+                                    ? "text-[#5A6B3A] text-lg font-extrabold"
+                                    : "text-[#857C75] hover:text-[#5A6B3A] text-[17px] font-bold")
                                 }
                               >
-                                {isEmphasis && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
+                                {isEmphasis && <span className="w-1.5 h-1.5 rounded-full bg-[#5A6B3A]" />}
                                 {tech}
                               </span>
                             );
@@ -167,7 +167,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                       {project.details?.implementationImage && (
                         <div className="mt-8 flex justify-start">
-                          <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black/20 max-w-lg p-2 bg-gradient-to-br from-primary/10 to-transparent">
+                          <div className="rounded-xl overflow-hidden border border-[#D5CEC4] shadow-sm max-w-lg p-2 bg-white">
                             <img
                               src={project.details.implementationImage}
                               alt="Implemented Logic"
@@ -192,15 +192,15 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                               const roleImages = roleImage ? (Array.isArray(roleImage) ? roleImage : [roleImage]) : [];
                               const useSideRoleImage = isDdoya && roleImage;
                               return (
-                                <div key={idx} className="group flex gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-200">
-                                  <div className="mt-2.5 h-2 w-2 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(var(--primary-rgb),0.4)]" />
+                                <div key={idx} className="group flex gap-3.5 px-4 py-3 rounded-xl bg-white border border-[#D5CEC4] hover:border-[#5A6B3A] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300">
+                                  <div className="mt-2.5 h-2 w-2 rounded-full bg-[#5A6B3A] shrink-0" />
                                   <div className={`flex-1 min-w-0 py-0.5 ${useSideRoleImage ? "md:flex md:items-start md:gap-5" : ""}`}>
                                     <div className="min-w-0 flex-1">
-                                      <span className="font-bold text-primary text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{title}</span>
-                                      {body && <p className="text-gray-200 leading-snug text-[15.5px] group-hover:text-white transition-colors">{renderLinked(body)}</p>}
+                                      <span className="font-extrabold text-[#5A6B3A] text-[16.5px] block mb-1 group-hover:brightness-110 transition-all">{title}</span>
+                                      {body && <p className="text-[#5C554F] leading-snug text-[15.5px] font-medium group-hover:text-[#1F1D1B] transition-colors">{renderLinked(body)}</p>}
                                     </div>
                                     {roleImages.length > 0 && (
-                                      <div className={`mt-4 ${useSideRoleImage ? "md:mt-0 w-full md:w-[300px] shrink-0" : "rounded-lg overflow-hidden border border-white/10 bg-black/20 p-2 max-w-xl"}`}>
+                                      <div className={`mt-4 ${useSideRoleImage ? "md:mt-0 w-full md:w-[300px] shrink-0" : "rounded-lg overflow-hidden border border-[#D5CEC4] bg-[#EBE5DC] p-2 max-w-xl"}`}>
                                         <div className={`${roleImages.length > 1 ? "grid grid-cols-2 gap-0.5" : ""}`}>
                                           {roleImages.map((image, imageIdx) => (
                                             <img
@@ -265,11 +265,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                             const reason = splitIndex !== -1 ? item.slice(splitIndex + 1) : '';
 
                             return (
-                              <div key={idx} className="group flex gap-3.5 px-4 py-2.5 rounded-xl bg-white/[0.05] border border-white/[0.08] hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-200">
-                                <div className="mt-2.5 h-2 w-2 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(var(--primary-rgb),0.4)]" />
+                              <div key={idx} className="group flex gap-3.5 px-4 py-3 rounded-xl bg-white border border-[#D5CEC4] hover:border-[#5A6B3A] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300">
+                                <div className="mt-2.5 h-2 w-2 rounded-full bg-[#5A6B3A] shrink-0" />
                                 <div className="flex-1 min-w-0 py-0.5">
-                                  <span className="font-bold text-primary text-[16.5px] block mb-0.5 group-hover:brightness-110 transition-all">{techName}</span>
-                                  {reason && <p className="text-gray-200 leading-snug text-[15.5px] group-hover:text-white transition-colors">{renderLinked(reason)}</p>}
+                                  <span className="font-extrabold text-[#5A6B3A] text-[16.5px] block mb-1 group-hover:brightness-110 transition-all">{techName}</span>
+                                  {reason && <p className="text-[#5C554F] font-medium leading-snug text-[15.5px] group-hover:text-[#1F1D1B] transition-colors">{renderLinked(reason)}</p>}
                                 </div>
                               </div>
                             );
@@ -291,7 +291,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                           <SectionHeader title="회고 및 배운 점" variant="sidebar" />
                           <div className="space-y-4 px-2">
                             {project.details.retrospective.map((line, idx) => (
-                              <p key={idx} className="text-[15.5px] text-gray-300 leading-[1.7] whitespace-pre-wrap break-keep">
+                              <p key={idx} className="text-[15.5px] text-[#5C554F] font-medium leading-[1.7] whitespace-pre-wrap break-keep">
                                 {renderLinked(line)}
                               </p>
                             ))}

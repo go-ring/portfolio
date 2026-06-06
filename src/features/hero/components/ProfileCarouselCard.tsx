@@ -40,13 +40,13 @@ export function ProfileCarouselCard() {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Glow Effect */}
-      <div className="absolute -inset-1 bg-gradient-to-tr from-[#9FAA7C]/40 to-purple-500/40 rounded-[2rem] blur-2xl opacity-50 group-hover:opacity-75 transition duration-700" />
+      <div className="absolute -inset-2 bg-gradient-to-tr from-[#5A6B3A]/30 to-[#D2694B]/20 rounded-[2rem] blur-2xl opacity-60 group-hover:opacity-100 transition duration-700" />
       
-      {/* Glass Card */}
-      <div className="relative bg-[#1c212c]/60 backdrop-blur-xl border border-white/10 p-4 rounded-[2rem] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] group-hover:border-white/20">
+      {/* Glass Card - Pure White for Contrast */}
+      <div className="relative bg-white border border-[#E5E0D8] p-4 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] transition-transform duration-500 group-hover:scale-[1.02] group-hover:shadow-[0_30px_70px_-15px_rgba(90,107,58,0.15)]">
         
         {/* Image Carousel Container */}
-        <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gray-800 mb-4 border border-white/5 isolate transform-gpu">
+        <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-[#F8F6F0] mb-4 border border-[#E5E0D8] isolate transform-gpu">
           <AnimatePresence mode="wait">
             <motion.img
               key={currentIndex}
@@ -61,11 +61,11 @@ export function ProfileCarouselCard() {
             />
           </AnimatePresence>
 
-          {/* Gradient Overlay - Fixed Edge Bleed */}
+          {/* Gradient Overlay - Softer for light theme */}
           <div 
             className="absolute inset-0 w-full h-full pointer-events-none" 
             style={{
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.6) 100%)',
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 70%, rgba(0,0,0,0.3) 100%)',
               borderRadius: 'inherit' // Sync border-radius
             }}
           />
@@ -74,14 +74,14 @@ export function ProfileCarouselCard() {
           <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button 
               onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-              className="p-1.5 rounded-full bg-black/30 text-white/70 hover:bg-black/50 hover:text-white backdrop-blur-sm transition-all"
+              className="p-2 rounded-full bg-white/80 text-[#1F1D1B] hover:bg-white hover:text-[#5A6B3A] backdrop-blur-md transition-all shadow-md"
               aria-label="Previous image"
             >
               <ChevronLeft size={20} />
             </button>
             <button 
               onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-              className="p-1.5 rounded-full bg-black/30 text-white/70 hover:bg-black/50 hover:text-white backdrop-blur-sm transition-all"
+              className="p-2 rounded-full bg-white/80 text-[#1F1D1B] hover:bg-white hover:text-[#5A6B3A] backdrop-blur-md transition-all shadow-md"
               aria-label="Next image"
             >
               <ChevronRight size={20} />
@@ -90,19 +90,16 @@ export function ProfileCarouselCard() {
         </div>
 
         {/* Card Content */}
-        <div className="px-2 pb-2 text-center relative z-10">
-          <h3 className="text-2xl font-bold text-white mb-1 tracking-tight">Lee GaEun</h3>
-          <p className="text-[#9FAA7C] font-medium mb-2 text-sm tracking-widest opacity-90">Backend Engineer</p>
-          
+        <div className="px-2 pb-1 text-center relative z-10">
           {/* Dot Indicators */}
-          <div className="flex justify-center gap-1.5 mt-3">
+          <div className="flex justify-center gap-2 mt-3 mb-1">
             {images.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => goToSlide(idx)}
                 className={`
-                  h-1.5 rounded-full transition-all duration-300 
-                  ${currentIndex === idx ? 'w-6 bg-[#9FAA7C]' : 'w-1.5 bg-gray-600 hover:bg-gray-500'}
+                  h-2 rounded-full transition-all duration-300 
+                  ${currentIndex === idx ? 'w-8 bg-[#5A6B3A]' : 'w-2 bg-[#E5E0D8] hover:bg-[#D5CEC4]'}
                 `}
                 aria-label={`Go to slide ${idx + 1}`}
               />

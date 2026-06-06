@@ -8,10 +8,10 @@ interface CardProps {
 }
 
 export function Card({ children, className = '', onClick, hoverEffect = false }: CardProps) {
-  const baseStyles = "bg-surface border border-white/5 transition-all duration-300";
+  const baseStyles = "bg-white border border-[#D5CEC4] transition-all duration-300 shadow-sm";
   
   const hoverStyles = hoverEffect 
-    ? "hover:-translate-y-[2px] hover:border-white/20 hover:shadow-lg cursor-pointer" 
+    ? "hover:-translate-y-1 hover:border-[#5A6B3A] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] cursor-pointer" 
     : "";
 
   return (

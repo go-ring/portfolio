@@ -5,9 +5,9 @@ import { Section } from '@/components/Section';
 
 export function Skills() {
   const levelColor = {
-    상: 'bg-primary text-background shadow-[0_0_14px_rgba(159,170,124,0.32)]',
-    중: 'border border-primary/50 bg-primary/10 text-primary',
-    하: 'border border-white/10 bg-white/[0.04] text-gray-400',
+    상: 'bg-[#5A6B3A] text-white shadow-sm border border-[#45522C]',
+    중: 'border border-[#5A6B3A]/30 bg-[#5A6B3A]/10 text-[#35421A]',
+    하: 'border border-[#D5CEC4] bg-[#F8F6F0] text-[#857C75]',
   };
 
   return (
@@ -22,9 +22,9 @@ export function Skills() {
             transition={{ delay: index * 0.1 }}
             className="flex flex-col h-full"
           >
-            <Card className="p-6 rounded-2xl h-full shadow-lg hover:border-primary/30">
-              <div className="mb-5 border-b border-primary/20 pb-3 flex justify-center">
-                <h3 className="text-lg font-semibold text-primary">
+            <Card className="p-6 rounded-2xl h-full">
+              <div className="mb-5 border-b border-[#D5CEC4] pb-3 flex justify-center">
+                <h3 className="text-lg font-bold text-[#1F1D1B] tracking-tight">
                   {skillGroup.category}
                 </h3>
               </div>
