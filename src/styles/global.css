@@ -5,7 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    @apply bg-[#10141b] text-white; /* Force Dark Background Default */
+    @apply bg-[#F8F6F0] text-[#1F1D1B]; /* Warm Light Background Default */
   }
   
   body {
@@ -18,24 +18,24 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-[#10141b];
+    @apply bg-[#F8F6F0];
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-700 rounded-full;
+    @apply bg-[#D5CEC4] rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-600;
+    @apply bg-[#857C75];
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-[#10141b]/80 backdrop-blur-md border-b border-white/5;
+    @apply bg-[#F8F6F0]/80 backdrop-blur-md border-b border-[#D5CEC4];
   }
   
   .card-gradient {
-    background: linear-gradient(145deg, #1c212c 0%, #171b24 100%);
+    background: linear-gradient(145deg, #FFFFFF 0%, #F8F6F0 100%);
   }
 }
