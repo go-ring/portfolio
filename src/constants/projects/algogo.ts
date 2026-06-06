@@ -8,7 +8,9 @@ export const algogo: Project = {
     role: ["Backend & Infra"],
     shortDescription: "알고리즘 스터디 운영 자동화 및 강제적 코드 리뷰 학습 플랫폼",
     description:
-      "알고리즘 스터디 운영 자동화와 강제적 코드 리뷰 규칙을 하나로 통합한 알고리즘 스터디 관리 플랫폼\n\n제출된 알고리즘 코드를 OpenAI API의 Logprobs(토큰 확률 분포)를 활용한 G-Eval 방법론으로 수학적으로 자동 평가하고 정교한 피드백을 제공함. 단순한 문제 풀이 관리를 넘어, 타인의 코드를 일정 횟수 이상 리뷰해야만 활동을 이어갈 수 있는 '제출 잠금(Lock) 기반 선순환 리뷰 루프' 시스템을 구축함. 이를 통해 알고리즘 학습의 본질인 '사고의 공유'를 강제로 유도하고, 스터디 모집부터 활동 시각화 및 리뷰어 그룹 매칭까지 전 과정을 통합하여 운영진의 관리 피로도를 근본적으로 해결함. ([시연 영상](https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing), [GitHub 저장소](https://github.com/team-algogo/algogo_server.git), [Notion 워크스페이스](https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc))",
+      "리뷰가 학습이 되는 알고리즘 스터디\n\n" +
+      "제출 잠금 기반 **강제 리뷰 시스템**과 **AI 코드 평가**로\n" +
+      "코드 공유 및 피드백 문화를 만드는 **스터디 관리** 플랫폼",
     tech: [
       "[Backend] Java 17, Spring Boot 3.3, JPA / QueryDSL, MySQL, Redis",
       "[Infra / DevOps] Docker, Nginx, Jenkins, Vercel, Kibana",
@@ -16,10 +18,10 @@ export const algogo: Project = {
       "[협업 도구] GitLab, Notion, Mattermost"
     ],
     impact:
-      "기존 수동 리뷰 대비 평가 시간 약 80~90% 단축(추산), 대량 코드 평가 처리 가능 구조 확보\n" +
-      "배포 시간 수동 대비 약 70% 이상 단축(추산), 서비스 중단 없는 배포 환경 구축\n" +
-      "공통 로직 분리로 코드 중복 감소 및 유지보수 비용 절감(추산 30% 이상)\n" +
-      "초기 사용자 수십 명 규모 확보 및 실제 코드 리뷰·평가 기능 사용 검증",
+      "AI 코드 평가로 수동 리뷰 대비 평가 시간 약 **80~90% 단축(추산)**\n" +
+      "배포 자동화로 배포 시간 약 70% 단축(추산), **중단 없는 서비스 구축**\n" +
+      "공통 로직 분리로 코드 중복 감소 및 **유지보수 비용 절감(추산 30% 이상)**\n" +
+      "실제 사용자 수십 명 규모 확보 및 실제 코드 리뷰·평가 기능 사용 검증",
     images: {
       main: algogoMain
     },
@@ -30,11 +32,9 @@ export const algogo: Project = {
     },
     details: {
       roleAndContribution: [
-        "문제집 및 리뷰 도메인 코어 API 설계 및 구현: 그룹 및 캠페인 목적에 맞춘 알고리즘 문제집(Program-Problem) 관리 로직과, 제출된 코드의 특정 라인(Line)에 매핑되는 계층형 리뷰 및 반응(Reaction) 도메인 전체 개발",
-        "OpenAI API 연동 비동기 이벤트 아키텍처 설계: AI 코드 평가 대기 중 발생할 수 있는 메인 DB 커넥션 풀(HikariCP) 고갈 이슈를 방지하고자, 비동기 구조 기반의 독립적인 트랜잭션 격리 환경 구축",
-        "Jenkins·Nginx 기반 Blue-Green 무중단 CI/CD 파이프라인 구축: Nginx Gateway 서버와 통합 API 서버를 물리적으로 분리하고, Health Check 기반 자동 트래픽 스위칭을 도입하여 트래픽 전환 가용성 100% 달성",
-        "Docker Multi-stage Build 및 Non-root 권한 격리 적용: BuildKit Layer 캐싱을 도입하여 컨테이너 빌드 소요 시간을 단축(66%)함과 동시에, appuser 권한 분리를 통한 호스트 OS 보안성 대폭 강화",
-        "AWS S3 및 CloudFront 기반 클라우드 네이티브 자산 서빙 구조 설계: 다수의 스터디 자료 및 이미지 서빙 시 오리진 인스턴스의 트래픽 부하를 엣지 로케이션으로 분산시켜 데이터 전송 안정성 확보",
+        "Infra: ▪ Docker 기반 마이크로서비스 아키텍처 구축\n▪ Docker Multi-stage Build 및 권한 분리 적용\n▪ CI/CD 기반 자동 빌드·배포 환경 구축\n▪ Jenkins · Nginx 기반 Blue-Green 무중단 배포 파이프라인 구축\n▪ AWS S3 · CloudFront 기반 정적 자산 서빙 환경 구축",
+        "Backend: ▪ 문제집 · 코드 리뷰 도메인 API 설계 및 개발",
+        "AI: ▪ OpenAI Logprobs 기반 G-Eval 코드 평가 시스템 설계 및 구현"
       ],
       techAndReason: [
         "Blue-Green 배포: 단일 운영 서버(EC2) 한계상 롤링 배포가 불가능한 환경에서, 신/구 버전을 동시 기동 후 Nginx 라우팅을 전환하여 완벽한 롤백 지점 확보 및 무중단 배포(0 Downtime) 달성",
@@ -43,11 +43,12 @@ export const algogo: Project = {
         "Spring Event + @Async (OpenAI): GPT API의 수 초 단위 응답 대기 시간 동안 메인 트랜잭션이 유지되며 발생하는 DB 커넥션 풀(HikariCP) 고갈 및 데드락을 원천 차단하기 위해, 애플리케이션 이벤트를 활용한 논리적 스레드 분리",
       ],
       implementation: [
-        "제출 잠금(Lock) 기반 강제 리뷰 : 타인의 코드를 반드시 일정 횟수 이상 리뷰해야만 새로운 코드를 제출할 수 있는 선순환 피드백 시스템 구축",
-        "LLM 기반 코드 평가 : OpenAI(G-Eval)를 활용하여 제출된 코드의 최적화 수준, 복잡도, 예외 처리 능력을 객관적으로 수치화 및 자동 피드백",
-        "스터디 운영 체계 자동화 : 플랫폼 별 문제 모음, 미제출자 필터링, 패널티 부과 기능을 통해 운영진의 스터디 관리 리소스 최소화",
-        "코드 라인별 계층형 리뷰 : 제출된 코드의 특정 라인(Line)을 지정한 피드백 및 대댓글(Thread) 기능을 설계하여 소통 지원",
-        "개인별 성취도 지표 시각화 : 문제 난이도별 성공률, 시도 횟수, 실행 시간 및 메모리 추이 등 상세 학습 지표를 시각화하여 체계적 관리 구현",
+        "알고리즘 문제 풀이 및 제출 이력 통합 관리",
+        "제출 잠금(Lock) 기반 강제 코드 리뷰 학습 구조 제공",
+        "OpenAI Logprobs 기반 G-Eval 확률 모델로 코드 품질 평가 및 피드백 제공",
+        "코드 라인 단위 리뷰 및 Thread 기반 토론 기능 지원",
+        "그룹 스터디 운영 자동화 및 활동 현황 관리",
+        "개인별 학습 데이터 분석 및 성장 지표 시각화",
       ],
       troubleshooting: [
         {
@@ -97,10 +98,15 @@ export const algogo: Project = {
         },
       ],
       retrospective: [
-        "인프라와 어플리케이션 생명주기 정밀 제어 역량 확보. Nginx와 Spring Boot 포트 오픈 시점 간극으로 발생하는 502 에러 해결. 단순 대기가 아닌 Health Check 폴링 기반의 검증 로직을 구축하며 무중단 배포의 실무적 메커니즘 체득.",
-        "보안과 효율성을 모두 잡는 컨테이너 아키텍처 설계. Docker Multi-stage 빌드와 레이어 캐싱으로 빌드 타임을 66% 단축. Non-root 권한 분리 시 발생하는 런타임 권한 에러를 해결하며 시스템 보안 인프라의 정밀한 구성 능력 배양.",
-        "외부 장애가 내부로 전파되지 않는 안티프래질 설계 체득. 외부 LLM API 지연이 DB 커넥션 풀을 말리고 전체 시스템 마비(Cascading Failure)로 번지는 현상 해결. 비동기 이벤트와 트랜잭션 격리를 통해 가용한 자원을 사수하는 아키텍처 설계의 중요성 경험.",
-        "데이터베이스 I/O와 클라우드 자원의 최적화 트레이드오프 역량. 계층형 데이터의 N+1 병목을 O(N) 트리 조립 알고리즘으로 극복하고, CDN 동기화 지연을 UUID 기반 파훼법으로 해결하는 등 주어진 환경에서 최고 성능을 뽑아내는 실전 튜닝 역량 고도화.",
+        "기능 구현을 넘어 장애 상황에서도 안정적으로 동작하는 **무중단 배포 아키텍처 설계 경험 축적**",
+        "Docker 빌드 최적화와 권한 분리를 적용하며 성능과 보안을 균형 있게 고려하는 **인프라 설계 역량 함양**",
+        "비동기 이벤트와 트랜잭션 격리를 통해 외부 서비스 장애가 내부 시스템으로 전파되지 않는 **안정적인 시스템 구조 설계**",
+        "데이터베이스와 클라우드 환경의 병목을 분석·개선하며 **근거 기반의 성능 최적화 역량 강화**"
       ],
     },
+    links: {
+      repo: "https://github.com/team-algogo/algogo_server.git",
+      notion: "https://www.notion.so/2688c963ea8b80d88bf7e79182feeccc",
+      presentation: "https://drive.google.com/drive/folders/1whFJSQOZUTy8wNHKJbOnCMuwldX32LXF?usp=sharing"
+    }
   }
