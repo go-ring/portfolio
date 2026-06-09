@@ -86,7 +86,7 @@ export const skills: SkillGroup[] = [
     category: "AI",
     items: [
       {
-        name: "AI",
+        name: "LLM",
         icon: "bot", // Special case, handled in UI
         level: 2,
         points: [
