@@ -23,6 +23,10 @@ export const colorfinder: Project = {
     "스마트미디어 추계학술대회 학술 논문 발표\n" +
     "외부 API 호출에 캐싱을 적용하여 데이터 로딩 속도를 1.5s에서 0.2s로 단축\n" +
     "베타 테스터 만족도 4.7점 달성",
+  shortImpact:
+    "한남대학교 캡스톤 경진대회 우수상 수상(2024)\n" +
+    "스마트미디어 추계학술대회 학술 논문 발표\n" +
+    "베타 테스터 만족도 4.7점 달성",
   images: {
     architecture: colorFinderArch,
     main: colorFinderPreview,

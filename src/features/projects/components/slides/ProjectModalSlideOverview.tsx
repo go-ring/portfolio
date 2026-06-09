@@ -4,6 +4,7 @@ import type { Project } from '@/types/project';
 export function ProjectModalSlideOverview({ project }: { project: Project }) {
   const isMobileApp = project.title.includes('빼꼼') || project.title.includes('DDOYA');
   const gallery = project.images?.overviewGallery || [];
+  const displayImpact = project.shortImpact ?? project.impact;
 
   return (
     <div className="flex flex-col gap-8">
@@ -68,9 +69,9 @@ export function ProjectModalSlideOverview({ project }: { project: Project }) {
           )}
 
           {/* Impact Metrics (Under Browser - WEB ONLY) */}
-          {!isMobileApp && project.impact && (
+          {!isMobileApp && displayImpact && project.title !== '백구(BAEKGU)' && (
              <div className="w-full mt-5 px-1 flex flex-col gap-1.5">
-               {project.impact.split('\n').map((line, idx) => (
+               {displayImpact.split('\n').map((line, idx) => (
                  <p key={idx} className="text-[15px] font-bold text-[#5A6B3A] whitespace-pre-wrap leading-[1.4]">
                    {line.replace(/\*\*/g, '').replace(/^▪\s*/, '')}
                  </p>
@@ -115,9 +116,9 @@ export function ProjectModalSlideOverview({ project }: { project: Project }) {
 
           <div className="mt-7">
             {/* Impact Metrics (Under Text - MOBILE ONLY) */}
-            {isMobileApp && project.impact && (
+            {isMobileApp && displayImpact && project.title !== '백구(BAEKGU)' && (
                <div className="flex flex-col gap-1.5">
-                 {(project.title.includes('빼꼼') ? project.impact.split('\n').slice(0, 2) : project.impact.split('\n')).map((line, idx) => (
+                 {(project.title.includes('빼꼼') ? displayImpact.split('\n').slice(0, 2) : displayImpact.split('\n')).map((line, idx) => (
                    <p key={idx} className="text-[16px] font-extrabold text-[#5A6B3A] whitespace-pre-wrap leading-[1.4]">
                      {line.replace(/\*\*/g, '').replace(/^▪\s*/, '')}
                    </p>

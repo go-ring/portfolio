@@ -20,6 +20,7 @@ export interface Project {
   shortDescription: string;
   tech: string[];
   impact?: string;
+  shortImpact?: string;
   links: {
     repo?: string;
     demo?: string;

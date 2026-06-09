@@ -28,6 +28,7 @@ export const ddoya: Project = {
     "▪ 배포 검증 자동화를 통해 **운영 안정성 향상 및 장애 대응 시간 단축**\n" +
     "▪ FCM 알림 비동기 처리로 **서비스 간 결합도 감소**\n" +
     "▪ FCM 토큰 일괄 조회 구조로 **DB 조회 횟수 최대 99% 감소**",
+  shortImpact: "",
   images: {
     architecture: ddoyaArch,
     overviewGallery: [dailyRoutine, reportNutrient, routineRecommend],
