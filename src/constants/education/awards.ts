@@ -7,8 +7,8 @@ export const awards: AwardItem[] = [
     organization: "",
     date: "2026.06",
   },
-  {
-    name: "삼성 청년 SW AI 아카데미 2학기 프로젝트 우수상(1등)",
+  { 
+    name: "삼성 청년 SW·AI 아카데미 2학기 프로젝트 우수상 (1등)",
     competition: "",
     organization: "",
     date: "2026.05",

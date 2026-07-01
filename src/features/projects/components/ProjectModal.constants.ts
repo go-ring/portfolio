@@ -1,6 +1,7 @@
 export const EMPHASIS_TECH: Record<string, Set<string>> = {
   'ColorFinder': new Set(['Google Vision AI', 'Spring Boot 3.2.5', 'Flask', 'OpenCV & NumPy', 'KMA API (Weather)', 'Selenium']),
-  '빼꼼(BBAEKKOM)': new Set(['FastAPI', 'Redis', 'OpenAI (GPT-4o)', 'DeepEval / G-Eval', 'PostgreSQL / pgvector', 'Google Cloud STT/TTS', 'Qwen ASR']),
+  '빼꼼(BBAEKKOM)': new Set(['FastAPI', 'Redis', 'OpenAI (GPT-4o)', 'RAG', 'DeepEval / G-Eval', 'PostgreSQL / pgvector', 'Google Cloud STT/TTS', 'Qwen ASR']),
+  '민담(MINDAM)': new Set(['Spring Boot 3.5', 'JPA / Specification', 'PostgreSQL', 'Redis', 'Docker', 'FastAPI', 'OpenAI', 'RAG', 'Structured Outputs', '공공데이터포털 유사 민원 API', 'AWS EC2 / S3']),
   '가상화 기반 우주 통신망 연동 및 사이버 위협 연구': new Set(['NOS3', 'NCloud', 'Cloud-Init', 'Ruby', 'xrdp']),
   '백구(BAEKGU)': new Set(['GitLab CI/CD', 'Redis', 'JPA / QueryDSL', 'WebSocket (STOMP)', 'Prometheus / Grafana', 'Loki']),
   '알고가자(Algogo)': new Set(['Blue-Green', 'Vercel', 'AWS S3 & CloudFront', 'Nginx', 'Jenkins', 'OpenAI API (G-Eval & WebClient)', 'Spring Boot Actuator & Prometheus']),

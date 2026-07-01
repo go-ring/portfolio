@@ -30,6 +30,7 @@ export const ddoya: Project = {
     "▪ FCM 토큰 일괄 조회 구조로 **DB 조회 횟수 최대 99% 감소**",
   shortImpact: "",
   images: {
+    overviewLayout: 'mobile',
     architecture: ddoyaArch,
     overviewGallery: [dailyRoutine, reportNutrient, routineRecommend],
   },

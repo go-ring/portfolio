@@ -37,6 +37,7 @@ export interface Project {
     architecture?: string | string[];
     preview?: string;
     overviewGallery?: string[];
+    overviewLayout?: 'mobile' | 'browser';
   };
   period: string;
   type: string; // Team Project, Personal Project, Paper
