@@ -25,8 +25,8 @@ export const bbaekkom: Project = {
     '[협업 도구] GitLab, Jira, Notion, Mattermost'
   ],
   impact:
-    "삼성 청년 SW·AI 아카데미(SSAFY) 2학기 프로젝트 **우수상 수상**\n" +
-    "프로젝트 최우수작으로 선정되어 SSAFY **전시회 참가**\n" +
+    "삼성 청년 SW·AI 아카데미(SSAFY) 2학기 프로젝트 **우수상 (1등) 수상**\n" +
+    "프로젝트 최우수작으로 선정되어 SSAFY **전시회 우수상 수상**\n" +
     "DeepEval · G-Eval 기반 자체 LLM 평가 체계를 구축하여 대화 품질 Pass Rate **50.0% → 93.3% 개선**\n" +
     "Streaming STT Preview 및 캐릭터 애니메이션 적용으로 **체감 대기 시간** 약 50% **단축**\n" +
     "사용자가 촬영한 사물을 **2분 이내** 대화형 AI 캐릭터로 생성하는 파이프라인 구축",
