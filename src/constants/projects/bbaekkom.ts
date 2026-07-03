@@ -10,7 +10,7 @@ import conversationGuide from '@/assets/images/bbaekkom/대화가이드1.jpg';
 export const bbaekkom: Project = {
   title: '빼꼼(BBAEKKOM)',
   type: '팀 프로젝트 (6인)',
-  period: '2026.04.27 ~ 2026.05.27 (4주)',
+  period: '2026.04.06 ~ 2026.05.21 (7주)',
   role: ['Frontend & Backend & AI'],
   shortDescription: '사진 기반 캐릭터 생성 및 실시간 음성 대화와 성장 리포트를 지원하는 AI 육아 플랫폼',
   description:
