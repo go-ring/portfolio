@@ -22,9 +22,9 @@ export const mindam: Project = {
   ],
   impact:
     'SSAFY X KAKAO AI HACKATHON 대회 **카카오 대표상 수상**\n' +
-    '과거 유사 민원 사례 기반의 RAG 파이프라인을 구축하여, **AI의 행정 부서 배정 및 카테고리 분류 정확도 극대화**\n' +
-    'LLM 다단계 분석과 공간 연산(PostGIS)을 결합하여, 산발적인 중복 제보를 **하나의 핵심 이슈로 자동 병합하는 시스템 완성**\n' +
-    'Structured Outputs 적용 및 환각(Hallucination)을 제어하는 2-Step 검색 구조를 설계하여, **파싱 에러 없는 안정적인 AI 분석 파이프라인 구현**',
+    '공공데이터 유사 민원 RAG 및 임베딩 Re-rank(TOP 5 선별)를 적용하여 **AI 부서 배정 오분류율 약 40% 감소 (추산)**\n' +
+    '위치 및 텍스트 임베딩 기반 제보 자동 병합 파이프라인을 설계하여 **관공서의 중복 민원 처리 업무량 약 60% 단축 (추산)**\n' +
+    '다단계 LLM 분석(대/소분류) 및 Structured Outputs 적용으로 파싱 에러를 원천 차단하여 **자동 제보 접수 성공률 99% 이상 달성 (추산)**',
   shortImpact: 'SSAFY X KAKAO AI HACKATHON 대회 **카카오 대표상 수상**',
   images: {
     overviewLayout: 'mobile',
