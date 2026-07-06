@@ -2,7 +2,7 @@ import type { Project } from '@/types/project';
 import algogoMain from "@/assets/images/algogo/main.gif";
 
 export const algogo: Project = {
-    title: "알고가자(Algogo)",
+    title: "알고가자(AlgoGo)",
     type: "팀 프로젝트 (5인)",
     period: "2025.11.20 ~ 2026.01.20 (9주)",
     role: ["Backend & Infra"],
