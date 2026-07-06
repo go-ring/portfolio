@@ -2,7 +2,7 @@ import type { AwardItem } from '@/types/education';
 
 export const awards: AwardItem[] = [
   {
-    name: "SSAFY X KAKAO AI HACKATHON 대회 카카오 대표상",
+    name: "SSAFY X Kakao tech bootcamp AI Hackathon 카카오 대표상",
     competition: "",
     organization: "",
     date: "2026.06",
