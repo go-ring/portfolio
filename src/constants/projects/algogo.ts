@@ -15,7 +15,7 @@ export const algogo: Project = {
       "[Backend] Java 17, Spring Boot 3.3, JPA / QueryDSL, MySQL, Redis",
       "[Infra / DevOps] Docker, Nginx, Jenkins, Vercel, Kibana",
       "[AI] OpenAI, G-Eval",
-      "[협업 도구] GitLab, Notion, Mattermost"
+      "[협업 도구] GitHub, Notion, Mattermost"
     ],
     impact:
       "AI 코드 평가로 수동 리뷰 대비 평가 시간 약 **80~90% 단축(추산)**\n" +
