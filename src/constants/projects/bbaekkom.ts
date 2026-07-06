@@ -32,7 +32,7 @@ export const bbaekkom: Project = {
     "사용자가 촬영한 사물을 **2분 이내** 대화형 AI 캐릭터로 생성하는 파이프라인 구축",
   shortImpact:
     "삼성 청년 SW·AI 아카데미(SSAFY) 2학기 프로젝트 **우수상 수상**\n" +
-    "프로젝트 최우수작으로 선정되어 SSAFY **전시회 참가**",
+    "프로젝트 최우수작으로 선정되어 SSAFY **전시회 우수상 수상**",
   images: {
     overviewLayout: 'mobile',
     preview: bbaekkomThumbnail,
