@@ -21,11 +21,11 @@ export const mindam: Project = {
     '[협업 도구] GitHub, Notion, Mattermost'
   ],
   impact:
-    'SSAFY X KAKAO AI HACKATHON 대회 **카카오 대표상 수상**\n' +
+    'SSAFY X Kakao tech bootcamp AI Hackathon 카카오 대표이사상 수상**\n' +
     '공공데이터 유사 민원 RAG 및 임베딩 Re-rank(TOP 5 선별)를 적용하여 **AI 부서 배정 오분류율 약 40% 감소 (추산)**\n' +
     '위치 및 텍스트 임베딩 기반 제보 자동 병합 파이프라인을 설계하여 **관공서의 중복 민원 처리 업무량 약 60% 단축 (추산)**\n' +
     '다단계 LLM 분석(대/소분류) 및 Structured Outputs 적용으로 파싱 에러를 원천 차단하여 **자동 제보 접수 성공률 99% 이상 달성 (추산)**',
-  shortImpact: 'SSAFY X KAKAO AI HACKATHON 대회 **카카오 대표상 수상**',
+  shortImpact: 'SSAFY X Kakao tech bootcamp AI Hackathon 카카오 대표이사상 수상**',
   images: {
     overviewLayout: 'mobile',
     overviewGallery: [
